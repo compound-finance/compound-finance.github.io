@@ -33,8 +33,8 @@ Account balances are stored internally in Comet as *principal* values (also sign
 Global *indices* for supply and borrow are unsigned integers that increase over time to account for the interest accrued on each side. When an account interacts with the protocol, the indices are updated and saved. An account's present balance can be calculated using the current index with the following formulas.
 
 ```
-Balance=PrincipalBaseSupplyIndexNow [Principal0]
-Balance=PrincipalBaseBorrowIndexNow [Principal<0]
+Balance=Principal * BaseSupplyIndex [Principal>0]
+Balance=Principal * BaseBorrowIndex [Principal<0]
 ```
 
 ### Supply
