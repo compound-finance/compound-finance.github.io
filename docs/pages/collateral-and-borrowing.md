@@ -10,19 +10,15 @@ sidebar_nav_data:
   withdraw-or-borrow: Withdraw or Borrow
   collateral-balance: Collateral Balance
   borrow-collateralization: Borrow Collateralization
-  protocol-rewards: Protocol Rewards
-  reward-accrual-tracking: Reward Accrual Tracking
-  get-reward-accrued: Get Reward Accrued
-  claim-rewards: Claim Rewards
 ---
 
 # Collateral & Borrowing
 
-Users can add collateral assets to their account using the *[supply](#supply)* function. Collateral can only be added if the market is below its *[supplyCap](../account-management/#get-asset-info-by-address)*, which limits the protocol's risk exposure to collateral assets.
+Users can add collateral assets to their account using the *[supply](#supply)* function. Collateral can only be added if the market is below its *[supplyCap](../helper-functions/#get-asset-info-by-address)*, which limits the protocol's risk exposure to collateral assets.
 
-Each collateral asset increases the user's borrowing capacity, based on the asset's *[borrowCollateralFactor](../account-management/#get-asset-info-by-address)*. The borrowing collateral factors are percentages that represent the portion of collateral value that can be borrowed.
+Each collateral asset increases the user's borrowing capacity, based on the asset's *[borrowCollateralFactor](../helper-functions/#get-asset-info-by-address)*. The borrowing collateral factors are percentages that represent the portion of collateral value that can be borrowed.
 
-For instance, if the borrow collateral factor for WBTC is 85%, an account can borrow up to 85% of the USD value of its supplied WBTC in the base asset. Collateral factors can be fetched using the *[Get Asset Info By Address](../account-management/#get-asset-info-by-address)* function.
+For instance, if the borrow collateral factor for WBTC is 85%, an account can borrow up to 85% of the USD value of its supplied WBTC in the base asset. Collateral factors can be fetched using the *[Get Asset Info By Address](../helper-functions/#get-asset-info-by-address)* function.
 
 The base asset can be borrowed using the *[withdraw](#withdraw-or-borrow)* function; the resulting borrow balance must meet the borrowing collateral factor requirements. If a borrowing account subsequently fails to meet the borrow collateral factor requirements, it cannot borrow additional assets until it supplies more collateral, or reduces its borrow balance using the supply function.
 
@@ -81,7 +77,7 @@ await comet.supply(usdcAddress, 1000000);
 
 The withdraw method is used to **withdraw collateral** that is not currently supporting an open borrow. Withdraw is **also used to borrow the base asset** from the protocol if the account has supplied sufficient collateral. It can also be called from an allowed manager address.
 
-Compound III implements a minimum borrow position size which can be found as `baseBorrowMin` in the [protocol configuration](../account-management/#get-protocol-configuration). A withdraw transaction to borrow that results in the account's borrow size being less than the `baseBorrowMin` will revert.
+Compound III implements a minimum borrow position size which can be found as `baseBorrowMin` in the [protocol configuration](../helper-functions/#get-protocol-configuration). A withdraw transaction to borrow that results in the account's borrow size being less than the `baseBorrowMin` will revert.
 
 #### Comet
 

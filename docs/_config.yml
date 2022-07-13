@@ -7,8 +7,10 @@ kramdown:
 ## Page Name Anchor Text: Anchor HREF
 nav_data:
   Compound III: /
+  Interest Rates: /interest-rates/
   Collateral & Borrowing: /collateral-and-borrowing/
   Liquidation: /liquidation/
-  Governance: /governance/
   Account Management: /account-management/
-  Developer Resoures: /developer-resources/
+  Protocol Rewards: /protocol-rewards/
+  Governance: /governance/
+  Helper Functions: /helper-functions/
