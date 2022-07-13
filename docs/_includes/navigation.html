@@ -16,12 +16,14 @@
 
   nav .container {
     max-width: 1312px;
-    display: flex;
-    justify-content: flex-start;
+    display: grid;
     position: relative;
     margin: auto;
     padding: 10px 18px;
     overflow: hidden;
+    grid-auto-columns: auto;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 175px));
   }
 
   nav .container a {
@@ -30,7 +32,7 @@
     font-family: 'Haas Grot Text R', sans-serif;
     font-size: 12px;
     height: 46px;
-    margin: 0px 40px 0px 0px;
+    margin: 0px 30px 0px 0px;
     text-align: left;
     color: #141E27;
   }
@@ -79,6 +81,7 @@
 </nav>
 
 <script type="text/javascript">
+  // Tab order is determined by the array order in _config.yml
   document.addEventListener('scroll', function(e) {
     const fixed = 'fixed';
     const nav = document.getElementById('nav');
