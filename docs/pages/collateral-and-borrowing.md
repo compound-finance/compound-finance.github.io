@@ -10,19 +10,15 @@ sidebar_nav_data:
   withdraw-or-borrow: Withdraw or Borrow
   collateral-balance: Collateral Balance
   borrow-collateralization: Borrow Collateralization
-  protocol-rewards: Protocol Rewards
-  reward-accrual-tracking: Reward Accrual Tracking
-  get-reward-accrued: Get Reward Accrued
-  claim-rewards: Claim Rewards
 ---
 
 # Collateral & Borrowing
 
-Users can add collateral assets to their account using the *[supply](#supply)* function. Collateral can only be added if the market is below its *[supplyCap](../account-management/#get-asset-info-by-address)*, which limits the protocol's risk exposure to collateral assets.
+Users can add collateral assets to their account using the *[supply](#supply)* function. Collateral can only be added if the market is below its *[supplyCap](../helper-functions/#get-asset-info-by-address)*, which limits the protocol's risk exposure to collateral assets.
 
-Each collateral asset increases the user's borrowing capacity, based on the asset's *[borrowCollateralFactor](../account-management/#get-asset-info-by-address)*. The borrowing collateral factors are percentages that represent the portion of collateral value that can be borrowed.
+Each collateral asset increases the user's borrowing capacity, based on the asset's *[borrowCollateralFactor](../helper-functions/#get-asset-info-by-address)*. The borrowing collateral factors are percentages that represent the portion of collateral value that can be borrowed.
 
-For instance, if the borrow collateral factor for WBTC is 85%, an account can borrow up to 85% of the USD value of its supplied WBTC in the base asset. Collateral factors can be fetched using the *[Get Asset Info By Address](../account-management/#get-asset-info-by-address)* function.
+For instance, if the borrow collateral factor for WBTC is 85%, an account can borrow up to 85% of the USD value of its supplied WBTC in the base asset. Collateral factors can be fetched using the *[Get Asset Info By Address](../helper-functions/#get-asset-info-by-address)* function.
 
 The base asset can be borrowed using the *[withdraw](#withdraw-or-borrow)* function; the resulting borrow balance must meet the borrowing collateral factor requirements. If a borrowing account subsequently fails to meet the borrow collateral factor requirements, it cannot borrow additional assets until it supplies more collateral, or reduces its borrow balance using the supply function.
 
@@ -81,7 +77,7 @@ await comet.supply(usdcAddress, 1000000);
 
 The withdraw method is used to **withdraw collateral** that is not currently supporting an open borrow. Withdraw is **also used to borrow the base asset** from the protocol if the account has supplied sufficient collateral. It can also be called from an allowed manager address.
 
-Compound III implements a minimum borrow position size which can be found as `baseBorrowMin` in the [protocol configuration](../account-management/#get-protocol-configuration). A withdraw transaction to borrow that results in the account's borrow size being less than the `baseBorrowMin` will revert.
+Compound III implements a minimum borrow position size which can be found as `baseBorrowMin` in the [protocol configuration](../helper-functions/#get-protocol-configuration). A withdraw transaction to borrow that results in the account's borrow size being less than the `baseBorrowMin` will revert.
 
 #### Comet
 
@@ -166,99 +162,4 @@ bool isCollateralized = comet.isBorrowCollateralized(0xAccount);
 ```js
 const comet = new ethers.Contract(contractAddress, abiJson, provider);
 const isCollateralized = await comet.callStatic.isBorrowCollateralized('0xAccount');
-```
-
-## Protocol Rewards
-
-Compound III has a built-in system for tracking rewards for accounts that use the protocol. The full history of accrual of rewards are tracked for suppliers and borrowers of the base asset. The rewards can be any ERC-20 token. In order for rewards to accrue to Compound III accounts, the configuration's `baseMinForRewards` threshold for total supply of the base asset must be met.
-
-### Reward Accrual Tracking
-
-The reward accrual is tracked in the Comet contract and rewards can be claimed by users from an external Comet Rewards contract. Rewards are accounted for with up to 6 decimals of precision.
-
-#### Comet
-
-```solidity
-function baseTrackingAccrued(address account) external view returns (uint64);
-```
-
-* `RETURNS`: Returns the amount of reward token accrued based on usage of the base asset within the protocol for the specified account, scaled up by `10 ^ 6`.
-
-#### Solidity
-
-```solidity
-Comet comet = Comet(0xCometAddress);
-uint64 accrued = comet.baseTrackingAccrued(0xAccount);
-```
-
-#### Ethers.js v5.x
-
-```js
-const comet = new ethers.Contract(contractAddress, abiJson, provider);
-const accrued = await comet.callStatic.baseTrackingAccrued('0xAccount');
-```
-
-### Get Reward Accrued
-
-The amount of reward token accrued but not yet claimed for an account can be fetched from the external Comet Rewards contract.
-
-#### Comet Rewards
-
-```solidity
-struct RewardOwed {
-    address token;
-    uint owed;
-}
-
-function getRewardOwed(address comet, address account) external returns (RewardOwed memory)
-```
-
-* `RETURNS`: Returns the amount of reward token accrued but not yet claimed, scaled up by 10 to the "decimals" integer in the reward token's contract.
-
-#### Solidity
-
-```solidity
-CometRewards rewards = CometRewards(0xRewardsAddress);
-RewardOwed reward = rewards.getRewardOwed(0xCometAddress, 0xAccount);
-```
-
-#### Ethers.js v5.x
-
-```js
-const rewards = new ethers.Contract(contractAddress, abiJson, provider);
-const [ tokenAddress, amtOwed ] = await rewards.callStatic.getRewardOwed(cometAddress, accountAddress);
-```
-
-### Claim Rewards
-
-Any account can claim rewards for a specific account. Account owners and managers can also claim rewards to a specific address. The claim functions are available on the external Comet Rewards contract.
-
-#### Comet Rewards
-
-```solidity
-function claim(address comet, address src, bool shouldAccrue) external
-```
-
-```solidity
-function claimTo(address comet, address src, address to, bool shouldAccrue) external
-```
-
-* `comet`: The address of the Comet contract.
-* `src`: The account in which to claim rewards.
-* `to`: The account in which to transfer the claimed rewards.
-* `shouldAccrue`: If true, the protocol will account for the rewards owed to the account as of the current block before transferring.
-* `RETURN`: No return, reverts on error.
-
-#### Solidity
-
-```solidity
-CometRewards rewards = CometRewards(0xRewardsAddress);
-rewards.claim(0xCometAddress, 0xAccount, true);
-```
-
-#### Ethers.js v5.x
-
-```js
-const rewards = new ethers.Contract(contractAddress, abiJson, provider);
-await rewards.claim(cometAddress, accountAddress, true);
 ```

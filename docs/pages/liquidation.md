@@ -11,15 +11,17 @@ sidebar_nav_data:
   buy-collateral: Buy Collateral
   ask-price: Ask Price
   liquidator-points: Liquidator Points
+  reserves: Protocol Reserves
+  target-reserves: Target Reserves
 ---
 
 # Liquidation
 
-Liquidation is determined by *[liquidation collateral factors](../account-management/#get-asset-info-by-address)*, which are separate and higher than borrow collateral factors (used to determine initial borrowing capacity), which protects borrowers & the protocol by ensuring a price buffer for all new positions. These also enable governance to reduce borrow collateral factors without triggering the liquidation of existing positions.
+Liquidation is determined by *[liquidation collateral factors](../helper-functions/#get-asset-info-by-address)*, which are separate and higher than borrow collateral factors (used to determine initial borrowing capacity), which protects borrowers & the protocol by ensuring a price buffer for all new positions. These also enable governance to reduce borrow collateral factors without triggering the liquidation of existing positions.
 
-When an account's borrow balance exceeds the limits set by liquidation collateral factors, it is eligible for liquidation. A liquidator (a bot, contract, or user) can call the *[absorb](#absorb)* function, which relinquishes ownership of the accounts collateral, and returns the value of the collateral, minus a penalty (*[liquidationFactor](../account-management/#get-asset-info-by-address)*), to the user in the base asset. The liquidated user has no remaining debt, and typically, will have an excess (interest earning) balance of the base asset.
+When an account's borrow balance exceeds the limits set by liquidation collateral factors, it is eligible for liquidation. A liquidator (a bot, contract, or user) can call the *[absorb](#absorb)* function, which relinquishes ownership of the accounts collateral, and returns the value of the collateral, minus a penalty (*[liquidationFactor](../helper-functions/#get-asset-info-by-address)*), to the user in the base asset. The liquidated user has no remaining debt, and typically, will have an excess (interest earning) balance of the base asset.
 
-Each absorption is paid for by the protocol's reserves of the base asset. In return, the protocol receives the collateral assets. If the remaining reserves are less than a governance-set *[target](../#target-reserves)*, liquidators are able to *[buy](#buy-collateral)* the collateral at a *[discount](#ask-price)* using the base asset, which increases the protocol's base asset reserves.
+Each absorption is paid for by the protocol's reserves of the base asset. In return, the protocol receives the collateral assets. If the remaining reserves are less than a governance-set *[target](#target-reserves)*, liquidators are able to *[buy](#buy-collateral)* the collateral at a *[discount](#ask-price)* using the base asset, which increases the protocol's base asset reserves.
 
 ### Liquidatable Accounts
 
@@ -168,4 +170,62 @@ LiquidatorPoints pointsData = comet.liquidatorPoints(0xLiquidatorAddress);
 ```js
 const comet = new ethers.Contract(contractAddress, abiJson, provider);
 const [ numAbsorbs, numAbsorbed, approxSpend ] = await comet.callStatic.liquidatorPoints('0xLiquidatorAddress');
+```
+
+## Reserves
+
+Reserves are a balance of the base asset, stored internally in the protocol, which automatically protect users from bad debt. Reserves can also be withdrawn or used through the governance process.
+
+Reserves are generated in two ways: the difference in interest paid by borrowers, and earned by suppliers of the base asset, accrue as reserves into the protocol. Second, the [liquidation](#liquidation) process uses, and can add to, protocol reserves based on the [target reserve](#target-reserves) level set by governance.
+
+### Get Reserves
+
+This function returns the amount of protocol reserves for the base asset as an integer.
+
+#### Comet
+
+```solidity
+function getReserves() public view returns (int)
+```
+
+* `RETURNS`: The amount of base asset stored as reserves in the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint reserves = comet.getReserves();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const reserves = await comet.callStatic.getReserves();
+```
+
+### Target Reserves
+
+This immutable value represents the target amount of reserves of the base token. If the protocol holds greater than or equal to this amount of reserves, the *[buyCollateral](#buy-collateral)* function can no longer be successfully called.
+
+#### Comet
+
+```solidity
+function targetReserves() public view returns (uint)
+```
+
+* `RETURN`: The target reserve value of the base asset as an integer, scaled up by 10 to the "decimals" integer in the base asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint targetReserves = comet.targetReserves();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const targetReserves = await comet.callStatic.targetReserves();
 ```
