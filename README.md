@@ -8,7 +8,7 @@ To modify the website, make a pull request here.
 
 1. Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 2. **Fork and then clone** this repository
-3. Navigate to the `comet-docs-site` folder
+3. Navigate to the `docs/` folder
 4. Run the `bundle` command to install Jekyll dependencies.
 5. Run the serve command to host the site on a locally hosted web server.
 7. Use a web browser and navigate to `http://localhost:4000/`
@@ -21,7 +21,7 @@ To modify the website, make a pull request here.
 git clone git@github.com:my-github-username/compound-finance.github.io.git
 
 ## Navigate to the Jekyll app folder
-cd compound-finance.github.io/comet-docs-site/
+cd compound-finance.github.io/docs/
 
 ## Get the Ruby dependencies for Jekyll to work
 bundle
@@ -32,7 +32,7 @@ jekyll serve
 
 ## Changes
 
-Documentation text can be edited by modifying the markdown files in the `comet-docs-site/pages/` folder.
+Documentation text can be edited by modifying the markdown files in the `docs/pages/` folder.
 
 Page layout HTML, CSS, and JavaScript can be found in `_layouts/`, `_includes/`, and `public/`.
 
