@@ -1,0 +1,170 @@
+<style type="text/css">
+  header {
+    height: 80px;
+    background-color: #FFFFFF;
+  }
+
+  header .container {
+    max-width: 1312px;
+    height: 100%;
+    position: static;
+    margin: auto;
+    padding: 0px 15px;
+    display: grid;
+    grid-template-areas: 'left center right'; /* mobile only 2 columns */
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-items: center;
+  }
+
+  header .logo {
+    display: inline-block;
+    background-image: url('{{ "/public/img/compound-logo-dark.svg" | relative_url }}');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    width: 127px;
+    height: 27px;
+    background-position: center;
+  }
+
+  @media screen and (max-width: 1312px) {
+    header .container {
+      max-width: 1230px;
+      padding: 0px 10px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    header {
+      width: 100vw;
+      position: fixed;
+      border-bottom: 1px solid rgba(204, 214, 221, 0.5);
+      z-index: 2;
+    }
+
+    header .container {
+      grid-template-areas: 'left right';
+      grid-template-columns: 50%;
+    }
+
+    header .container .center {
+      display: none;
+    }
+
+    .hamburger {
+      display: inline-block;
+      border: none;
+      background: none;
+      float: right;
+      cursor: pointer;
+      padding-left: 24px;
+    }
+
+    .hamburger div {
+      width: 26px;
+      height: 2px;
+      background-color: #070A0E;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+
+    .hamburger-open div:nth-child(1) {
+      transform: rotate(-45deg) translate(-6px, 6px);
+    }
+
+    .hamburger-open div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-open div:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -5px);
+    }
+
+    .header-menu {
+      top: -100vh;
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      z-index: 1;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity 0.4s, transform 0.5s;
+    }
+
+    .header-menu.active {
+      top: 80px;
+      transform: translateY(0%);
+      opacity: 1;
+    }
+
+    .header-menu li {
+      list-style: none;
+    }
+
+    .header-menu ul {
+      padding: 0px;
+    }
+
+    .header-menu a {
+      display: block;
+      padding: 25px 0px;
+      margin: 0px auto;
+      text-align: center;
+      color: #141E27;
+      font-weight: bold;
+    }
+  }
+</style>
+
+<header id="header">
+  <div class="container">
+    <div class="left">
+      <a href="{{ site.baseurl }}/" class="logo"></a>
+    </div>
+    <div class="center"></div>
+    <div class="right">
+      <button id="hamburger" class="hamburger mobile-only">
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+      <div id="search-container" class="search-container"></div>
+    </div>
+  </div>
+</header>
+
+<div id="header-menu" class="header-menu mobile-only">
+  <ul>
+    {% for link in site.nav_data %}
+    {% assign page_name = link[0] %}
+    {% assign relative_path = link[1] %}
+      <li>
+        <a href="{{ relative_path | relative_url }}">
+          {{ page_name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script type="text/javascript">
+  const hamburger = document.getElementById('hamburger');
+  const hamburgerTriggerClass = 'hamburger-open';
+  const mobileHeaderMenu = document.getElementById('header-menu');
+  const activeHeaderMenuClass = 'active';
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.contains(hamburgerTriggerClass);
+    if (!isOpen) {
+      hamburger.classList.add(hamburgerTriggerClass);
+      mobileHeaderMenu.classList.add(activeHeaderMenuClass);
+    } else {
+      hamburger.classList.remove(hamburgerTriggerClass);
+      mobileHeaderMenu.classList.remove(activeHeaderMenuClass);
+    }
+  });
+</script>

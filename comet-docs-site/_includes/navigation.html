@@ -1,0 +1,100 @@
+<style type="text/css">
+  nav {
+    display: block;
+    margin: auto;
+    border-top: 1px solid rgba(204, 214, 221, 0.5);
+    border-bottom: 1px solid rgba(204, 214, 221, 0.5);
+    background-color: #FFFFFF;
+    width: 100%;
+    z-index: 1;
+    top: 0px;
+  }
+
+  nav.fixed {
+    position: fixed;
+  }
+
+  nav .container {
+    max-width: 1312px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    margin: auto;
+    padding: 10px 18px;
+    overflow: hidden;
+  }
+
+  nav .container a {
+    display: table;
+    text-transform: uppercase;
+    font-family: 'Haas Grot Text R', sans-serif;
+    font-size: 12px;
+    height: 46px;
+    margin: 0px 40px 0px 0px;
+    text-align: left;
+    color: #141E27;
+  }
+
+  nav .container a:hover {
+    color: #00D395;
+    text-decoration: none;
+  }
+
+  nav .container a.active {
+    text-decoration: underline;
+  }
+
+  nav .container a span {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  @media screen and (max-width: 1312px) {
+    nav .container {
+      max-width: 1230px;
+    }
+
+    nav .container a {
+      height: 42px;
+    }
+  }
+
+  nav .hamburger-nav a {
+    height: 40px;
+  }
+</style>
+
+<nav id="nav" class="desktop-only">
+  <div class="container">
+    {% for link in site.nav_data %}
+    {% assign page_name = link[0] %}
+    {% assign relative_path = link[1] %}
+      <a href="{{ relative_path | relative_url }}">
+        <span>{{ page_name }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</nav>
+
+<script type="text/javascript">
+  document.addEventListener('scroll', function(e) {
+    const fixed = 'fixed';
+    const nav = document.getElementById('nav');
+    const mobileNav = document.getElementById('hamburger-nav');
+    const sidebar = document.getElementById('sidebar');
+    const markdownContent = document.getElementById('markdown-content');
+    const isFixed = nav.classList.contains(fixed);
+    if (window.scrollY >= nav.clientHeight && !isFixed) {
+      nav.classList.add(fixed);
+      // mobileNav.classList.add(fixed);
+      sidebar.classList.add(fixed);
+      markdownContent.style.marginTop = nav.clientHeight + 'px';
+    } else if (window.scrollY < nav.clientHeight && isFixed) {
+      nav.classList.remove(fixed);
+      // mobileNav.classList.remove(fixed);
+      sidebar.classList.remove(fixed);
+      markdownContent.style.marginTop = '0px';
+    }
+  });
+</script>

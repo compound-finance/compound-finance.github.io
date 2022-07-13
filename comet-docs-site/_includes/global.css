@@ -1,0 +1,299 @@
+/*
+ * Compound Syntax Highlight
+ */
+
+.hljs {
+  background: #F9FAFB;
+  color: #9aaab1;
+}
+
+.hljs-title.class_,
+.hljs-class .hljs-title,
+.hljs-tag,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-number,
+.hljs-strong,
+.hljs-name {
+  color: #0DAEF3;
+}
+
+.hljs-keyword {
+  color: #9669ED
+}
+
+.hljs-code {
+  color: #66d9ef;
+}
+
+.hljs-attribute,
+.hljs-symbol,
+.hljs-regexp,
+.hljs-link {
+  color: #bf79db;
+}
+
+.hljs-string,
+.hljs-bullet,
+.hljs-subst,
+.hljs-title,
+.hljs-section,
+.hljs-emphasis,
+.hljs-type,
+.hljs-built_in,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #00D395;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  /*color: #75715e;*/
+  color: #9aaab1;
+}
+
+@font-face {
+  font-family: 'Haas Grot Disp R';
+  src: url('{{ "/public/fonts/NeueHaasGrotDispRound-55Roman.otf" | relative_url }}');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Haas Grot Disp R';
+  src: url('{{ "/public/fonts/NeueHaasGrotDispRound-65Medium.otf" | relative_url }}');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Haas Grot Text R';
+  src: url('{{ "/public/fonts/NeueHaasGrotTextRound-55Roman.otf" | relative_url }}');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Haas Grot Text R';
+  src: url('{{ "/public/fonts/NeueHaasGrotTextRound-65Medium.otf" | relative_url }}');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Haas Grot Text R';
+  src: url('{{ "/public/fonts/NeueHaasGrotTextRound-75Bold.otf" | relative_url }}');
+  font-style: bold;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+.fixed,
+div.fixed {
+  position: fixed;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+a {
+  color: #00D395;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a,
+a:visited,
+a:active,
+a:hover {
+  cursor: pointer;
+}
+
+html,
+html * {
+  scroll-padding-top: 50px;
+}
+
+body {
+  font-family: 'Haas Grot Text R', sans-serif;
+  font-weight: 500;
+  line-height: 1;
+  color: #141E27;
+  background: #F9FAFB;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 100vh;
+  font-style: normal;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 32px;
+  color: #AAB8C1;
+}
+
+h2, h3, h4 {
+  color: #141E27;
+  font-weight: 700;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child {
+  padding: 0px;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 32px;
+  margin: 10px 0px 32px 0px;
+  padding: 32px 0px 0px 0px;
+  color: #141E27;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 23px;
+  margin: 0px 0px 22px 0px;
+  padding: 45px 0px 0px 0px;
+}
+
+h4 {
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0px 0px 16px 0px;
+  padding: 30px 0px 0px 0px;
+}
+
+pre {
+  margin: 15px auto;
+  padding: 20px 25px;
+  overflow: scroll;
+}
+
+pre,
+pre code {
+  line-height: 18px;
+  font-size: 14px;
+  font-family: monospace;
+  background: #F9FAFB;
+}
+
+code {
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 14px;
+  color: #141E27;
+  background-color: #F9FAFB;
+}
+
+@media screen and (max-width: 1312px) {
+  h1 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  h2 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  h3 {
+    font-size: 23px;
+    line-height: 32px;
+  }
+
+  h4 {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  h1 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  h3 {
+    font-size: 21px;
+    line-height: 30px;
+  }
+
+  h4 {
+    font-size: 19px;
+    line-height: 24px;
+  }
+
+  pre,
+  pre code {
+    line-height: 16px;
+    font-size: 13px;
+  }
+
+  code {
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  html body .mobile-only {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  html body .desktop-only {
+    display: none;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  h3 {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  h4 {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  pre,
+  pre code {
+    line-height: 14px;
+    font-size: 11px;
+  }
+
+  code {
+    font-size: 14px;
+  }
+}

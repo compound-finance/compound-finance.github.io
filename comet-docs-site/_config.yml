@@ -1,0 +1,14 @@
+title: Compound III Documentation Site
+# baseurl: /docs
+markdown: kramdown
+kramdown:
+    syntax_highlighter_opts:
+      disable: true
+## Page Name Anchor Text: Anchor HREF
+nav_data:
+  Compound III: /
+  Collateral & Borrowing: /collateral-and-borrowing/
+  Liquidation: /liquidation/
+  Governance: /governance/
+  Account Management: /account-management/
+  Developer Resoures: /developer-resources/

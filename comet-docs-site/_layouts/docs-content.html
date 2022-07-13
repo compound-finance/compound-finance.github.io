@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- global.css is included in head.html -->
+    <style type="text/css">
+      .docs-content {
+        top: 0px;
+        position: relative;
+        display: block;
+        min-height: 100vh;
+        max-width: 1312px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .docs-content::after {
+        content: "";
+        background-color: #FFFFFF;
+        position: fixed;
+        left: 50%;
+        top: 0px;
+        width: 50vw;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .markdown-content {
+        top: 0px;
+        position: relative;
+        display: inline-block;
+        background-color: #FFFFFF;
+        min-width: 300px;
+        /*max-width: 984px;*/
+        width: 75%;
+        float: right;
+      }
+
+      .markdown-content .container {
+        padding: 60px 15px 0px 105px;
+      }
+
+      .markdown-content .container p:first-child {
+        margin: 0px;
+      }
+
+      .markdown-content .container p {
+        margin: 24px 0px 0px 0px;
+      }
+
+      .markdown-content .container p,
+      .markdown-content .container li {
+        font-family: "Haas Grot Text R", sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0px;
+        color: #657786;
+      }
+
+      .markdown-content .container li {
+        list-style: none;
+      }
+
+      /* Green bullets in list items  */
+      .markdown-content .container li::before {
+        color: #00D395;
+        content: "\2022";
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+
+      @media screen and (max-width: 1312px) {
+        .markdown-content {
+          /*max-width: 908px;*/
+          /*width: 75%;*/
+        }
+
+        .markdown-content .container p,
+        .markdown-content .container li {
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .docs-content {
+          max-width: 1230px;
+        }
+      }
+
+      @media screen and (max-width: 960px) {
+        .markdown-content .container p,
+        .markdown-content .container li {
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .markdown-content {
+          /*width: 68%;*/
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .markdown-content .container p,
+        .markdown-content .container li {
+          font-size: 16px;
+          line-height: 18px;
+        }
+
+        .markdown-content {
+          margin: auto;
+          float: left;
+          width: 100%;
+          top: 80px;
+        }
+
+        .markdown-content .container {
+          padding: 10px;
+        }
+
+        .docs-content::after {
+          top: -200px;
+          left: 0px;
+          width: 100vw;
+        }
+      }
+    </style>
+    {% include head.html %}
+  </head>
+  <body>
+    {% include header.html %}
+    {% include navigation.html %}
+    <div id="docs-content" class="docs-content">
+      {% include sidebar.html sidebar_nav_data=content.sidebar_nav_data %}
+      <div id="markdown-content" class="markdown-content">
+        <div class="container">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- Loads custom search bar, injects into div in header (id="search-container") -->
+  {% include search-engine.html %}
+  <!-- Code block syntax highlighting -->
+  <script type="text/javascript" src="{{ '/public/js/highlight.min.js' | relative_url }}"></script>
+  <script type="text/javascript" src="{{ '/public/js/solidity.min.js' | relative_url }}"></script>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((el) => {
+        hljs.highlightElement(el);
+      });
+    });
+  </script>
+</html>

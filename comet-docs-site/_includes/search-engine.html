@@ -1,0 +1,322 @@
+<!-- Loads custom search bar, injects into div in header (id="search-container") -->
+
+<template id="search-engine-template">
+  <style>
+    .search-container {
+      position: relative;
+      float: right;
+    }
+
+    .search-container .search-box {
+      width: 215px;
+      display: block;
+      margin: auto;
+      font-family: "Haas Grot Text R", sans-serif;
+      font-size: 12px;
+      line-height: 32px;
+      padding: 0px 29px;
+      border: 1px solid rgba(204, 214, 221, 1);
+      border-radius: 25px;
+      outline: none;
+      background-image: url("data:image/svg+xml,%3Csvg fill='%23657786' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' width='50px' height='50px'%3E%3Cpath d='M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z'/%3E%3C/svg%3E");
+      background-position: 8px 50%;
+      background-size: 18px;
+      background-repeat: no-repeat;
+
+    }
+
+    .search-container .search-box::placeholder {
+      opacity: 0.8;
+      color: #AAB8C1;
+    }
+
+    .search-container .search-results {
+      display: none;
+      position: absolute;
+      width: 500px;
+      max-width: 80vw;
+      border: 1px solid rgba(204, 214, 221, 1);
+      background-color: #FFFFFF;
+      z-index: 1;
+      list-style: none;
+      padding: 0px;
+      margin-top: 4px;
+      right: 0px;
+    }
+
+    .search-container .search-results.active {
+      display: block;
+    }
+
+    .search-container .search-result {
+      list-style: none;
+      height: 60px;
+      color: #AAB8C1;
+      border-bottom: 1px solid rgba(204, 214, 221, 1);
+      user-select: none;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .search-container .search-result:first-child {
+      border-top: none;
+    }
+
+    .search-container .search-result:last-child {
+      border-bottom: none;
+    }
+
+    .search-container .search-result a {
+      height: 100%;
+      width: 100%;
+      display: block;
+      text-decoration: none;
+      white-space: nowrap;
+      color: #657786;
+    }
+
+    .search-container .search-result a .emphasis {
+      display: inline-block;
+      color: #000000;
+    }
+
+    .search-container .search-result span {
+      display: block;
+      line-height: 12px;
+      padding: 12px 12px 0px 12px;
+      font-size: 12px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .search-container .search-result .name {
+      color: #000000;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .search-container .search-result.active,
+    .search-container .search-result:hover {
+      background-color: #f0f2f5;
+    }
+
+    @media screen and (max-width: 640px) {
+      .search-container .search-box {
+        width: 100px;
+      }
+    }
+
+    /* Patch for the smallest of phones */
+    @media screen and (max-width: 320px) {
+      .search-container .search-box {
+        width: 90px;
+      }
+    }
+  </style>
+  <input id="search-box" class="search-box" type="text" placeholder="Search the docs" />
+  <ul id="search-results" class="search-results"></ul>
+</template>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    // https://stackoverflow.com/a/822486
+    function stripHtml(html) {
+      let tmp = document.createElement("DIV");
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || "";
+    }
+
+    // Supplant raw page test from the Jekyll markdown pages
+    const searchData = [
+      {% for page in site.pages %}
+        {
+          "title"    : "{{ page.title }}",
+          "url"      : "{{ site.baseurl }}{{ page.url }}",
+          "raw_html" : {{ page.content | markdownify | jsonify }},
+          "section_labels": [
+            {% for section in page.sidebar_nav_data %}
+            {% assign id = section[0] %}
+            {% assign name = section[1] %}
+              { "id": "{{ id }}", "name": "{{ name }}" },
+            {% endfor %}
+          ],
+        } {% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
+    // Format search data from all Jekyll pages so it can be searched
+    searchData.forEach((page, i) => {
+      let remainder = page.raw_html;
+
+      var original = JSON.parse(JSON.stringify(page.raw_html));
+
+      searchData[i].section_contents = [];
+
+      if (page.section_labels.length > 0) {
+        page.section_labels.forEach((sectionLabel, j) => {
+          const { id, name } = sectionLabel;
+          const split = remainder.split(` id="${id}"`);
+          searchData[i].section_contents.push(stripHtml(split[0]));
+
+          if (j === page.section_labels.length - 1) {
+            // Add the last section at the end of the array
+            searchData[i].section_contents.push(stripHtml(split[1]));
+          } else {
+            // Queue up the HTML string to the next section
+            remainder = split[1];
+          }
+        });
+
+        searchData[i].section_contents.shift(); // first one should always be empty
+      }
+    });
+
+    function instantSearch(input) {
+      if (input.length < 4) {
+        return;
+      }
+
+      input = input.toLowerCase();
+
+      const results = [];
+
+      searchData.forEach((page, j) => {
+        if (page.section_contents.length > 0) {
+          page.section_contents.forEach((text, i) => {
+            text = text.toLowerCase();
+            // https://stackoverflow.com/a/58828841
+            const result = [...text.matchAll(new RegExp(input, 'gi'))].map(a => a.index);
+
+            if (result.length > 0) {
+              const { id, name } = page.section_labels[i];
+
+              // Prioritize exact section name matches
+              const bonus = name.toLowerCase() === input ? Infinity : 0;
+
+              results.push({
+                section_name: name,
+                score: result.length + bonus,
+                href: page.url + '#' + id,
+                context: text.substring(result[0] - 50, result[0] + 100).replace(/[^a-zA-Z0-9\s]/g, ''),
+              });
+            }
+          });
+        }
+      });
+
+      results.sort((a, b) => {
+        return a.score > b.score ? -1 : 1;
+      });
+
+      globalSearchDataArray = results.length > 0 ? results : globalSearchDataArray;
+    }
+
+    const active = 'active';
+    let resultsAreShowing = false;
+    let globalSearchDataArray = [];
+    let activeResultIndex = 0;
+
+    // Add the results to the DOM as the user types in the search box
+    function updateSearchResultUi(input) {
+      if (globalSearchDataArray.length > 0) {
+        input = input.toLowerCase();
+        globalSearchDataArray = globalSearchDataArray.slice(0, 6); // maximum of 6 results show
+
+        const resultsContainer = document.getElementById('search-results');
+        resultsContainer.innerHTML = '';
+        resultsContainer.classList.add(active);
+        globalSearchDataArray.forEach((result) => {
+          const emphasisInjectedHtml = result.context.replace(new RegExp(input, 'g'), `<div class="emphasis">${input}</div>`);
+
+          const resultElement = document.createElement('li');
+          resultElement.classList.add('search-result');
+          resultElement.innerHTML = `
+            <a href="${result.href}">
+              <span class="name">${result.section_name}</span>
+              <span class="context">${emphasisInjectedHtml}</span>
+            </a>
+          `;
+          resultsContainer.appendChild(resultElement);
+        });
+        resultsAreShowing = true;
+        activeResultIndex = 1; // unset
+        updateSelectedResultUi(true);
+      }
+    }
+
+    // User can select a result with their up or down arrow keys
+    function updateSelectedResultUi(moveUp) {
+      const resultElements = document.getElementsByClassName('search-result');
+      const finalIndex = resultElements.length - 1;
+      const former = activeResultIndex;
+
+      // Unselect former result
+      if (resultElements[former]) { // protects against 1 result case
+        resultElements[former].classList.remove(active);
+      }
+
+      moveUp ? activeResultIndex-- : activeResultIndex++;
+
+      if (activeResultIndex > finalIndex) activeResultIndex = 0;
+
+      if (activeResultIndex < 0) activeResultIndex = finalIndex;
+
+      // Select latest result
+      resultElements[activeResultIndex].classList.add(active);
+    }
+
+    // Navigates to the selected result when the user presses the enter key
+    function goToResult() {
+      window.location.href = window.location.origin + globalSearchDataArray[activeResultIndex].href;
+      hideSearchUi(); // hides it when the link is within the page
+    }
+
+
+    function hideSearchUi() {
+      if (resultsAreShowing === true) {
+        const resultsContainer = document.getElementById('search-results');
+        resultsContainer.classList.remove(active);
+      }
+    }
+
+    // Add the searchbox UI to the DOM
+    const searchContainer = document.getElementById('search-container');
+    if (!searchContainer) {
+      console.error('A `search-container` div is missing from the page. Search engine cannot be initialized.');
+      return;
+    }
+
+    const template = document.getElementById('search-engine-template');
+    const searchElements =  document.importNode(template.content, true);
+    searchContainer.appendChild(searchElements);
+
+    // Listen for keyboard press events
+    const searchBox = document.getElementById('search-box');
+    searchBox.addEventListener('keyup', (event) => {
+      if (
+        event.keyCode === 27 || // escape key
+        event.target.value.length === 0 // user deleted all searchbox text
+      ) {
+        hideSearchUi();
+      } else if (event.keyCode === 38) { // up arrow
+        updateSelectedResultUi(true);
+      } else if (event.keyCode === 40) {  // down arrow
+        updateSelectedResultUi(false);
+      } else if (event.keyCode === 13) {  // enter key
+        goToResult();
+      } else {
+        instantSearch(event.target.value);
+        updateSearchResultUi(event.target.value);
+      }
+    });
+
+    // If the user clicks outside of the search result modal, close it
+    window.addEventListener('click', (event) => {
+      const isClickingSearchBox = event.target.id === 'search-box';
+      if (!isClickingSearchBox) {
+        hideSearchUi();
+      }
+    });
+  });
+</script>
