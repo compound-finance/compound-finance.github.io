@@ -42,8 +42,9 @@
     text-decoration: none;
   }
 
-  nav .container a.active {
+  nav .container a span.active {
     text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   nav .container a span {
@@ -73,8 +74,12 @@
     {% for link in site.nav_data %}
     {% assign page_name = link[0] %}
     {% assign relative_path = link[1] %}
-      <a href="{{ relative_path | relative_url }}">
+      <a href="{{ relative_path }}">
+        {% if page.dir == relative_path %}
+        <span class="active">{{ page_name }}</span>
+        {% else %}
         <span>{{ page_name }}</span>
+        {% endif %}
       </a>
     {% endfor %}
   </div>
