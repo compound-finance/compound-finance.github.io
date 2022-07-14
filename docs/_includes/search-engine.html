@@ -149,8 +149,6 @@
     searchData.forEach((page, i) => {
       let remainder = page.raw_html;
 
-      var original = JSON.parse(JSON.stringify(page.raw_html));
-
       searchData[i].section_contents = [];
 
       if (page.section_labels.length > 0) {
