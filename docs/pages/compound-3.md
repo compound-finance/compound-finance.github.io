@@ -100,18 +100,18 @@ The [Compound III Developer FAQ](https://github.com/compound-developers/compound
 
 See `contracts/MyContract.sol` for Solidity examples, and also the individual JavaScript files in `examples/` for the following cases:
 
-- How do I supply collateral to Compound III? ([supply-withdraw-example.js](examples/supply-withdraw-example.js))
-- How do I borrow the base asset from Compound III? ([borrow-repay-example.js](examples/borrow-repay-example.js))
-- How do I get an asset price from the Compound III protocol's perspective? ([get-a-price.js](examples/get-a-price.js))
-- How do I get the Supply or Borrow APR from the protocol? ([get-apr-example.js](examples/get-apr-example.js))
-- How do I get the borrow capacity for a Compound III account? ([get-borrowable-amount.js](examples/get-borrowable-amount.js))
-- How do I get the borrow and liquidate collateral factors for a Compound III asset? ([get-cf-examples.js](examples/get-cf-examples.js))
-- How do I get the principal amount of asset for a Compound III account? ([get-principal-example.js](examples/get-principal-example.js))
-- How do I calculate the interest earned by a Compound III account? ([interest-earned-example.js](examples/interest-earned-example.js))
-- How do I repay my whole borrow precisely? ([repay-full-borrow-example.js](examples/repay-full-borrow-example.js))
-- How do I calculate the APR of COMP rewards? ([get-apr-example.js](examples/get-apr-example.js))
-- How do I find out the amount of COMP rewards currently accrued for my account? ([claim-reward-example.js](examples/claim-reward-example.js))
-- How do I find out the TVL? ([tvl-example.js](examples/tvl-example.js))
+- How do I supply collateral to Compound III? ([supply-withdraw-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/supply-withdraw-example.js))
+- How do I borrow the base asset from Compound III? ([borrow-repay-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/borrow-repay-example.js))
+- How do I get an asset price from the Compound III protocol's perspective? ([get-a-price.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-a-price.js))
+- How do I get the Supply or Borrow APR from the protocol? ([get-apr-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-apr-example.js))
+- How do I get the borrow capacity for a Compound III account? ([get-borrowable-amount.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-borrowable-amount.js))
+- How do I get the borrow and liquidate collateral factors for a Compound III asset? ([get-cf-examples.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-cf-examples.js))
+- How do I get the principal amount of asset for a Compound III account? ([get-principal-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-principal-example.js))
+- How do I calculate the interest earned by a Compound III account? ([interest-earned-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/interest-earned-example.js))
+- How do I repay my whole borrow precisely? ([repay-full-borrow-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/repay-full-borrow-example.js))
+- How do I calculate the APR of COMP rewards? ([get-apr-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-apr-example.js))
+- How do I find out the amount of COMP rewards currently accrued for my account? ([claim-reward-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/claim-reward-example.js))
+- How do I find out the TVL? ([tvl-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/tvl-example.js))
 
 First install all of the repository's dependencies.
 
