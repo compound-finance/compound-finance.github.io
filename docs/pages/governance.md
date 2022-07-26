@@ -17,11 +17,14 @@ sidebar_nav_data:
   is-buy-paused: Is Buy Paused
   set-base-token-price-feed: Set Base Token Price Feed
   set-extension-delegate: Set Extension Delegate
-  set-kink: Set Kink
-  set-interest-rate-slope-low: Set Interest Rate Slope (Low)
-  set-interest-rate-slope-high: Set Interest Rate Slope (High)
-  set-interest-rate-slope-base: Set Interest Rate Slope (Base)
-  set-reserve-rate: Set Reserve Rate
+  set-borrow-kink: Set Borrow Kink
+  set-borrow-interest-rate-slope-low: Set Borrow Interest Rate Slope (Low)
+  set-borrow-interest-rate-slope-high: Set Borrow Interest Rate Slope (High)
+  set-borrow-interest-rate-slope-base: Set Borrow Interest Rate Slope (Base)
+  set-supply-kink: Set Supply Kink
+  set-supply-interest-rate-slope-low: Set Supply Interest Rate Slope (Low)
+  set-supply-interest-rate-slope-high: Set Supply Interest Rate Slope (High)
+  set-supply-interest-rate-slope-base: Set Supply Interest Rate Slope (Base)
   set-store-front-price-factor: Set Store Front Price Factor
   set-base-tracking-supply-speed: Set Base Tracking Supply Speed
   set-base-tracking-borrow-speed: Set Base Tracking Borrow Speed
@@ -207,74 +210,116 @@ function setExtensionDelegate(address cometProxy, address newExtensionDelegate) 
 * `newExtensionDelegate`: The address of the new extension delegate contract.
 * `RETURN`: No return, reverts on error.
 
-### Set Kink
+### Set Borrow Kink
 
-This function sets the interest rate utilization curve kink for the Compound III base asset.
+This function sets the borrow interest rate utilization curve kink for the Compound III base asset.
 
 #### Configurator
 
 ```solidity
-function setKink(address cometProxy, uint64 newKink) external
+function setBorrowKink(address cometProxy, uint64 newKink) external
 ```
 
 * `cometProxy`: The address of the Comet proxy to set the configuration for.
 * `newKink`: The new kink parameter.
 * `RETURN`: No return, reverts on error.
 
-### Set Interest Rate Slope (Low)
+### Set Borrow Interest Rate Slope (Low)
 
-This function sets the interest rate slope low bound in the approximate amount of seconds in one year.
+This function sets the borrow interest rate slope low bound in the approximate amount of seconds in one year.
 
 #### Configurator
 
 ```solidity
-function setPerYearInterestRateSlopeLow(address cometProxy, uint64 newSlope) external
+function setBorrowPerYearInterestRateSlopeLow(address cometProxy, uint64 newSlope) external
 ```
 
 * `cometProxy`: The address of the Comet proxy to set the configuration for.
 * `newSlope`: The slope low bound as an unsigned integer.
 * `RETURN`: No return, reverts on error.
 
-### Set Interest Rate Slope (High)
+### Set Borrow Interest Rate Slope (High)
 
-This function sets the interest rate slope high bound in the approximate amount of seconds in one year.
+This function sets the borrow interest rate slope high bound in the approximate amount of seconds in one year.
 
 #### Configurator
 
 ```solidity
-function setPerYearInterestRateSlopeHigh(address cometProxy, uint64 newSlope) external
+function setBorrowPerYearInterestRateSlopeHigh(address cometProxy, uint64 newSlope) external
 ```
 
 * `cometProxy`: The address of the Comet proxy to set the configuration for.
 * `newSlope`: The slope high bound as an unsigned integer.
 * `RETURN`: No return, reverts on error.
 
-### Set Interest Rate Slope (Base)
+### Set Borrow Interest Rate Slope (Base)
 
-This function sets the interest rate slope base in the approximate amount of seconds in one year.
+This function sets the borrow interest rate slope base in the approximate amount of seconds in one year.
 
 #### Configurator
 
 ```solidity
-function setPerYearInterestRateBase(address cometProxy, uint64 newBase) external
+function setBorrowPerYearInterestRateBase(address cometProxy, uint64 newBase) external
 ```
 
 * `cometProxy`: The address of the Comet proxy to set the configuration for.
 * `newSlope`: The slope base as an unsigned integer.
 * `RETURN`: No return, reverts on error.
 
-### Set Reserve Rate
+### Set Supply Kink
 
-This function sets the rate that reserves accumulate within the protocol as an APR. This is a percentage of interest paid by borrowers that goes to the protocol reserves.
+This function sets the supply interest rate utilization curve kink for the Compound III base asset.
 
 #### Configurator
 
 ```solidity
-function setReserveRate(address cometProxy, uint64 newReserveRate) external
+function setSupplyKink(address cometProxy, uint64 newKink) external
 ```
 
 * `cometProxy`: The address of the Comet proxy to set the configuration for.
-* `newReserveRate`: The reserve rate of the protocol as an APR scaled up by `10 ^ 18`. E.g. `250000000000000000` indicates a 2.5% APR.
+* `newKink`: The new kink parameter.
+* `RETURN`: No return, reverts on error.
+
+### Set Supply Interest Rate Slope (Low)
+
+This function sets the supply interest rate slope low bound in the approximate amount of seconds in one year.
+
+#### Configurator
+
+```solidity
+function setSupplyPerYearInterestRateSlopeLow(address cometProxy, uint64 newSlope) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newSlope`: The slope low bound as an unsigned integer.
+* `RETURN`: No return, reverts on error.
+
+### Set Supply Interest Rate Slope (High)
+
+This function sets the supply interest rate slope high bound in the approximate amount of seconds in one year.
+
+#### Configurator
+
+```solidity
+function setSupplyPerYearInterestRateSlopeHigh(address cometProxy, uint64 newSlope) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newSlope`: The slope high bound as an unsigned integer.
+* `RETURN`: No return, reverts on error.
+
+### Set Supply Interest Rate Slope (Base)
+
+This function sets the supply interest rate slope base in the approximate amount of seconds in one year.
+
+#### Configurator
+
+```solidity
+function setSupplyPerYearInterestRateBase(address cometProxy, uint64 newBase) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newSlope`: The slope base as an unsigned integer.
 * `RETURN`: No return, reverts on error.
 
 ### Set Store Front Price Factor
