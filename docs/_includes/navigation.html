@@ -19,22 +19,26 @@
     display: grid;
     position: relative;
     margin: auto;
-    padding: 10px 18px;
+    padding: 0px 18px;
+    height: 62px;
     overflow: hidden;
     grid-auto-columns: auto;
     grid-auto-flow: column;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 175px));
+    grid-template-columns: repeat(auto-fill, minmax(12%, 12%));
   }
 
   nav .container a {
     display: table;
-    text-transform: uppercase;
     font-family: 'Haas Grot Text R', sans-serif;
     font-size: 12px;
-    height: 46px;
+    height: 100%;
     margin: 0px 30px 0px 0px;
-    text-align: left;
+    text-align: center;
     color: #141E27;
+  }
+
+  nav .container a:first-child {
+    /*text-align: left;*/
   }
 
   nav .container a:hover {
@@ -43,8 +47,8 @@
   }
 
   nav .container a span.active {
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    color: #00D395;
+    border-bottom: #00D395 solid 2px;
   }
 
   nav .container a span {
@@ -56,10 +60,6 @@
   @media screen and (max-width: 1312px) {
     nav .container {
       max-width: 1230px;
-    }
-
-    nav .container a {
-      height: 42px;
     }
   }
 
@@ -87,23 +87,39 @@
 
 <script type="text/javascript">
   // Tab order is determined by the array order in _config.yml
-  document.addEventListener('scroll', function(e) {
-    const fixed = 'fixed';
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const docsContent = document.getElementById('docs-content');
+    const header = document.getElementById('header');
     const nav = document.getElementById('nav');
-    const mobileNav = document.getElementById('hamburger-nav');
     const sidebar = document.getElementById('sidebar');
     const markdownContent = document.getElementById('markdown-content');
-    const isFixed = nav.classList.contains(fixed);
-    if (window.scrollY >= nav.clientHeight && !isFixed) {
-      nav.classList.add(fixed);
-      // mobileNav.classList.add(fixed);
-      sidebar.classList.add(fixed);
-      markdownContent.style.marginTop = nav.clientHeight + 'px';
-    } else if (window.scrollY < nav.clientHeight && isFixed) {
-      nav.classList.remove(fixed);
-      // mobileNav.classList.remove(fixed);
-      sidebar.classList.remove(fixed);
-      markdownContent.style.marginTop = '0px';
-    }
+    const fixed = 'fixed';
+    const overflowScrollX = 'scroll-x';
+    let isSidebarScrollable = false;
+
+    document.addEventListener('scroll', function(e) {
+      const isFixed = nav.classList.contains(fixed);
+      if (window.scrollY >= nav.clientHeight && !isFixed) {
+        nav.classList.add(fixed);
+        sidebar.classList.add(fixed);
+        markdownContent.style.marginTop = nav.clientHeight + 'px';
+      } else if (window.scrollY < nav.clientHeight && isFixed) {
+        nav.classList.remove(fixed);
+        sidebar.classList.remove(fixed);
+        markdownContent.style.marginTop = '0px';
+      }
+
+      // allow the side nav to be scrollable
+      // but only when the user scrolls to the very bottom of the page
+      const atBottom = markdownContent.clientHeight - window.scrollY - (docsContent.clientHeight - nav.clientHeight - header.clientHeight) === 0;
+      if (atBottom) {
+        isSidebarScrollable = true;
+        sidebar.classList.add(overflowScrollX);
+      } else if (isSidebarScrollable) {
+        isSidebarScrollable = false;
+        sidebar.classList.remove(overflowScrollX);
+      }
+    });
   });
 </script>
