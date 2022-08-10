@@ -19,21 +19,20 @@
     display: grid;
     position: relative;
     margin: auto;
-    padding: 10px 18px;
-    overflow: hidden;
+    padding: 0px 18px;
+    height: 62px;
     grid-auto-columns: auto;
     grid-auto-flow: column;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 175px));
+    grid-template-columns: repeat(auto-fill, minmax(12%, 12%));
   }
 
   nav .container a {
     display: table;
-    text-transform: uppercase;
     font-family: 'Haas Grot Text R', sans-serif;
     font-size: 12px;
-    height: 46px;
+    height: 100%;
     margin: 0px 30px 0px 0px;
-    text-align: left;
+    text-align: center;
     color: #141E27;
   }
 
@@ -43,8 +42,8 @@
   }
 
   nav .container a span.active {
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    color: #00D395;
+    border-bottom: #00D395 solid 2px;
   }
 
   nav .container a span {
@@ -57,19 +56,154 @@
     nav .container {
       max-width: 1230px;
     }
-
-    nav .container a {
-      height: 42px;
-    }
   }
 
   nav .hamburger-nav a {
     height: 40px;
   }
+
+  nav .doc-version-switcher {
+    display: block;
+  }
+
+  nav .doc-version-switcher .switch-button {
+    width: 132px;
+    height: 38px;
+    font-size: 12px;
+    user-select: none;
+    text-align: center;
+    display: table;
+    vertical-align: middle;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    background-color: #f7f9fa;
+    border-radius: 5px;
+    box-shadow: 0px 2px 3px 1px #f5f5f5;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 1312px) {
+    body nav .doc-version-switcher .switch-button {
+      height: 38px;
+      width: 108px;
+    }
+
+    body nav .doc-version-switcher ul li {
+      height: 36px;
+      width: 106px;
+    }
+
+    body nav .doc-version-switcher .switch-button:after {
+      padding-right: 8px;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    body nav .doc-version-switcher .switch-button {
+      height: 38px;
+      width: 68px;
+    }
+
+    body nav .doc-version-switcher .switch-button:after {
+      display: none;
+    }
+  }
+
+  nav .doc-version-switcher .switch-button:after {
+    background-image: url('/public/img/down-arrow-svgrepo-com.svg');
+    display: table-cell;
+    content: ' ';
+    background-size: 11px 10px;
+    background-repeat: no-repeat;
+    height: 11px;
+    width: 10px;
+    background-position-y: 50%;
+    padding-right: 16px;
+  }
+
+  nav .doc-version-switcher .switch-button span {
+    vertical-align: middle;
+    display: table-cell;
+  }
+
+  nav .doc-version-switcher ul {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    list-style: none;
+    color: #141E27;
+    padding: 0px;
+    user-select: none;
+    left: 20px;
+    top: 52px;
+  }
+
+  /* animate on open  */
+  nav .doc-version-switcher ul {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s, transform 0.5s;
+  }
+
+  nav .doc-version-switcher ul.active {
+    visibility: visible;
+    top: 52px;
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  nav .doc-version-switcher ul li {
+    height: 36px;
+    width: 130px;
+    background-color: rgb(249, 250, 251);
+    border-top: solid 1px rgba(204, 214, 221, 0.5);
+    border-left: solid 1px rgba(204, 214, 221, 0.5);
+    border-right: solid 1px rgba(204, 214, 221, 0.5);
+    border-radius: 2px;
+  }
+
+  nav .doc-version-switcher ul li:last-child {
+    border-bottom: solid 1px rgba(204, 214, 221, 0.5);
+  }
+
+  nav .doc-version-switcher ul li a,
+  nav .doc-version-switcher ul li a span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  nav .doc-version-switcher ul li:hover,
+  nav .doc-version-switcher ul li a:hover,
+  nav .doc-version-switcher ul li a span:hover {
+    color: #FFFFFF;
+    background-color: #00D395;
+  }
 </style>
 
 <nav id="nav" class="desktop-only">
   <div class="container">
+    <div class="doc-version-switcher">
+      <div id="switch-button" class="switch-button">
+        <span>Compound III</span>
+      </div>
+      <ul id="switch-drop-menu">
+        <li>
+          <a href="/">
+            <span>Compound III</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://compound.finance/docs">
+            <span>Compound II</span>
+          </a>
+        </li>
+      </ul>
+    </div>
     <!-- Set nav_data in _config.yml -->
     {% for link in site.nav_data %}
     {% assign page_name = link[0] %}
@@ -87,23 +221,56 @@
 
 <script type="text/javascript">
   // Tab order is determined by the array order in _config.yml
-  document.addEventListener('scroll', function(e) {
-    const fixed = 'fixed';
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const docsContent = document.getElementById('docs-content');
+    const header = document.getElementById('header');
     const nav = document.getElementById('nav');
-    const mobileNav = document.getElementById('hamburger-nav');
     const sidebar = document.getElementById('sidebar');
     const markdownContent = document.getElementById('markdown-content');
-    const isFixed = nav.classList.contains(fixed);
-    if (window.scrollY >= nav.clientHeight && !isFixed) {
-      nav.classList.add(fixed);
-      // mobileNav.classList.add(fixed);
-      sidebar.classList.add(fixed);
-      markdownContent.style.marginTop = nav.clientHeight + 'px';
-    } else if (window.scrollY < nav.clientHeight && isFixed) {
-      nav.classList.remove(fixed);
-      // mobileNav.classList.remove(fixed);
-      sidebar.classList.remove(fixed);
-      markdownContent.style.marginTop = '0px';
-    }
+    const fixed = 'fixed';
+    const overflowScrollX = 'scroll-x';
+    let isSidebarScrollable = false;
+
+    // On scroll, make the nav bar fixed, desktop only
+    document.addEventListener('scroll', function(e) {
+      const isFixed = nav.classList.contains(fixed);
+      if (window.scrollY >= nav.clientHeight && !isFixed) {
+        nav.classList.add(fixed);
+        sidebar.classList.add(fixed);
+        markdownContent.style.marginTop = nav.clientHeight + 'px';
+      } else if (window.scrollY < nav.clientHeight && isFixed) {
+        nav.classList.remove(fixed);
+        sidebar.classList.remove(fixed);
+        markdownContent.style.marginTop = '0px';
+      }
+
+      // allow the side nav to be scrollable
+      // but only when the user scrolls to the very bottom of the page
+      const atBottom = markdownContent.clientHeight - window.scrollY - (docsContent.clientHeight - nav.clientHeight - header.clientHeight) === 0;
+      if (atBottom) {
+        isSidebarScrollable = true;
+        sidebar.classList.add(overflowScrollX);
+      } else if (isSidebarScrollable) {
+        isSidebarScrollable = false;
+        sidebar.classList.remove(overflowScrollX);
+      }
+    });
+
+    // Toggle for docs version switcher drop down menu
+    const docsVersionButton = document.getElementById('switch-button');
+    const docsVersionDropMenu = document.getElementById('switch-drop-menu');
+    const active = 'active';
+    let isHidden = true;
+    docsVersionButton.addEventListener('click', function(e) {
+      if (isHidden) {
+        docsVersionDropMenu.classList.add(active);
+        isHidden = false;
+      } else {
+        docsVersionDropMenu.classList.remove(active);
+        isHidden = true;
+      }
+      return;
+    });
   });
 </script>

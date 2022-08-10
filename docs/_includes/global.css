@@ -97,6 +97,10 @@
   display: none;
 }
 
+.scroll-x {
+  overflow-x: scroll;
+}
+
 .fixed,
 div.fixed {
   position: fixed;
@@ -296,4 +300,11 @@ code {
   code {
     font-size: 14px;
   }
+}
+
+footer {
+  height: 100px;
+  width: 100vw;
+  background: #070A0E;
+  display: inline-block;
 }
