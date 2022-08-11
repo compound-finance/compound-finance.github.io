@@ -262,15 +262,22 @@
     const docsVersionDropMenu = document.getElementById('switch-drop-menu');
     const active = 'active';
     let isHidden = true;
-    docsVersionButton.addEventListener('click', function(e) {
-      if (isHidden) {
-        docsVersionDropMenu.classList.add(active);
-        isHidden = false;
-      } else {
+    document.addEventListener('click', function(e) {
+      if (
+        e.target === docsVersionButton ||
+        e.target.parentElement === docsVersionButton
+      ) {
+        if (isHidden) {
+          docsVersionDropMenu.classList.add(active);
+          isHidden = false;
+        } else {
+          docsVersionDropMenu.classList.remove(active);
+          isHidden = true;
+        }
+      } else if (!isHidden) {
         docsVersionDropMenu.classList.remove(active);
         isHidden = true;
       }
-      return;
     });
   });
 </script>
