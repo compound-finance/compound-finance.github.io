@@ -188,24 +188,54 @@
 <nav id="nav" class="desktop-only">
   <div class="container">
     <div class="doc-version-switcher">
+
+      {% if page.docs_version == 'v3' %}
+
       <div id="switch-button" class="switch-button">
         <span>Compound III</span>
       </div>
       <ul id="switch-drop-menu">
         <li>
-          <a href="/">
+          <a href="/v3/">
             <span>Compound III</span>
           </a>
         </li>
         <li>
-          <a href="https://compound.finance/docs">
+          <a href="/v2/">
             <span>Compound II</span>
           </a>
         </li>
       </ul>
+
+      {% elsif page.docs_version == 'v2' %}
+
+      <div id="switch-button" class="switch-button">
+        <span>Compound II</span>
+      </div>
+      <ul id="switch-drop-menu">
+        <li>
+          <a href="/v2/">
+            <span>Compound II</span>
+          </a>
+        </li>
+        <li>
+          <a href="/v3/">
+            <span>Compound III</span>
+          </a>
+        </li>
+      </ul>
+
+      {% endif %}
+
     </div>
     <!-- Set nav_data in _config.yml -->
-    {% for link in site.nav_data %}
+    {% if page.docs_version == 'v3' %}
+    {% assign nav_data = site.v3_nav_data %}
+    {% elsif page.docs_version == 'v2' %}
+    {% assign nav_data = site.v2_nav_data %}
+    {% endif %}
+
+    {% for link in nav_data %}
     {% assign page_name = link[0] %}
     {% assign relative_path = link[1] %}
       <a href="{{ relative_path }}">

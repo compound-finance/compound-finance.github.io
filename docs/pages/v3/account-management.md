@@ -1,7 +1,8 @@
 ---
 layout: docs-content
 title: Compound III Docs | Account Management
-permalink: /account-management/
+permalink: /v3/account-management/
+docs_version: v3
 
 ## Element ID: In-page Heading
 sidebar_nav_data:

@@ -1,7 +1,8 @@
 ---
 layout: docs-content
 title: Compound III Docs | Collateral & Borrowing
-permalink: /collateral-and-borrowing/
+permalink: /v3/collateral-and-borrowing/
+docs_version: v3
 
 ## Element ID: In-page Heading
 sidebar_nav_data:

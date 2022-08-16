@@ -1,7 +1,8 @@
 ---
 layout: docs-content
 title: Compound III Docs | Helper Functions
-permalink: /helper-functions/
+permalink: /v3/helper-functions/
+docs_version: v3
 
 ## Element ID: In-page Heading
 sidebar_nav_data:

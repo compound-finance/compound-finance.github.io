@@ -1,7 +1,8 @@
 ---
 layout: docs-content
 title: Compound III
-permalink: /
+permalink: /v3/
+docs_version: v3
 
 ## Element ID: In-page Heading
 sidebar_nav_data:
