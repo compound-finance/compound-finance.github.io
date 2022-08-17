@@ -138,6 +138,23 @@
       </div>
     </div>
   </body>
+  <template id="contract-listing-template">
+    <div class="contract-address">
+      <div>
+        <span class="address">
+          0xc3d688B66703497DAA19211EEdff47f25384cdc3
+        </span>
+      </div>
+      <div>
+        <div class="copy-button" data-copy-text="0xc3d688B66703497DAA19211EEdff47f25384cdc3" title="Copy"></div>
+      </div>
+      <div>
+        <a target="_blank" href="https://etherscan.io/address/0xc3d688B66703497DAA19211EEdff47f25384cdc3">
+          <div title="View on block explorer" class="blockscan-button"></div>
+        </a>
+      </div>
+    </div>
+  </template>
   <!-- Loads custom search bar, injects into div in header (id="search-container") -->
   {% include search-engine.html %}
   <!-- Code block syntax highlighting -->
@@ -145,9 +162,62 @@
   <script type="text/javascript" src="{{ '/public/js/solidity.min.js' | relative_url }}"></script>
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', (event) => {
+
+      // Code block syntax highlighting
       document.querySelectorAll('pre code').forEach((el) => {
         hljs.highlightElement(el);
       });
+
+      // Build an address listing and copy tool for each protocol deployment
+      // Data is in the top of the markdown page file
+      const deploymentsContainer = document.getElementById('deployments-list-container');
+
+      const contractListingTemplate = document.getElementById('contract-listing-template');
+
+      if (deploymentsContainer) {
+        let deploymentsObject = {};
+        try {
+          deploymentsObject = JSON.parse(('{{ page.deployments }}').replace(/=>/g, ':'));
+        } catch(e) {
+          console.error(e);
+        }
+
+        const deployments = Object.keys(deploymentsObject);
+
+        for (let i = 0; i < deployments.length; i++) {
+          const deploymentName = deployments[i];
+          const contracts = Object.entries(deploymentsObject[deployments[i]].contracts);
+          const blockscanOrigin = deploymentsObject[deployments[i]].blockscan_origin;
+
+          const header = document.createElement('h3');
+          header.innerText = deploymentName;
+          deploymentsContainer.appendChild(header);
+
+          for (let j = 0; j < contracts.length; j++) {
+            const [ contractName, contractAddress ] = contracts[j];
+            // console.log(deploymentName, blockscanOrigin, contractName, contractAddress);
+            const subheader = document.createElement('h4');
+            subheader.innerText = contractName;
+            deploymentsContainer.appendChild(subheader);
+
+            const contractListing = contractListingTemplate.content.cloneNode(true);
+
+            contractListing.children[0].children[0].children[0].innerText = contractAddress;
+            contractListing.children[0].children[1].children[0].dataset.copyText = contractAddress;
+            contractListing.children[0].children[2].children[0].href = blockscanOrigin + 'address/' + contractAddress;
+
+            deploymentsContainer.appendChild(contractListing);
+          }
+        }
+      }
+
+      // Button to copy a contract address
+      const copyButtons = document.getElementsByClassName('copy-button');
+      for (let i = 0; i < copyButtons.length; i++) {
+        copyButtons[i].addEventListener('click', () => {
+          navigator.clipboard.writeText(copyButtons[i].dataset.copyText);
+        });
+      }
     });
   </script>
 </html>

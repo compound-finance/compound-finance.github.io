@@ -308,3 +308,33 @@ footer {
   background: #070A0E;
   display: inline-block;
 }
+
+.contract-address > div {
+  display: inline-block;
+  color: #141E27;
+}
+
+.contract-address .copy-button {
+  width: 18px;
+  height: 18px;
+  margin: 0px 4px;
+  background: url('{{ "/public/img/icn-copy.svg" | relative_url }}');
+  background-repeat: no-repeat;
+}
+
+.contract-address .copy-button:hover {
+  background: url('{{ "/public/img/icn-copy-green.svg" | relative_url }}');
+  cursor: pointer;
+}
+
+.contract-address .blockscan-button {
+  width: 18px;
+  height: 18px;
+  margin: 0px 4px;
+  background: url('{{ "/public/img/icn-external-link.svg" | relative_url }}');
+  background-repeat: no-repeat;
+}
+
+.contract-address .blockscan-button:hover {
+  background: url('{{ "/public/img/icn-external-link-green.svg" | relative_url }}');
+}
