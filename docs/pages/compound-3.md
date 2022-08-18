@@ -7,14 +7,15 @@ permalink: /
 sidebar_nav_data:
   compound-iii: Introduction
   developer-resources: Developer Resources
-  where-is-compound-iii-deployed: Networks
+  networks: Networks
   what-does-each-protocol-contract-do: Protocol Contracts
   how-do-i-call-comet-methods: Calling Comet Methods
   how-do-i-deploy-compound-iii: Deploying
   code-examples: Code Examples
 
 deployments:
-  Ethereum Mainnet - USDC Base:
+  Ethereum Mainnet - USDC Base: ## this becomes the header text
+    tab_text: Mainnet USDC
     blockscan_origin: 'https://etherscan.io/'
     contracts:
       cUSDCv3: '0xc3d688B66703497DAA19211EEdff47f25384cdc3'
@@ -25,7 +26,14 @@ deployments:
       Proxy Admin: '0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779'
       Comet Factory: '0x1C1853Bc7C6bFf0D276Da53972C0b1a066DB1AE7'
       Rewards: '0x1B0e765F6224C21223AeA2af16c1C46E38885a40'
+      USDC: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
+      COMP: '0xc00e94Cb662C3520282E6f5717214004A7f26888'
+      WBTC: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599'
+      WETH: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+      UNI: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984'
+      LINK: '0x514910771AF9Ca656af840dff83E8264EcF986CA'
   Ethereum Kovan Testnet - USDC Base:
+    tab_text: Kovan USDC
     blockscan_origin: 'https://kovan.etherscan.io/'
     contracts:
       cUSDCv3: '0xa7D85950E6E1bB7115c626cBB388Fa0a8C927c1c'
@@ -36,7 +44,14 @@ deployments:
       Proxy Admin: '0x1e5Ca6D2cc41935a3c39A3f3B29FBc779A2ceFEa'
       Comet Factory: '0xFCa21Dd5c442A2dB245DD44e7C9c3a28335a8558'
       Rewards: '0xC694877D91A8aEfb9D95cf34393cdC0DDdAded18'
+      USDC: '0xb6D5769d2877a462355F9A6eCa262D8826285c7D'
+      COMP: '0xEe673239cBAc27aF34Bc39908405529E252d3c7B'
+      WBTC: '0xDcB5Daf44164efFfC20E4418216b7F7f9064692b'
+      WETH: '0xC3425E55c2C75bcdc99bD6DD0e515B0C421B60E4'
+      UNI: '0x98d07Bcb5aA9D332361beA69f4749786dD812406'
+      LINK: '0x20c5E16FEeD68F89166D20Da0dfe3CB7387BcCb3'
   Avalanche Fuji Testnet - USDC Base:
+    tab_text: Fuji USDC
     blockscan_origin: 'https://testnet.snowtrace.io/'
     contracts:
       cUSDCv3: '0x59BF4753899C20EA152dEefc6f6A14B2a5CC3021'
@@ -47,7 +62,9 @@ deployments:
       Proxy Admin: '0x13046bAa7fB74dcd6f3f7A460092E11F5f91e419'
       Comet Factory: '0x0BFDf42b35b4D7e6E450c50b21f658b4E1216943'
       Rewards: '0x7CA364f9C4257FE2E22d503dD0E3f1c1Db41591d'
-
+      USDC: '0x4fed3d02D095f7D92AF161311fA6Ef23dc8dA040'
+      WAVAX: '0xA2c25E48269e3f89A60b2CC8e02AAfEeB3BAb761'
+      WBTC.e: '0xfa78400e01Fc9da830Cb2F13B3e7E18F813414Ff'
 ---
 
 # Compound III
@@ -66,7 +83,7 @@ For documentation of the Compound v2 Protocol, see [compound.finance/docs](https
 
 ## Developer Resources
 
-### Where is Compound III Deployed?
+### Networks
 
 The network deployment artifacts with contract addresses are available in the [Comet](https://github.com/compound-finance/comet) repository `deployments/` folder.
 
@@ -78,7 +95,7 @@ The network deployment artifacts with contract addresses are available in the [C
 
 #### cUSDCv3
 
-This is the main proxy contract for interacting with the new market. The address should remain fixed and independent from future upgrades to the market. It is an OpenZeppelin TransparentUpgradeableProxy contract.
+This is the main proxy contract for interacting with the new market. The address should remain fixed and independent from future upgrades to the market. It is an [OpenZeppelin TransparentUpgradeableProxy contract](https://docs.openzeppelin.com/contracts/4.x/api/proxy).
 
 #### cUSDCv3 Implementation
 
@@ -90,7 +107,7 @@ This is an extension of the market logic contract which supports some auxiliary/
 
 #### Configurator
 
-This is a proxy contract for the `configurator`, which is used to set and update parameters of a Comet proxy contract. The configurator deploys implementations of the Comet logic contract according to its configuration. This pattern allows significant gas savings for users of the protocol by 'constantizing' the parameters of the protocol.
+This is a [proxy](https://docs.openzeppelin.com/contracts/4.x/api/proxy#TransparentUpgradeableProxy) contract for the `configurator`, which is used to set and update parameters of a Comet proxy contract. The configurator deploys implementations of the Comet logic contract according to its configuration. This pattern allows significant gas savings for users of the protocol by 'constantizing' the parameters of the protocol.
 
 #### Configurator Implementation
 
@@ -98,7 +115,7 @@ This is the implementation of the Configurator contract, which can also be upgra
 
 #### Proxy Admin
 
-This is the admin of the Comet and Configurator proxy contracts. It is a ProxyAdmin as recommended/implemented by OpenZeppelin according to their upgradeability pattern.
+This is the admin of the Comet and Configurator proxy contracts. It is a [ProxyAdmin](https://docs.openzeppelin.com/contracts/4.x/api/proxy#ProxyAdmin) as recommended/implemented by OpenZeppelin according to their upgradeability pattern.
 
 #### Comet Factory
 

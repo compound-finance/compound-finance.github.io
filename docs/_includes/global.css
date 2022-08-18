@@ -309,12 +309,52 @@ footer {
   display: inline-block;
 }
 
-.contract-address > div {
-  display: inline-block;
-  color: #141E27;
+.networks-widget {
+  display: block;
 }
 
-.contract-address .copy-button {
+.networks-widget .network-tabs {
+  width: 100%;
+  margin: 10px 0px 30px 0px;
+}
+
+.networks-widget .network-tabs .network-tab-button {
+  display: inline-block;
+  padding-right: 15px;
+  user-select: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  color: #CCD6DD;
+}
+
+.networks-widget .network-tabs .network-tab-button.active {
+  color: #141E27;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+.networks-widget .network-tab {
+  display: none;
+}
+
+.networks-widget .network-tab.active {
+  display: block;
+}
+
+.copy-tool {
+  display: block;
+}
+
+.copy-tool > div {
+  display: inline-block;
+  color: #141E27;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.copy-tool .copy-button {
   width: 18px;
   height: 18px;
   margin: 0px 4px;
@@ -322,12 +362,12 @@ footer {
   background-repeat: no-repeat;
 }
 
-.contract-address .copy-button:hover {
+.copy-tool .copy-button:hover {
   background: url('{{ "/public/img/icn-copy-green.svg" | relative_url }}');
   cursor: pointer;
 }
 
-.contract-address .blockscan-button {
+.copy-tool .blockscan-button {
   width: 18px;
   height: 18px;
   margin: 0px 4px;
@@ -335,6 +375,36 @@ footer {
   background-repeat: no-repeat;
 }
 
-.contract-address .blockscan-button:hover {
+.copy-tool .blockscan-button:hover {
   background: url('{{ "/public/img/icn-external-link-green.svg" | relative_url }}');
+}
+
+table.deployment-table {
+  display: block;
+  border-collapse: collapse;
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+.deployment-table td {
+  font-size: 15px;
+  line-height: 18px;
+  padding: 14px 0px;
+}
+
+.deployment-table td:first-child {
+  max-width: 142px;
+}
+
+.deployment-table tr {
+  border-bottom: solid 1px #CCD6DD;
+  line-height: 34px;
+}
+
+.deployment-table th {
+  color: #CCD6DD;
+}
+
+.deployment-table tr td:first-child {
+  font-weight: bold;
 }
