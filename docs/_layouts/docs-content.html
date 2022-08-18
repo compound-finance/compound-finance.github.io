@@ -138,6 +138,34 @@
       </div>
     </div>
   </body>
+
+  <template id="contract-listing-table-template">
+    <table class="deployment-table">
+      <tbody>
+        <tr>
+          <th>Contract</th>
+          <th>Address</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </tbody>
+    </table>
+  </template>
+
+  <template id="address-copy-button-template">
+    <div class="copy-tool">
+      <div class="copy-button" data-copy-text="0x285617313887d43256F852cAE0Ee4de4b68D45B0" title="Copy"></div>
+    </div>
+  </template>
+
+  <template id="address-copy-link-template">
+    <div class="copy-tool">
+      <a target="_blank" href="https://etherscan.io/address/0x285617313887d43256F852cAE0Ee4de4b68D45B0">
+        <div title="View on block explorer" class="blockscan-button"></div>
+      </a>
+    </div>
+  </template>
+
   <!-- Loads custom search bar, injects into div in header (id="search-container") -->
   {% include search-engine.html %}
   <!-- Code block syntax highlighting -->
@@ -145,9 +173,126 @@
   <script type="text/javascript" src="{{ '/public/js/solidity.min.js' | relative_url }}"></script>
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', (event) => {
+
+      // Code block syntax highlighting
       document.querySelectorAll('pre code').forEach((el) => {
         hljs.highlightElement(el);
       });
+
+      // Build an address listing and copy tool for each protocol deployment
+      // Data is in the top of the markdown page file
+      const deploymentsContainer = document.getElementById('deployments-list-container');
+
+      const tableTemplate = document.getElementById('contract-listing-table-template');
+      const copyButtonTemplate = document.getElementById('address-copy-button-template');
+      const copyLinkTemplate = document.getElementById('address-copy-link-template');
+
+      if (deploymentsContainer) {
+        let deploymentsObject = {};
+        try {
+          deploymentsObject = JSON.parse(('{{ page.deployments }}').replace(/=>/g, ':'));
+        } catch(e) {
+          console.error(e);
+        }
+
+        const deployments = Object.keys(deploymentsObject);
+
+        // Tabs go in here
+        const networksWidget = document.createElement('div');
+        networksWidget.classList.add('networks-widget');
+
+        // Make a tab switcher in networksWidget, appended later
+        const networkTabs = document.createElement('div');
+        networkTabs.classList.add('network-tabs');
+        networkTabs.id = 'network-tabs';
+
+        // tab switcher click event handler
+        const tabClickHandler = (buttonIndex) => {
+          const networkTabsContainer = document.getElementById('network-tabs');
+          const tabContentContainers = document.getElementsByClassName('network-tab');
+          const target = networkTabsContainer.children[buttonIndex];
+          const numTabs = networkTabsContainer.children.length;
+          for (let j = 0; j < numTabs; j++) {
+            networkTabsContainer.children[j].classList.remove(activeClass);
+            tabContentContainers[j].classList.remove(activeClass);
+          }
+          target.classList.add(activeClass);
+          const tabContent = document.getElementById('network-tab-' + target.dataset.index);
+          tabContent.classList.add(activeClass);
+
+        }
+
+        const activeClass = 'active';
+
+        for (let i = 0; i < deployments.length; i++) {
+          const deploymentName = deployments[i];
+          const contracts = Object.entries(deploymentsObject[deployments[i]].contracts);
+          const blockscanOrigin = deploymentsObject[deployments[i]].blockscan_origin;
+          const tabText = deploymentsObject[deployments[i]].tab_text;
+
+          const tabButton = document.createElement('div');
+          tabButton.classList.add('network-tab-button');
+          tabButton.id = 'network-tab-button-' + i;
+          tabButton.dataset.index = i;
+          tabButton.innerText = tabText;
+          tabButton.addEventListener('click', _ => tabClickHandler(+_.target.dataset.index));
+          networkTabs.appendChild(tabButton);
+
+          const networkTab = document.createElement('div');
+          networkTab.classList.add('network-tab');
+          networkTab.id = 'network-tab-' + i;
+          networkTab.dataset.index = i;
+
+          const header = document.createElement('h3');
+          header.innerText = deploymentName;
+          networkTab.appendChild(header);
+
+          const table = tableTemplate.content.cloneNode(true).children[0];
+          for (let j = 0; j < contracts.length; j++) {
+            const [ contractName, contractAddress ] = contracts[j];
+            const tbody = table.children[0];
+
+            const row = document.createElement('tr');
+            const cell1 = document.createElement('td');
+            cell1.innerText = contractName;
+            row.appendChild(cell1);
+
+            const button = copyButtonTemplate.content.cloneNode(true);
+            const link = copyLinkTemplate.content.cloneNode(true);
+
+            const cell2 = document.createElement('td');
+            cell2.innerText = contractAddress;
+            row.appendChild(cell2);
+
+            const cell3 = document.createElement('td');
+            button.children[0].children[0].dataset.copyText = contractAddress;
+            cell3.appendChild(button);
+            row.appendChild(cell3);
+
+            const cell4 = document.createElement('td');
+            link.children[0].children[0].href = blockscanOrigin + 'address/' + contractAddress;
+            cell4.appendChild(link);
+            row.appendChild(cell4);
+
+            tbody.appendChild(row);
+          }
+
+          networkTab.appendChild(table);
+          networksWidget.appendChild(networkTab);
+        }
+
+        networksWidget.prepend(networkTabs);
+        deploymentsContainer.appendChild(networksWidget);
+        tabClickHandler(0);
+      }
+
+      // Button to copy a contract address
+      const copyButtons = document.getElementsByClassName('copy-button');
+      for (let i = 0; i < copyButtons.length; i++) {
+        copyButtons[i].addEventListener('click', () => {
+          navigator.clipboard.writeText(copyButtons[i].dataset.copyText);
+        });
+      }
     });
   </script>
 </html>
