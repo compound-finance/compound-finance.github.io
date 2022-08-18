@@ -174,10 +174,21 @@
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', (event) => {
 
-      // Code block syntax highlighting
-      document.querySelectorAll('pre code').forEach((el) => {
-        hljs.highlightElement(el);
-      });
+      // TODO: Remove once solidity package for highlight js is fixed
+      var ua = navigator.userAgent.toLowerCase(); 
+      if (ua.indexOf('safari') != -1) { 
+        if (ua.indexOf('chrome') > -1) {
+          // Not Safari
+          
+          // Code block syntax highlighting
+          document.querySelectorAll('pre code').forEach((el) => {
+            hljs.highlightElement(el);
+          });
+
+        } else {
+          // Safari
+        }
+      }
 
       // Build an address listing and copy tool for each protocol deployment
       // Data is in the top of the markdown page file
