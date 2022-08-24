@@ -138,7 +138,7 @@
     //     removes entire script and style elements.
     const searchData = [
       {% for _page in site.pages %}
-        {% if page.docs_version == _page.docs_version %} // This ensures search results are for the single Compound version the user is currently viewing
+        {% if page.docs_version == 'v3' %} // This ensures search results are for the single Compound version the user is currently viewing
           {% assign page_content_string=_page.content | markdownify | jsonify %}
           {% assign page_content_string=page_content_string | replace_regex: '<style((.|\n)*)<\/style>', '' %}
           {% assign page_content_string=page_content_string | replace_regex: '<script((.|\n)*)<\/script>', '' %}
@@ -295,7 +295,7 @@
     // Add the searchbox UI to the DOM
     const searchContainer = document.getElementById('search-container');
     if (!searchContainer) {
-      console.error('A `search-container` div is missing from the page. Search engine cannot be initialized.');
+      // console.error('A `search-container` div is missing from the page. Search engine cannot be initialized.');
       return;
     }
 
