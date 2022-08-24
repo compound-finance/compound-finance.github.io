@@ -157,7 +157,10 @@
         <div></div>
         <div></div>
       </button>
+      <!-- Remove this once a GH Pages regex solution is found for v2 docs -->
+      {% if page.docs_version == 'v3' %}
       <div id="search-container" class="search-container"></div>
+      {% endif %}
     </div>
   </div>
 </header>
