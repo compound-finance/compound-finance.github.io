@@ -2,6 +2,7 @@
 layout: docs-content
 title: Compound III Docs | Protocol Rewards
 permalink: /protocol-rewards/
+docs_version: v3
 
 ## Element ID: In-page Heading
 sidebar_nav_data:

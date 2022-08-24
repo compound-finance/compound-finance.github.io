@@ -2,12 +2,15 @@
 layout: docs-content
 title: Compound III Docs | Account Management
 permalink: /account-management/
+docs_version: v3
 
 ## Element ID: In-page Heading
 sidebar_nav_data:
   account-management: Account Management
   allow: Allow
   allow-by-signature: Allow By Signature
+  user-nonce: User Nonce
+  version: Version
   account-permissions: Account Permissions
   transfer: Transfer
   interfaces--erc-20-compatibility: Interfaces & ERC-20 Compatibility
@@ -48,7 +51,7 @@ await comet.allow(managerAddress, true);
 
 ### Allow By Signature
 
-This is a separate version of the allow function that enables submission using an EIP-712 offline signature. For more details on how to create an offline signature, review [EIP-712](https://eips.ethereum.org/EIPS/eip-712).
+This is a separate version of the allow function that enables submission using an EIP-712 offline signature. For more details on how to create an offline signature, review [EIP-712](https://eips.ethereum.org/EIPS/eip-712){:target="_blank"}.
 
 #### Comet
 
@@ -87,6 +90,57 @@ comet.allowBySig(0xowner, 0xmanager, true, nonce, expiry, v, r, s);
 ```js
 const comet = new ethers.Contract(contractAddress, abiJson, provider);
 await comet.allowBySig('0xowner', '0xmanager', true, nonce, expiry, v, r, s);
+```
+
+### User Nonce
+
+This gets the user nonce, like an EVM account nonce, which is used by `allowBySig`.
+
+#### Comet
+
+```solidity
+function userNonce(address) returns (uint)
+```
+* `address`: The address of the account in which to get a nonce.
+* `RETURN`: An integer of the specified account's nonce.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint nonce = comet.userNonce(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const nonce = await comet.callStatic.userNonce('0xAccount');
+```
+
+### Version
+
+This gets the protocol version which is used by `allowBySig`.
+
+#### Comet
+
+```solidity
+function version() view returns (string memory)
+```
+* `RETURN`: A string of the protocol version number.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint version = comet.version();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const version = await comet.callStatic.version();
 ```
 
 ### Account Permissions

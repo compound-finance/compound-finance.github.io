@@ -1,11 +1,11 @@
 title: Compound III Documentation Site
-# baseurl: /docs
 markdown: kramdown
 kramdown:
-    syntax_highlighter_opts:
-      disable: true
+  syntax_highlighter_opts:
+    disable: true
+
 ## Page Name Anchor Text: Anchor HREF
-nav_data:
+v3_nav_data:
   # Compound III: / ## This is now a toggle switch between v2 and v3 docs
   Interest Rates: /interest-rates/
   Collateral & Borrowing: /collateral-and-borrowing/
@@ -14,3 +14,4 @@ nav_data:
   Protocol Rewards: /protocol-rewards/
   Governance: /governance/
   Helper Functions: /helper-functions/
+

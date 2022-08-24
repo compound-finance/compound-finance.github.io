@@ -1,6 +1,6 @@
-# Comet Docs Website
+# Compound Protocol Docs Website
 
-The Compound III documentation website is a [Jekyll](https://jekyllrb.com/) site hosted by GitHub pages at https://v3-docs.compound.finance/.
+The Compound protocol documentation website is a [Jekyll](https://jekyllrb.com/) site hosted by GitHub pages at https://docs.compound.finance/.
 
 To modify the website, make a pull request here.
 

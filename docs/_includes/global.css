@@ -7,7 +7,7 @@
   color: #9aaab1;
 }
 
-.hljs-title.class_,
+.hljs-string,
 .hljs-class .hljs-title,
 .hljs-tag,
 .hljs-selector-tag,
@@ -22,10 +22,6 @@
   color: #9669ED
 }
 
-.hljs-code {
-  color: #66d9ef;
-}
-
 .hljs-attribute,
 .hljs-symbol,
 .hljs-regexp,
@@ -33,7 +29,7 @@
   color: #bf79db;
 }
 
-.hljs-string,
+.hljs-title.class_,
 .hljs-bullet,
 .hljs-subst,
 .hljs-title,
@@ -50,12 +46,15 @@
   color: #00D395;
 }
 
-.hljs-comment,
+.hljs-variable.language_,
 .hljs-quote,
 .hljs-deletion,
 .hljs-meta {
-  /*color: #75715e;*/
   color: #9aaab1;
+}
+
+.hljs-comment {
+  color: #969896;
 }
 
 @font-face {
@@ -307,104 +306,4 @@ footer {
   width: 100vw;
   background: #070A0E;
   display: inline-block;
-}
-
-.networks-widget {
-  display: block;
-}
-
-.networks-widget .network-tabs {
-  width: 100%;
-  margin: 10px 0px 30px 0px;
-}
-
-.networks-widget .network-tabs .network-tab-button {
-  display: inline-block;
-  padding-right: 15px;
-  user-select: none;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 18px;
-  color: #CCD6DD;
-}
-
-.networks-widget .network-tabs .network-tab-button.active {
-  color: #141E27;
-  text-decoration: underline;
-  text-underline-offset: 6px;
-  text-decoration-thickness: 2px;
-}
-
-.networks-widget .network-tab {
-  display: none;
-}
-
-.networks-widget .network-tab.active {
-  display: block;
-}
-
-.copy-tool {
-  display: block;
-}
-
-.copy-tool > div {
-  display: inline-block;
-  color: #141E27;
-  vertical-align: middle;
-  text-align: right;
-}
-
-.copy-tool .copy-button {
-  width: 18px;
-  height: 18px;
-  margin: 0px 4px;
-  background: url('{{ "/public/img/icn-copy.svg" | relative_url }}');
-  background-repeat: no-repeat;
-}
-
-.copy-tool .copy-button:hover {
-  background: url('{{ "/public/img/icn-copy-green.svg" | relative_url }}');
-  cursor: pointer;
-}
-
-.copy-tool .blockscan-button {
-  width: 18px;
-  height: 18px;
-  margin: 0px 4px;
-  background: url('{{ "/public/img/icn-external-link.svg" | relative_url }}');
-  background-repeat: no-repeat;
-}
-
-.copy-tool .blockscan-button:hover {
-  background: url('{{ "/public/img/icn-external-link-green.svg" | relative_url }}');
-}
-
-table.deployment-table {
-  display: block;
-  border-collapse: collapse;
-  max-width: 100%;
-  overflow-x: scroll;
-}
-
-.deployment-table td {
-  font-size: 15px;
-  line-height: 18px;
-  padding: 14px 0px;
-}
-
-.deployment-table td:first-child {
-  max-width: 142px;
-}
-
-.deployment-table tr {
-  border-bottom: solid 1px #CCD6DD;
-  line-height: 34px;
-}
-
-.deployment-table th {
-  color: #CCD6DD;
-}
-
-.deployment-table tr td:first-child {
-  font-weight: bold;
 }

@@ -62,7 +62,7 @@
       }
 
       /* Green bullets in list items  */
-      .markdown-content .container li::before {
+      .markdown-content .container ul li::before {
         color: #00D395;
         content: "\2022";
         display: inline-block;
@@ -70,12 +70,152 @@
         margin-left: -1em;
       }
 
-      @media screen and (max-width: 1312px) {
-        .markdown-content {
-          /*max-width: 908px;*/
-          /*width: 75%;*/
-        }
+      .markdown-content .notice {
+        border: 1px solid #FFD24A;
+        line-height: 24px;
+        border-radius: 3px;
+        padding: 8px 12px;
+        color: #546E7A;
+        margin: 16px 0px;
+      }
 
+      .markdown-content img {
+        padding: 40px;
+        max-width: 100%;
+      }
+
+      .markdown-content table {
+        display: block;
+        width: 100%;
+        padding-top: 1.375rem;
+        line-height: 24px;
+        text-align: left;
+        font-size: 16px;
+        color: #657786;
+        border-collapse: collapse;
+        box-sizing: border-box;
+        overflow-x: scroll;
+      }
+
+      .markdown-content table th {
+        color: #CCD6DD;
+        padding: 15px 0px;
+        font-size: 12px;
+      }
+
+      .markdown-content table tr {
+        border-bottom: solid 1px #CCD6DD;
+      }
+
+      .markdown-content table td {
+        text-align: left;
+        padding: 15px 10px;
+      }
+
+      .markdown-content table.key-events-table {
+        display: block;
+        border-collapse: collapse;
+        padding: 0.2rem;
+        margin: 0px;
+      }
+
+      .markdown-content table.key-events-table td:first-child {
+        max-width: 420px;
+        padding-right: 6rem;
+      }
+
+      .markdown-content table.error-codes-table td:first-child {
+        min-width: 4em;
+      }
+
+      .markdown-content table.decimals-events-table {
+        display: table;
+        max-width: 80%;
+        margin: auto;
+        text-align: center;
+        font-size: 14px;
+        color: #141E27;
+      }
+
+      .markdown-content table.decimals-events-table th,
+      .markdown-content table.decimals-events-table td {
+        font-size: 14px;
+        text-align: center;
+        line-height: 0.875rem;
+      }
+
+      .markdown-content ol.mega-ordered-list {
+        padding: 0px;
+        margin: 20px auto;
+        list-style: none;
+        counter-reset: item;
+      }
+
+      .markdown-content ol.mega-ordered-list a {
+        display: flow-root;
+        text-decoration: none;
+        color: #141E27;
+        padding: 35px 38px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .markdown-content ol.mega-ordered-list a:hover {
+        color: #00D395;
+      }
+
+      .markdown-content ol.mega-ordered-list li {
+        display: block;
+        font-size: 23px;
+        line-height: 23px;
+        font-weight: bold;
+        font-family: "Haas Grot Disp R";
+        color: #141E27;
+        border-top: 1px solid #d1d6db;
+        cursor: pointer;
+        user-select: none;
+        counter-increment: item;
+      }
+
+      .markdown-content ol.mega-ordered-list li:last-child {
+        border-bottom: 1px solid #d1d6db;
+      }
+
+      .markdown-content ol.mega-ordered-list li:hover {
+        color: #00D395;
+      }
+
+      .markdown-content ol.mega-ordered-list li:before {
+        display: inline-block;
+        width: 20px;
+        transform: translateY(150%);
+        float: left;
+        padding: 0px;
+        font-weight: normal;
+        color: #AAB8C1;
+        content: counters(item, ".", decimal-leading-zero);
+      }
+
+      .markdown-content ol.mega-ordered-list li:after {
+        width: 35px;
+        height: 32px;
+        float: right;
+        clear: none;
+        padding-left: 6px;
+        transform: translateY(-200%);
+        background: url('{{ "/public/img/icn-build-arrows.svg" | relative_url }}') no-repeat;
+        content: '';
+        transition: padding-left 0.4s, background 0.2s;
+      }
+
+      .markdown-content ol.mega-ordered-list li:hover:after {
+        padding-left: 0px;
+        background: url('{{ "/public/img/icn-build-arrows-green.svg" | relative_url }}') no-repeat;
+        transition: padding-left 0.3s, background 0.2s;
+      }
+
+      @media screen and (max-width: 1312px) {
         .markdown-content .container p,
         .markdown-content .container li {
           font-size: 16px;
@@ -92,10 +232,6 @@
         .markdown-content .container li {
           font-size: 16px;
           line-height: 24px;
-        }
-
-        .markdown-content {
-          /*width: 68%;*/
         }
       }
 
@@ -115,6 +251,19 @@
 
         .markdown-content .container {
           padding: 10px;
+        }
+
+        .markdown-content ol.mega-ordered-list li {
+          font-size: 18px;
+          line-height: 22px;
+        }
+
+        .markdown-content ol.mega-ordered-list a {
+          padding: 28px 38px;
+        }
+
+        .markdown-content ol.mega-ordered-list li:after {
+          transform: translateY(-170%);
         }
 
         .docs-content::after {
@@ -139,41 +288,18 @@
     </div>
   </body>
 
-  <template id="contract-listing-table-template">
-    <table class="deployment-table">
-      <tbody>
-        <tr>
-          <th>Contract</th>
-          <th>Address</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </tbody>
-    </table>
-  </template>
-
-  <template id="address-copy-button-template">
-    <div class="copy-tool">
-      <div class="copy-button" data-copy-text="0x285617313887d43256F852cAE0Ee4de4b68D45B0" title="Copy"></div>
-    </div>
-  </template>
-
-  <template id="address-copy-link-template">
-    <div class="copy-tool">
-      <a target="_blank" href="https://etherscan.io/address/0x285617313887d43256F852cAE0Ee4de4b68D45B0">
-        <div title="View on block explorer" class="blockscan-button"></div>
-      </a>
-    </div>
-  </template>
-
   <!-- Loads custom search bar, injects into div in header (id="search-container") -->
   {% include search-engine.html %}
+
+  <!-- Loads contract listing tool, injects into div in markdown (id="networks-widget-container") -->
+  <!-- The MD needs yaml data at the top -->
+  {% include networks-widget.html %}
+
   <!-- Code block syntax highlighting -->
   <script type="text/javascript" src="{{ '/public/js/highlight.min.js' | relative_url }}"></script>
   <script type="text/javascript" src="{{ '/public/js/solidity.min.js' | relative_url }}"></script>
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', (event) => {
-
       // TODO: Remove once solidity package for highlight js is fixed
       var ua = navigator.userAgent.toLowerCase(); 
       if (ua.indexOf('safari') != -1) { 
@@ -188,121 +314,6 @@
         } else {
           // Safari
         }
-      }
-
-      // Build an address listing and copy tool for each protocol deployment
-      // Data is in the top of the markdown page file
-      const deploymentsContainer = document.getElementById('deployments-list-container');
-
-      const tableTemplate = document.getElementById('contract-listing-table-template');
-      const copyButtonTemplate = document.getElementById('address-copy-button-template');
-      const copyLinkTemplate = document.getElementById('address-copy-link-template');
-
-      if (deploymentsContainer) {
-        let deploymentsObject = {};
-        try {
-          deploymentsObject = JSON.parse(('{{ page.deployments }}').replace(/=>/g, ':'));
-        } catch(e) {
-          console.error(e);
-        }
-
-        const deployments = Object.keys(deploymentsObject);
-
-        // Tabs go in here
-        const networksWidget = document.createElement('div');
-        networksWidget.classList.add('networks-widget');
-
-        // Make a tab switcher in networksWidget, appended later
-        const networkTabs = document.createElement('div');
-        networkTabs.classList.add('network-tabs');
-        networkTabs.id = 'network-tabs';
-
-        // tab switcher click event handler
-        const tabClickHandler = (buttonIndex) => {
-          const networkTabsContainer = document.getElementById('network-tabs');
-          const tabContentContainers = document.getElementsByClassName('network-tab');
-          const target = networkTabsContainer.children[buttonIndex];
-          const numTabs = networkTabsContainer.children.length;
-          for (let j = 0; j < numTabs; j++) {
-            networkTabsContainer.children[j].classList.remove(activeClass);
-            tabContentContainers[j].classList.remove(activeClass);
-          }
-          target.classList.add(activeClass);
-          const tabContent = document.getElementById('network-tab-' + target.dataset.index);
-          tabContent.classList.add(activeClass);
-
-        }
-
-        const activeClass = 'active';
-
-        for (let i = 0; i < deployments.length; i++) {
-          const deploymentName = deployments[i];
-          const contracts = Object.entries(deploymentsObject[deployments[i]].contracts);
-          const blockscanOrigin = deploymentsObject[deployments[i]].blockscan_origin;
-          const tabText = deploymentsObject[deployments[i]].tab_text;
-
-          const tabButton = document.createElement('div');
-          tabButton.classList.add('network-tab-button');
-          tabButton.id = 'network-tab-button-' + i;
-          tabButton.dataset.index = i;
-          tabButton.innerText = tabText;
-          tabButton.addEventListener('click', _ => tabClickHandler(+_.target.dataset.index));
-          networkTabs.appendChild(tabButton);
-
-          const networkTab = document.createElement('div');
-          networkTab.classList.add('network-tab');
-          networkTab.id = 'network-tab-' + i;
-          networkTab.dataset.index = i;
-
-          const header = document.createElement('h3');
-          header.innerText = deploymentName;
-          networkTab.appendChild(header);
-
-          const table = tableTemplate.content.cloneNode(true).children[0];
-          for (let j = 0; j < contracts.length; j++) {
-            const [ contractName, contractAddress ] = contracts[j];
-            const tbody = table.children[0];
-
-            const row = document.createElement('tr');
-            const cell1 = document.createElement('td');
-            cell1.innerText = contractName;
-            row.appendChild(cell1);
-
-            const button = copyButtonTemplate.content.cloneNode(true);
-            const link = copyLinkTemplate.content.cloneNode(true);
-
-            const cell2 = document.createElement('td');
-            cell2.innerText = contractAddress;
-            row.appendChild(cell2);
-
-            const cell3 = document.createElement('td');
-            button.children[0].children[0].dataset.copyText = contractAddress;
-            cell3.appendChild(button);
-            row.appendChild(cell3);
-
-            const cell4 = document.createElement('td');
-            link.children[0].children[0].href = blockscanOrigin + 'address/' + contractAddress;
-            cell4.appendChild(link);
-            row.appendChild(cell4);
-
-            tbody.appendChild(row);
-          }
-
-          networkTab.appendChild(table);
-          networksWidget.appendChild(networkTab);
-        }
-
-        networksWidget.prepend(networkTabs);
-        deploymentsContainer.appendChild(networksWidget);
-        tabClickHandler(0);
-      }
-
-      // Button to copy a contract address
-      const copyButtons = document.getElementsByClassName('copy-button');
-      for (let i = 0; i < copyButtons.length; i++) {
-        copyButtons[i].addEventListener('click', () => {
-          navigator.clipboard.writeText(copyButtons[i].dataset.copyText);
-        });
       }
     });
   </script>
