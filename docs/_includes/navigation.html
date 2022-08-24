@@ -202,7 +202,7 @@
           </a>
         </li>
         <li>
-          <a href="https://compound.finance/docs">
+          <a href="/v2/">
             <span>Compound II</span>
           </a>
         </li>
@@ -213,9 +213,9 @@
     <!-- SITE WIDE nav_data IS SET IN ROOT _config.yml -->
 
     {% if page.docs_version == 'v3' %}
-    {% assign nav_data = site.v3_nav_data %}
+      {% assign nav_data = site.v3_nav_data %}
     {% elsif page.docs_version == 'v2' %}
-    {% assign nav_data = site.v2_nav_data %}
+      {% assign nav_data = site.v2_nav_data %}
     {% endif %}
 
     {% for link in nav_data %}

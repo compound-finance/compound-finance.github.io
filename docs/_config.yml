@@ -15,3 +15,11 @@ v3_nav_data:
   Governance: /governance/
   Helper Functions: /helper-functions/
 
+v2_nav_data:
+  cTokens: /v2/ctokens/
+  Comptroller: /v2/comptroller/
+  Governance: /v2/governance/
+  Open Price Feed: /v2/prices/
+  API: /v2/api/
+  Compound.js: /v2/compound-js/
+  Security: /v2/security/
