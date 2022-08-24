@@ -164,9 +164,24 @@
 
 <div id="header-menu" class="header-menu mobile-only">
   <ul>
-    {% for link in site.nav_data %}
-    {% assign page_name = link[0] %}
-    {% assign relative_path = link[1] %}
+    {% if page.docs_version == 'v3' %}
+      {% assign nav_data = site.v3_nav_data %}
+      <li>
+        <a href="/">
+          Compound III
+        </a>
+      </li>
+    {% elsif page.docs_version == 'v2' %}
+      {% assign nav_data = site.v2_nav_data %}
+      <li>
+        <a href="/v2/">
+          Compound II
+        </a>
+      </li>
+    {% endif %}
+    {% for link in nav_data %}
+      {% assign page_name = link[0] %}
+      {% assign relative_path = link[1] %}
       <li>
         <a href="{{ relative_path | relative_url }}">
           {{ page_name }}
