@@ -1,7 +1,7 @@
 ---
 layout: docs-content
 title: Compound III Docs | Protocol Rewards
-permalink: /v3/protocol-rewards/
+permalink: /protocol-rewards/
 docs_version: v3
 
 ## Element ID: In-page Heading

@@ -1,0 +1,205 @@
+<style type="text/css">
+  .ctoken-faq {
+    margin: 15px 0px;
+  }
+
+  .ctoken-faq-contents > div.item {
+    min-height: 115px;
+    font-size: 23px;
+    line-height: 23px;
+    font-weight: bold;
+    font-family: "Haas Grot Disp R";
+    color: #141E27;
+    border-bottom: 1px solid #d1d6db;
+    transition: border-bottom 0.7s;
+  }
+
+  .ctoken-faq-contents > div.item:hover {
+    border-bottom: 1px solid #00D395;
+    transition: border-bottom 0.7s;
+  }
+
+  .ctoken-faq-contents > div.item:first-child {
+    border-top: 1px solid #d1d6db;
+  }
+
+  .ctoken-faq .ctoken-faq-contents .button,
+  .ctoken-faq .ctoken-faq-contents .button label {
+    cursor: pointer;
+  }
+
+  .ctoken-faq .question {
+    display: block;
+    padding: 46px 46px 46px 0px;
+  }
+
+  .markdown-content .container .ctoken-faq div p,
+  .markdown-content .container .ctoken-faq div li {
+    font-family: "Haas Grot Text R", sans-serif;
+    color: #657786;
+    font-weight: normal;
+  }
+
+  .markdown-content .container .ctoken-faq div p:last-child, 
+  .markdown-content .container .ctoken-faq div ul:last-child {
+    margin-bottom: 46px;
+  }
+
+  .ctoken-faq .faq-content.hidden {
+    display: none;
+  }
+
+  .ctoken-faq .plus {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+    float: right;
+    position: relative;
+    top: -74px;
+  }
+
+  .ctoken-faq .plus span:first-of-type {
+    top: 0%;
+    bottom: 0%;
+    width: 10%;
+    left: 45%;
+  }
+
+  .ctoken-faq .plus span:last-of-type {
+    left: 0%;
+    right: 0%;
+    height: 10%;
+    top: 45%;
+  }
+
+  .ctoken-faq .plus.active span:first-of-type{
+    transform: rotate(90deg);
+  }
+
+  .ctoken-faq .plus.active span:last-of-type {
+    left: 50%;
+    right: 50%;
+  }
+
+  .ctoken-faq .plus span {
+    position: absolute;
+    background: #00D395;
+    transition: 0.3s;
+  }
+
+</style>
+<div class="ctoken-faq-contents">
+  <div class="item">
+    <div class="button">
+      <label class="question">How Do cTokens earn interest?</label>
+
+      <div class="plus">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="faq-content hidden">
+      <p>Each <a href="https://compound.finance/markets">market</a> has its own Supply interest rate (APR). Interest isn't distributed; instead, simply by holding cTokens, you'll earn interest.</p>
+
+      <p>cTokens accumulates interest through their exchange rate — over time, each cToken becomes convertible into an increasing amount of it's underlying asset, even while the number of cTokens in your wallet stays the same.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="button">
+      <label class="question">Do I need to calculate the cToken exchange rate?</label>
+
+      <div class="plus">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="faq-content hidden">
+      <p>When a market is launched, the cToken exchange rate (how much ETH one cETH is worth) begins at 0.020000 — and increases at a rate equal to the compounding market interest rate. For example, after one year, the exchange rate might equal 0.021591.</p>
+
+      <p>Each user has the same cToken exchange rate; there’s nothing unique to your wallet that you have to worry about.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="button">
+      <label class="question">Can you walk me through an example?</label>
+
+      <div class="plus">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="faq-content hidden">
+      <p>Let’s say you supply 1,000 DAI to the Compound protocol, when the exchange rate is 0.020070; you would receive 49,825.61 cDAI (1,000/0.020070).</p>
+
+      <p>A few months later, you decide it’s time to withdraw your DAI from the protocol; the exchange rate is now 0.021591:</p>
+
+      <ul>
+        <li>Your 49,825.61 cDAI is now equal to 1,075.78 DAI (49,825.61 * 0.021591)</li>
+        <li>You could withdraw 1,075.78 DAI, which would redeem all 49,825.61 cDAI</li>
+        <li>Or, you could withdraw a portion, such as your original 1,000 DAI, which would redeem 46,315.59 cDAI (keeping 3,510.01 cDAI in your wallet)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="button">
+      <label class="question">How do I view my cTokens?</label>
+
+      <div class="plus">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="faq-content hidden">
+      <p>Each cToken is visible on <a href="https://etherscan.io/tokens/label/compound" target="_blank">Etherscan</a>, and you should be able to view them in the list of tokens associated with your address</p>
+
+      <p>cToken balances have been integrated into <a href="https://itunes.apple.com/us/app/coinbase-wallet/id1278383455" target="_blank">Coinbase Wallet</a> and MetaMask; other wallets may add cToken support</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="button">
+      <label class="question">Can I transfer cTokens?</label>
+
+      <div class="plus">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="faq-content hidden">
+      <p>Yes, but exercise caution! By transferring cTokens, you’re transferring your balance of the underlying asset inside the Compound protocol. If you send a cToken to your friend, your balance (viewable in the <a href="https://app.compound.finance/">Compound Interface</a>) will decline, and your friend will see their balance increase.</p>
+
+      <p>A cToken transfer will fail if the account has <a href="/v2/comptroller#enter-markets">entered</a> that cToken market and the transfer would have put the account into a state of negative <a href="/v2/comptroller#account-liquidity">liquidity</a>.</p>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const cTokenFaqPlusButtons = document.querySelectorAll('.ctoken-faq .item .button .plus');
+    const cTokenFaqButtons = document.querySelectorAll('.ctoken-faq .item .button');
+    const cTokenFaqContents = document.querySelectorAll('.ctoken-faq .item .faq-content');
+
+    const hidden = 'hidden';
+    const active = 'active';
+
+    for (let i = 0; i < cTokenFaqButtons.length; i++) {
+      cTokenFaqButtons[i].addEventListener('click', () => {
+        if (cTokenFaqContents[i].classList.contains(hidden)) {
+          cTokenFaqPlusButtons[i].classList.add(active);
+          cTokenFaqContents[i].classList.remove(hidden);
+        } else {
+          cTokenFaqPlusButtons[i].classList.remove(active);
+          cTokenFaqContents[i].classList.add(hidden);
+        }
+      });
+    }
+  });
+</script>

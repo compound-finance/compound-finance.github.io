@@ -29,6 +29,27 @@
     background-position: center;
   }
 
+  header .container .center {
+    display: block;
+    width: auto;
+    margin: auto;
+  }
+
+  header .container .center a {
+    display: table-cell;
+    padding: 0px 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #141E27;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+  }
+
+  header .container .center a:hover {
+    color: #00D395;
+  }
+
   @media screen and (max-width: 1312px) {
     header .container {
       max-width: 1230px;
@@ -123,9 +144,13 @@
 <header id="header">
   <div class="container">
     <div class="left">
-      <a href="{{ site.baseurl }}/" class="logo"></a>
+      <a href="https://compound.finance" class="logo"></a>
     </div>
-    <div class="center"></div>
+    <div class="center">
+      <a href="https://compound.finance/markets/">Markets</a>
+      <a href="https://compound.finance/prices/">Prices</a>
+      <a href="https://compound.finance/governance/">Governance</a>
+    </div>
     <div class="right">
       <button id="hamburger" class="hamburger mobile-only">
         <div></div>

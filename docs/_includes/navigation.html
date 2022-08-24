@@ -127,6 +127,8 @@
     display: table-cell;
   }
 
+  /* #switch-drop-menu */
+  /* animate on open  */
   nav .doc-version-switcher ul {
     display: block;
     position: absolute;
@@ -136,11 +138,7 @@
     padding: 0px;
     user-select: none;
     left: 20px;
-    top: 52px;
-  }
-
-  /* animate on open  */
-  nav .doc-version-switcher ul {
+    top: 54px;
     visibility: hidden;
     opacity: 0;
     transform: translateY(-20px);
@@ -158,14 +156,14 @@
     height: 36px;
     width: 130px;
     background-color: rgb(249, 250, 251);
-    border-top: solid 1px rgba(204, 214, 221, 0.5);
-    border-left: solid 1px rgba(204, 214, 221, 0.5);
-    border-right: solid 1px rgba(204, 214, 221, 0.5);
+    border-top: solid 1px rgba(204, 214, 221, 0.2);
+    border-left: solid 1px rgba(204, 214, 221, 0.2);
+    border-right: solid 1px rgba(204, 214, 221, 0.2);
     border-radius: 2px;
   }
 
   nav .doc-version-switcher ul li:last-child {
-    border-bottom: solid 1px rgba(204, 214, 221, 0.5);
+    border-bottom: solid 1px rgba(204, 214, 221, 0.2);
   }
 
   nav .doc-version-switcher ul li a,
@@ -173,15 +171,16 @@
     display: block;
     height: 100%;
     width: 100%;
-    line-height: 36px;
+    line-height: 34px;
     text-align: center;
   }
 
   nav .doc-version-switcher ul li:hover,
   nav .doc-version-switcher ul li a:hover,
   nav .doc-version-switcher ul li a span:hover {
-    color: #FFFFFF;
-    background-color: #00D395;
+    /*color: #FFFFFF;
+    background-color: #00D395;*/
+    color: #00D395;
   }
 </style>
 
@@ -189,46 +188,30 @@
   <div class="container">
     <div class="doc-version-switcher">
 
-      {% if page.docs_version == 'v3' %}
-
       <div id="switch-button" class="switch-button">
+        {% if page.docs_version == 'v3' %}
         <span>Compound III</span>
-      </div>
-      <ul id="switch-drop-menu">
-        <li>
-          <a href="/v3/">
-            <span>Compound III</span>
-          </a>
-        </li>
-        <li>
-          <a href="/v2/">
-            <span>Compound II</span>
-          </a>
-        </li>
-      </ul>
-
-      {% elsif page.docs_version == 'v2' %}
-
-      <div id="switch-button" class="switch-button">
+        {% elsif page.docs_version == 'v2' %}
         <span>Compound II</span>
+        {% endif %}
       </div>
       <ul id="switch-drop-menu">
         <li>
-          <a href="/v2/">
-            <span>Compound II</span>
-          </a>
-        </li>
-        <li>
-          <a href="/v3/">
+          <a href="/">
             <span>Compound III</span>
           </a>
         </li>
+        <li>
+          <a href="https://compound.finance/docs">
+            <span>Compound II</span>
+          </a>
+        </li>
       </ul>
-
-      {% endif %}
 
     </div>
-    <!-- Set nav_data in _config.yml -->
+
+    <!-- SITE WIDE nav_data IS SET IN ROOT _config.yml -->
+
     {% if page.docs_version == 'v3' %}
     {% assign nav_data = site.v3_nav_data %}
     {% elsif page.docs_version == 'v2' %}

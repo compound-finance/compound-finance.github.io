@@ -7,19 +7,11 @@ kramdown:
 ## Page Name Anchor Text: Anchor HREF
 v3_nav_data:
   # Compound III: / ## This is now a toggle switch between v2 and v3 docs
-  Interest Rates: /v3/interest-rates/
-  Collateral & Borrowing: /v3/collateral-and-borrowing/
-  Liquidation: /v3/liquidation/
-  Account Management: /v3/account-management/
-  Protocol Rewards: /v3/protocol-rewards/
-  Governance: /v3/governance/
-  Helper Functions: /v3/helper-functions/
+  Interest Rates: /interest-rates/
+  Collateral & Borrowing: /collateral-and-borrowing/
+  Liquidation: /liquidation/
+  Account Management: /account-management/
+  Protocol Rewards: /protocol-rewards/
+  Governance: /governance/
+  Helper Functions: /helper-functions/
 
-v2_nav_data:
-  cTokens: /v2/ctokens/
-  Comptroller: /v2/comptroller/
-  Governance: /v2/governance/
-  Open Price Feed: /v2/prices/
-  API: /v2/api/
-  Compound.js: /v2/compound-js/
-  Security: /v2/security/

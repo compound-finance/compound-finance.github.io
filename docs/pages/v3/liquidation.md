@@ -1,7 +1,7 @@
 ---
 layout: docs-content
 title: Compound III Docs | Liquidation
-permalink: /v3/liquidation/
+permalink: /liquidation/
 docs_version: v3
 
 ## Element ID: In-page Heading

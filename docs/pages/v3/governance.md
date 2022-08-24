@@ -1,7 +1,7 @@
 ---
 layout: docs-content
 title: Compound III Docs | Governance
-permalink: /v3/governance/
+permalink: /governance/
 docs_version: v3
 
 ## Element ID: In-page Heading
@@ -48,7 +48,7 @@ sidebar_nav_data:
 
 # Governance
 
-Compound III is a decentralized protocol that is governed by holders and delegates of COMP. Governance allows the community to propose, vote, and implement changes through the administrative smart contract functions of the Compound III protocol. For more information on the Governor and Timelock see the original [governance](https://compound.finance/docs/governance) section.
+Compound III is a decentralized protocol that is governed by holders and delegates of COMP. Governance allows the community to propose, vote, and implement changes through the administrative smart contract functions of the Compound III protocol. For more information on the Governor and Timelock see the original [governance](/v2/governance) section.
 
 All instances of Compound III are controlled by the Timelock contract which is the same administrator of the Compound v2 protocol. The governance system has control over each *proxy*, the *Configurator implementation*, the *Comet factory*, and the *Comet implementation*.
 
@@ -88,7 +88,7 @@ function setGovernor(address cometProxy, address newGovernor) external
 
 This function sets the official contract address of the Compound III protocol pause guardian. This address has the power to pause supply, transfer, withdraw, absorb, and buy collateral operations within Compound III.
 
-COMP token-holders designate the Pause Guardian address, which is held by the [Community Multi-Sig](https://etherscan.io/address/0xbbf3f1421d886e9b2c5d716b5192ac998af2012c).
+COMP token-holders designate the Pause Guardian address, which is held by the [Community Multi-Sig](https://etherscan.io/address/0xbbf3f1421d886e9b2c5d716b5192ac998af2012c){:target="_blank"}.
 
 #### Configurator
 

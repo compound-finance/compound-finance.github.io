@@ -101,6 +101,12 @@
       background-color: #f0f2f5;
     }
 
+    @media screen and (max-width: 960px) {
+      .search-container .search-box {
+        width: 178px;
+      }
+    }
+
     @media screen and (max-width: 640px) {
       .search-container .search-box {
         width: 100px;
@@ -127,21 +133,29 @@
       return tmp.textContent || tmp.innerText || "";
     }
 
-    // Supplant raw page test from the Jekyll markdown pages
+    // Supplant raw page test from the Jekyll markdown pages.
+    // Jekyll renders markdown to HTML, converts to JSON, then
+    //     removes entire script and style elements.
     const searchData = [
-      {% for page in site.pages %}
-        {
-          "title"    : "{{ page.title }}",
-          "url"      : "{{ site.baseurl }}{{ page.url }}",
-          "raw_html" : {{ page.content | markdownify | jsonify }},
-          "section_labels": [
-            {% for section in page.sidebar_nav_data %}
-            {% assign id = section[0] %}
-            {% assign name = section[1] %}
-              { "id": "{{ id }}", "name": "{{ name }}" },
-            {% endfor %}
-          ],
-        } {% unless forloop.last %},{% endunless %}
+      {% for _page in site.pages %}
+        {% if page.docs_version == _page.docs_version %} // This ensures search results are for the single Compound version the user is currently viewing
+          {% assign page_content_string=_page.content | markdownify | jsonify %}
+          {% assign page_content_string=page_content_string | replace_regex: '<style((.|\n)*)<\/style>', '' %}
+          {% assign page_content_string=page_content_string | replace_regex: '<script((.|\n)*)<\/script>', '' %}
+
+          {
+            "title"    : "{{ _page.title }}",
+            "url"      : "{{ site.baseurl }}{{ _page.url }}",
+            "raw_html" : {{ page_content_string }},
+            "section_labels": [
+              {% for section in _page.sidebar_nav_data %}
+              {% assign id = section[0] %}
+              {% assign name = section[1] %}
+                { "id": "{{ id }}", "name": "{{ name }}" },
+              {% endfor %}
+            ],
+          } {% unless forloop.last %},{% endunless %}
+        {% endif %}
       {% endfor %}
     ];
 

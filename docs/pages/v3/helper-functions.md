@@ -1,7 +1,7 @@
 ---
 layout: docs-content
 title: Compound III Docs | Helper Functions
-permalink: /v3/helper-functions/
+permalink: /helper-functions/
 docs_version: v3
 
 ## Element ID: In-page Heading
@@ -329,7 +329,7 @@ const infoObject = await comet.callStatic.getAssetInfoByAddress('0xAsset');
 
 ### Get Price
 
-The protocol's prices are updated by [Chainlink Price Feeds](https://data.chain.link/). In order to fetch the present price of an asset, the price feed contract address for that asset must be passed to the `getPrice` function.
+The protocol's prices are updated by [Chainlink Price Feeds](https://data.chain.link/){:target="_blank"}. In order to fetch the present price of an asset, the price feed contract address for that asset must be passed to the `getPrice` function.
 
 This function returns the price of an asset in USD with 8 decimal places.
 

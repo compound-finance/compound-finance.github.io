@@ -1,7 +1,7 @@
 ---
 layout: docs-content
 title: Compound III | Interest Rates
-permalink: /v3/interest-rates/
+permalink: /interest-rates/
 docs_version: v3
 
 ## Element ID: In-page Heading
