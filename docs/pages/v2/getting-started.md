@@ -66,7 +66,16 @@ deployments:
 
 # Getting Started
 
-## Introduction
+## Introduction to Compound v2
+
+<div class="new-docs-banner">
+  <div class="center">
+    <span class="message">Compound III is now live, you're currently viewing Compound v2 documentation.</span>
+    <a href="/">
+      <span class="button">Compound III Documentation</span>
+    </a>
+  </div>
+</div>
 
 The Compound protocol is based on the [Compound Whitepaper](https://compound.finance/documents/Compound.Whitepaper.pdf){:target="_blank"} (2019); the codebase is [open-source](https://github.com/compound-finance/compound-protocol){:target="_blank"}, and maintained by the community.
 
