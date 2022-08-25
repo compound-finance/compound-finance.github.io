@@ -124,3 +124,210 @@
   <ul id="search-results" class="search-results"></ul>
 </template>
 
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    // https://stackoverflow.com/a/822486
+    function stripHtml(html) {
+      let tmp = document.createElement("DIV");
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || "";
+    }
+
+    // Supplant raw page test from the Jekyll markdown pages.
+    // Jekyll renders markdown to HTML, converts to JSON, then
+    //     removes entire script and style elements.
+    const searchData = [
+      {% for _page in site.pages %}
+        {% if page.docs_version == _page.docs_version %} // This ensures search results are for the single Compound version the user is currently viewing
+          {% assign page_content_string=_page.content | markdownify | jsonify | replace: "</script", "</sc"  | replace: "<script", "<sc" %}
+
+          {
+            "title"    : "{{ _page.title }}",
+            "url"      : "{{ site.baseurl }}{{ _page.url }}",
+            "raw_html" : {{ page_content_string }},
+            "section_labels": [
+              {% for section in _page.sidebar_nav_data %}
+              {% assign id = section[0] %}
+              {% assign name = section[1] %}
+                { "id": "{{ id }}", "name": "{{ name }}" },
+              {% endfor %}
+            ],
+          } {% unless forloop.last %},{% endunless %}
+        {% endif %}
+      {% endfor %}
+    ];
+
+    // Format search data from all Jekyll pages so it can be searched
+    searchData.forEach((page, i) => {
+      let remainder = page.raw_html;
+
+      searchData[i].section_contents = [];
+
+      if (page.section_labels.length > 0) {
+        page.section_labels.forEach((sectionLabel, j) => {
+          const { id, name } = sectionLabel;
+
+          const split = remainder.split(` id="${id}"`);
+          searchData[i].section_contents.push(stripHtml(split[0]));
+
+          if (j === page.section_labels.length - 1) {
+            // Add the last section at the end of the array
+            searchData[i].section_contents.push(stripHtml(split[1]));
+          } else {
+            // Queue up the HTML string to the next section
+            remainder = split[1];
+          }
+        });
+
+        searchData[i].section_contents.shift(); // first one should always be empty
+      }
+    });
+
+    function instantSearch(input) {
+      if (input.length < 4) {
+        return;
+      }
+
+      input = input.toLowerCase();
+
+      const results = [];
+
+      searchData.forEach((page, j) => {
+        if (page.section_contents.length > 0) {
+          page.section_contents.forEach((text, i) => {
+            text = text.toLowerCase();
+            // https://stackoverflow.com/a/58828841
+            const result = [...text.matchAll(new RegExp(input, 'gi'))].map(a => a.index);
+
+            if (result.length > 0) {
+              const { id, name } = page.section_labels[i];
+
+              // Prioritize exact section name matches
+              const bonus = name.toLowerCase() === input ? Infinity : 0;
+
+              results.push({
+                section_name: name,
+                score: result.length + bonus,
+                href: page.url + '#' + id,
+                context: text.substring(result[0] - 50, result[0] + 100).replace(/[^a-zA-Z0-9\s]/g, ''),
+              });
+            }
+          });
+        }
+      });
+
+      results.sort((a, b) => {
+        return a.score > b.score ? -1 : 1;
+      });
+
+      globalSearchDataArray = results.length > 0 ? results : globalSearchDataArray;
+    }
+
+    const active = 'active';
+    let resultsAreShowing = false;
+    let globalSearchDataArray = [];
+    let activeResultIndex = 0;
+
+    // Add the results to the DOM as the user types in the search box
+    function updateSearchResultUi(input) {
+      if (globalSearchDataArray.length > 0) {
+        input = input.toLowerCase();
+        globalSearchDataArray = globalSearchDataArray.slice(0, 6); // maximum of 6 results show
+
+        const resultsContainer = document.getElementById('search-results');
+        resultsContainer.innerHTML = '';
+        resultsContainer.classList.add(active);
+        globalSearchDataArray.forEach((result) => {
+          const emphasisInjectedHtml = result.context.replace(new RegExp(input, 'g'), `<div class="emphasis">${input}</div>`);
+
+          const resultElement = document.createElement('li');
+          resultElement.classList.add('search-result');
+          resultElement.innerHTML = `
+            <a href="${result.href}">
+              <span class="name">${result.section_name}</span>
+              <span class="context">${emphasisInjectedHtml}</span>
+            </a>
+          `;
+          resultsContainer.appendChild(resultElement);
+        });
+        resultsAreShowing = true;
+        activeResultIndex = 1; // unset
+        updateSelectedResultUi(true);
+      }
+    }
+
+    // User can select a result with their up or down arrow keys
+    function updateSelectedResultUi(moveUp) {
+      const resultElements = document.getElementsByClassName('search-result');
+      const finalIndex = resultElements.length - 1;
+      const former = activeResultIndex;
+
+      // Unselect former result
+      if (resultElements[former]) { // protects against 1 result case
+        resultElements[former].classList.remove(active);
+      }
+
+      moveUp ? activeResultIndex-- : activeResultIndex++;
+
+      if (activeResultIndex > finalIndex) activeResultIndex = 0;
+
+      if (activeResultIndex < 0) activeResultIndex = finalIndex;
+
+      // Select latest result
+      resultElements[activeResultIndex].classList.add(active);
+    }
+
+    // Navigates to the selected result when the user presses the enter key
+    function goToResult() {
+      window.location.href = window.location.origin + globalSearchDataArray[activeResultIndex].href;
+      hideSearchUi(); // hides it when the link is within the page
+    }
+
+
+    function hideSearchUi() {
+      if (resultsAreShowing === true) {
+        const resultsContainer = document.getElementById('search-results');
+        resultsContainer.classList.remove(active);
+      }
+    }
+
+    // Add the searchbox UI to the DOM
+    const searchContainer = document.getElementById('search-container');
+    if (!searchContainer) {
+      console.error('A `search-container` div is missing from the page. Search engine cannot be initialized.');
+      return;
+    }
+
+    const template = document.getElementById('search-engine-template');
+    const searchElements =  document.importNode(template.content, true);
+    searchContainer.appendChild(searchElements);
+
+    // Listen for keyboard press events
+    const searchBox = document.getElementById('search-box');
+    searchBox.addEventListener('keyup', (event) => {
+      if (
+        event.keyCode === 27 || // escape key
+        event.target.value.length === 0 // user deleted all searchbox text
+      ) {
+        hideSearchUi();
+      } else if (event.keyCode === 38) { // up arrow
+        updateSelectedResultUi(true);
+      } else if (event.keyCode === 40) {  // down arrow
+        updateSelectedResultUi(false);
+      } else if (event.keyCode === 13) {  // enter key
+        goToResult();
+      } else {
+        instantSearch(event.target.value);
+        updateSearchResultUi(event.target.value);
+      }
+    });
+
+    // If the user clicks outside of the search result modal, close it
+    window.addEventListener('click', (event) => {
+      const isClickingSearchBox = event.target.id === 'search-box';
+      if (!isClickingSearchBox) {
+        hideSearchUi();
+      }
+    });
+  });
+</script>
