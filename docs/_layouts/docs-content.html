@@ -300,21 +300,30 @@
   <script type="text/javascript" src="{{ '/public/js/solidity.min.js' | relative_url }}"></script>
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', (event) => {
-      // TODO: Remove once solidity package for highlight js is fixed
-      var ua = navigator.userAgent.toLowerCase(); 
-      if (ua.indexOf('safari') != -1) { 
-        if (ua.indexOf('chrome') > -1) {
-          // Not Safari
-          
-          // Code block syntax highlighting
-          document.querySelectorAll('pre code').forEach((el) => {
-            hljs.highlightElement(el);
-          });
+      // TODO: Remove browser conditional once solidity package for highlight js is fixed
+      // Currently breaks in Safari only
 
+      // Code block syntax highlighting
+      function applyCodeBlockSyntaxHighlighting() {
+        document.querySelectorAll('pre code').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      }
+
+      const ua = navigator.userAgent.toLowerCase(); 
+
+      if (ua.indexOf('safari') != -1) {
+        if (ua.indexOf('chrome') > -1) {
+          // Chrome
+          applyCodeBlockSyntaxHighlighting();
         } else {
           // Safari
         }
+      } else {
+        // Not Safari, Not Chrome
+        applyCodeBlockSyntaxHighlighting();
       }
+
     });
   </script>
 </html>
