@@ -27,6 +27,7 @@ deployments:
       Proxy Admin: '0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779'
       Comet Factory: '0x1C1853Bc7C6bFf0D276Da53972C0b1a066DB1AE7'
       Rewards: '0x1B0e765F6224C21223AeA2af16c1C46E38885a40'
+      Bulker: '0x74a81F84268744a40FEBc48f8b812a1f188D80C3'
       USDC: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
       COMP: '0xc00e94Cb662C3520282E6f5717214004A7f26888'
       WBTC: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599'
@@ -45,6 +46,7 @@ deployments:
       Proxy Admin: '0x1e5Ca6D2cc41935a3c39A3f3B29FBc779A2ceFEa'
       Comet Factory: '0xFCa21Dd5c442A2dB245DD44e7C9c3a28335a8558'
       Rewards: '0xC694877D91A8aEfb9D95cf34393cdC0DDdAded18'
+      Bulker: '0x24cB9673158d19DE22cf4Fa747A1D30DAD60AEB5'
       USDC: '0xb6D5769d2877a462355F9A6eCa262D8826285c7D'
       COMP: '0xEe673239cBAc27aF34Bc39908405529E252d3c7B'
       WBTC: '0xDcB5Daf44164efFfC20E4418216b7F7f9064692b'
@@ -123,6 +125,17 @@ This is the factory contract capable of producing instances of the Comet impleme
 
 This is a rewards contract which can hold rewards tokens (e.g. COMP, WETH) and allows claiming rewards by users, according to the core protocol tracking indices.
 
+#### Bulker
+
+This is an external contract that is not integral to Comet's function. It allows accounts to bulk multiple operations into a single transaction. This is a useful contract for Compound III user interfaces. The following is an example of steps in a bulked transaction.
+
+- Wrap Ether to WETH
+- Supply WETH collateral
+- Supply WBTC collateral
+- Borrow USDC
+
+In addition to supplying, borrowing, and wrapping, the bulker contract can also transfer collateral within the protocol and claim rewards.
+
 ### How do I get the latest contract addresses?
 
 Use the spider functionality in the Compound III repository. The addresses can then be found in the `deployments/` folder.
@@ -131,7 +144,7 @@ Use the spider functionality in the Compound III repository. The addresses can t
 git clone https://github.com/compound-finance/comet.git
 cd comet/
 yarn
-npx hardhat spider --network mainnet
+npx hardhat spider --deployment mainnet
 ```
 
 ### How do I call Comet methods?
@@ -202,44 +215,4 @@ The Compound protocol has been reviewed & audited by [OpenZeppelin](https://open
 
 The [Compound III Developer FAQ](https://github.com/compound-developers/compound-3-developer-faq){:target="_blank"} repository contains code examples for frequent Compound III developer tasks.
 
-See `contracts/MyContract.sol` for Solidity examples, and also the individual JavaScript files in `examples/` for the following cases:
-
-- How do I supply collateral to Compound III? ([supply-withdraw-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/supply-withdraw-example.js){:target="_blank"})
-- How do I borrow the base asset from Compound III? ([borrow-repay-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/borrow-repay-example.js){:target="_blank"})
-- How do I get an asset price from the Compound III protocol's perspective? ([get-a-price.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-a-price.js){:target="_blank"})
-- How do I get the Supply or Borrow APR from the protocol? ([get-apr-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-apr-example.js){:target="_blank"})
-- How do I get the borrow capacity for a Compound III account? ([get-borrowable-amount.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-borrowable-amount.js){:target="_blank"})
-- How do I get the borrow and liquidate collateral factors for a Compound III asset? ([get-cf-examples.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-cf-examples.js){:target="_blank"})
-- How do I get the principal amount of asset for a Compound III account? ([get-principal-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-principal-example.js){:target="_blank"})
-- How do I calculate the interest earned by a Compound III account? ([interest-earned-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/interest-earned-example.js){:target="_blank"})
-- How do I repay my whole borrow precisely? ([repay-full-borrow-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/repay-full-borrow-example.js){:target="_blank"})
-- How do I calculate the APR of COMP rewards? ([get-apr-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/get-apr-example.js){:target="_blank"})
-- How do I find out the amount of COMP rewards currently accrued for my account? ([claim-reward-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/claim-reward-example.js){:target="_blank"})
-- How do I find out the TVL? ([tvl-example.js](https://github.com/compound-developers/compound-3-developer-faq/blob/master/examples/tvl-example.js){:target="_blank"})
-
-First install all of the repository's dependencies.
-
-```
-npm install
-```
-
-Be sure to set your JSON RPC provider URL at the top of `hardhat.config.js`. Also check the subdomain and make sure it points to the proper network.
-
-```js
-const providerUrl = 'https://eth-mainnet.alchemyapi.io/v2/__YOUR_API_KEY_HERE__';
-```
-
-Also make sure that the block number chosen to fork the chain for testing is near the latest block. This is also set in `hardhat.config.js` and can be found using the corresponding blockscan explorer website (i.e. Etherscan).
-
-```js
-const providerUrl = process.env.KOVAN_PROVIDER_URL;
-const blockNumber = 32319250;
-```
-
-Use the mocha descriptions to run subsets of tests. **This repository currently supports the Kovan deployment only. See how the `net` variable at the top of each script is used.**
-
-- To run all tests: `npm test`
-- To run a single file's tests: `npm test -- -g "Find an account's Compound III base asset interest earned"`
-  - Use the description in the top level describe block for the test file.
-- To run a single test: `npm test -- -g 'Finds the interest earned of base asset'`
-  - Use the description in the test level describe block.
+See `contracts/MyContract.sol` for Solidity examples, and also the individual JavaScript files in `examples/` for helpful use cases.
