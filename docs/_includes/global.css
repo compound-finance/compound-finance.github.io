@@ -132,6 +132,15 @@ html * {
   scroll-padding-top: 50px;
 }
 
+html body * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html body *::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: 'Haas Grot Text R', sans-serif;
   font-weight: 500;
