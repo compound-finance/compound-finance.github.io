@@ -132,7 +132,7 @@
 
     .header-menu a {
       display: block;
-      padding: 25px 0px;
+      padding: 22px 0px;
       margin: 0px auto;
       text-align: center;
       color: #141E27;
@@ -164,18 +164,25 @@
 
 <div id="header-menu" class="header-menu mobile-only">
   <ul>
-    {% if page.docs_version == 'v3' %}
+    {% if page.docs_namespace == 'v3' %}
       {% assign nav_data = site.v3_nav_data %}
       <li>
         <a href="/">
           Compound III
         </a>
       </li>
-    {% elsif page.docs_version == 'v2' %}
+    {% elsif page.docs_namespace == 'v2' %}
       {% assign nav_data = site.v2_nav_data %}
       <li>
         <a href="/v2/">
           Compound II
+        </a>
+      </li>
+    {% elsif page.docs_namespace == 'compound-js' %}
+      {% assign nav_data = site.compound_js_nav_data %}
+      <li>
+        <a href="/compound-js/">
+          Compound.js
         </a>
       </li>
     {% endif %}

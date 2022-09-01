@@ -1,8 +1,8 @@
 ---
 layout: docs-content
-title: Compound II | Docs - Governance
+title: Compound v2 Docs | Governance
 permalink: /v2/governance/
-docs_version: v2
+docs_namespace: v2
 
 ## Element ID: In-page Heading
 sidebar_nav_data:

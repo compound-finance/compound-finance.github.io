@@ -189,10 +189,12 @@
     <div class="doc-version-switcher">
 
       <div id="switch-button" class="switch-button">
-        {% if page.docs_version == 'v3' %}
+        {% if page.docs_namespace == 'v3' %}
         <span>Compound III</span>
-        {% elsif page.docs_version == 'v2' %}
-        <span>Compound II</span>
+        {% elsif page.docs_namespace == 'v2' %}
+        <span>Compound v2</span>
+        {% elsif page.docs_namespace == 'compound-js' %}
+        <span>Compound.js</span>
         {% endif %}
       </div>
       <ul id="switch-drop-menu">
@@ -203,7 +205,12 @@
         </li>
         <li>
           <a href="/v2/">
-            <span>Compound II</span>
+            <span>Compound v2</span>
+          </a>
+        </li>
+        <li>
+          <a href="/compound-js/">
+            <span>Compound.js</span>
           </a>
         </li>
       </ul>
@@ -212,10 +219,12 @@
 
     <!-- SITE WIDE nav_data IS SET IN ROOT _config.yml -->
 
-    {% if page.docs_version == 'v3' %}
+    {% if page.docs_namespace == 'v3' %}
       {% assign nav_data = site.v3_nav_data %}
-    {% elsif page.docs_version == 'v2' %}
+    {% elsif page.docs_namespace == 'v2' %}
       {% assign nav_data = site.v2_nav_data %}
+    {% elsif page.docs_namespace == 'compound-js' %}
+      {% assign nav_data = site.compound_js_nav_data %}
     {% endif %}
 
     {% for link in nav_data %}
