@@ -1,8 +1,8 @@
 ---
 layout: docs-content
-title: Compound II | Docs - API
+title: Compound v2 Docs | API
 permalink: /v2/api/
-docs_version: v2
+docs_namespace: v2
 
 ## Element ID: In-page Heading
 sidebar_nav_data:

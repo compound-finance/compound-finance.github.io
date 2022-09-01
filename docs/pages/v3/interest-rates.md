@@ -1,8 +1,8 @@
 ---
 layout: docs-content
-title: Compound III | Interest Rates
+title: Compound III Docs | Interest Rates
 permalink: /interest-rates/
-docs_version: v3
+docs_namespace: v3
 
 ## Element ID: In-page Heading
 sidebar_nav_data:

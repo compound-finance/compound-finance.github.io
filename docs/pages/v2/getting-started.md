@@ -1,8 +1,8 @@
 ---
 layout: docs-content
-title: Compound II | Docs - Getting Started
+title: Compound v2 Documentation
 permalink: /v2/
-docs_version: v2
+docs_namespace: v2
 
 ## Element ID: In-page Heading
 sidebar_nav_data:

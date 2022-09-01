@@ -16,10 +16,20 @@ v3_nav_data:
   Helper Functions: /helper-functions/
 
 v2_nav_data:
+  # Compound v2: /v2/
   cTokens: /v2/ctokens/
   Comptroller: /v2/comptroller/
   Governance: /v2/governance/
   Open Price Feed: /v2/prices/
   API: /v2/api/
-  Compound.js: /v2/compound-js/
   Security: /v2/security/
+
+compound_js_nav_data: 
+  # Compound.js: /compound-js/
+  Comet: /compound-js/comet/
+  Governance: /compound-js/governance/
+  cTokens (v2): /compound-js/ctokens/
+  Comptroller (v2): /compound-js/comptroller/
+  Price Feed (v2): /compound-js/price-feed/
+  API (v2): /compound-js/api/
+  Helpers: /compound-js/helpers/
