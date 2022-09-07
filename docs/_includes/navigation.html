@@ -242,7 +242,7 @@
 </nav>
 
 <script type="text/javascript">
-  // Tab order is determined by the array order in _config.yml
+  /* Tab order is determined by the array order in _config.yml */
 
   window.addEventListener('DOMContentLoaded', () => {
     const docsContent = document.getElementById('docs-content');
@@ -254,7 +254,7 @@
     const overflowScrollX = 'scroll-x';
     let isSidebarScrollable = false;
 
-    // On scroll, make the nav bar fixed, desktop only
+    /* On scroll, make the nav bar fixed, desktop only */
     document.addEventListener('scroll', function(e) {
       const isFixed = nav.classList.contains(fixed);
       if (window.scrollY >= nav.clientHeight && !isFixed) {
@@ -267,8 +267,8 @@
         markdownContent.style.marginTop = '0px';
       }
 
-      // allow the side nav to be scrollable
-      // but only when the user scrolls to the very bottom of the page
+      /* allow the side nav to be scrollable */
+      /* but only when the user scrolls to the very bottom of the page */
       const atBottom = markdownContent.clientHeight - window.scrollY - (docsContent.clientHeight - nav.clientHeight - header.clientHeight) === 0;
       if (atBottom) {
         isSidebarScrollable = true;
@@ -279,7 +279,7 @@
       }
     });
 
-    // Toggle for docs version switcher drop down menu
+    /* Toggle for docs version switcher drop down menu */
     const docsVersionButton = document.getElementById('switch-button');
     const docsVersionDropMenu = document.getElementById('switch-drop-menu');
     const active = 'active';
