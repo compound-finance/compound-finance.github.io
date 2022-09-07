@@ -4,6 +4,9 @@ kramdown:
   syntax_highlighter_opts:
     disable: true
 
+compress_html:
+  comments: ["<!-- ", " -->"]
+
 ## Page Name Anchor Text: Anchor HREF
 v3_nav_data:
   # Compound III: / ## This is now a toggle switch between v2 and v3 docs

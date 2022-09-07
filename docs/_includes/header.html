@@ -164,37 +164,37 @@
 
 <div id="header-menu" class="header-menu mobile-only">
   <ul>
-    {% if page.docs_namespace == 'v3' %}
-      {% assign nav_data = site.v3_nav_data %}
+    {%- if page.docs_namespace == 'v3' -%}
+      {%- assign nav_data = site.v3_nav_data -%}
       <li>
         <a href="/">
           Compound III
         </a>
       </li>
-    {% elsif page.docs_namespace == 'v2' %}
-      {% assign nav_data = site.v2_nav_data %}
+    {%- elsif page.docs_namespace == 'v2' -%}
+      {%- assign nav_data = site.v2_nav_data -%}
       <li>
         <a href="/v2/">
           Compound II
         </a>
       </li>
-    {% elsif page.docs_namespace == 'compound-js' %}
-      {% assign nav_data = site.compound_js_nav_data %}
+    {%- elsif page.docs_namespace == 'compound-js' -%}
+      {%- assign nav_data = site.compound_js_nav_data -%}
       <li>
         <a href="/compound-js/">
           Compound.js
         </a>
       </li>
-    {% endif %}
-    {% for link in nav_data %}
-      {% assign page_name = link[0] %}
-      {% assign relative_path = link[1] %}
+    {%- endif -%}
+    {%- for link in nav_data -%}
+      {%- assign page_name = link[0] -%}
+      {%- assign relative_path = link[1] -%}
       <li>
         <a href="{{ relative_path | relative_url }}">
           {{ page_name }}
         </a>
       </li>
-    {% endfor %}
+    {%- endfor -%}
   </ul>
 </div>
 

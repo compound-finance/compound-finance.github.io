@@ -147,8 +147,8 @@
 
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', (event) => {
-    // Build an address listing and copy tool for each protocol deployment
-    // Data is in the top of the markdown page file
+    /* Build an address listing and copy tool for each protocol deployment */
+    /* Data is in the top of the markdown page file */
     const deploymentsContainer = document.getElementById('networks-widget-container');
 
     const tableTemplate = document.getElementById('networks-widget-table-template');
@@ -165,16 +165,17 @@
 
       const deployments = Object.keys(deploymentsObject);
 
-      // Tabs go in here
+      /* Tabs go in here */
       const networksWidget = document.createElement('div');
       networksWidget.classList.add('networks-widget');
 
-      // Make a tab switcher in networksWidget, appended later
+      /* Make a tab switcher in networksWidget, appended later */
       const networkTabs = document.createElement('div');
       networkTabs.classList.add('network-tabs');
       networkTabs.id = 'network-tabs';
 
-      // tab switcher click event handler
+      /* tab switcher click event handler */
+
       const tabClickHandler = (buttonIndex) => {
         const networkTabsContainer = document.getElementById('network-tabs');
         const tabContentContainers = document.getElementsByClassName('network-tab-content');
@@ -187,11 +188,10 @@
         target.classList.add(activeClass);
         const tabContent = document.getElementById('network-tab-' + target.dataset.index);
         tabContent.classList.add(activeClass);
-
-      }
+      };
 
       const networkTabContainer = document.createElement('div');
-        networkTabContainer.classList.add('network-tab-content-container');
+      networkTabContainer.classList.add('network-tab-content-container');
       const activeClass = 'active';
 
       for (let i = 0; i < deployments.length; i++) {
@@ -247,10 +247,6 @@
           tbody.appendChild(row);
         }
 
-        // networkTab.appendChild(table);
-        // networkTabContainer.appendChild(networkTab);
-        // networksWidget.appendChild(networkTabContainer);
-
         networkTab.appendChild(table);
         networkTabContainer.appendChild(networkTab);
       }
@@ -261,7 +257,7 @@
       tabClickHandler(0);
     }
 
-    // Button to copy a contract address
+    /* Button to copy a contract address */
     const copyButtons = document.getElementsByClassName('copy-button');
     for (let i = 0; i < copyButtons.length; i++) {
       copyButtons[i].addEventListener('click', () => {

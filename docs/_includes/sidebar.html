@@ -97,11 +97,11 @@
     </ul>
   </div>
   <script type="text/javascript">
-    // Highlight the sidebar button as the user scrolls to that section
+    /* Highlight the sidebar button as the user scrolls to that section */
     window.addEventListener('DOMContentLoaded', (event) => {
       const active = 'active';
-      const scrollPaddingTop = 60; // Set in global.css
-      const sidebarNavData = JSON.parse('{{ page.sidebar_nav_data }}'.replace(/=>/g, ':')); // Map is supplanted as a string by Jekyll's markup template engine (Liquid)
+      const scrollPaddingTop = 60; /* Set in global.css */
+      const sidebarNavData = JSON.parse('{{ page.sidebar_nav_data }}'.replace(/=>/g, ':')); /* Map is supplanted as a string by Jekyll's markup template engine (Liquid) */
       const sectionHeaderIds = Object.keys(sidebarNavData);
       const sidebarButtons = document.getElementsByName('sidebar-button');
 
@@ -113,34 +113,34 @@
       });
       parentTopDistances[0] = -Infinity;
 
-      // use these to dynamically get and add the px offest from the top of the page
+      /* use these to dynamically get and add the px offest from the top of the page */
       const header = document.getElementById('header');
       const nav = document.getElementById('nav');
 
       function updateActiveSidebarButton(e) {
-        // Find the button that should be active at the present scroll height
+        /* Find the button that should be active at the present scroll height */
         const offset = header.getBoundingClientRect().height + nav.getBoundingClientRect().height;
         let shouldBeActiveNowIndex;
         for (let i = 0; i < parentTopDistances.length; i++) {
           const current = parentTopDistances[i] + offset;
-          const next = parentTopDistances[i+1] + offset || Infinity; // Inf for index out of range
+          const next = parentTopDistances[i+1] + offset || Infinity; /* Inf for index out of range */
           if (window.scrollY >= current && window.scrollY < next) {
             shouldBeActiveNowIndex = i;
             break;
           }
         };
 
-        // If needed, update the DOM
+        /* If needed, update the DOM */
         if (!sidebarButtons[shouldBeActiveNowIndex].classList.contains(active)) {
           sidebarButtons.forEach(b => b.classList.remove(active));
           sidebarButtons[shouldBeActiveNowIndex].classList.add(active);
         }
       }
 
-      // update the active sidebar button on page scroll event
+      /* update the active sidebar button on page scroll event */
       window.addEventListener('scroll', updateActiveSidebarButton);
 
-      // update the active sidebar button on page load
+      /* update the active sidebar button on page load */
       updateActiveSidebarButton();
     });
   </script>
