@@ -27,11 +27,11 @@ This function returns the per second supply rate as the decimal representation o
 ```
 ## If the Utilization is less than or equal to the Kink parameter
 
-SupplyRate = (InterestRateBase + InterestRateSlopeLow * Utilization) * Utilization * (1 - ReserveRate)
+SupplyRate = supplyPerSecondInterestRateBase + supplyPerSecondInterestRateSlopeLow * utilization
 
 ## Else
 
-SupplyRate = (InterestRateBase + InterestRateSlopeLow * Kink + InterestRateSlopeHigh * (Utilization - Kink)) * Utilization * (1 - ReserveRate)
+SupplyRate = supplyPerSecondInterestRateBase + supplyPerSecondInterestRateSlopeLow * supplyKink + supplyPerSecondInterestRateSlopeHigh * (utilization - supplyKink)
 ```
 
 To calculate the Compound III supply APR as a percentage, pass the current utilization to this function, and divide the result by `10 ^ 18` and multiply by the approximate number of seconds in one year and scale up by 100.
@@ -73,11 +73,11 @@ This function returns the per second borrow rate as the decimal representation o
 ```
 ## If the Utilization is less than or equal to the Kink parameter
 
-BorrowRate = InterestRateBase + InterestRateSlopeLow * Utilization
+BorrowRate = borrowPerSecondInterestRateBase + borrowPerSecondInterestRateSlopeLow * utilization
 
 ## Else
 
-BorrowRate = InterestRateBase + InterestRateSlopeLow * Kink + InterestRateSlopeHigh * (Utilization - Kink)
+BorrowRate = borrowPerSecondInterestRateBase + borrowPerSecondInterestRateSlopeLow * borrowKink + borrowPerSecondInterestRateSlopeHigh * (utilization - borrowKink)
 ```
 
 To calculate the Compound III borrow APR as a percentage, pass the current utilization to this function, and divide the result by `10 ^ 18` and multiply by the approximate number of seconds in one year and scale up by 100.
