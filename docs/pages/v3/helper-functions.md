@@ -397,11 +397,14 @@ struct Configuration {
     address baseTokenPriceFeed;
     address extensionDelegate;
 
-    uint64 kink;
-    uint64 perYearInterestRateSlopeLow;
-    uint64 perYearInterestRateSlopeHigh;
-    uint64 perYearInterestRateBase;
-    uint64 reserveRate;
+    uint64 supplyKink;
+    uint64 supplyPerYearInterestRateSlopeLow;
+    uint64 supplyPerYearInterestRateSlopeHigh;
+    uint64 supplyPerYearInterestRateBase;
+    uint64 borrowKink;
+    uint64 borrowPerYearInterestRateSlopeLow;
+    uint64 borrowPerYearInterestRateSlopeHigh;
+    uint64 borrowPerYearInterestRateBase;
     uint64 storeFrontPriceFactor;
     uint64 trackingIndexScale;
     uint64 baseTrackingSupplySpeed;
@@ -423,11 +426,14 @@ function getConfiguration(address cometProxy) external view returns (Configurati
   * `baseToken`: The address of the protocol base token smart contract.
   * `baseTokenPriceFeed`: The address of the protocol base token price feed smart contract.
   * `extensionDelegate`: The address of the delegate of extra methods that did not fit in Comet.sol (CometExt.sol).
-  * `kink`: The interest rate utilization curve kink.
-  * `perYearInterestRateSlopeLow`: The interest rate slope low bound.
-  * `perYearInterestRateSlopeHigh`: The interest rate slope high bound.
-  * `perYearInterestRateBase`: The interest rate slope base.
-  * `reserveRate`: The reserve rate that borrowers pay to the protocol reserves.
+  * `supplyKink`: The interest rate utilization of the supply side of curve kink.
+  * `supplyPerYearInterestRateSlopeLow`: The low bound interest rate slope of the supply side.
+  * `supplyPerYearInterestRateSlopeHigh`: The high bound interest rate slope of the supply side.
+  * `supplyPerYearInterestRateBase`: The interest rate slope base of the supply side.
+  * `borrowKink`: The interest rate utilization of the borrow side of curve kink.
+  * `borrowPerYearInterestRateSlopeLow`: The low bound interest rate slope of the borrow side.
+  * `borrowPerYearInterestRateSlopeHigh`: The high bound interest rate slope of the borrow side.
+  * `borrowPerYearInterestRateBase`: The interest rate slope base of the borrow side.
   * `storeFrontPriceFactor`: The fraction of the liquidation penalty that goes to buyers of collateral instead of the protocol.
   * `trackingIndexScale`: The scale for the index tracking protocol rewards.
   * `baseTrackingSupplySpeed`: The rate for protocol awards accrued to suppliers.
