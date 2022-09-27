@@ -401,7 +401,6 @@ struct Configuration {
     uint64 perYearInterestRateSlopeLow;
     uint64 perYearInterestRateSlopeHigh;
     uint64 perYearInterestRateBase;
-    uint64 reserveRate;
     uint64 storeFrontPriceFactor;
     uint64 trackingIndexScale;
     uint64 baseTrackingSupplySpeed;
