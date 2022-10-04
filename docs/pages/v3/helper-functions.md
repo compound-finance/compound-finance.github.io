@@ -19,6 +19,7 @@ sidebar_nav_data:
   get-price: Get Price
   accrue-account: Accrue Account
   get-protocol-configuration: Get Protocol Configuration
+  get-comet-factory: Get Comet Factory
   get-base-asset-market-information: Get Base Asset Market Information
   get-base-accrual-scale: Get Base Accrual Scale
   get-base-index-scale: Get Base Index Scale
