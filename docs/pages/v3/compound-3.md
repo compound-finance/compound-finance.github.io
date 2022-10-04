@@ -34,25 +34,23 @@ deployments:
       WETH: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
       UNI: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984'
       LINK: '0x514910771AF9Ca656af840dff83E8264EcF986CA'
-  Ethereum Kovan Testnet - USDC Base:
-    tab_text: Kovan USDC
-    blockscan_origin: 'https://kovan.etherscan.io/'
+  Ethereum Goerli Testnet - USDC Base:
+    tab_text: Goerli USDC
+    blockscan_origin: 'https://goerli.etherscan.io/'
     contracts:
-      cUSDCv3: '0xa7D85950E6E1bB7115c626cBB388Fa0a8C927c1c'
-      cUSDCv3 Implementation: '0x875383444366331b7266baa1c330330ab351c5b2'
-      cUSDCv3 Ext: '0x166eEC6266ff57A7Da43a1AfDb68FfCC3b87caac'
-      Configurator: '0xDb3c6Ae44FE4689f142Ed8dE1a87304249d3d5a6'
-      Configurator Implementation: '0xe60F5De591D22DB80804ac44DcCA9c16615bA00c'
-      Proxy Admin: '0x1e5Ca6D2cc41935a3c39A3f3B29FBc779A2ceFEa'
-      Comet Factory: '0xFCa21Dd5c442A2dB245DD44e7C9c3a28335a8558'
-      Rewards: '0xC694877D91A8aEfb9D95cf34393cdC0DDdAded18'
-      Bulker: '0x24cB9673158d19DE22cf4Fa747A1D30DAD60AEB5'
-      USDC: '0xb6D5769d2877a462355F9A6eCa262D8826285c7D'
-      COMP: '0xEe673239cBAc27aF34Bc39908405529E252d3c7B'
-      WBTC: '0xDcB5Daf44164efFfC20E4418216b7F7f9064692b'
-      WETH: '0xC3425E55c2C75bcdc99bD6DD0e515B0C421B60E4'
-      UNI: '0x98d07Bcb5aA9D332361beA69f4749786dD812406'
-      LINK: '0x20c5E16FEeD68F89166D20Da0dfe3CB7387BcCb3'
+      cUSDCv3: '0x3EE77595A8459e93C2888b13aDB354017B198188'
+      cUSDCv3 Implementation: '0xe27da8dd72C35C9016e72E7a6ABD7B6B71470d1F'
+      cUSDCv3 Ext: '0x7c7586C868FD81A7F496f09375df70E5A96aE7b1'
+      Configurator: '0xB28495db3eC65A0e3558F040BC4f98A0d588Ae60'
+      Configurator Implementation: '0x4d2909A575AEFd5ABAb0B9EF19647EbD297fDbB8'
+      Proxy Admin: '0xdaff430Ef11f9dE7Fef5C017D040ff3f00a44831'
+      Comet Factory: '0x1c6d7f15935D275a1521D3457dF3b9B7ee89d6Ca'
+      Rewards: '0xef9e070044d62C38D2e316146dDe92AD02CF2c2c'
+      Bulker: '0xf82AAB8ae0E7F6a2ecBfe2375841d83AeA4cb9cE'
+      USDC: '0x07865c6E87B9F70255377e024ace6630C1Eaa37F'
+      COMP: '0x3587b2F7E0E2D6166d6C14230e7Fe160252B0ba4'
+      WBTC: '0xAAD4992D949f9214458594dF92B44165Fb84dC19'
+      WETH: '0x42a71137C09AE83D8d05974960fd607d40033499'
   Avalanche Fuji Testnet - USDC Base:
     tab_text: Fuji USDC
     blockscan_origin: 'https://testnet.snowtrace.io/'

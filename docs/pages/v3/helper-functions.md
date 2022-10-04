@@ -19,6 +19,7 @@ sidebar_nav_data:
   get-price: Get Price
   accrue-account: Accrue Account
   get-protocol-configuration: Get Protocol Configuration
+  get-comet-factory: Get Comet Factory
   get-base-asset-market-information: Get Base Asset Market Information
   get-base-accrual-scale: Get Base Accrual Scale
   get-base-index-scale: Get Base Index Scale
@@ -455,6 +456,33 @@ Configuration config = configurator.getConfiguration(0xCometProxy);
 ```js
 const configurator = new ethers.Contract(contractAddress, abiJson, provider);
 const config = await configurator.callStatic.getConfiguration('0xCometProxy');
+```
+
+### Get Comet Factory
+
+This function gets the address of the Comet Factory contract.
+
+#### Configurator
+
+```solidity
+function factory(address cometProxy) public view returns (address cometFactory)
+```
+
+* `cometProxy`: The address of the Comet proxy contract.
+* `RETURNS`: The address of the Comet Factory for the specified instance of Comet.
+
+#### Solidity
+
+```solidity
+Configurator configurator = Configurator(0xConfiguratorAddress);
+CometFactory factory = configurator.factory(0xCometProxy);
+```
+
+#### Ethers.js v5.x
+
+```js
+const configurator = new ethers.Contract(contractAddress, abiJson, provider);
+const factoryAddress = await configurator.factory.getConfiguration('0xCometProxy');
 ```
 
 ### Get Base Asset Market Information
