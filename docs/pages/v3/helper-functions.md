@@ -263,9 +263,9 @@ function getAssetInfo(uint8 i) public view returns (AssetInfo memory)
 * `asset`: The address of the asset's smart contract.
 * `priceFeed`: The address of the price feed contract for this asset.
 * `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
-* `borrowCollateralFactor`: The collateral factor as an integer that represents the decimal value scaled up by `10 ^ 18`.
-* `liquidateCollateralFactor`: The liquidate collateral factor as an integer that represents the decimal value scaled up by `10 ^ 18`.
-* `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`.
+* `borrowCollateralFactor`: The borrow collateral factor is the percentage of collateral value that can be borrowed (including interest) by an account. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 650000000000000000 is 65%.
+* `liquidateCollateralFactor`: The liquidate collateral factor is the percentage of collateral value that can be borrowed (including interest) before an account becomes liquidatable. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 850000000000000000 is 85%.
+* `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 930000000000000000 means liquidation carries a 7% penalty for the account.
 * `supplyCap`: The supply cap of the asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
 
 #### Solidity
@@ -309,9 +309,9 @@ function getAssetInfoByAddress(address asset) public view returns (AssetInfo mem
 * `asset`: The address of the asset's smart contract.
 * `priceFeed`: The address of the price feed contract for this asset.
 * `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
-* `borrowCollateralFactor`: The collateral factor as an integer that represents the decimal value scaled up by `10 ^ 18`.
-* `liquidateCollateralFactor`: The liquidate collateral factor as an integer that represents the decimal value scaled up by `10 ^ 18`.
-* `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`.
+* `borrowCollateralFactor`: The borrow collateral factor is the percentage of collateral value that can be borrowed (including interest) by an account. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 650000000000000000 is 65%.
+* `liquidateCollateralFactor`: The liquidate collateral factor is the percentage of collateral value that can be borrowed (including interest) before an account becomes liquidatable. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 850000000000000000 is 85%.
+* `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 930000000000000000 means liquidation carries a 7% penalty for the account.
 * `supplyCap`: The supply cap of the asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
 
 #### Solidity
