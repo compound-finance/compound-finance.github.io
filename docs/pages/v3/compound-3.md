@@ -8,11 +8,9 @@ docs_namespace: v3
 sidebar_nav_data:
   compound-iii: Introduction
   networks: Networks
-  what-does-each-protocol-contract-do: Protocol Contracts
-  how-do-i-call-comet-methods: Calling Comet Methods
-  how-do-i-deploy-compound-iii: Deploying
+  protocol-contracts: Protocol Contracts
+  developer-resources: Developer Resources
   security: Security
-  code-examples: Code Examples
 
 deployments:
   Ethereum Mainnet - USDC Base: ## this becomes the header text
@@ -89,7 +87,7 @@ The network deployment artifacts with contract addresses are available in the [C
 
 <div id="networks-widget-container"></div>
 
-### What does each protocol contract do?
+### Protocol Contracts
 
 #### cUSDCv3
 
@@ -134,66 +132,14 @@ This is an external contract that is not integral to Comet's function. It allows
 
 In addition to supplying, borrowing, and wrapping, the bulker contract can also transfer collateral within the protocol and claim rewards.
 
-### How do I get the latest contract addresses?
+## Developer Resources
 
-Use the spider functionality in the Compound III repository. The addresses can then be found in the `deployments/` folder.
+The following developer guides and code repositories serve as resources for community members building on Compound. They detail the protocol deployment process, construction of new features, and code examples for implementing external apps that depend on Compound III as infrastructure.
 
-```
-git clone https://github.com/compound-finance/comet.git
-cd comet/
-yarn
-npx hardhat spider --deployment mainnet
-```
-
-### How do I call Comet methods?
-
-Compound III has several contract files that make up the public Comet interface. The address of the Compound III upgradable proxy contract is used to call methods in Comet.sol, CometExt.sol, and CometCore.sol.
-
-To get the ABI for Comet, run the build process in the [Compound III repository](https://github.com/compound-finance/comet). Look for the artifact of `CometInterface.sol` in the generated Hardhat artifacts folder.
-
-```bash
-## First, run the build command in the Compound III project repository
-yarn run build
-```
-
-```js
-// Reference the Hardhat artifact in  the Compound III project build files
-const abi = require('./artifacts/contracts/CometInterface.sol/CometInterface.json').abi;
-
-const comet = new ethers.Contract(cometAddress, abi, provider);
-```
-
-```solidity
-pragma solidity 0.8.13;
-
-import "./CometInterface.sol";
-
-contract MyContract { //...
-```
-
-### How do I deploy Compound III?
-
-To deploy to a public blockchain, see the `yarn deploy` instructions in the [README file of the Comet repository](https://github.com/compound-finance/comet#multi-chain-support). Be sure to first use the `spider` command to pull in the network's existing configuration and latest contract addresses.
-
-Compound III can be deployed to EVM compatible blockchains. Here is an example for deploying to a locally run Ethereum node.
-
-```
-## In one command line window:
-git clone https://github.com/compound-finance/comet.git
-cd comet/
-yarn install
-
-## This runs the ethereum node locally
-## The development mnemonic or private keys can be configured in hardhat.config.ts
-npx hardhat node
-
-## In another command line window:
-cd comet/
-
-## This deploys to the running local ethereum node
-## It also writes deployment information to ./deployments/localhost/
-yarn deploy --network localhost
-```
+1. [Compound III Developer FAQ](https://github.com/compound-developers/compound-3-developer-faq){:target="_blank"}
+2. [Scenarios, Migrations, and Workflows](https://www.comp.xyz/t/compound-iii-scenarios-migrations-and-workflows/3771){:target="_blank"}
+3. [Creating a Compound III Liquidator](https://www.comp.xyz/t/the-compound-iii-liquidation-guide/3452){:target="_blank"}
+{: .mega-ordered-list }
 
 ## Security
 
@@ -208,9 +154,3 @@ The Compound protocol has been reviewed & audited by [OpenZeppelin](https://open
 1. [Compound III Audit by OpenZeppelin](https://blog.openzeppelin.com/compound-iii-audit/){:target="_blank"}
 2. [Compound III Security Audit by ChainSecurity](https://chainsecurity.com/security-audit/compound-iii/){:target="_blank"}
 {: .mega-ordered-list }
-
-### Code Examples
-
-The [Compound III Developer FAQ](https://github.com/compound-developers/compound-3-developer-faq){:target="_blank"} repository contains code examples for frequent Compound III developer tasks.
-
-See `contracts/MyContract.sol` for Solidity examples, and also the individual JavaScript files in `examples/` for helpful use cases.
