@@ -134,7 +134,7 @@ In addition to supplying, borrowing, and wrapping, the bulker contract can also 
 
 ## Developer Resources
 
-The following developer guides and code repositories serve as resources for community members building on Compound. They detail the protocol deployment process, construction of new features, and code examples for implementing external apps that depend on Compound III as infrasturcture.
+The following developer guides and code repositories serve as resources for community members building on Compound. They detail the protocol deployment process, construction of new features, and code examples for implementing external apps that depend on Compound III as infrastructure.
 
 1. [Compound III Developer FAQ](https://github.com/compound-developers/compound-3-developer-faq){:target="_blank"}
 2. [Scenarios, Migrations, and Workflows](https://www.comp.xyz/t/compound-iii-scenarios-migrations-and-workflows/3771){:target="_blank"}
