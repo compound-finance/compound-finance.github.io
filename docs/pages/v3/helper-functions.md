@@ -238,7 +238,7 @@ const [ principal, baseTrackingIndex, baseTrackingAccrued, assetsIn ] = await co
 
 ### Get Asset Info
 
-This function returns asset information such as the collateral factors, asset price feed address, and more. In order to create a loop to fetch information for every asset, use the `numAssets` constant, which indicates the total number of supported assets.
+This function returns collateral asset information such as the collateral factors, asset price feed address, and more. In order to create a loop to fetch information for every asset, use the `numAssets` constant, which indicates the current total number of supported collateral assets.
 
 #### Comet
 
@@ -257,16 +257,16 @@ struct AssetInfo {
 function getAssetInfo(uint8 i) public view returns (AssetInfo memory)
 ```
 
-* `i`: The index of the asset based on the order it was added to the protocol. The index begins at `0`.
-* `RETURNS`: The asset information as a struct called `AssetInfo`.
-* `offset`: The index of the asset based on the order it was added to the protocol.
+* `i`: The index of the collateral asset based on the order it was added to the protocol. The index begins at `0`.
+* `RETURNS`: The collateral asset information as a struct called `AssetInfo`.
+* `offset`: The index of the collateral asset based on the order it was added to the protocol.
 * `asset`: The address of the asset's smart contract.
-* `priceFeed`: The address of the price feed contract for this asset.
-* `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
+* `priceFeed`: The address of the price feed contract for this collateral asset.
+* `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the collateral asset's smart contract.
 * `borrowCollateralFactor`: The borrow collateral factor is the percentage of collateral value that can be borrowed (including interest) by an account. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 650000000000000000 is 65%.
 * `liquidateCollateralFactor`: The liquidate collateral factor is the percentage of collateral value that can be borrowed (including interest) before an account becomes liquidatable. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 850000000000000000 is 85%.
 * `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 930000000000000000 means liquidation carries a 7% penalty for the account.
-* `supplyCap`: The supply cap of the asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
+* `supplyCap`: The supply cap of the collateral asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
 
 #### Solidity
 
@@ -284,7 +284,7 @@ const infoObject = await comet.callStatic.getAssetInfo(0);
 
 ### Get Asset Info By Address
 
-This function returns asset information of a specific asset.
+This function returns information of a specific collateral asset.
 
 #### Comet
 
@@ -303,16 +303,16 @@ struct AssetInfo {
 function getAssetInfoByAddress(address asset) public view returns (AssetInfo memory)
 ```
 
-* `address`: The address of the asset.
-* `RETURNS`: The asset information as a struct called `AssetInfo`.
-* `offset`: The index of the asset based on the order it was added to the protocol.
-* `asset`: The address of the asset's smart contract.
-* `priceFeed`: The address of the price feed contract for this asset.
-* `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
+* `address`: The address of the collateral asset.
+* `RETURNS`: The collateral asset information as a struct called `AssetInfo`.
+* `offset`: The index of the collateral asset based on the order it was added to the protocol.
+* `asset`: The address of the collateral asset's smart contract.
+* `priceFeed`: The address of the price feed contract for this collateral asset.
+* `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the collateral asset's smart contract.
 * `borrowCollateralFactor`: The borrow collateral factor is the percentage of collateral value that can be borrowed (including interest) by an account. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 650000000000000000 is 65%.
 * `liquidateCollateralFactor`: The liquidate collateral factor is the percentage of collateral value that can be borrowed (including interest) before an account becomes liquidatable. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 850000000000000000 is 85%.
 * `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 930000000000000000 means liquidation carries a 7% penalty for the account.
-* `supplyCap`: The supply cap of the asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
+* `supplyCap`: The supply cap of the collateral asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
 
 #### Solidity
 

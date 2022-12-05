@@ -125,9 +125,9 @@ DiscountFactor = StoreFrontPriceFactor * (1e18 - Asset.LiquidationFactor)
 function quoteCollateral(address asset, uint baseAmount) public view returns (uint)
 ```
 
-* `address`:  The address of the asset which is being queried.
-* `amount`:  The amount of the asset to be sold.
-* `RETURN`: No return, reverts on error.
+* `address`:  The address of the asset which is being quoted.
+* `amount`:  The amount of the base asset used to purchase discounted collateral, as an integer, scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `RETURN`: The amount of collateral asset that can be purchased using the base asset, as an integer, scaled up by 10 to the "decimals" integer in the collateral asset's contract.
 
 #### Solidity
 
@@ -175,11 +175,11 @@ const [ numAbsorbs, numAbsorbed, approxSpend ] = await comet.callStatic.liquidat
 
 ## Reserves
 
-Reserves are a balance of the base asset, stored internally in the protocol, which automatically protect users from bad debt. Reserves can also be withdrawn or used through the governance process.
+Reserves are a balance of the base or collateral asset, stored internally in the protocol, which automatically protect users from bad debt. Reserves can also be withdrawn or used through the governance process.
 
 Reserves are generated in two ways: the difference in interest paid by borrowers, and earned by suppliers of the base asset, accrue as reserves into the protocol. Second, the [liquidation](#liquidation) process uses, and can add to, protocol reserves based on the [target reserve](#target-reserves) level set by governance.
 
-### Get Reserves
+### Get Base Asset Reserves
 
 This function returns the amount of protocol reserves for the base asset as an integer.
 
@@ -203,6 +203,32 @@ uint reserves = comet.getReserves();
 ```js
 const comet = new ethers.Contract(contractAddress, abiJson, provider);
 const reserves = await comet.callStatic.getReserves();
+```
+
+### Get Collateral Asset Reserves
+
+This function returns the amount of protocol reserves for the specified collateral asset as an integer.
+
+#### Comet
+
+```solidity
+function getCollateralReserves(address asset) public view returns (uint)
+```
+
+* `RETURNS`: The amount of collateral asset stored as reserves in the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the collateral asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint reserves = comet.getCollateralReserves(0xCollateralAsset);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const reserves = await comet.callStatic.getCollateralReserves(collateralAssetAddress);
 ```
 
 ### Target Reserves
