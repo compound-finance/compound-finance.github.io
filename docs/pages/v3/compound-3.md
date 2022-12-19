@@ -139,6 +139,7 @@ The following developer guides and code repositories serve as resources for comm
 1. [Compound III Developer FAQ](https://github.com/compound-developers/compound-3-developer-faq){:target="_blank"}
 2. [Scenarios, Migrations, and Workflows](https://www.comp.xyz/t/compound-iii-scenarios-migrations-and-workflows/3771){:target="_blank"}
 3. [Creating a Compound III Liquidator](https://www.comp.xyz/t/the-compound-iii-liquidation-guide/3452){:target="_blank"}
+4. [Building a Comet Extension](https://www.comp.xyz/t/building-a-comet-extension/3854){:target="_blank"}
 {: .mega-ordered-list }
 
 ## Security
