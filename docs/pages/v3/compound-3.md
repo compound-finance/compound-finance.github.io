@@ -55,11 +55,11 @@ deployments:
     blockscan_origin: 'https://goerli.etherscan.io/'
     contracts:
       cWETHv3: '0x9A539EEc489AAA03D588212a164d0abdB5F08F5F'
-      cWETHv3 Implementation: '0x704D23b70b7444c3EB309aE8EaB61D8F883A653D'
+      cWETHv3 Implementation: '0x2dc23f58736724C40b1168d05ddAE37d45A99F87'
       cWETHv3 Ext: '0x58753122C7dC72a6e223818719AFbf26f324ce84'
       Configurator: '0xB28495db3eC65A0e3558F040BC4f98A0d588Ae60'
       Configurator Implementation: '0x4d2909A575AEFd5ABAb0B9EF19647EbD297fDbB8'
-      Proxy Admin: '0xbc97Dc3F2aAA6B93955Ded70e86Bf02cd756CEA7'
+      Proxy Admin: '0xdaff430Ef11f9dE7Fef5C017D040ff3f00a44831'
       Comet Factory: '0x1c6d7f15935D275a1521D3457dF3b9B7ee89d6Ca'
       Rewards: '0xef9e070044d62C38D2e316146dDe92AD02CF2c2c'
       Bulker: '0x93817B582248F563D5d19923Bd5B92b045794668'
