@@ -187,7 +187,7 @@ The Annual Percentage Yield (APY) for supplying or borrowing in each market can 
 Rate = cToken.supplyRatePerBlock(); // Integer
 Rate = 37893566
 ETH Mantissa = 1 * 10 ^ 18 (ETH has 18 decimal places)
-Blocks Per Day = 7200 (15 seconds per block)
+Blocks Per Day = 7200 (12 seconds per block)
 Days Per Year = 365
 
 APY = ((((Rate / ETH Mantissa * Blocks Per Day + 1) ^ Days Per Year)) - 1) * 100
@@ -197,7 +197,7 @@ Here is an example of calculating the supply and borrow APY with Web3.js JavaScr
 
 ```js
 const ethMantissa = 1e18;
-const blocksPerDay = 7200; // 15 seconds per block
+const blocksPerDay = 7200; // 12 seconds per block
 const daysPerYear = 365;
 
 const cToken = new web3.eth.Contract(cEthAbi, cEthAddress);
