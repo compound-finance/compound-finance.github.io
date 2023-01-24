@@ -32,6 +32,22 @@ deployments:
       WETH: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
       UNI: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984'
       LINK: '0x514910771AF9Ca656af840dff83E8264EcF986CA'
+  Ethereum Mainnet - WETH Base:
+    tab_text: Mainnet WETH
+    blockscan_origin: 'https://etherscan.io/'
+    contracts:
+      cWETHv3: '0xA17581A9E3356d9A858b789D68B4d866e593aE94'
+      cWETHv3 Implementation: '0x1a7E64b593a9B8796e88a7489a2CEb6d079C850d'
+      cWETHv3 Ext: '0xe2C1F54aFF6b38fD9DF7a69F22cB5fd3ba09F030'
+      Configurator: '0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3'
+      Configurator Implementation: '0xcFC1fA6b7ca982176529899D99af6473aD80DF4F'
+      Proxy Admin: '0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779'
+      Comet Factory: '0xa7F7De6cCad4D83d81676717053883337aC2c1b4'
+      Rewards: '0x1B0e765F6224C21223AeA2af16c1C46E38885a40'
+      Bulker: '0xa397a8C2086C554B531c02E29f3291c9704B00c7'
+      cbETH: '0xBe9895146f7AF43049ca1c1AE358B0541Ea49704'
+      wstETH: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0'
+      WETH: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
   Ethereum Goerli Testnet - USDC Base:
     tab_text: Goerli USDC
     blockscan_origin: 'https://goerli.etherscan.io/'
