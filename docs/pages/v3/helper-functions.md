@@ -12,7 +12,6 @@ sidebar_nav_data:
   total-collateral: Total Collateral
   supplied-base-balance: Supplied Base Balance
   borrow-balance: Borrow Balance
-  base-balance-as-integer: Base Balance as Integer
   account-data: Account Data
   get-asset-info: Get Asset Info
   get-asset-info-by-address: Get Asset Info By Address
@@ -169,33 +168,6 @@ uint owed = comet.borrowBalanceOf(0xAccount);
 ```js
 const comet = new ethers.Contract(contractAddress, abiJson, provider);
 const owed = await comet.callStatic.borrowBalanceOf('0xAccount');
-```
-
-### Base Balance as Integer
-
-This function returns the current balance of base asset for a specified account in the protocol, including interest. If the account is currently borrowing, the return value will be negative. If the account is currently supplying the base asset, the return value will be positive.
-
-#### Comet
-
-```solidity
-function baseBalanceOf(address account) external view returns (int104)
-```
-
-* `account`: The address of the account in which to retrieve the base asset balance.
-* `RETURNS`: The balance of the base asset, including interest, that the specified account is due as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
-
-#### Solidity
-
-```solidity
-Comet comet = Comet(0xCometAddress);
-uint baseBalance = comet.baseBalanceOf(0xAccount);
-```
-
-#### Ethers.js v5.x
-
-```js
-const comet = new ethers.Contract(contractAddress, abiJson, provider);
-const baseBalance = await comet.callStatic.baseBalanceOf('0xAccount');
 ```
 
 ### Account Data
