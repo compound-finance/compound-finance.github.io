@@ -56,6 +56,14 @@ Each time an immutable parameter is set via governance proposal, a new Comet imp
 
 To set specific protocol parameters in a proposal, the Timelock must call all of the relevant set methods on the *Configurator* contract, followed by `deployAndUpgradeTo` on the *CometProxyAdmin* contract.
 
+## Governance on Other EVM Chains
+
+The Compound III protocol can be deployed on any EVM chain. The deployment must have access to on-chain asset prices and messages passed from Ethereum Mainnet. The [Timelock](/v2/governance/#timelock) on Mainnet is the administrator of all community sanctioned instances of Compound III.
+
+Each deployment outside of Mainnet needs to have a [Bridge Receiver](https://github.com/compound-finance/comet/blob/main/contracts/bridges/BaseBridgeReceiver.sol) and Local Timelock contract on its chain. Governance proposals executed on Ethereum must be read by the chain's bridge and published to the Bridge Receiver. Local Timelocks have an additional delay of 1 day before Comet admin functions can be called.
+
+Compound III instance initializations are logged on-chain using the [ENS text record system](https://docs.ens.domains/ens-improvement-proposals/ensip-5-text-records). The text record can only be modified by a Governance proposal. It can be viewed at [v3-additional-grants.compound-community-licenses.eth](https://app.ens.domains/name/v3-additional-grants.compound-community-licenses.eth/details) when the browser network is set to Ethereum Mainnet.
+
 ### Set Comet Factory
 
 This function sets the official contract address of the Comet factory. The only acceptable caller is the Governor.
