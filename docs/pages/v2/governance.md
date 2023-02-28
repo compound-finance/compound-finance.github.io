@@ -592,7 +592,7 @@ const tx = await gov.methods.castVoteBySig(proposalId, 1, v, r, s).send({});
 
 ## Timelock
 
-Each protocol contract is controlled by the Timelock contract, which can modify system parameters, logic, and contracts in a 'time-delayed, opt-out' upgrade pattern. The Timelock has a hard-coded minimum delay of 2 days, which is the least amount of notice possible for a governance action.
+Each protocol contract is controlled by the [Timelock contract](https://github.com/compound-finance/compound-protocol/blob/master/contracts/Timelock.sol){:target="_blank"}, which can modify system parameters, logic, and contracts in a 'time-delayed, opt-out' upgrade pattern. The Timelock has a hard-coded minimum delay which is the least amount of notice possible for a governance action.
 The Timelock contract queues and executes proposals that have passed a Governance vote.
 
 ## Pause Guardian
