@@ -16,6 +16,10 @@ sidebar_nav_data:
 
 # Compound API
 
+## WARNING
+The Compound v2 REST API for reading structured data is being **permanently shut down on April 15th, 2023**. <br /><br />All of the data returned from this API is publicly available as read-only data from the Ethereum blockchain. <br /><br />To access the source of the data, you can do so using a node provider with history enabled, from [alchemy.com](https://www.alchemy.com/){:target="_blank"} or [infura.io](https://www.infura.io/){:target="_blank"}. These providers have a free usage tier for users with minimal API usage.
+{: .warning }
+
 ## Introduction
 
 The Compound API input and output formats are specified by [Protocol Buffers](https://developers.google.com/protocol-buffers/){:target="_blank"}, known colloquially as protobufs. Unlike typical protobufs endpoints, the Compound endpoints support JSON for input and output in addition to the protobufs binary format. To use JSON in both the input and the output, specify the headers `"Content-Type: application/json"` and `"Accept: application/json"` in the request.
