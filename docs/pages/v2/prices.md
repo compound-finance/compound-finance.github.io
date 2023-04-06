@@ -45,7 +45,7 @@ The Chainlink price feeds submit prices for each cToken through an individual Va
 | WBTC ValidatorProxy  | [0x4846efc15CC725456597044e6267ad0b3B51353E](https://etherscan.io/address/0x4846efc15CC725456597044e6267ad0b3B51353E){:target="_blank"} |
 | YFI ValidatorProxy   | [0xBa4319741782151D2B1df4799d757892EFda4165](https://etherscan.io/address/0xBa4319741782151D2B1df4799d757892EFda4165){:target="_blank"} |
 | ZRX ValidatorProxy   | [0x5c5db112c98dbe5977A4c37AD33F8a4c9ebd5575](https://etherscan.io/address/0x5c5db112c98dbe5977A4c37AD33F8a4c9ebd5575){:target="_blank"} |
-| UniswapAnchoredView  | [0x65c816077C29b557BEE980ae3cC2dCE80204A0C5](https://etherscan.io/address/0x65c816077C29b557BEE980ae3cC2dCE80204A0C5){:target="_blank"} |
+| UniswapAnchoredView  | [0x50ce56A3239671Ab62f185704Caedf626352741e](https://etherscan.io/address/0x50ce56A3239671Ab62f185704Caedf626352741e){:target="_blank"} |
 
 ## Architecture
 
