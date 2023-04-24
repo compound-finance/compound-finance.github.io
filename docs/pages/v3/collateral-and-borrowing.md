@@ -11,7 +11,7 @@ sidebar_nav_data:
   withdraw-or-borrow: Withdraw or Borrow
   collateral-balance: Collateral Balance
   borrow-collateralization: Borrow Collateralization
-  min-borrow-balance: Minimum Borrow Balance
+  minimum-borrow-balance: Minimum Borrow Balance
 ---
 
 # Collateral & Borrowing
