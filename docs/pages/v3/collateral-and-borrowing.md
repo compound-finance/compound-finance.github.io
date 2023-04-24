@@ -164,3 +164,29 @@ bool isCollateralized = comet.isBorrowCollateralized(0xAccount);
 const comet = new ethers.Contract(contractAddress, abiJson, provider);
 const isCollateralized = await comet.callStatic.isBorrowCollateralized('0xAccount');
 ```
+
+### Minimum Borrow Balance
+
+This function returns the minimum borrow balance allowed in the base asset. An account's initial borrow must be equal to or greater than this value. Subsequent borrows may be of any size.
+
+#### Comet
+
+```solidity
+function baseBorrowMin() public view returns (uint256)
+```
+
+* `RETURNS`: The minimum borrow balance allowed by the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the base asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint baseBorrowMin = comet.baseBorrowMin();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const baseBorrowMin = await comet.callStatic.baseBorrowMin();
+```
