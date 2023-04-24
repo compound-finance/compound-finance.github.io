@@ -167,7 +167,7 @@ const isCollateralized = await comet.callStatic.isBorrowCollateralized('0xAccoun
 
 ### Minimum Borrow Balance
 
-This function returns the minimum borrow balance allowed in the base asset. An account's initial borrow must be equal to or greater than this value. Subsequent borrows may be of any size.
+This function returns the minimum borrow balance allowed in the base asset. An account's initial borrow size must be equal to or greater than this value. Subsequent borrows may be of any size.
 
 #### Comet
 
