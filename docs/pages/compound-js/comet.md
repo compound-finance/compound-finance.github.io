@@ -31,7 +31,7 @@ sidebar_nav_data:
   get-asset-info: Get Asset Info
   get-asset-info-by-address: Get Asset Info By Address
   get-asset-info-by-symbol: Get Asset Info By Symbol
-  get-supported-network-names: Get Supported Network Names
+  get-supported-deployments: Get Supported Network Names
   get-supported-collaterals: Get Supported Collaterals
   get-base-asset-name: Get Base Asset Name
 ---
@@ -56,16 +56,17 @@ Supplies the user's Ethereum asset to Compound Comet.
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 // Ethers.js overrides are an optional last parameter
 // const trxOptions = { gasLimit: 250000, mantissa: false };
 
 (async function() {
 
-  const me = '0xSenderAddress';
+  const me = '0xSenderAddress'; // can be compound._provider.address
 
   console.log('Supplying ETH to Compound Comet...');
-  const trx = await compound.comet.supply(
+  const trx = await comet.supply(
     me, // supplied asset comes from this account
     me, // supplied asset is credited to this account's balance
     Compound.WBTC,
@@ -87,10 +88,11 @@ Allows or disallows an address to withdraw or transfer on behalf of the Sender's
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 (async function () {
   const address = '0xManagerAddressHere';
-  const trx = await compound.comet.allow(address, true);
+  const trx = await comet.allow(address, true);
   console.log('Ethers.js transaction object', trx);
 })().catch(console.error);
 ```
@@ -110,9 +112,10 @@ Enable or disable a Comet account manager using an EIP-712 signature.
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 (async function() {
-  const allowTx = await compound.comet.allowBySig(
+  const allowTx = await comet.allowBySig(
     '0xaAaAaAaaAaAaAaaAaAAAAAAAAaaaAaAaAaaAaaAa',
     '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
     true,
@@ -139,10 +142,11 @@ Create an EIP-712 signature for enabling or disabling a Comet account manager. A
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 (async () => {
 
-  const allowSignature = await compound.comet.createAllowSignature(
+  const allowSignature = await comet.createAllowSignature(
     '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
     true
   );
@@ -164,6 +168,7 @@ Transfers an asset to another account within Compound Comet.
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 // Ethers.js overrides are an optional last parameter
 // const trxOptions = { gasLimit: 250000 };
@@ -171,7 +176,7 @@ const compound = new Compound(window.ethereum);
 (async function() {
 
   console.log('Transferring WETH in Compound Comet...');
-  const trx = await compound.comet.transfer(
+  const trx = await comet.transfer(
     true, // on behalf of the sender
     destinationAddress,
     Compound.WETH,
@@ -194,6 +199,7 @@ Withdraws an asset from Compound Comet from the sender's account to itself.
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 // Ethers.js overrides are an optional last parameter
 // const trxOptions = { gasLimit: 250000 };
@@ -201,7 +207,7 @@ const compound = new Compound(window.ethereum);
 (async function() {
 
   console.log('Withdrawing DAI from my account...');
-  const trx = await compound.comet.withdraw(
+  const trx = await comet.withdraw(
     Compound.DAI,
     10,
     trxOptions
@@ -223,6 +229,7 @@ Withdraws an asset from Compound Comet from the sender's account to another.
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 // Ethers.js overrides are an optional last parameter
 // const trxOptions = { gasLimit: 250000 };
@@ -230,7 +237,7 @@ const compound = new Compound(window.ethereum);
 (async function() {
 
   console.log('Withdrawing DAI from my account to dst account...');
-  const trx = await compound.comet.withdrawTo(
+  const trx = await comet.withdrawTo(
     dst, // destination, the address that the withdrawn asset is sent to
     Compound.DAI,
     10,
@@ -254,6 +261,7 @@ Withdraws an asset from Compound Comet from one account to another. The caller m
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 // Ethers.js overrides are an optional last parameter
 // const trxOptions = { gasLimit: 250000 };
@@ -261,7 +269,7 @@ const compound = new Compound(window.ethereum);
 (async function() {
 
   console.log('Withdrawing DAI from src account to dst account...');
-  const trx = await compound.comet.withdrawFrom(
+  const trx = await comet.withdrawFrom(
     src, // source address, sender must be an allowed manager for the address
     dst, // destination, the address that the withdrawn asset is sent to
     Compound.DAI,
@@ -278,12 +286,14 @@ const compound = new Compound(window.ethereum);
 Gets the supply rate. This method returns the current supply rate as the decimal representation of a percentage scaled up by 10 ^ 18.
 
 - `[utilization]` (string \| number \| BigNumber) A number representing the utilization rate in which to get the corresponding supply rate. The current utilization rate can be fetched by using `Compound.comet.getUtilization()`.
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `RETURN` (string) Returns a string of the numeric value of the supply rate.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const supplyRate = await Compound.comet.getSupplyRate();
+  const supplyRate = await comet.getSupplyRate();
   console.log('Supply Rate', supplyRate);
 })().catch(console.error);
 ```
@@ -293,12 +303,14 @@ Gets the supply rate. This method returns the current supply rate as the decimal
 Gets the borrow rate. This method returns the current borrow rate as the decimal representation of a percentage scaled up by 10 ^ 18.
 
 - `[utilization]` (string \| number \| BigNumber) A number representing the utilization rate in which to get the corresponding supply rate. The current utilization rate can be fetched by using `Compound.comet.getUtilization()`.
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `RETURN` (string) Returns a string of the numeric value of the borrow rate.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const borrowRate = await Compound.comet.getBorrowRate();
+  const borrowRate = await comet.getBorrowRate();
   console.log('Borrow Rate', borrowRate);
 })().catch(console.error);
 ```
@@ -307,12 +319,14 @@ Gets the borrow rate. This method returns the current borrow rate as the decimal
 
 Gets the utilization rate.
 
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `RETURN` (string) Returns the current protocol utilization as a percentage as a decimal, represented by an unsigned integer, scaled up by 10 ^ 18.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const utilization = await Compound.comet.getUtilization();
+  const utilization = await comet.getUtilization();
   console.log('Utilization', utilization);
 })().catch(console.error);
 ```
@@ -321,18 +335,20 @@ Gets the utilization rate.
 
 This method triggers the liquidation of one or many underwater accounts.
 
+- `absorber` (string) The account that is issued liquidator points during successful execution.
 - `accounts` (string \| string[]) A string of one or an array of many addresses of underwater accounts.
 - `[options]` (CallOptions) Call options and Ethers.js overrides for the transaction.
 - `RETURN` (object) Returns an Ethers.js transaction object of the absorb transaction.
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 (async function () {
   const addresses = [
     '0xUnderwaterAccountAddress1',
   ];
-  const trx = await compound.comet.absorb(addresses);
+  const trx = await comet.absorb(addresses);
   console.log('Ethers.js transaction object', trx);
 })().catch(console.error);
 ```
@@ -341,12 +357,14 @@ const compound = new Compound(window.ethereum);
 
 Gets the Comet protocol reserves for the base asset as an integer.
 
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `RETURN` (string) Returns the current protocol reserves in in the base asset as an unsigned integer, scaled up by 10 to the "decimals" integer in the base asset's contract.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const reserves = await Compound.comet.getReserves();
+  const reserves = await comet.getReserves();
   console.log('Reserves', reserves);
 })().catch(console.error);
 ```
@@ -355,12 +373,14 @@ Gets the Comet protocol reserves for the base asset as an integer.
 
 Gets the Comet protocol target reserves.
 
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `RETURN` (string) Returns the protocol target reserves in the base asset as an unsigned integer, scaled up by 10 to the "decimals" integer in the base asset's contract.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const target = await Compound.comet.targetReserves();
+  const target = await comet.targetReserves();
   console.log('Target Reserves', target);
 })().catch(console.error);
 ```
@@ -369,14 +389,16 @@ Gets the Comet protocol target reserves.
 
 Gets the collateralization of an account as a boolean.
 
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `account` (string) The account address as a string.
 - `RETURN` (boolean) Returns the collateralization of the account as a boolean.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
   const address = '0xAccountThatBorrows';
-  const isCollateralized = await Compound.comet.isBorrowCollateralized(address);
+  const isCollateralized = await comet.isBorrowCollateralized(address);
   console.log('Is Collateralized', isCollateralized);
 })().catch(console.error);
 ```
@@ -385,14 +407,16 @@ Gets the collateralization of an account as a boolean.
 
 Checks if the passed account is presently liquidatable.
 
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `account` (string) The account address as a string.
 - `RETURN` (boolean) Returns the ability to liquidate the account as a boolean.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
   const address = '0xAccountThatBorrows';
-  const isLiquidatable = await Compound.comet.isLiquidatable(address);
+  const isLiquidatable = await comet.isLiquidatable(address);
   console.log('Is Liquidatable', isLiquidatable);
 })().catch(console.error);
 ```
@@ -403,13 +427,15 @@ Gets the price of the asset that is passed to it in USD as an unsigned integer, 
 
 - `asset` (string) A string of the name of the asset.
 - `baseAmount` (number \| string \| BigNumber) A string, number, or BigNumber object of the amount of the base asset to get a quote. Use the `mantissa` boolean in the `options` parameter to indicate if this value is scaled up (so there are no decimals) or in its natural scale.
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `[options]` (CallOptions) Call options and Ethers.js overrides for the transaction.
 - `RETURN` (string) Returns the price of the asset that is passed to it in USD as an unsigned integer, scaled up by 10 ^ 6.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const price = await Compound.comet.quoteCollateral(Compound.UNI, '1000000000');
+  const price = await comet.quoteCollateral(Compound.UNI, '1000000000');
   console.log('Price quote of 1000 base asset of UNI', price);
 })().catch(console.error);
 ```
@@ -428,13 +454,14 @@ Buys discounted collateral from the protocol. This collateral is available after
 
 ```js
 const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
 
 (async function() {
 
   const me = '0xRecipient';
 
   console.log('Buying collateral...');
-  const trx = await compound.comet.buyCollateral(
+  const trx = await comet.buyCollateral(
     Compound.WBTC,
     1,
     10000
@@ -449,13 +476,15 @@ const compound = new Compound(window.ethereum);
 
 Gets the price of the asset that is passed to it in USD as an unsigned integer, scaled up by 10 ^ 8.
 
-- `asset` (string) A string of the name of the asset.
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
+- `asset` (string) A string of the symbol of the asset.
 - `RETURN` (string) Returns the price of the asset that is passed to it in USD as an unsigned integer, scaled up by 10 ^ 8.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const price = await Compound.comet.getPrice(Compound.WBTC);
+  const price = await comet.getPrice(Compound.WBTC);
   console.log('Price of WBTC', price);
 })().catch(console.error);
 ```
@@ -465,13 +494,15 @@ Gets the price of the asset that is passed to it in USD as an unsigned integer, 
 Gets the current borrow balance of an account as an unsigned integer. If the account has a non-negative base asset balance, it will return 0.
 
 - `account` (string) The account address as a string.
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `RETURN` (string) Returns the collateralization of the account as an integer.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
   const address = '0xAccountThatBorrows';
-  const bal = await Compound.comet.borrowBalanceOf(address);
+  const bal = await comet.borrowBalanceOf(address);
   console.log('Borrow Balance', bal.toString());
 })().catch(console.error);
 ```
@@ -480,15 +511,17 @@ Gets the current borrow balance of an account as an unsigned integer. If the acc
 
 Gets the current balance of the collateral asset for the specified account.
 
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `account` (string) The account address as a string.
 - `asset` (string) The name of the collateral asset.
 - `RETURN` (string) Returns the collateral balance as an integer.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
   const address = '0xAccountThatSupplied';
-  const balance = await Compound.comet.collateralBalanceOf(address, Compound.WBTC);
+  const balance = await comet.collateralBalanceOf(address, Compound.WBTC);
   console.log('Collateral balance', balance);
 })().catch(console.error);
 ```
@@ -498,12 +531,14 @@ Gets the current balance of the collateral asset for the specified account.
 Gets the stored information for a supported asset.
 
 - `assetIndex` (number \| string \| BigNumber) The index of the asset in the array in the Comet contract.
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `RETURN` (AssetInfo) Returns a tuple of the asset's information.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const assetInfo = await Compound.comet.getAssetInfo(2);
+  const assetInfo = await comet.getAssetInfo(2);
   console.log('Asset Info', assetInfo);
 })().catch(console.error);
 ```
@@ -513,12 +548,14 @@ Gets the stored information for a supported asset.
 Gets the stored information for a supported asset.
 
 - `_address` (string) The contract address of the supported asset.
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `RETURN` (AssetInfo) Returns a tuple of the asset's information.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const assetInfo = await Compound.comet.getAssetInfoByAddress('0xContract');
+  const assetInfo = await comet.getAssetInfoByAddress('0xContract');
   console.log('Asset Info', assetInfo);
 })().catch(console.error);
 ```
@@ -528,30 +565,33 @@ Gets the stored information for a supported asset.
 Gets the stored information for a supported asset.
 
 - `symbol` (string) The symbol of the supported asset.
-- `[_provider]` (Provider \| string) An Ethers.js provider or valid network name string.
 - `RETURN` (AssetInfo) Returns a tuple of the asset's information.
 
 ```js
+const compound = new Compound(window.ethereum);
+const comet = compound.comet.MAINNET_USDC();
+
 (async function () {
-  const assetInfo = await Compound.comet.getAssetInfoBySymbol(Compound.WETH);
+  const assetInfo = await comet.getAssetInfoBySymbol(Compound.WETH);
   console.log('Asset Info', assetInfo);
 })().catch(console.error);
 ```
 
-## Get Supported Network Names
+## Get Supported Deployments
 
-Gets an array of the supported Compound III network names.
+Gets an array of the supported Compound III deployment names.
 
-- `RETURN` (string[]) Returns an array of strings of the network names.
+- `RETURN` (string[]) Returns an array of strings that are used to refer to each Compound III deployment.
 
 ```js
-const networkNames = Compound.comet.getSupportedNetworkNames();
+const networkNames = Compound.comet.getSupportedDeployments();
 ```
 
 ## Get Supported Collaterals
 
 Gets an array of the supported collateral assets in the specified Comet instance.
 
+- `deployment` (string?) The specific deployment in which to get supported collaterals. The key is usually `${network}_${baseAssetSymbol}`. Use `getSupportedDeployments` to get proper values for this parameter. Defaults to cUSDCv3 on Ethereum Mainnet (`mainnet_usdc`) if nothing is passed.
 - `RETURN` (string[]) Returns an array of strings of the asset names.
 
 ```js
@@ -562,6 +602,7 @@ const collaterals = Compound.comet.getSupportedCollaterals();
 
 Gets the name of the base asset in the specified instance.
 
+- `deployment` (string?) The specific deployment in which to get supported collaterals. The key is usually `${network}_${baseAssetSymbol}`. Use `getSupportedDeployments` to get proper values for this parameter. Defaults to cUSDCv3 on Ethereum Mainnet (`mainnet_usdc`) if nothing is passed.
 - `RETURN` (string) Returns a string of the base asset name.
 
 ```js

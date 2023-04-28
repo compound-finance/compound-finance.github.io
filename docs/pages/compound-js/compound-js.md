@@ -50,6 +50,13 @@ var compound = new Compound('mainnet' {
 });
 ```
 
+Compound III (Comet) Object Initialization. This accepts the same parameters as the `Compound` constructor. An error will be thrown initially and whenever a method is called if the provider does not match the network of the specific Comet deployment. The SDK constants as well as a method in the Comet documentation note the Comet deployments that Compound.js supports.
+
+```js
+var compound = new Compound(window.ethereum);
+var comet = compound.comet.MAINNET_USDC(); // provider from `compound` will be used unless on is explicitly passed
+```
+
 ## Ethereum Methods
 
 These methods facilitate interactions with the Ethereum blockchain.
