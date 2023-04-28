@@ -42,7 +42,7 @@ console.log('cETH ABI: ', Compound.util.getAbi('cEther'));
 
 ## Get Network Name With Chain ID
 
-Gets the name of an Ethereum network based on its chain ID.
+Gets the name of an Ethereum network based on its chain ID. This method returns information only for chains that have a Compound deployment.
 
 - `chainId` (string) The chain ID of the network.
 - `RETURN` (string) Returns the name of the Ethereum network.
