@@ -31,7 +31,7 @@ sidebar_nav_data:
   get-asset-info: Get Asset Info
   get-asset-info-by-address: Get Asset Info By Address
   get-asset-info-by-symbol: Get Asset Info By Symbol
-  get-supported-network-names: Get Supported Network Names
+  get-supported-deployments: Get Supported Network Names
   get-supported-collaterals: Get Supported Collaterals
   get-base-asset-name: Get Base Asset Name
 ---
@@ -97,7 +97,7 @@ const comet = compound.comet.MAINNET_USDC();
 })().catch(console.error);
 ```
 
-## Allow By Sig
+## Allow By Signature
 
 Enable or disable a Comet account manager using an EIP-712 signature.
 
