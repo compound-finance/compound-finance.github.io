@@ -18,6 +18,7 @@ GEM
 
 PLATFORMS
   universal-darwin-21
+  universal-darwin-22
 
 DEPENDENCIES
   jekyll-watch

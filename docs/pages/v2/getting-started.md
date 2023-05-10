@@ -208,3 +208,21 @@ const borrowApy = (((Math.pow((borrowRatePerBlock / ethMantissa * blocksPerDay) 
 console.log(`Supply APY for ETH ${supplyApy} %`);
 console.log(`Borrow APY for ETH ${borrowApy} %`);
 ```
+
+### Calculating the APR Using Rate Per Block
+
+Here is an example of calculating the supply and borrow APR with Web3.js JavaScript:
+
+```js
+const ethMantissa = 1e18;
+const blocksPerYear = 5 * 60 * 24 * 365; // 12 seconds per block
+const daysPerYear = 365;
+
+const cToken = new web3.eth.Contract(cZrxAbi, cZrxAddress);
+const supplyRatePerBlock = await cToken.methods.supplyRatePerBlock().call();
+const borrowRatePerBlock = await cToken.methods.borrowRatePerBlock().call();
+const supplyApr = supplyRatePerBlock / ethMantissa * blocksPerYear * 100;
+const borrowApr = borrowRatePerBlock / ethMantissa * blocksPerYear * 100;
+console.log(`Supply APR ${(supplyApr).toFixed(3)} %`);
+console.log(`Borrow APR ${(borrowApr).toFixed(3)} %`);
+```
