@@ -695,5 +695,5 @@ bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
 const bulker = new ethers.Contract(contractAddress, abiJson, provider);
 // ERC-20 `approve` the bulker. Then Comet `allow` the bulker to be a manager before calling `invoke`.
 const supplyAssetCalldata = ethers.utils.defaultAbiCoder.encode(['address', 'address', 'uint'], ['0xAccount', '0xAsset', amount]);
-await bulker.invoke([ 1 ], [ supplyAssetCalldata ]);
+await bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
 ```
