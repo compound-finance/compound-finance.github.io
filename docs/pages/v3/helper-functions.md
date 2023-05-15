@@ -648,22 +648,34 @@ This function allows callers to pass an array of action codes and calldatas that
 #### Bulker
 
 ```solidity
-uint public constant ACTION_SUPPLY_ASSET = 1;
-uint public constant ACTION_SUPPLY_ETH = 2;
-uint public constant ACTION_TRANSFER_ASSET = 3;
-uint public constant ACTION_WITHDRAW_ASSET = 4;
-uint public constant ACTION_WITHDRAW_ETH = 5;
+/// @notice The action for supplying an asset to Comet
+bytes32 public constant ACTION_SUPPLY_ASSET = "ACTION_SUPPLY_ASSET";
 
-function invoke(uint[] calldata actions, bytes[] calldata data) external payable
+/// @notice The action for supplying a native asset (e.g. ETH on Ethereum mainnet) to Comet
+bytes32 public constant ACTION_SUPPLY_NATIVE_TOKEN = "ACTION_SUPPLY_NATIVE_TOKEN";
+
+/// @notice The action for transferring an asset within Comet
+bytes32 public constant ACTION_TRANSFER_ASSET = "ACTION_TRANSFER_ASSET";
+
+/// @notice The action for withdrawing an asset from Comet
+bytes32 public constant ACTION_WITHDRAW_ASSET = "ACTION_WITHDRAW_ASSET";
+
+/// @notice The action for withdrawing a native asset from Comet
+bytes32 public constant ACTION_WITHDRAW_NATIVE_TOKEN = "ACTION_WITHDRAW_NATIVE_TOKEN";
+
+/// @notice The action for claiming rewards from the Comet rewards contract
+bytes32 public constant ACTION_CLAIM_REWARD = "ACTION_CLAIM_REWARD";
+
+function invoke(bytes32[] calldata actions, bytes[] calldata data) external payable
 ```
 
-* `actions`: An array of integers that correspond to the actions defined in the contract constructor.
+* `actions`: An array of bytes32 strings that correspond to the actions defined in the contract.
 * `data`: An array of calldatas for each action to be called in the invoke transaction.
   * Supply Asset, Withdraw Asset, Transfer Asset
     * `to`: The destination address, within or external to the protocol.
     * `asset`: The address of the ERC-20 asset contract.
     * `amount`: The amount of the asset as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
-  * Supply ETH, Withdraw ETH (or equivalent native chain token)
+  * Supply Native, Withdraw Native (native chain token like ETH on Ethereum Mainnet)
     * `to`: The destination address, within or external to the protocol.
     * `amount`: The amount of the native token as an unsigned integer scaled up by 10 to the number of decimals of precision of the native EVM token.
 * `RETURN`: No return, reverts on error.
@@ -674,7 +686,7 @@ function invoke(uint[] calldata actions, bytes[] calldata data) external payable
 Bulker bulker = Bulker(0xBulkerAddress);
 // ERC-20 `approve` the bulker. Then Comet `allow` the bulker to be a manager before calling `invoke`.
 bytes memory supplyAssetCalldata = (abi.encode('0xAccount', '0xAsset', amount);
-bulker.invoke([ 1 ], [ supplyAssetCalldata ]);
+bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
 ```
 
 #### Ethers.js v5.x
@@ -683,5 +695,5 @@ bulker.invoke([ 1 ], [ supplyAssetCalldata ]);
 const bulker = new ethers.Contract(contractAddress, abiJson, provider);
 // ERC-20 `approve` the bulker. Then Comet `allow` the bulker to be a manager before calling `invoke`.
 const supplyAssetCalldata = ethers.utils.defaultAbiCoder.encode(['address', 'address', 'uint'], ['0xAccount', '0xAsset', amount]);
-await bulker.invoke([ 1 ], [ supplyAssetCalldata ]);
+await bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
 ```
