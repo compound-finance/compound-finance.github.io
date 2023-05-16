@@ -672,10 +672,12 @@ function invoke(bytes32[] calldata actions, bytes[] calldata data) external paya
 * `actions`: An array of bytes32 strings that correspond to the actions defined in the contract.
 * `data`: An array of calldatas for each action to be called in the invoke transaction.
   * Supply Asset, Withdraw Asset, Transfer Asset
+    * `comet`: The address of the Comet instance to interact with.
     * `to`: The destination address, within or external to the protocol.
     * `asset`: The address of the ERC-20 asset contract.
     * `amount`: The amount of the asset as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
   * Supply Native, Withdraw Native (native chain token like ETH on Ethereum Mainnet)
+    * `comet`: The address of the Comet instance to interact with.
     * `to`: The destination address, within or external to the protocol.
     * `amount`: The amount of the native token as an unsigned integer scaled up by 10 to the number of decimals of precision of the native EVM token.
 * `RETURN`: No return, reverts on error.
@@ -685,7 +687,7 @@ function invoke(bytes32[] calldata actions, bytes[] calldata data) external paya
 ```solidity
 Bulker bulker = Bulker(0xBulkerAddress);
 // ERC-20 `approve` the bulker. Then Comet `allow` the bulker to be a manager before calling `invoke`.
-bytes memory supplyAssetCalldata = (abi.encode('0xAccount', '0xAsset', amount);
+bytes memory supplyAssetCalldata = (abi.encode('0xCometAddress', '0xAccount', '0xAsset', amount);
 bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
 ```
 
@@ -694,6 +696,6 @@ bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
 ```js
 const bulker = new ethers.Contract(contractAddress, abiJson, provider);
 // ERC-20 `approve` the bulker. Then Comet `allow` the bulker to be a manager before calling `invoke`.
-const supplyAssetCalldata = ethers.utils.defaultAbiCoder.encode(['address', 'address', 'uint'], ['0xAccount', '0xAsset', amount]);
+const supplyAssetCalldata = ethers.utils.defaultAbiCoder.encode(['address', 'address', 'address', 'uint'], ['0xCometAddress', '0xAccount', '0xAsset', amount]);
 await bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
 ```
