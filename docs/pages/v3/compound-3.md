@@ -138,7 +138,7 @@ deployments:
       USDC: '0x4fed3d02D095f7D92AF161311fA6Ef23dc8dA040'
       WAVAX: '0xA2c25E48269e3f89A60b2CC8e02AAfEeB3BAb761'
       WBTC.e: '0xfa78400e01Fc9da830Cb2F13B3e7E18F813414Ff'
-  Polygon Mumbai - USDC Base:
+  Polygon Mumbai Testnet - USDC Base:
     tab_text: Mumbai USDC
     blockscan_origin: 'https://mumbai.polygonscan.com/'
     contracts:
@@ -159,7 +159,7 @@ deployments:
       WETH: '0xE1e67212B1A4BF629Bdf828e08A3745307537ccE'
       WBTC: '0x4B5A0F4E00bC0d6F16A593Cae27338972614E713'
       WMATIC: '0xfec23a9E1DBA805ADCF55E0338Bf5E03488FC7Fb'
-  Arbitrum Goerli - USDC Base:
+  Arbitrum Goerli Testnet - USDC Base:
     tab_text: Arbitrum Goerli USDC
     blockscan_origin: 'https://goerli.arbiscan.io/'
     contracts:
@@ -179,6 +179,43 @@ deployments:
       USDC: '0x8FB1E3fC51F3b789dED7557E680551d93Ea9d892'
       WBTC: '0x22d5e2dE578677791f6c90e0110Ec629be9d5Fb5'
       WETH: '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3'
+  Base Goerli Testnet - USDC Base:
+    tab_text: Base Goerli USDC
+    blockscan_origin: 'https://goerli.basescan.org/'
+    contracts:
+      cUSDCv3: '0xe78Fc55c884704F9485EDa042fb91BfE16fD55c1'
+      cUSDCv3 Implementation: '0x9C04963BEFF61f1Cab6DBc269b812519F50FAa81'
+      cUSDCv3 Ext: '0xe50130de46983aF049D2c2a79215fa6E65De0e7c'
+      Configurator: '0xB1C86B6f4BA3c997dAC601671418F6B026aaA5b2'
+      Configurator Implementation: '0x82329247d14851ef744700bbd2dD974a06Ea2a21'
+      Proxy Admin: '0x2a176755195c43B40A89b3A6507524F2A61E4de6'
+      Comet Factory: '0xAC9fC1a9532BC92a9f33eD4c6Ce4A7a54930F376'
+      Timelock: '0x1eAa9321305492934D1ee01851f4B28F1fC79b0a'
+      Bridge Receiver: '0xdf983449591838C8660cAd7cE08C65b030A43bbE'
+      Rewards: '0x0818165C053D325985d87F4b8646b3062C72C385'
+      Bulker: '0x684108D64Ac3BdE77c617bDEbDBC9afaE6562676'
+      Faucet: '0x54fcBea987d18E027a827eE25e1943Cf0874Eba8'
+      USDC: '0x31D3A7711a74b4Ec970F50c3eaf1ee47ba803A95'
+      cbETH: '0x7c6b91D9Be155A6Db01f749217d76fF02A7227F2'
+      WETH: '0x4200000000000000000000000000000000000006'
+  Base Goerli Testnet - WETH Base:
+    tab_text: Base Goerli WETH
+    blockscan_origin: 'https://goerli.basescan.org/'
+    contracts:
+      cWETHv3: '0xED94f3052638620fE226a9661ead6a39C2a265bE'
+      cWETHv3 Implementation: '0x24995C0dCf95d9e3a647ce7fFb4E8c9270694a05'
+      cWETHv3 Ext: '0x8252dE126255a6dD4409b4fF1002713933743019'
+      Configurator: '0xB1C86B6f4BA3c997dAC601671418F6B026aaA5b2'
+      Configurator Implementation: '0x82329247d14851ef744700bbd2dD974a06Ea2a21'
+      Proxy Admin: '0x2a176755195c43B40A89b3A6507524F2A61E4de6'
+      Comet Factory: '0xAC9fC1a9532BC92a9f33eD4c6Ce4A7a54930F376'
+      Timelock: '0x1eAa9321305492934D1ee01851f4B28F1fC79b0a'
+      Bridge Receiver: '0xdf983449591838C8660cAd7cE08C65b030A43bbE'
+      Rewards: '0x0818165C053D325985d87F4b8646b3062C72C385'
+      Bulker: '0x684108D64Ac3BdE77c617bDEbDBC9afaE6562676'
+      Faucet: '0x54fcBea987d18E027a827eE25e1943Cf0874Eba8'
+      WETH: '0x4200000000000000000000000000000000000006'
+      cbETH: '0x7c6b91D9Be155A6Db01f749217d76fF02A7227F2'
 ---
 
 # Compound III
