@@ -88,6 +88,24 @@ deployments:
       USDC: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8'
       WBTC: '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'
       WETH: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
+  Base - USDbC Base:
+    tab_text: Base USDbC
+    blockscan_origin: 'https://basescan.org/'
+    contracts:
+      cUSDbCv3: '0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf'
+      cUSDbCv3 Implementation: '0x75c07e9DF5B6EB30f6A40Fb124794aB0e0996322'
+      cUSDbCv3 Ext: '0x2F9E3953b2Ef89fA265f2a32ed9F80D00229125B'
+      Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
+      Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
+      Proxy Admin: '0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d'
+      Comet Factory: '0x27C348936400791b7350d80Fb81Bc61Ad68dF4AE'
+      Timelock: '0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02'
+      Bridge Receiver: '0x18281dfC4d00905DA1aaA6731414EABa843c468A'
+      Rewards: '0x123964802e6ABabBE1Bc9547D72Ef1B69B00A6b1'
+      Bulker: '0x78D0677032A35c63D142a48A2037048871212a8C'
+      USDbC: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA'
+      cbETH: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22'
+      WETH: '0x4200000000000000000000000000000000000006
   Ethereum Goerli Testnet - USDC Base:
     tab_text: Goerli USDC
     blockscan_origin: 'https://goerli.etherscan.io/'
