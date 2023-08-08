@@ -105,7 +105,7 @@ deployments:
       Bulker: '0x78D0677032A35c63D142a48A2037048871212a8C'
       USDbC: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA'
       cbETH: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22'
-      WETH: '0x4200000000000000000000000000000000000006
+      WETH: '0x4200000000000000000000000000000000000006'
   Ethereum Goerli Testnet - USDC Base:
     tab_text: Goerli USDC
     blockscan_origin: 'https://goerli.etherscan.io/'
