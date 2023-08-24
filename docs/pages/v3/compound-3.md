@@ -26,7 +26,7 @@ deployments:
       Comet Factory: '0xa7F7De6cCad4D83d81676717053883337aC2c1b4'
       Rewards: '0x1B0e765F6224C21223AeA2af16c1C46E38885a40'
       Bulker: '0x74a81F84268744a40FEBc48f8b812a1f188D80C3'
-      Governance: '0xc0Da02939E1441F497fd74F78cE7Decb17B66529'
+      Governor: '0xc0Da02939E1441F497fd74F78cE7Decb17B66529'
       Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
       USDC: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
       COMP: '0xc00e94Cb662C3520282E6f5717214004A7f26888'
@@ -47,7 +47,7 @@ deployments:
       Comet Factory: '0xa7F7De6cCad4D83d81676717053883337aC2c1b4'
       Rewards: '0x1B0e765F6224C21223AeA2af16c1C46E38885a40'
       Bulker: '0xa397a8C2086C554B531c02E29f3291c9704B00c7'
-      Governance: '0xc0Da02939E1441F497fd74F78cE7Decb17B66529'
+      Governor: '0xc0Da02939E1441F497fd74F78cE7Decb17B66529'
       Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
       cbETH: '0xBe9895146f7AF43049ca1c1AE358B0541Ea49704'
       COMP: '0xc00e94Cb662C3520282E6f5717214004A7f26888'
@@ -74,8 +74,8 @@ deployments:
       WBTC: '0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6'
       WETH: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619'
       WMATIC: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270'
-  Arbitrum - USDC Base:
-    tab_text: Arbitrum USDC
+  Arbitrum - USDC.e Base (Bridged):
+    tab_text: Arbitrum USDC.e
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cUSDCv3: '0xA5EDBDD9646f8dFF606d7448e414884C7d905dCA'
@@ -92,10 +92,31 @@ deployments:
       ARB: '0x912ce59144191c1204e64559fe8253a0e49e6548'
       COMP: '0x354A6dA3fcde098F8389cad84b0182725c6C91dE'
       GMX: '0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a'
-      USDC: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8'
+      USDC.e: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8'
       WBTC: '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'
       WETH: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
-  Base - USDbC Base:
+  Arbitrum - USDC Base:
+    tab_text: Arbitrum USDC (Native)
+    blockscan_origin: 'https://arbiscan.io/'
+    contracts:
+      cUSDCv3: '0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf'
+      cUSDCv3 Implementation: '0xF25212E676D1F7F89Cd72fFEe66158f541246445'
+      cUSDCv3 Ext: '0x1B2E88cC7365d90e7E81392432482925BD8437E9'
+      Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
+      Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
+      Proxy Admin: '0xD10b40fF1D92e2267D099Da3509253D9Da4D715e'
+      Comet Factory: '0xe2AA5194E45B043AfdD6E98F467c0B1c13484ae9'
+      Timelock: '0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A'
+      Bridge Receiver: '0x42480C37B249e33aABaf4c22B20235656bd38068'
+      Rewards: '0x88730d254A2f7e6AC8388c3198aFd694bA9f7fae'
+      Bulker: '0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d'
+      ARB: '0x912ce59144191c1204e64559fe8253a0e49e6548'
+      COMP: '0x354A6dA3fcde098F8389cad84b0182725c6C91dE'
+      GMX: '0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a'
+      USDC: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831'
+      WBTC: '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'
+      WETH: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
+  Base - USDbC Base (Bridged):
     tab_text: Base USDbC
     blockscan_origin: 'https://basescan.org/'
     contracts:
