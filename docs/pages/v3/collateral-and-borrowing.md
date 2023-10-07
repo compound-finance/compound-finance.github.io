@@ -16,7 +16,7 @@ sidebar_nav_data:
 
 # Collateral & Borrowing
 
-Users can add collateral assets to their account using the *[supply](#supply)* function. Collateral can only be added if the market is below its *[supplyCap](../helper-functions/#get-asset-info-by-address)*, which limits the protocol's risk exposure to collateral assets.
+Users can add collateral assets to their account using the *[supply](#supply)* function. Collateral can only be added if the market is below its *[supplyCap](../helper-functions/#get-asset-info-by-address)*, which limits the protocol's risk exposure to collateral assets. The base asset is not a collateral asset, and therefore does not contribute to the user's borrowing capacity.
 
 Each collateral asset increases the user's borrowing capacity, based on the asset's *[borrowCollateralFactor](../helper-functions/#get-asset-info-by-address)*. The borrowing collateral factors are percentages that represent the portion of collateral value that can be borrowed.
 
