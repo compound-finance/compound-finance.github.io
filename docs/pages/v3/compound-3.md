@@ -154,6 +154,24 @@ deployments:
       WETH: '0x4200000000000000000000000000000000000006'
       cbETH: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22'
       COMP: '0x9e1028F5F1D5eDE59748FFceE5532509976840E0'
+  Ethereum Sepolia Testnet - USDC Base:
+    tab_text: Sepolia USDC
+    blockscan_origin: 'https://sepolia.etherscan.io/'
+    contracts:
+      cUSDCv3: '0xAec1F48e02Cfb822Be958B68C7957156EB3F0b6e'
+      cUSDCv3 Implementation: '0xE3E0106227181958aBfbA960C13d0Fe52c733265'
+      cUSDCv3 Ext: '0xdCbDb7306c6Ff46f77B349188dC18cEd9DF30299'
+      Configurator: '0xc28aD44975C614EaBe0Ed090207314549e1c6624'
+      Configurator Implementation: '0x2b03014AeEe8DD46de4464da41e7dF9BD154cd66'
+      Proxy Admin: '0x9e9fA093aa60db36c4E8a01EBf4718095b6e37f0'
+      Comet Factory: '0x91663d91795049C3D4afC85A7d0AdB15238750aa'
+      Rewards: '0x8bF5b658bdF0388E8b482ED51B14aef58f90abfD'
+      Bulker: '0x157c001bb1F8b33743B14483Be111C961d8e11dE'
+      Faucet: '0x68793eA49297eB75DFB4610B68e076D2A5c7646C'
+      USDC: '0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238'
+      COMP: '0xA6c8D1c55951e8AC44a0EaA959Be5Fd21cc07531'
+      WBTC: '0xa035b9e130F2B1AedC733eEFb1C67Ba4c503491F'
+      WETH: '0x2D5ee574e710219a521449679A4A7f2B43f046ad'
   Ethereum Goerli Testnet - USDC Base:
     tab_text: Goerli USDC
     blockscan_origin: 'https://goerli.etherscan.io/'
