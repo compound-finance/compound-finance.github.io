@@ -173,6 +173,25 @@ deployments:
       COMP: '0xA6c8D1c55951e8AC44a0EaA959Be5Fd21cc07531'
       WBTC: '0xa035b9e130F2B1AedC733eEFb1C67Ba4c503491F'
       WETH: '0x2D5ee574e710219a521449679A4A7f2B43f046ad'
+  Ethereum Sepolia Testnet - WETH Base:
+    tab_text: Sepolia WETH
+    blockscan_origin: 'https://sepolia.etherscan.io/'
+    contracts:
+      cWETHv3: '0x2943ac1216979aD8dB76D9147F64E61adc126e96'
+      cWETHv3 Implementation: '0x149F2D15f3822C0C935a9c99ddfb804611586cAc'
+      cWETHv3 Ext: '0xD0b7551E480c101fa9cf3fe0887cCBe59f16216B'
+      Configurator: '0xc28aD44975C614EaBe0Ed090207314549e1c6624'
+      Configurator Implementation: '0x2b03014AeEe8DD46de4464da41e7dF9BD154cd66'
+      Proxy Admin: '0x9e9fA093aa60db36c4E8a01EBf4718095b6e37f0'
+      Comet Factory: '0x91663d91795049C3D4afC85A7d0AdB15238750aa'
+      Rewards: '0x8bF5b658bdF0388E8b482ED51B14aef58f90abfD'
+      Bulker: '0xaD0C044425D81a2E223f4CE699156900fead2Aaa'
+      Faucet: '0x68793eA49297eB75DFB4610B68e076D2A5c7646C'
+      cbETH: '0xb9fa8F5eC3Da13B508F462243Ad0555B46E028df'
+      COMP: '0xA6c8D1c55951e8AC44a0EaA959Be5Fd21cc07531'
+      stETH: '0x3e3FE7dBc6B4C189E7128855dD526361c49b40Af'
+      wstETH: '0xB82381A3fBD3FaFA77B3a7bE693342618240067b'
+      WETH: '0x2D5ee574e710219a521449679A4A7f2B43f046ad'
   Ethereum Goerli Testnet - USDC Base:
     tab_text: Goerli USDC
     blockscan_origin: 'https://goerli.etherscan.io/'
@@ -208,21 +227,6 @@ deployments:
       cbETH: '0x2459f06a13ea0997d623224F362519bE71507258'
       wstETH: '0x4942BBAf745f235e525BAff49D31450810EDed5b'
       WETH: '0x42a71137C09AE83D8d05974960fd607d40033499'
-  Avalanche Fuji Testnet - USDC Base:
-    tab_text: Fuji USDC
-    blockscan_origin: 'https://testnet.snowtrace.io/'
-    contracts:
-      cUSDCv3: '0x59BF4753899C20EA152dEefc6f6A14B2a5CC3021'
-      cUSDCv3 Implementation: '0x8ebf4Be4DB56a0273aE4e6f3Ae49A8aC2990304C'
-      cUSDCv3 Ext: '0xcbfF67C09C90d7710BbD3046fD3556b1383170C7'
-      Configurator: '0x8c083632099CBA949EA61A3044DB1B5A27818b20'
-      Configurator Implementation: '0x215bbC327e77D4060dc7049eE299bdA3Ce48773B'
-      Proxy Admin: '0x13046bAa7fB74dcd6f3f7A460092E11F5f91e419'
-      Comet Factory: '0x0BFDf42b35b4D7e6E450c50b21f658b4E1216943'
-      Rewards: '0x7CA364f9C4257FE2E22d503dD0E3f1c1Db41591d'
-      USDC: '0x4fed3d02D095f7D92AF161311fA6Ef23dc8dA040'
-      WAVAX: '0xA2c25E48269e3f89A60b2CC8e02AAfEeB3BAb761'
-      WBTC.e: '0xfa78400e01Fc9da830Cb2F13B3e7E18F813414Ff'
   Polygon Mumbai Testnet - USDC Base:
     tab_text: Mumbai USDC
     blockscan_origin: 'https://mumbai.polygonscan.com/'
