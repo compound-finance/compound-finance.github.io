@@ -118,6 +118,25 @@ deployments:
       USDC: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831'
       WBTC: '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'
       WETH: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
+  Base - USDC Base (Native):
+    tab_text: Base USDC
+    blockscan_origin: 'https://basescan.org/'
+    contracts:
+      cUSDCv3: '0xb125E6687d4313864e53df431d5425969c15Eb2F'
+      cUSDCv3 Implementation: '0x23684254bc5077c79F166E77D22F516f86d8023a'
+      cUSDCv3 Ext: '0x3bac64185786922292266AA92a58cf870D694E2a'
+      Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
+      Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
+      Proxy Admin: '0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d'
+      Comet Factory: '0x27C348936400791b7350d80Fb81Bc61Ad68dF4AE'
+      Timelock: '0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02'
+      Bridge Receiver: '0x18281dfC4d00905DA1aaA6731414EABa843c468A'
+      Rewards: '0x123964802e6ABabBE1Bc9547D72Ef1B69B00A6b1'
+      Bulker: '0x78D0677032A35c63D142a48A2037048871212a8C'
+      USDC: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+      cbETH: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22'
+      COMP: '0x9e1028F5F1D5eDE59748FFceE5532509976840E0'
+      WETH: '0x4200000000000000000000000000000000000006'
   Base - USDbC Base (Bridged):
     tab_text: Base USDbC
     blockscan_origin: 'https://basescan.org/'
