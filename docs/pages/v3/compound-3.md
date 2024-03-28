@@ -174,6 +174,25 @@ deployments:
       WETH: '0x4200000000000000000000000000000000000006'
       cbETH: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22'
       COMP: '0x9e1028F5F1D5eDE59748FFceE5532509976840E0'
+  Scroll - USDC Base:
+    tab_text: Scroll USDC
+    blockscan_origin: 'https://scrollscan.com/'
+    contracts:
+      cUSDCv3: '0xB2f97c1Bd3bf02f5e74d13f02E3e26F93D77CE44'
+      cUSDCv3 Implementation: '0x487D668AbaFD140A634C657E544Fe752Db727295'
+      cUSDCv3 Ext: '0x27E24C49f95DfF7E231eF1C2849F760cDF25a5Ad'
+      Configurator: '0xECAB0bEEa3e5DEa0c35d3E69468EAC20098032D7'
+      Configurator Implementation: '0x77831F8997De34ead958DA207e43e4be70771C79'
+      Proxy Admin: '0x87A27b91f4130a25E9634d23A5B8E05e342bac50'
+      Comet Factory: '0x85Bfa13eB2BC22A742Ca552566131d31677Bd41e'
+      Timelock: '0xF6013e80E9e6AC211Cc031ad1CE98B3Aa20b73E4'
+      Bridge Receiver: '0xC6bf5A64896D679Cf89843DbeC6c0f5d3C9b610D'
+      Rewards: '0x70167D30964cbFDc315ECAe02441Af747bE0c5Ee'
+      Bulker: '0x53C6D04e3EC7031105bAeA05B36cBc3C987C56fA'
+      COMP: '0x643e160a3C3E2B7eae198f0beB1BfD2441450e86'
+      USDC: '0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4'
+      wstETH: '0xf610A9dfB7C89644979b4A0f27063E9e7d7Cda32'
+      WETH: '0x5300000000000000000000000000000000000004'
   Ethereum Sepolia Testnet - USDC Base:
     tab_text: Sepolia USDC
     blockscan_origin: 'https://sepolia.etherscan.io/'
