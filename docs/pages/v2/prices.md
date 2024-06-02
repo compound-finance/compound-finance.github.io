@@ -21,7 +21,7 @@ sidebar_nav_data:
 
 The Open Price Feed accounts price data for the Compound protocol. The protocol's Comptroller contract uses it as a source of truth for prices. Prices are updated by [Chainlink Price Feeds](https://data.chain.link/){:target="_blank"}. The codebase is hosted on [GitHub](https://github.com/compound-finance/open-oracle){:target="_blank"}, and maintained by the community.
 
-The Compound Protocol uses a View contract ("Price Feed") which verifies that reported prices fall within an acceptable bound of the time-weighted average price of the token/ETH pair on [Uniswap v2](https://uniswap.org/), a sanity check referred to as the Anchor price.
+The Compound Protocol uses a View contract ("Price Feed") which verifies that reported prices fall within an acceptable bound of the time-weighted average price of the token/ETH pair on [Uniswap v3](https://uniswap.org/), a sanity check referred to as the Anchor price.
 
 The Chainlink price feeds submit prices for each cToken through an individual ValidatorProxy contract. Each ValidatorProxy is the only valid reporter for the underlying asset price. The contracts can be found on-chain as follows:
 
