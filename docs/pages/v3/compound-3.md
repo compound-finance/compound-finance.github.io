@@ -136,6 +136,7 @@ deployments:
       COMP: '0x354A6dA3fcde098F8389cad84b0182725c6C91dE'
       rETH: '0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8'
       wstETH: '0x5979D7b546E38E414F7E9822514be443A4800529'
+      WETH: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1'
   Base - USDC Base (Native):
     tab_text: Base USDC
     blockscan_origin: 'https://basescan.org/'
@@ -249,6 +250,7 @@ deployments:
       OP: '0x4200000000000000000000000000000000000042'
       WETH: '0x4200000000000000000000000000000000000006'
       WBTC: '0x68f180fcCe6836688e9084f035309E29Bf0A2095'
+      USDT: '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58'
   Ethereum Sepolia Testnet - USDC Base:
     tab_text: Sepolia USDC
     blockscan_origin: 'https://sepolia.etherscan.io/'
