@@ -118,6 +118,25 @@ deployments:
       USDC: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831'
       WBTC: '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'
       WETH: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
+  Arbitrum - WETH base:
+    tab_text: Arbitrum WETH
+    blockscan_origin: 'https://arbiscan.io/'
+    contracts:
+      cWETHv3: '0x6f7D514bbD4aFf3BcD1140B7344b32f063dEe486'
+      cWETHv3 Implementation: '0x8df378453ff9deffa513367cdf9b3b53726303e9'
+      cWETHv3 Ext: '0x5404872d8f2e24b230EC9B9eC64E3855F637FB93'
+      Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
+      Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
+      Proxy Admin: '0xD10b40fF1D92e2267D099Da3509253D9Da4D715e'
+      Comet Factory: '0xe2AA5194E45B043AfdD6E98F467c0B1c13484ae9'
+      Timelock: '0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A'
+      Bridge Receiver: '0x42480C37B249e33aABaf4c22B20235656bd38068'
+      Rewards: '0x88730d254A2f7e6AC8388c3198aFd694bA9f7fae'
+      Bulker: '0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d'
+      COMP: '0x354A6dA3fcde098F8389cad84b0182725c6C91dE'
+      rETH: '0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8'
+      wstETH: '0x5979D7b546E38E414F7E9822514be443A4800529'
+      WETH: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1'
   Base - USDC Base (Native):
     tab_text: Base USDC
     blockscan_origin: 'https://basescan.org/'
@@ -212,6 +231,26 @@ deployments:
       WETH: '0x4200000000000000000000000000000000000006'
       WBTC: '0x68f180fcCe6836688e9084f035309E29Bf0A2095'
       COMP: '0x7e7d4467112689329f7E06571eD0E8CbAd4910eE'
+  Optimism - USDT Base:
+    tab_text: Optimism USDT
+    blockscan_origin: 'https://optimistic.etherscan.io/'
+    contracts:
+      cUSDTv3: '0x995E394b8B2437aC8Ce61Ee0bC610D617962B214'
+      cUSDTv3 Implementation: '0xF7C866a35448f28397e35425B8E2DD655D1c00e0'
+      cUSDTv3 Ext: '0xC49399814452B41dA8a7cd76a159f5515cb3e493'
+      Configurator: '0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713'
+      Configurator Implementation: '0x3870FAc3De911c12A57E5a2532D15aD8Ca275A60'
+      Proxy Admin: '0x3C30B5a5A04656565686f800481580Ac4E7ed178'
+      Comet Factory: '0xFa454dE61b317b6535A0C462267208E8FdB89f45'
+      Timelock: '0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07'
+      Bridge Receiver: '0xC3a73A70d1577CD5B02da0bA91C0Afc8fA434DAF'
+      Rewards: '0x443EA0340cb75a160F31A440722dec7b5bc3C2E9'
+      Bulker: '0xcb3643CC8294B23171272845473dEc49739d4Ba3'
+      COMP: '0x7e7d4467112689329f7E06571eD0E8CbAd4910eE'
+      OP: '0x4200000000000000000000000000000000000042'
+      WETH: '0x4200000000000000000000000000000000000006'
+      WBTC: '0x68f180fcCe6836688e9084f035309E29Bf0A2095'
+      USDT: '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58'
   Ethereum Sepolia Testnet - USDC Base:
     tab_text: Sepolia USDC
     blockscan_origin: 'https://sepolia.etherscan.io/'
