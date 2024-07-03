@@ -163,9 +163,9 @@ deployments:
     tab_text: Arbitrum USDT
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
-      cUSDTv3: '0x5C58d4479A1E9b2d19EE052143FA73F0ee79A36e'
-      cUSDTv3 Implementation: '0x023ee795361B28cDbB94e302983578486A0A5f1B'
-      cUSDTv3 Ext: '0x784efeB622244d2348d4F2522f8860B96fbEcE89'
+      cUSDTv3: '0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07'
+      cUSDTv3 Implementation: '0x4FD427B852989F66B10d6B5552a08E0f9C8e5B80'
+      cUSDTv3 Ext: '0x698A949f3b4f7a5DdE236106F25Fa0eAcA0FcEF1'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
       Proxy Admin: '0xD10b40fF1D92e2267D099Da3509253D9Da4D715e'
