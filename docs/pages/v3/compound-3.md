@@ -56,6 +56,28 @@ deployments:
       rsETH: '0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7'
       weETH: '0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee'
       WETH: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+  Ethereum Mainnet - USDT Base:
+    tab_text: Mainnet USDT
+    blockscan_origin: 'https://etherscan.io/'
+    contracts:
+      cUSDTv3: '0x3Afdc9BCA9213A35503b077a6072F3D0d5AB0840'
+      cUSDTv3 Implementation: '0x0b4a278345DEAA4c7c61FdD2eB4AEC97e412a0d4'
+      cUSDTv3 Ext: '0x5C58d4479A1E9b2d19EE052143FA73F0ee79A36e'
+      Configurator: '0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3'
+      Configurator Implementation: '0xcFC1fA6b7ca982176529899D99af6473aD80DF4F'
+      Proxy Admin: '0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779'
+      Comet Factory: '0x698A949f3b4f7a5DdE236106F25Fa0eAcA0FcEF1'
+      Rewards: '0x1B0e765F6224C21223AeA2af16c1C46E38885a40'
+      Bulker: '0xa397a8C2086C554B531c02E29f3291c9704B00c7'
+      Governor: '0xc0Da02939E1441F497fd74F78cE7Decb17B66529'
+      Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
+      COMP: '0xc00e94Cb662C3520282E6f5717214004A7f26888'
+      WETH: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+      WBTC: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'
+      UNI: '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984'
+      LINK: '0x514910771af9ca656af840dff83e8264ecf986ca'
+      wstETH: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0'
+      USDT: '0xdAC17F958D2ee523a2206206994597C13D831ec7'
   Polygon Mainnet - USDC Base:
     tab_text: Polygon USDC
     blockscan_origin: 'https://polygonscan.com/'
