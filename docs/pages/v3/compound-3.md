@@ -34,6 +34,7 @@ deployments:
       WETH: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
       UNI: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984'
       LINK: '0x514910771AF9Ca656af840dff83E8264EcF986CA'
+      wstETH: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0'
   Ethereum Mainnet - WETH Base:
     tab_text: Mainnet WETH
     blockscan_origin: 'https://etherscan.io/'
