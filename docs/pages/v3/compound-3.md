@@ -82,6 +82,25 @@ deployments:
       LINK: '0x514910771af9ca656af840dff83e8264ecf986ca'
       wstETH: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0'
       USDT: '0xdAC17F958D2ee523a2206206994597C13D831ec7'
+    Ethereum Mainnet - wstETH Base:
+      tab_text: Mainnet wstETH
+      blockscan_origin: 'https://etherscan.io/'
+      contracts:
+        cwstETHv3: '0x3D0bb1ccaB520A66e607822fC55BC921738fAFE3'
+        cwstETHv3 Implementation: '0x1F0aa640e4871793AC10029365febe4e8e4b1441'
+        cwstETHv3 Ext: '0x995E394b8B2437aC8Ce61Ee0bC610D617962B214'
+        Configurator: '0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3'
+        Configurator Implementation: '0xcFC1fA6b7ca982176529899D99af6473aD80DF4F'
+        Proxy Admin: '0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779'
+        Comet Factory: '0x698A949f3b4f7a5DdE236106F25Fa0eAcA0FcEF1'
+        Rewards: '0x1B0e765F6224C21223AeA2af16c1C46E38885a40'
+        Bulker: '0x2c776041CCFe903071AF44aa147368a9c8EEA518'
+        Governor: '0xc0Da02939E1441F497fd74F78cE7Decb17B66529'
+        Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
+        COMP: '0xc00e94Cb662C3520282E6f5717214004A7f26888'
+        wstETH: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0'
+        rsETH: '0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7'
+        ezETH: '0xbf5495Efe5DB9ce00f80364C8B423567e58d2110'
   Polygon Mainnet - USDC Base:
     tab_text: Polygon USDC
     blockscan_origin: 'https://polygonscan.com/'
@@ -167,6 +186,7 @@ deployments:
       GMX: '0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a'
       USDC: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831'
       WBTC: '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'
+      ezETH: '0x2416092f143378750bb29b79eD961ab195CcEea5'
       WETH: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
   Arbitrum - WETH base:
     tab_text: Arbitrum WETH
@@ -273,6 +293,8 @@ deployments:
       wstETH: '0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452'
       ezETH: '0x2416092f143378750bb29b79eD961ab195CcEea5'
       USDC: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+      wrsETH: '0xEDfa23602D0EC14714057867A78d01e94176BEA0'
+      weETH: '0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A'
       COMP: '0x9e1028F5F1D5eDE59748FFceE5532509976840E0'
   Scroll - USDC Base:
     tab_text: Scroll USDC
@@ -357,6 +379,8 @@ deployments:
       ezETH: '0x2416092f143378750bb29b79eD961ab195CcEea5'
       USDT: '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58'
       USDC: '0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85'
+      wrsETH: '0x87eEE96D50Fb761AD85B1c982d28A042169d61b1'
+      weETH: '0x5A7fACB970D094B6C7FF1df0eA68D99E6e73CBFF'
       WETH: '0x4200000000000000000000000000000000000006'
   Ethereum Sepolia Testnet - USDC Base:
     tab_text: Sepolia USDC
