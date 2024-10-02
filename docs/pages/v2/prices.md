@@ -6,92 +6,64 @@ docs_namespace: v2
 
 ## Element ID: In-page Heading
 sidebar_nav_data:
-  open-price-feed: Open Price Feed
+  introduction: Introduction
   architecture: Architecture
-  price: Get Price
   underlying-price: Get Underlying Price
   config: Get Config
-  anchor-period: Get Anchor Period
-  anchor-bounds: Get Anchor Bounds
 ---
 
-# Open Price Feed
+# Compound v2 Price Feed
 
 ## Introduction
 
-The Open Price Feed accounts price data for the Compound protocol. The protocol's Comptroller contract uses it as a source of truth for prices. Prices are updated by [Chainlink Price Feeds](https://data.chain.link/){:target="_blank"}. The codebase is hosted on [GitHub](https://github.com/compound-finance/open-oracle){:target="_blank"}, and maintained by the community.
+The Compound v2 Price Feed accounts price data for the protocol. The protocol's Comptroller contract uses it as a source of truth for prices. Prices are updated by [Chainlink Price Feeds](https://data.chain.link/){:target="_blank"}. The codebase is hosted on [GitHub](https://github.com/smartcontractkit/open-oracle/blob/master/contracts/PriceOracle/PriceOracle.sol){:target="_blank"}, and maintained by the community.
 
-The Compound Protocol uses a View contract ("Price Feed") which verifies that reported prices fall within an acceptable bound of the time-weighted average price of the token/ETH pair on [Uniswap v2](https://uniswap.org/), a sanity check referred to as the Anchor price.
-
-The Chainlink price feeds submit prices for each cToken through an individual ValidatorProxy contract. Each ValidatorProxy is the only valid reporter for the underlying asset price. The contracts can be found on-chain as follows:
+The Compound v2 Price Feed fetches prices directly from Chainlink price feeds for valid cTokens when requested. Price feed addresses can be updated by the Compound multisig. The price feeds configured for each cToken can be found below:
 
 | Contract name | address |
 |---------------|---------|
-| AAVE ValidatorProxy  | [0x0238247E71AD0aB272203Af13bAEa72e99EE7c3c](https://etherscan.io/address/0x0238247E71AD0aB272203Af13bAEa72e99EE7c3c){:target="_blank"} |
-| BAT ValidatorProxy   | [0xeBa6F33730B9751a8BA0b18d9C256093E82f6bC2](https://etherscan.io/address/0xeBa6F33730B9751a8BA0b18d9C256093E82f6bC2){:target="_blank"} |
-| COMP ValidatorProxy  | [0xE270B8E9d7a7d2A7eE35a45E43d17D56b3e272b1](https://etherscan.io/address/0xE270B8E9d7a7d2A7eE35a45E43d17D56b3e272b1){:target="_blank"} |
-| DAI ValidatorProxy   | [0xb2419f587f497CDd64437f1B367E2e80889631ea](https://etherscan.io/address/0xb2419f587f497CDd64437f1B367E2e80889631ea){:target="_blank"} |
-| ETH ValidatorProxy   | [0x264BDDFD9D93D48d759FBDB0670bE1C6fDd50236](https://etherscan.io/address/0x264BDDFD9D93D48d759FBDB0670bE1C6fDd50236){:target="_blank"} |
-| FEI ValidatorProxy   | [0xDe2Fa230d4C05ec0337D7b4fc10e16f5663044B0](https://etherscan.io/address/0xDe2Fa230d4C05ec0337D7b4fc10e16f5663044B0){:target="_blank"} |
-| FRAX ValidatorProxy  | [0xfAD527D1c9F8677015a560cA80b7b56950a61FE1](https://etherscan.io/address/0xfAD527D1c9F8677015a560cA80b7b56950a61FE1){:target="_blank"} |
-| LINK ValidatorProxy  | [0xBcFd9b1a97cCD0a3942f0408350cdc281cDCa1B1](https://etherscan.io/address/0xBcFd9b1a97cCD0a3942f0408350cdc281cDCa1B1){:target="_blank"} |
-| LUSD ValidatorProxy  | [0xBfcbADAa807E25aF90424c8173645B945a401eca](https://etherscan.io/address/0xBfcbADAa807E25aF90424c8173645B945a401eca){:target="_blank"} |
-| MATIC ValidatorProxy | [0x44750a79ae69D5E9bC1651E099DFFE1fb8611AbA](https://etherscan.io/address/0x44750a79ae69D5E9bC1651E099DFFE1fb8611AbA){:target="_blank"} |
-| MKR ValidatorProxy   | [0xbA895504a8E286691E7dacFb47ae8A3A737e2Ce1](https://etherscan.io/address/0xbA895504a8E286691E7dacFb47ae8A3A737e2Ce1){:target="_blank"} |
-| RAI ValidatorProxy   | [0xF0148Ddd8bA74D294E67E65FE1F3f0CD2F43CA8a](https://etherscan.io/address/0xF0148Ddd8bA74D294E67E65FE1F3f0CD2F43CA8a){:target="_blank"} |
-| REP ValidatorProxy   | [0x90655316479383795416B615B61282C72D8382C1](https://etherscan.io/address/0x90655316479383795416B615B61282C72D8382C1){:target="_blank"} |
-| SUSHI ValidatorProxy | [0x875acA7030B75b5D8cB59c913910a7405337dFf7](https://etherscan.io/address/0x875acA7030B75b5D8cB59c913910a7405337dFf7){:target="_blank"} |
-| UNI ValidatorProxy   | [0x70f4D236FD678c9DB41a52d28f90E299676d9D90](https://etherscan.io/address/0x70f4D236FD678c9DB41a52d28f90E299676d9D90){:target="_blank"} |
-| WBTC ValidatorProxy  | [0x4846efc15CC725456597044e6267ad0b3B51353E](https://etherscan.io/address/0x4846efc15CC725456597044e6267ad0b3B51353E){:target="_blank"} |
-| YFI ValidatorProxy   | [0xBa4319741782151D2B1df4799d757892EFda4165](https://etherscan.io/address/0xBa4319741782151D2B1df4799d757892EFda4165){:target="_blank"} |
-| ZRX ValidatorProxy   | [0x5c5db112c98dbe5977A4c37AD33F8a4c9ebd5575](https://etherscan.io/address/0x5c5db112c98dbe5977A4c37AD33F8a4c9ebd5575){:target="_blank"} |
-| UniswapAnchoredView  | [0x50ce56A3239671Ab62f185704Caedf626352741e](https://etherscan.io/address/0x50ce56A3239671Ab62f185704Caedf626352741e){:target="_blank"} |
+| AAVE Price Feed  | [0x547a514d5e3769680ce22b2361c10ea13619e8a9](https://etherscan.io/address/0x547a514d5e3769680ce22b2361c10ea13619e8a9){:target="_blank"} |
+| BAT Price Feed   | [0x9441D7556e7820B5ca42082cfa99487D56AcA958](https://etherscan.io/address/0x9441D7556e7820B5ca42082cfa99487D56AcA958){:target="_blank"} |
+| COMP Price Feed  | [0xdbd020caef83efd542f4de03e3cf0c28a4428bd5](https://etherscan.io/address/0xdbd020caef83efd542f4de03e3cf0c28a4428bd5){:target="_blank"} |
+| DAI Price Feed   | [0xaed0c38402a5d19df6e4c03f4e2dced6e29c1ee9](https://etherscan.io/address/0xaed0c38402a5d19df6e4c03f4e2dced6e29c1ee9){:target="_blank"} |
+| ETH Price Feed   | [0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419](https://etherscan.io/address/0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419){:target="_blank"} |
+| LINK Price Feed  | [0x2c1d072e956affc0d435cb7ac38ef18d24d9127c](https://etherscan.io/address/0x2c1d072e956affc0d435cb7ac38ef18d24d9127c){:target="_blank"} |
+| MKR Price Feed   | [0xec1d1b3b0443256cc3860e24a46f108e699484aa](https://etherscan.io/address/0xec1d1b3b0443256cc3860e24a46f108e699484aa){:target="_blank"} |
+| SUSHI Price Feed | [0xcc70f09a6cc17553b2e31954cd36e4a2d89501f7](https://etherscan.io/address/0xcc70f09a6cc17553b2e31954cd36e4a2d89501f7){:target="_blank"} |
+| UNI Price Feed   | [0x553303d460ee0afb37edff9be42922d8ff63220e](https://etherscan.io/address/0x553303d460ee0afb37edff9be42922d8ff63220e){:target="_blank"} |
+| WBTC Price Feed  | [0x45939657d1CA34A8FA39A924B71D28Fe8431e581](https://etherscan.io/address/0x45939657d1CA34A8FA39A924B71D28Fe8431e581){:target="_blank"} |
+| YFI Price Feed   | [0xa027702dbb89fbd58938e4324ac03b58d812b0e1](https://etherscan.io/address/0xa027702dbb89fbd58938e4324ac03b58d812b0e1){:target="_blank"} |
+| ZRX Price Feed   | [0x2885d15b8af22648b98b122b22fdf4d2a56c6023](https://etherscan.io/address/0x2885d15b8af22648b98b122b22fdf4d2a56c6023){:target="_blank"} |
+| Price Feed       | [0x8CF42B08AD13761345531b839487aA4d113955d9](https://etherscan.io/address/0x8CF42B08AD13761345531b839487aA4d113955d9){:target="_blank"} |
+
+The Compound v2 Price Feed also supports fixed prices for cTokens. This feature is required for cTokens that do not have a price feed. One such scenario is when a cToken is deprecated but the price at deprecation still needs to be reported. Below are cTokens using fixed prices:
+
+| cToken | Fixed Price |
+|--------|-------------|
+| FEI | 1001094000000000000 |
+| REP | 6433680000000000000 |
+| SAI | 14426337000000000000 |
 
 ## Architecture
 
-The Open Price Feed consists of two main contracts.
-* `ValidatorProxy` is a contract that calls `validate` on the `UniswapAnchoredView`. This queries Uniswap v2 to check if a new price is within the Uniswap v2 TWAP anchor. If valid, the `UniswapAnchoredView` is updated with the asset's price. If invalid, the price data is not stored.
-* `UniswapAnchoredView` only stores prices that are within an acceptable bound of the Uniswap time-weighted average price and are signed by a reporter. Also contains logic that upscales the posted prices into the format that Compound's Comptroller expects.
+The Compound v2 Price Feed refers to a single contract.
+* `PriceOracle` fetches prices from Chainlink Price Feeds when requested for a specific cToken. Also contains logic that upscales the fetched price into the format that Compound's Comptroller expects. The code is accessible on [GitHub](https://github.com/smartcontractkit/open-oracle/blob/master/contracts/PriceOracle/PriceOracle.sol){:target="_blank"}.
 
-This architecture allows multiple views to use the same underlying price data, but to verify the prices in their own way.
-Stablecoins like USDC, USDT, and TUSD are fixed at $1. SAI is fixed at 0.005285 ETH.
+The [Compound community multisig](https://etherscan.io/address/0xbbf3f1421d886e9b2c5d716b5192ac998af2012c){:target="_blank"} has the ability to update the configs on the Price Feed. The multisig has the flexibility to make the following changes:
 
-As a precaution, the [Compound community multisig](https://etherscan.io/address/0xbbf3f1421d886e9b2c5d716b5192ac998af2012c){:target="_blank"} has the ability to engage a failover that will switch a market's primary oracle from the Chainlink Price Feeds to Uniswap v2. The multisig is able to change to a failover for single markets. The Uniswap V2 TWAP price is used as the failover. The community can enable or disable the failover using `activateFailover` or `deactivateFailover`.
-
-## Price
-
-Get the most recent price for a token in USD with 6 decimals of precision.
-* `symbol`: Symbol as a string
-* `RETURNS`: The price of the asset in USD as an unsigned integer scaled up by `10 ^ 6`.
-
-#### UniswapAnchoredView
-
-```solidity
-function price(string memory symbol) external view returns (uint)
-```
-
-#### Solidity
-
-```solidity
-UniswapAnchoredView view = UniswapAnchoredView(0xABCD...);
-uint price = view.price("ETH");
-```
-
-#### Web3 1.0
-
-```js
-const view = UniswapAnchoredView.at("0xABCD...");
-//eg: returns 200e6
-const price = await view.methods.price("ETH").call();
-```
+* **Add new markets**: The Price Feed contract's `addConfig` function enables the multisig to add a new cToken with an associated price feed or fixed price to support new markets.
+* **Update price feed for markets**: The Price Feed contract's `updateConfigPriceFeed` function enables the multisig to update the price feed for an existing cToken. It can also be used to switch the configs from fixed price to a price feed.
+* **Update fixed price for markets**: The Price Feed contract's `updateConfigFixedPrice` enables the multisig to update the fixed price for an existing cToken. It can also be used to switch the configs from a price feed to a fixed price such as in the case of deprecation.
+* **Remove old markets**: The Price Feed contract's `removeConfig` function enables the multisig to remove configs for a deprecated market that the Comptroller no longer needs prices for.
 
 ## Underlying Price
 
-Get the most recent price for a token in USD with 6 decimals of precision.
+Get the most recent price for a token in USD with the Chainlink price feed's decimals of precision.
+
 * `cToken`: The address of the cToken contract of the underlying asset.
 * `RETURNS`: The price of the asset in USD as an unsigned integer scaled up by `10 ^ (36 - underlying asset decimals)`. E.g. WBTC has 8 decimal places, so the return value is scaled up by `1e28`.
 
-#### UniswapAnchoredView
+#### PriceFeed
 
 ```solidity
 function getUnderlyingPrice(address cToken) external view returns (uint)
@@ -100,102 +72,45 @@ function getUnderlyingPrice(address cToken) external view returns (uint)
 #### Solidity
 
 ```solidity
-UniswapAnchoredView view = UniswapAnchoredView(0xABCD...);
+PriceFeed view = PriceFeed(0xABCD...);
 uint price = view.getUnderlyingPrice(0x1230...);
 ```
 
 #### Web3 1.0
 
 ```js
-const view = UniswapAnchoredView.at("0xABCD...");
+const view = PriceFeed.at("0xABCD...");
 //eg: returns 400e6
 const price = await view.methods.getUnderlyingPrice("0x1230...").call();
 ```
 
 ## Config
 
-Each token the Open Price Feed supports needs corresponding configuration metadata. The configuration for each token is set in the constructor and is immutable.
+Each token the Compound v2 Price Feed supports needs corresponding configuration metadata. The configuration for each token is stored in the Price Feed contract and can be updated by the multisig.
 
 The fields of the config are:
 
-* `cToken`: The address of the underlying token's corresponding cToken. This field is null for tokens that are not supported as cTokens.
-* `underlying`: Address of the token whose price is being reported.
-* `symbolHash`: The `keccak256` of the byte-encoded string of the token's symbol.
-* `baseUnit`: The number of decimals of precision that the underlying token has. Eg: USDC has 6 decimals.
-* `PriceSource`: An enum describing the whether or not to special case the prices for this token. `FIXED_ETH` is used to set the SAI price to a fixed amount of ETH, and `FIXED_USD` is used to peg stablecoin prices to $1. `REPORTER` is used for all other assets to indicate the reported prices and Uniswap anchoring should be used.
-* `fixedPrice`: The fixed dollar amount to use if `PriceSource` is `FIXED_USD` or the number of ETH in the case of `FIXED_ETH` (namely for SAI).
-* `uniswapMarket`: The token's market on Uniswap, used for price anchoring. Only filled if `PriceSource` is `REPORTER`.
-* `isUniswapReversed`: A boolean indicating the order of the market's reserves.
-* `reporter`: The address that submits prices for a particular cToken. This is always a `ValidatorProxy` contract that is always called by a price feed reference contract for each relevant price update posted by Chainlink oracle nodes.
-* `reporterMultiplier`: An unsigned integer that is used to transform the price reported by the Chainlink price feeds to the correct base unit that the `UniswapAnchoredView` expects. This is required because the price feeds report prices with different decimal placement than the `UniswapAnchoredView`.
+* `cToken`: The address of the underlying token's corresponding cToken. This is a required field.
+* `underlyingAssetDecimals`: The decimals of the underlying asset. E.g. 18 for ETH. This field is required when using price feeds but optional when using fixed price.
+* `priceFeed`: The address of the Chainlink price feed. This field is set to the 0 address when using a fixed price.
+* `fixedPrice`: The fixed dollar amount to use as the price. This field is set to 0 if a price feed is being used.
 
-#### UniswapAnchoredView
+#### PriceFeed
 
 ```solidity
- function getTokenConfigBySymbol(string memory symbol) public view returns (TokenConfig memory)
- function getTokenConfigBySymbolHash(bytes32 symbolHash) public view returns (TokenConfig memory)
- function getTokenConfigByCToken(address cToken) public view returns (TokenConfig memory)
+function getConfig(address cToken) external view returns (TokenConfig memory)
 ```
 
 #### Web3 1.0
 
 ```js
-const view = UniswapAnchoredView.at("0xABCD...");
-const config = await view.methods.getTokenConfigBySymbol("ETH").call();
+const view = PriceFeed.at("0xABCD...");
+const config = await view.methods.getConfig("0x1230...").call();
 ```
 
 #### Solidity
 
 ```solidity
-UniswapAnchoredView view = UniswapAnchoredView(0xABCD...);
-uint price = view.getTokenConfigBySymbol("ETH");
-```
-
-## Anchor Period
-
-Get the anchor period, the minimum amount of time in seconds over which to take the time-weighted average price from Uniswap.
-
-####UniswapAnchoredView
-
-```solidity
-function anchorPeriod() returns (uint)
-```
-
-#### Web3 1.0
-
-```js
-const view = UniswapAnchoredView.at("0xABCD...");
-const anchorPeriod = await view.methods.anchorPeriod().call();
-```
-
-#### Solidity
-
-```solidity
-UniswapAnchoredView view = UniswapAnchoredView(0xABCD...);
-uint anchorPeriod = view.anchorPeriod();
-```
-
-## Anchor Bounds
-
-Get the highest and lowest ratio of the reported price to the anchor price that will still trigger the price to be updated. Given in 18 decimals of precision (eg: 90% => 90e16).
-
-####UniswapAnchoredView
-
-```solidity
-function upperBoundAnchorRatio() returns (uint)
-function lowerBoundAnchorRatio() returns (uint)
-```
-
-#### Web3 1.0
-
-```js
-const view = UniswapAnchoredView.at("0xABCD...");
-const upperBoundRatio = await view.methods.upperBoundAnchorRatio().call();
-```
-
-#### Solidity
-
-```solidity
-UniswapAnchoredView view = UniswapAnchoredView(0xABCD...);
-uint upperBoundRatio = view.upperBoundAnchorRatio();
+PriceFeed view = PriceFeed(0xABCD...);
+TokenConfig memory config = view.getConfig("0x1230...");
 ```
