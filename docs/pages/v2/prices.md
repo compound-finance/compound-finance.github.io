@@ -6,13 +6,10 @@ docs_namespace: v2
 
 ## Element ID: In-page Heading
 sidebar_nav_data:
-  open-price-feed: Open Price Feed
+  introduction: Introduction
   architecture: Architecture
-  price: Get Price
   underlying-price: Get Underlying Price
   config: Get Config
-  anchor-period: Get Anchor Period
-  anchor-bounds: Get Anchor Bounds
 ---
 
 # Compound v2 Price Feed
@@ -49,15 +46,15 @@ The Compound v2 Price Feed also supports fixed prices for cTokens. This feature 
 
 ## Architecture
 
-The Compound v2 Price Feed refers to a single Price Oracle contract.
+The Compound v2 Price Feed refers to a single contract.
 * `PriceOracle` fetches prices from Chainlink Price Feeds when requested for a specific cToken. Also contains logic that upscales the fetched price into the format that Compound's Comptroller expects. The code is accessible on [GitHub](https://github.com/smartcontractkit/open-oracle/blob/master/contracts/PriceOracle/PriceOracle.sol){:target="_blank"}.
 
-The [Compound community multisig](https://etherscan.io/address/0xbbf3f1421d886e9b2c5d716b5192ac998af2012c){:target="_blank"} has the ability to update the configs on the Price Oracle. The multisig has the flexibility to make the following changes:
+The [Compound community multisig](https://etherscan.io/address/0xbbf3f1421d886e9b2c5d716b5192ac998af2012c){:target="_blank"} has the ability to update the configs on the Price Feed. The multisig has the flexibility to make the following changes:
 
-1. **Add new markets**: The Price Oracle contract's `addConfig` function enables the multisig to add a new cToken with an associated price feed or fixed price to support new markets.
-2. **Update price feed for markets**: The Price Oracle contract's `updateConfigPriceFeed` function enables the multisig to update the price feed for an existing cToken. It can also be used to switch the configs from fixed price to a price feed.
-3. **Update fixed price for markets**: The Price Oracle contract's `updateConfigFixedPrice` enables the multisig to update the fixed price for an existing cToken. It can also be used to switch the configs from a price feed to a fixed price such as in the case of deprecation.
-4. **Remove old markets**: The Price Oracle contract's `removeConfig` function enables the multisig to remove configs for a deprecated market that the Comptroller no longer needs prices for.
+* **Add new markets**: The Price Feed contract's `addConfig` function enables the multisig to add a new cToken with an associated price feed or fixed price to support new markets.
+* **Update price feed for markets**: The Price Feed contract's `updateConfigPriceFeed` function enables the multisig to update the price feed for an existing cToken. It can also be used to switch the configs from fixed price to a price feed.
+* **Update fixed price for markets**: The Price Feed contract's `updateConfigFixedPrice` enables the multisig to update the fixed price for an existing cToken. It can also be used to switch the configs from a price feed to a fixed price such as in the case of deprecation.
+* **Remove old markets**: The Price Feed contract's `removeConfig` function enables the multisig to remove configs for a deprecated market that the Comptroller no longer needs prices for.
 
 ## Underlying Price
 
@@ -89,7 +86,7 @@ const price = await view.methods.getUnderlyingPrice("0x1230...").call();
 
 ## Config
 
-Each token the Compound v2 Price Feed supports needs corresponding configuration metadata. The configuration for each token is stored in the Price Oracle contract and can be updated by the multisig.
+Each token the Compound v2 Price Feed supports needs corresponding configuration metadata. The configuration for each token is stored in the Price Feed contract and can be updated by the multisig.
 
 The fields of the config are:
 
