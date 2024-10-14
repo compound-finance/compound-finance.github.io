@@ -13,11 +13,11 @@ sidebar_nav_data:
 
 ## Price Feed Methods
 
-These methods facilitate interactions with the Open Price Feed smart contracts. For Compound III price feed methods, see the Comet section.
+These methods facilitate interactions with the v2 Price Feed smart contracts. For Compound III price feed methods, see the Comet section.
 
 ## Compound v2 Get Price
 
-Gets an asset's price from the Compound Protocol open price feed. The price
+Gets an asset's price from the Compound v2 Protocol price feed. The price
    of the asset can be returned in any other supported asset value, including
    all cTokens and underlyings.
 
@@ -32,7 +32,7 @@ let price;
 (async function () {
 
   price = await compound.getPrice(Compound.WBTC);
-  console.log('WBTC in USD', price); // 6 decimals, see Open Price Feed docs
+  console.log('WBTC in USD', price); // 6 decimals, see Price Feed docs
 
   price = await compound.getPrice(Compound.BAT, Compound.USDC); // supports cTokens too
   console.log('BAT in USDC', price);

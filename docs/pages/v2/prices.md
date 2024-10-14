@@ -1,6 +1,6 @@
 ---
 layout: docs-content
-title: Compound v2 Docs | Open Price Feed
+title: Compound v2 Docs | Price Feed
 permalink: /v2/prices/
 docs_namespace: v2
 

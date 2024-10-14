@@ -23,7 +23,7 @@ v2_nav_data:
   cTokens: /v2/ctokens/
   Comptroller: /v2/comptroller/
   Governance: /v2/governance/
-  Open Price Feed: /v2/prices/
+  Price Feed: /v2/prices/
   Security: /v2/security/
 
 compound_js_nav_data: 
