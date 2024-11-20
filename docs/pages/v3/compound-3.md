@@ -65,6 +65,7 @@ deployments:
       weETH: '0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee'
       WETH: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
       wstETH: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0'
+      ETHx: '0xA35b1B31Ce002FBF2058D22F30f95D405200A15b'
   Ethereum Mainnet - USDT Base:
     tab_text: Mainnet USDT
     blockscan_origin: 'https://etherscan.io/'
@@ -89,6 +90,8 @@ deployments:
       WBTC: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'
       WETH: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
       wstETH: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0'
+      wUSDM: '0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812'
+      sFRAX: '0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32'
   Ethereum Mainnet - wstETH Base:
     tab_text: Mainnet wstETH
     blockscan_origin: 'https://etherscan.io/'
@@ -408,6 +411,7 @@ deployments:
       WETH: '0x4200000000000000000000000000000000000006'
       WBTC: '0x68f180fcCe6836688e9084f035309E29Bf0A2095'
       wstETH: '0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb'
+      wUSDM: '0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812'
       USDT: '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58'
   Optimism - WETH Base:
     tab_text: Optimism WETH
@@ -434,6 +438,26 @@ deployments:
       WETH: '0x4200000000000000000000000000000000000006'
       wrsETH: '0x87eee96d50fb761ad85b1c982d28a042169d61b1'
       wstETH: '0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb'
+    Mantle - USDE Base:
+    tab_text: Mantle USDE
+    blockscan_origin: 'https://mantlescan.xyz/'
+    contracts:
+      cUSDEv3: '0x606174f62cd968d8e684c645080fa694c1D7786E'
+      cUSDEv3 Implementation: '0x8CdA82AAa39a63b26C0E5B606bD32B49567D41a1'
+      cUSDEv3 Ext: '0xf528B4bCAc12dad0bFa114282b219ad706bA7f18'
+      Configurator: '0xb77Cd4cD000957283D8BAf53cD782ECf029cF7DB'
+      Configurator Implementation: '0x3c851CbE2740747f5cE4e8894842A313e5A3aee3'
+      Proxy Admin: '0xe268B436E75648aa0639e2088fa803feA517a0c7'
+      Comet Factory: 0x5a1d1C89Da75Bc957BBF9ED61b4B0AdEe0553285'
+      Timelock: '0x16C7B5C1b10489F4B111af11de2Bd607c9728107'
+      Bridge Receiver: '0xc91EcA15747E73d6dd7f616C49dAFF37b9F1B604'
+      Rewards: '0xCd83CbBFCE149d141A5171C3D6a0F0fCCeE225Ab'
+      Bulker: '0x67DFCa85CcEEFA2C5B1dB4DEe3BEa716A28B9baa'
+      COMP: '0x52b7D8851d6CcBC6342ba0855Be65f7B82A3F17f'
+      USDe: '0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34'
+      mETH: '0xcDA86A272531e8640cD7F1a92c01839911B90bb0'
+      WETH: '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111'
+      FBTC: '0xC96dE26018A54D51c097160568752c4E3BD6C364'
   Ethereum Sepolia Testnet - USDC Base:
     tab_text: Sepolia USDC
     blockscan_origin: 'https://sepolia.etherscan.io/'
