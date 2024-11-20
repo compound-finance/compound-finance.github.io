@@ -438,7 +438,7 @@ deployments:
       WETH: '0x4200000000000000000000000000000000000006'
       wrsETH: '0x87eee96d50fb761ad85b1c982d28a042169d61b1'
       wstETH: '0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb'
-    Mantle - USDE Base:
+  Mantle - USDE Base:
     tab_text: Mantle USDE
     blockscan_origin: 'https://mantlescan.xyz/'
     contracts:
