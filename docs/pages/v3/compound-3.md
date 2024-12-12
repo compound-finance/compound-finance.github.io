@@ -132,6 +132,7 @@ deployments:
       cbBTC: '0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf'
       tBTC: '0x18084fbA666a33d37592fA2633fD49a74DD93a88'
       wstETH: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0'
+      sUSDS: '0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD'
       COMP: '0xc00e94Cb662C3520282E6f5717214004A7f26888'
   Polygon Mainnet - USDC Base:
     tab_text: Polygon USDC
@@ -439,13 +440,13 @@ deployments:
       WETH: '0x4200000000000000000000000000000000000006'
       wrsETH: '0x87eee96d50fb761ad85b1c982d28a042169d61b1'
       wstETH: '0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb'
-  Mantle - USDE Base:
-    tab_text: Mantle USDE
+  Mantle - USDe Base:
+    tab_text: Mantle USDe
     blockscan_origin: 'https://mantlescan.xyz/'
     contracts:
-      cUSDEv3: '0x606174f62cd968d8e684c645080fa694c1D7786E'
-      cUSDEv3 Implementation: '0x8CdA82AAa39a63b26C0E5B606bD32B49567D41a1'
-      cUSDEv3 Ext: '0xf528B4bCAc12dad0bFa114282b219ad706bA7f18'
+      cUSDev3: '0x606174f62cd968d8e684c645080fa694c1D7786E'
+      cUSDev3 Implementation: '0x8CdA82AAa39a63b26C0E5B606bD32B49567D41a1'
+      cUSDev3 Ext: '0xf528B4bCAc12dad0bFa114282b219ad706bA7f18'
       Configurator: '0xb77Cd4cD000957283D8BAf53cD782ECf029cF7DB'
       Configurator Implementation: '0x3c851CbE2740747f5cE4e8894842A313e5A3aee3'
       Proxy Admin: '0xe268B436E75648aa0639e2088fa803feA517a0c7'
@@ -458,7 +459,6 @@ deployments:
       USDe: '0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34'
       mETH: '0xcDA86A272531e8640cD7F1a92c01839911B90bb0'
       WETH: '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111'
-      FBTC: '0xC96dE26018A54D51c097160568752c4E3BD6C364'
   Ethereum Sepolia Testnet - USDC Base:
     tab_text: Sepolia USDC
     blockscan_origin: 'https://sepolia.etherscan.io/'
