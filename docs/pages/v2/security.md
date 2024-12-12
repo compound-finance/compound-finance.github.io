@@ -55,3 +55,4 @@ Security is core to our values, and we value the input of hackers acting in good
 The Compound protocol bug bounty program is run entirely by the community with collaboration from Immunefi.
 
 [Bug Bounty Dashboard](https://immunefi.com/bug-bounty/compoundfinance/information/)
+
