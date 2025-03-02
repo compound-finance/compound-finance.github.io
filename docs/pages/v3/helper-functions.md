@@ -346,7 +346,7 @@ function accrueAccount(address account) override external
 
 ```solidity
 Comet comet = Comet(0xCometAddress);
-uint price = comet.accrueAccount(0xAccount);
+comet.accrueAccount(0xAccount);
 ```
 
 #### Ethers.js v5.x
