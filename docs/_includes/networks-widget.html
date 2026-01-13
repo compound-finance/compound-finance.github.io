@@ -184,8 +184,20 @@
     color: #5B7083;
   }
 
+  .contract-meta-values {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .contract-meta-value {
     color: #141E27;
+  }
+
+  .contract-meta-raw {
+    color: #5B7083;
+    font-size: 12px;
+    line-height: 16px;
   }
 
   .contract-meta-actions {
@@ -309,6 +321,38 @@
         return link;
       };
 
+      const groupMetaEntries = (meta) => {
+        const ordered = [];
+        const map = new Map();
+
+        for (let i = 0; i < meta.length; i++) {
+          const [ key, value ] = meta[i];
+          const rawMatch = key.match(/^(.*)\\s+Raw$/);
+          if (rawMatch) {
+            const baseKey = rawMatch[1];
+            let entry = map.get(baseKey);
+            if (!entry) {
+              entry = { key: baseKey, value: undefined, raw: value };
+              ordered.push(entry);
+              map.set(baseKey, entry);
+            } else {
+              entry.raw = value;
+            }
+          } else {
+            let entry = map.get(key);
+            if (entry) {
+              entry.value = value;
+            } else {
+              entry = { key, value, raw: undefined };
+              ordered.push(entry);
+              map.set(key, entry);
+            }
+          }
+        }
+
+        return ordered;
+      };
+
       const renderContractMetaRow = (meta, tbody, blockscanOrigin) => {
         if (!meta.length) return null;
 
@@ -322,8 +366,10 @@
         const metaContainer = document.createElement('div');
         metaContainer.classList.add('contract-meta');
 
-        for (let k = 0; k < meta.length; k++) {
-          const [ key, value ] = meta[k];
+        const groupedMeta = groupMetaEntries(meta);
+
+        for (let k = 0; k < groupedMeta.length; k++) {
+          const { key, value, raw } = groupedMeta[k];
           const item = document.createElement('div');
           item.classList.add('contract-meta-item');
 
@@ -332,10 +378,20 @@
           keyNode.innerText = key;
           item.appendChild(keyNode);
 
+          const valueWrapper = document.createElement('div');
+          valueWrapper.classList.add('contract-meta-values');
+
           const valueNode = document.createElement('div');
           valueNode.classList.add('contract-meta-value');
           valueNode.innerText = typeof value === 'string' ? value : JSON.stringify(value);
-          item.appendChild(valueNode);
+          valueWrapper.appendChild(valueNode);
+
+          if (raw !== undefined) {
+            const rawNode = document.createElement('div');
+            rawNode.classList.add('contract-meta-raw');
+            rawNode.innerText = typeof raw === 'string' ? `Raw: ${raw}` : `Raw: ${JSON.stringify(raw)}`;
+            valueWrapper.appendChild(rawNode);
+          }
 
           if (key === 'Price Feed' && typeof value === 'string' && value.length) {
             const actions = document.createElement('div');
@@ -349,9 +405,10 @@
               }
             }
 
-            item.appendChild(actions);
+            valueWrapper.appendChild(actions);
           }
 
+          item.appendChild(valueWrapper);
           metaContainer.appendChild(item);
         }
 
