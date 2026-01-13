@@ -299,7 +299,7 @@
         return link;
       };
 
-      const renderContractMetaRow = (meta, tbody) => {
+      const renderContractMetaRow = (meta, tbody, blockscanOrigin) => {
         if (!meta.length) return null;
 
         const metaRow = document.createElement('tr');
@@ -423,7 +423,7 @@
           tbody.appendChild(row);
 
           if (hasMeta) {
-            const metaRow = renderContractMetaRow(meta, tbody);
+            const metaRow = renderContractMetaRow(meta, tbody, blockscanOrigin);
             if (metaRow) {
               tbody.appendChild(metaRow);
 
