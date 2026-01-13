@@ -117,21 +117,61 @@
     font-weight: bold;
   }
 
-  .contract-meta {
-    margin-top: 6px;
-    color: #5B7083;
-    font-size: 13px;
-    line-height: 18px;
+  table.deployment-table tr.expandable-row {
+    cursor: pointer;
+  }
+
+  table.deployment-table tr.expandable-row:hover {
+    background-color: #F7F9FA;
+  }
+
+  .expand-toggle {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+  }
+
+  .expand-toggle.expanded {
+    transform: rotate(90deg);
   }
 
   .contract-meta-row {
+    display: none;
+  }
+
+  .contract-meta-row.expanded {
+    display: table-row;
+  }
+
+  .contract-meta-cell {
+    padding: 12px 10px 12px 30px;
+    background-color: #FAFBFC;
+    border-top: none;
+  }
+
+  .contract-meta {
+    color: #5B7083;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .contract-meta-item {
     display: flex;
-    gap: 6px;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .contract-meta-item:last-child {
+    margin-bottom: 0;
   }
 
   .contract-meta-key {
     font-weight: bold;
     min-width: 140px;
+    color: #5B7083;
   }
 
   .contract-meta-value {
@@ -234,30 +274,47 @@
         };
       };
 
-      const renderContractMeta = (meta, targetCell) => {
-        if (!meta.length) return;
+      const createExpandIcon = () => {
+        const icon = document.createElement('span');
+        icon.classList.add('expand-toggle');
+        icon.innerHTML = '▶';
+        return icon;
+      };
+
+      const renderContractMetaRow = (meta, tbody) => {
+        if (!meta.length) return null;
+
+        const metaRow = document.createElement('tr');
+        metaRow.classList.add('contract-meta-row');
+
+        const metaCell = document.createElement('td');
+        metaCell.classList.add('contract-meta-cell');
+        metaCell.colSpan = 4;
+
         const metaContainer = document.createElement('div');
         metaContainer.classList.add('contract-meta');
 
         for (let k = 0; k < meta.length; k++) {
           const [ key, value ] = meta[k];
-          const row = document.createElement('div');
-          row.classList.add('contract-meta-row');
+          const item = document.createElement('div');
+          item.classList.add('contract-meta-item');
 
           const keyNode = document.createElement('div');
           keyNode.classList.add('contract-meta-key');
           keyNode.innerText = key;
-          row.appendChild(keyNode);
+          item.appendChild(keyNode);
 
           const valueNode = document.createElement('div');
           valueNode.classList.add('contract-meta-value');
           valueNode.innerText = typeof value === 'string' ? value : JSON.stringify(value);
-          row.appendChild(valueNode);
+          item.appendChild(valueNode);
 
-          metaContainer.appendChild(row);
+          metaContainer.appendChild(item);
         }
 
-        targetCell.appendChild(metaContainer);
+        metaCell.appendChild(metaContainer);
+        metaRow.appendChild(metaCell);
+        return metaRow;
       };
 
       for (let i = 0; i < deployments.length; i++) {
@@ -290,14 +347,24 @@
           const tbody = table.children[0];
 
           const row = document.createElement('tr');
+          const hasMeta = meta && meta.length > 0;
+
+          if (hasMeta) {
+            row.classList.add('expandable-row');
+          }
 
           const cell1 = document.createElement('td');
-          cell1.innerText = contractName;
+          if (hasMeta) {
+            const expandIcon = createExpandIcon();
+            cell1.appendChild(expandIcon);
+          }
+          const nameSpan = document.createElement('span');
+          nameSpan.innerText = contractName;
+          cell1.appendChild(nameSpan);
           row.appendChild(cell1);
 
           const cell2 = document.createElement('td');
           cell2.innerText = address || 'N/A';
-          renderContractMeta(meta, cell2);
           row.appendChild(cell2);
 
           const cell3 = document.createElement('td');
@@ -321,6 +388,28 @@
           row.appendChild(cell4);
 
           tbody.appendChild(row);
+
+          if (hasMeta) {
+            const metaRow = renderContractMetaRow(meta, tbody);
+            if (metaRow) {
+              tbody.appendChild(metaRow);
+
+              row.addEventListener('click', (e) => {
+                if (e.target.closest('.copy-button') || e.target.closest('.blockscan-button') || e.target.closest('a')) {
+                  return;
+                }
+                const isExpanded = metaRow.classList.contains('expanded');
+                const expandIcon = row.querySelector('.expand-toggle');
+                if (isExpanded) {
+                  metaRow.classList.remove('expanded');
+                  if (expandIcon) expandIcon.classList.remove('expanded');
+                } else {
+                  metaRow.classList.add('expanded');
+                  if (expandIcon) expandIcon.classList.add('expanded');
+                }
+              });
+            }
+          }
         }
 
         networkTab.appendChild(table);
