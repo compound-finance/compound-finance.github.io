@@ -177,6 +177,12 @@
   .contract-meta-value {
     color: #141E27;
   }
+
+  .contract-meta-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
 </style>
 
 <template id="networks-widget-table-template">
@@ -281,6 +287,18 @@
         return icon;
       };
 
+      const createCopyButton = (text) => {
+        const button = copyButtonTemplate.content.cloneNode(true);
+        button.children[0].children[0].dataset.copyText = text;
+        return button;
+      };
+
+      const createExplorerLink = (href) => {
+        const link = copyLinkTemplate.content.cloneNode(true);
+        link.children[0].children[0].href = href;
+        return link;
+      };
+
       const renderContractMetaRow = (meta, tbody) => {
         if (!meta.length) return null;
 
@@ -308,6 +326,21 @@
           valueNode.classList.add('contract-meta-value');
           valueNode.innerText = typeof value === 'string' ? value : JSON.stringify(value);
           item.appendChild(valueNode);
+
+          if (key === 'Price Feed' && typeof value === 'string' && value.length) {
+            const actions = document.createElement('div');
+            actions.classList.add('contract-meta-actions');
+
+            actions.appendChild(createCopyButton(value));
+            if (value.startsWith('0x') && value.length > 2) {
+              const explorerHref = blockscanOrigin ? blockscanOrigin + 'address/' + value : '';
+              if (explorerHref) {
+                actions.appendChild(createExplorerLink(explorerHref));
+              }
+            }
+
+            item.appendChild(actions);
+          }
 
           metaContainer.appendChild(item);
         }
