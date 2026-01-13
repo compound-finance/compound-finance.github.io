@@ -116,6 +116,27 @@
   table.deployment-table tr td:first-child {
     font-weight: bold;
   }
+
+  .contract-meta {
+    margin-top: 6px;
+    color: #5B7083;
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .contract-meta-row {
+    display: flex;
+    gap: 6px;
+  }
+
+  .contract-meta-key {
+    font-weight: bold;
+    min-width: 140px;
+  }
+
+  .contract-meta-value {
+    color: #141E27;
+  }
 </style>
 
 <template id="networks-widget-table-template">
@@ -194,6 +215,51 @@
       networkTabContainer.classList.add('network-tab-content-container');
       const activeClass = 'active';
 
+      const normalizeContractEntry = (contractValue, blockscanOrigin) => {
+        const isObject = contractValue && typeof contractValue === 'object';
+        const address = typeof contractValue === 'string'
+          ? contractValue
+          : isObject
+            ? contractValue.address
+            : '';
+
+        const meta = isObject
+          ? Object.entries(contractValue).filter(([ key ]) => key !== 'address')
+          : [];
+
+        return {
+          address: address || '',
+          explorerHref: address && blockscanOrigin ? blockscanOrigin + 'address/' + address : '',
+          meta
+        };
+      };
+
+      const renderContractMeta = (meta, targetCell) => {
+        if (!meta.length) return;
+        const metaContainer = document.createElement('div');
+        metaContainer.classList.add('contract-meta');
+
+        for (let k = 0; k < meta.length; k++) {
+          const [ key, value ] = meta[k];
+          const row = document.createElement('div');
+          row.classList.add('contract-meta-row');
+
+          const keyNode = document.createElement('div');
+          keyNode.classList.add('contract-meta-key');
+          keyNode.innerText = key;
+          row.appendChild(keyNode);
+
+          const valueNode = document.createElement('div');
+          valueNode.classList.add('contract-meta-value');
+          valueNode.innerText = typeof value === 'string' ? value : JSON.stringify(value);
+          row.appendChild(valueNode);
+
+          metaContainer.appendChild(row);
+        }
+
+        targetCell.appendChild(metaContainer);
+      };
+
       for (let i = 0; i < deployments.length; i++) {
         const deploymentName = deployments[i];
         const contracts = Object.entries(deploymentsObject[deployments[i]].contracts);
@@ -219,29 +285,39 @@
 
         const table = tableTemplate.content.cloneNode(true).children[0];
         for (let j = 0; j < contracts.length; j++) {
-          const [ contractName, contractAddress ] = contracts[j];
+          const [ contractName, contractValue ] = contracts[j];
+          const { address, explorerHref, meta } = normalizeContractEntry(contractValue, blockscanOrigin);
           const tbody = table.children[0];
 
           const row = document.createElement('tr');
+
           const cell1 = document.createElement('td');
           cell1.innerText = contractName;
           row.appendChild(cell1);
 
-          const button = copyButtonTemplate.content.cloneNode(true);
-          const link = copyLinkTemplate.content.cloneNode(true);
-
           const cell2 = document.createElement('td');
-          cell2.innerText = contractAddress;
+          cell2.innerText = address || 'N/A';
+          renderContractMeta(meta, cell2);
           row.appendChild(cell2);
 
           const cell3 = document.createElement('td');
-          button.children[0].children[0].dataset.copyText = contractAddress;
-          cell3.appendChild(button);
+          if (address) {
+            const button = copyButtonTemplate.content.cloneNode(true);
+            button.children[0].children[0].dataset.copyText = address;
+            cell3.appendChild(button);
+          } else {
+            cell3.innerText = '—';
+          }
           row.appendChild(cell3);
 
           const cell4 = document.createElement('td');
-          link.children[0].children[0].href = blockscanOrigin + 'address/' + contractAddress;
-          cell4.appendChild(link);
+          if (explorerHref) {
+            const link = copyLinkTemplate.content.cloneNode(true);
+            link.children[0].children[0].href = explorerHref;
+            cell4.appendChild(link);
+          } else {
+            cell4.innerText = '—';
+          }
           row.appendChild(cell4);
 
           tbody.appendChild(row);
