@@ -125,12 +125,22 @@
     background-color: #F7F9FA;
   }
 
+  table.deployment-table tr.expandable-row td:first-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
   .expand-toggle {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 8px;
-    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    line-height: 1;
+    flex-shrink: 0;
+    transform-origin: center;
+    margin-right: 0;
     transition: transform 0.2s ease;
   }
 
