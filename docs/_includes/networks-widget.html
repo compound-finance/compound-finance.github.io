@@ -143,7 +143,7 @@
     margin-bottom: 10px;
   }
 
-  .asset-card .left {
+  .asset-card .card-header-info {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -177,15 +177,6 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-  }
-
-  .pill {
-    background: #f1f4f6;
-    color: #5b7083;
-    border-radius: 10px;
-    padding: 4px 8px;
-    font-size: 12px;
-    line-height: 14px;
   }
 
   .metric-grid {
@@ -226,10 +217,6 @@
     white-space: normal;
     word-break: break-word;
     min-height: 13px;
-  }
-
-  .metric .bar {
-    display: none;
   }
 
   .meta-list {
@@ -409,12 +396,6 @@
       return addr.slice(0, 6) + '…' + addr.slice(-4);
     };
 
-    const percentWidth = (value) => {
-      const numeric = parseFloat(String(value).replace('%', ''));
-      if (Number.isNaN(numeric)) return 0;
-      return Math.max(0, Math.min(100, numeric));
-    };
-
     const normalizeContractEntry = (contractValue, blockscanOrigin) => {
       const isObject = contractValue && typeof contractValue === 'object';
       const address =
@@ -450,7 +431,7 @@
       return link;
     };
 
-    const buildMetric = (label, value, raw, isPercent = false) => {
+    const buildMetric = (label, value, raw) => {
       const metric = document.createElement('div');
       metric.classList.add('metric');
 
@@ -545,7 +526,7 @@
       header.classList.add('card-header');
 
       const left = document.createElement('div');
-      left.classList.add('left');
+      left.classList.add('card-header-info');
 
       const title = document.createElement('div');
       title.classList.add('asset-title');
@@ -572,7 +553,11 @@
       const metrics = document.createElement('div');
       metrics.classList.add('metric-grid');
       metrics.appendChild(
-        buildMetric('Borrow CF', getVal('Borrow CF'), getRaw('Borrow CF')),
+        buildMetric(
+          'Borrow CF',
+          getVal('Borrow CF'),
+          getRaw('Borrow CF'),
+        ),
       );
       metrics.appendChild(
         buildMetric(
@@ -589,7 +574,11 @@
         ),
       );
       metrics.appendChild(
-        buildMetric('Supply Cap', getVal('Supply Cap'), getRaw('Supply Cap')),
+        buildMetric(
+          'Supply Cap',
+          getVal('Supply Cap'),
+          getRaw('Supply Cap'),
+        ),
       );
 
       card.appendChild(metrics);
@@ -632,10 +621,11 @@
         const actions = document.createElement('div');
         actions.classList.add('actions');
         if (address) actions.appendChild(createCopyButton(address));
-        if (address && blockscanOrigin)
+        if (address && blockscanOrigin) {
           actions.appendChild(
             createExplorerLink(`${blockscanOrigin}address/${address}`),
           );
+        }
 
         item.appendChild(info);
         item.appendChild(actions);
