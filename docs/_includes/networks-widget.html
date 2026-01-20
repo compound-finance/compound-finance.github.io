@@ -6,34 +6,56 @@
   }
 
   .networks-widget {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 
   .networks-widget .network-tabs {
     width: 100%;
     margin: 10px 0px 22px 0px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 12px;
+    background: linear-gradient(180deg, #f7f9fb 0%, #f2f4f7 100%);
+    border: 1px solid #e5e8eb;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
   }
 
   .networks-widget .network-tabs .network-tab-button {
-    display: inline-block;
-    padding-right: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 16px;
     user-select: none;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 36px;
-    color: #CCD6DD;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4b5b6b;
+    border: 1px solid #e0e5ea;
+    border-radius: 12px;
+    background: #fff;
+    transition: all 0.15s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+  }
+
+  .networks-widget .network-tabs .network-tab-button:hover {
+    border-color: #c8d2dc;
+    color: #141e27;
+    transform: translateY(-1px);
   }
 
   .networks-widget .network-tabs .network-tab-button.active {
-    color: #141E27;
-    text-decoration: underline;
-    text-underline-offset: 6px;
-    text-decoration-thickness: 2px;
+    color: #fff;
+    background: linear-gradient(135deg, #141e27, #1f2a34);
+    border-color: #141e27;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   }
 
   .networks-widget .network-tab-content-container {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 
   .networks-widget .network-tab-content {
@@ -41,9 +63,8 @@
   }
 
   .networks-widget .network-tab-content.active {
-    display: inline-block;
-    padding: 38px 34px;
-    border: solid 1px #CCD6DD;
+    display: block;
+    padding: 10px 4px 32px 4px;
   }
 
   .copy-tool {
@@ -52,84 +73,255 @@
 
   .copy-tool > div {
     display: inline-block;
-    color: #141E27;
+    color: #141e27;
     vertical-align: middle;
     text-align: right;
   }
 
-  .copy-tool .copy-button {
+  .copy-tool .copy-button,
+  .copy-tool .blockscan-button {
     width: 18px;
     height: 18px;
-    margin: 0px;
-    background: url('{{ "/public/img/icn-copy.svg" | relative_url }}');
+    margin: 0;
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px 18px;
+    display: block;
+    transform: none;
+    transition: none;
+  }
+
+  .copy-tool .copy-button {
+    background-image: url('{{ "/public/img/icn-copy.svg" | relative_url }}');
   }
 
   .copy-tool .copy-button:hover {
-    background: url('{{ "/public/img/icn-copy-green.svg" | relative_url }}');
+    background-image: url('{{ "/public/img/icn-copy-green.svg" | relative_url }}');
     cursor: pointer;
   }
 
   .copy-tool .blockscan-button {
-    width: 18px;
-    height: 18px;
     margin: 0px 4px;
-    background: url('{{ "/public/img/icn-external-link.svg" | relative_url }}');
-    background-repeat: no-repeat;
+    background-image: url('{{ "/public/img/icn-external-link.svg" | relative_url }}');
   }
 
   .copy-tool .blockscan-button:hover {
-    background: url('{{ "/public/img/icn-external-link-green.svg" | relative_url }}');
+    background-image: url('{{ "/public/img/icn-external-link-green.svg" | relative_url }}');
   }
 
-  table.deployment-table {
-    display: block;
-    border-collapse: collapse;
-    max-width: 100%;
-    padding: 0px;
+  .copy-tool a {
+    display: inline-block;
   }
 
-  table.deployment-table td {
-    color: #141E27;
+  .card-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .asset-card,
+  .protocol-card {
+    background: #fff;
+    border: 1px solid #e5e8eb;
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .asset-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .asset-card .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .asset-card .card-header-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .asset-title {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .asset-name {
+    font-weight: 700;
+    color: #141e27;
+    font-size: 16px;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .asset-address {
+    color: #5b7083;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .card-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 8px 0 4px 0;
+    flex: 1;
+  }
+
+  .metric {
+    background: #f7f9fa;
+    border-radius: 10px;
+    padding: 9px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-height: 98px;
+  }
+
+  .metric .label {
+    color: #5b7083;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .metric .value {
+    color: #141e27;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .metric .raw {
+    color: #5b7083;
+    font-size: 11px;
+    line-height: 13px;
+    white-space: normal;
+    word-break: break-word;
+    min-height: 13px;
+  }
+
+  .meta-list {
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #f7f9fa;
+    border: none;
+    border-radius: 10px;
+    margin-top: auto;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    padding: 6px 8px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .meta-key {
+    min-width: 120px;
+    color: #5b7083;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .meta-value {
+    color: #141e27;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+  }
+
+  .meta-value.price-feed {
+    color: #5b7083;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .meta-actions {
+    display: inline-flex;
+    gap: 6px;
+    margin-left: 6px;
+    flex-shrink: 0;
+  }
+
+  .protocol-card h5 {
+    margin: 0 0 8px 0;
     font-size: 15px;
-    line-height: 18px;
-    padding: 14px 10px 14px 0px;
+    color: #141e27;
   }
 
-  table.deployment-table th {
-    padding: 0px 10px 0px 0px;
+  .protocol-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 8px;
   }
 
-  table.deployment-table td:first-child {
-    max-width: 142px;
+  .protocol-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border: 1px solid #e5e8eb;
+    border-radius: 10px;
+    background: #fdfefe;
   }
 
-  table.deployment-table tr {
-    border-bottom: solid 1px #CCD6DD;
-    line-height: 34px;
+  .protocol-item .name {
+    font-weight: 600;
+    color: #141e27;
+    font-size: 14px;
+    margin-bottom: 2px;
   }
 
-  table.deployment-table th {
-    color: #CCD6DD;
+  .protocol-item .addr {
+    color: #5b7083;
+    font-size: 12px;
   }
 
-  table.deployment-table tr td:first-child {
-    font-weight: bold;
+  .protocol-item .actions {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .metric-grid {
+      grid-template-columns: 1fr;
+    }
+    .card-layout {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
-
-<template id="networks-widget-table-template">
-  <table class="deployment-table">
-    <tbody>
-      <tr>
-        <th>Contract</th>
-        <th>Address</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </tbody>
-  </table>
-</template>
 
 <template id="address-copy-button-template">
   <div class="copy-tool">
@@ -146,122 +338,374 @@
 </template>
 
 <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', (event) => {
-    /* Build an address listing and copy tool for each protocol deployment */
-    /* Data is in the top of the markdown page file */
-    const deploymentsContainer = document.getElementById('networks-widget-container');
+  document.addEventListener('DOMContentLoaded', () => {
+    /* Build cards + copy tools for each protocol deployment using data from the markdown front matter */
+    const deploymentsContainer = document.getElementById(
+      'networks-widget-container',
+    );
+    const copyButtonTemplate = document.getElementById(
+      'address-copy-button-template',
+    );
+    const copyLinkTemplate = document.getElementById(
+      'address-copy-link-template',
+    );
 
-    const tableTemplate = document.getElementById('networks-widget-table-template');
-    const copyButtonTemplate = document.getElementById('address-copy-button-template');
-    const copyLinkTemplate = document.getElementById('address-copy-link-template');
+    if (!deploymentsContainer) return;
 
-    if (deploymentsContainer) {
-      let deploymentsObject = {};
-      try {
-        deploymentsObject = JSON.parse(('{{ page.deployments }}').replace(/=>/g, ':'));
-      } catch(e) {
-        console.error(e);
-      }
-
-      const deployments = Object.keys(deploymentsObject);
-
-      /* Tabs go in here */
-      const networksWidget = document.createElement('div');
-      networksWidget.classList.add('networks-widget');
-
-      /* Make a tab switcher in networksWidget, appended later */
-      const networkTabs = document.createElement('div');
-      networkTabs.classList.add('network-tabs');
-      networkTabs.id = 'network-tabs';
-
-      /* tab switcher click event handler */
-
-      const tabClickHandler = (buttonIndex) => {
-        const networkTabsContainer = document.getElementById('network-tabs');
-        const tabContentContainers = document.getElementsByClassName('network-tab-content');
-        const target = networkTabsContainer.children[buttonIndex];
-        const numTabs = networkTabsContainer.children.length;
-        for (let j = 0; j < numTabs; j++) {
-          networkTabsContainer.children[j].classList.remove(activeClass);
-          tabContentContainers[j].classList.remove(activeClass);
-        }
-        target.classList.add(activeClass);
-        const tabContent = document.getElementById('network-tab-' + target.dataset.index);
-        tabContent.classList.add(activeClass);
-      };
-
-      const networkTabContainer = document.createElement('div');
-      networkTabContainer.classList.add('network-tab-content-container');
-      const activeClass = 'active';
-
-      for (let i = 0; i < deployments.length; i++) {
-        const deploymentName = deployments[i];
-        const contracts = Object.entries(deploymentsObject[deployments[i]].contracts);
-        const blockscanOrigin = deploymentsObject[deployments[i]].blockscan_origin;
-        const tabText = deploymentsObject[deployments[i]].tab_text;
-
-        const tabButton = document.createElement('div');
-        tabButton.classList.add('network-tab-button');
-        tabButton.id = 'network-tab-button-' + i;
-        tabButton.dataset.index = i;
-        tabButton.innerText = tabText;
-        tabButton.addEventListener('click', _ => tabClickHandler(+_.target.dataset.index));
-        networkTabs.appendChild(tabButton);
-
-        const networkTab = document.createElement('div');
-        networkTab.classList.add('network-tab-content');
-        networkTab.id = 'network-tab-' + i;
-        networkTab.dataset.index = i;
-
-        const header = document.createElement('h4');
-        header.innerText = deploymentName;
-        networkTab.appendChild(header);
-
-        const table = tableTemplate.content.cloneNode(true).children[0];
-        for (let j = 0; j < contracts.length; j++) {
-          const [ contractName, contractAddress ] = contracts[j];
-          const tbody = table.children[0];
-
-          const row = document.createElement('tr');
-          const cell1 = document.createElement('td');
-          cell1.innerText = contractName;
-          row.appendChild(cell1);
-
-          const button = copyButtonTemplate.content.cloneNode(true);
-          const link = copyLinkTemplate.content.cloneNode(true);
-
-          const cell2 = document.createElement('td');
-          cell2.innerText = contractAddress;
-          row.appendChild(cell2);
-
-          const cell3 = document.createElement('td');
-          button.children[0].children[0].dataset.copyText = contractAddress;
-          cell3.appendChild(button);
-          row.appendChild(cell3);
-
-          const cell4 = document.createElement('td');
-          link.children[0].children[0].href = blockscanOrigin + 'address/' + contractAddress;
-          cell4.appendChild(link);
-          row.appendChild(cell4);
-
-          tbody.appendChild(row);
-        }
-
-        networkTab.appendChild(table);
-        networkTabContainer.appendChild(networkTab);
-      }
-
-      networksWidget.appendChild(networkTabContainer);
-      networksWidget.prepend(networkTabs);
-      deploymentsContainer.appendChild(networksWidget);
-      tabClickHandler(0);
+    let deploymentsObject = {};
+    try {
+      deploymentsObject = JSON.parse(
+        '{{ page.deployments }}'.replace(/=>/g, ':'),
+      );
+    } catch (e) {
+      console.error(e);
+      return;
     }
 
-    /* Button to copy a contract address */
+    const deploymentsEntries = Object.entries(deploymentsObject || {});
+    if (!deploymentsEntries.length) return;
+
+    const networksWidget = document.createElement('div');
+    networksWidget.classList.add('networks-widget');
+
+    const networkTabs = document.createElement('div');
+    networkTabs.classList.add('network-tabs');
+    networkTabs.id = 'network-tabs';
+
+    const networkTabContainer = document.createElement('div');
+    networkTabContainer.classList.add('network-tab-content-container');
+    const activeClass = 'active';
+
+    const tabClickHandler = (buttonIndex) => {
+      const tabs = networkTabs.children;
+      const tabContentContainers = networkTabContainer.children;
+      for (let j = 0; j < tabs.length; j++) {
+        tabs[j].classList.remove(activeClass);
+        tabContentContainers[j].classList.remove(activeClass);
+      }
+      const targetTab = tabs[buttonIndex];
+      const targetContent = tabContentContainers[buttonIndex];
+      if (targetTab && targetContent) {
+        targetTab.classList.add(activeClass);
+        targetContent.classList.add(activeClass);
+      }
+    };
+
+    const truncateAddress = (addr) => {
+      if (!addr || addr.length < 12) return addr || '';
+      return addr.slice(0, 6) + '…' + addr.slice(-4);
+    };
+
+    const normalizeContractEntry = (contractValue, blockscanOrigin) => {
+      const isObject = contractValue && typeof contractValue === 'object';
+      const address =
+        typeof contractValue === 'string'
+          ? contractValue
+          : isObject
+            ? contractValue.address
+            : '';
+
+      const meta = isObject
+        ? Object.entries(contractValue).filter(([key]) => key !== 'address')
+        : [];
+
+      return {
+        address: address || '',
+        explorerHref:
+          address && blockscanOrigin
+            ? `${blockscanOrigin}address/${address}`
+            : '',
+        meta,
+      };
+    };
+
+    const createCopyButton = (text) => {
+      const button = copyButtonTemplate.content.cloneNode(true);
+      button.children[0].children[0].dataset.copyText = text;
+      return button;
+    };
+
+    const createExplorerLink = (href) => {
+      const link = copyLinkTemplate.content.cloneNode(true);
+      link.children[0].children[0].href = href;
+      return link;
+    };
+
+    const buildMetric = (label, value, raw) => {
+      const metric = document.createElement('div');
+      metric.classList.add('metric');
+
+      const lbl = document.createElement('div');
+      lbl.classList.add('label');
+      lbl.innerText = label;
+      metric.appendChild(lbl);
+
+      const val = document.createElement('div');
+      val.classList.add('value');
+      val.innerText = value || '—';
+      metric.appendChild(val);
+
+      const rawEl = document.createElement('div');
+      rawEl.classList.add('raw');
+      const hasRaw = raw !== undefined && raw !== null && raw !== '';
+      rawEl.innerText = `Raw: ${hasRaw ? raw : '—'}`;
+      if (hasRaw) rawEl.title = raw;
+      metric.appendChild(rawEl);
+
+      return metric;
+    };
+
+    const buildMetaList = (metaEntries, blockscanOrigin) => {
+      if (!metaEntries.length) return null;
+      const container = document.createElement('div');
+      container.classList.add('meta-list');
+
+      for (const [key, value] of metaEntries) {
+        const item = document.createElement('div');
+        item.classList.add('meta-item');
+
+        const keyNode = document.createElement('div');
+        keyNode.classList.add('meta-key');
+        keyNode.innerText = key;
+        item.appendChild(keyNode);
+
+        const isPriceFeed =
+          key === 'Price Feed' && typeof value === 'string' && value.length;
+        const valWrapper = document.createElement('div');
+        valWrapper.classList.add('meta-value');
+        if (isPriceFeed) valWrapper.classList.add('price-feed');
+        const displayValue =
+          value === undefined || value === null || value === ''
+            ? '—'
+            : isPriceFeed
+              ? truncateAddress(value)
+              : value;
+        valWrapper.innerText = displayValue;
+        if (isPriceFeed) valWrapper.title = value;
+        item.appendChild(valWrapper);
+
+        if (isPriceFeed) {
+          const actions = document.createElement('div');
+          actions.classList.add('meta-actions');
+          actions.appendChild(createCopyButton(value));
+          const explorerHref = blockscanOrigin
+            ? `${blockscanOrigin}address/${value}`
+            : '';
+          if (explorerHref) {
+            actions.appendChild(createExplorerLink(explorerHref));
+          }
+          item.appendChild(actions);
+        }
+
+        container.appendChild(item);
+      }
+
+      return container;
+    };
+
+    const buildAssetCard = (contractName, contractValue, blockscanOrigin) => {
+      const { address, explorerHref, meta } = normalizeContractEntry(
+        contractValue,
+        blockscanOrigin,
+      );
+      const metaMap = new Map(meta);
+      const getVal = (key) => metaMap.get(key);
+      const getRaw = (key) => metaMap.get(`${key} Raw`);
+
+      const usedKeys = new Set([
+        'Borrow CF',
+        'Liquidation CF',
+        'Liquidation Penalty',
+        'Supply Cap',
+      ]);
+
+      const card = document.createElement('div');
+      card.classList.add('asset-card');
+
+      const header = document.createElement('div');
+      header.classList.add('card-header');
+
+      const left = document.createElement('div');
+      left.classList.add('card-header-info');
+
+      const title = document.createElement('div');
+      title.classList.add('asset-title');
+      const nameEl = document.createElement('div');
+      nameEl.classList.add('asset-name');
+      nameEl.innerText = contractName;
+      const addrEl = document.createElement('div');
+      addrEl.classList.add('asset-address');
+      addrEl.innerText = address ? truncateAddress(address) : 'Address: N/A';
+      if (address) addrEl.title = address;
+      title.appendChild(nameEl);
+      title.appendChild(addrEl);
+      left.appendChild(title);
+
+      const actions = document.createElement('div');
+      actions.classList.add('card-actions');
+      if (address) actions.appendChild(createCopyButton(address));
+      if (explorerHref) actions.appendChild(createExplorerLink(explorerHref));
+
+      header.appendChild(left);
+      header.appendChild(actions);
+      card.appendChild(header);
+
+      const metrics = document.createElement('div');
+      metrics.classList.add('metric-grid');
+      metrics.appendChild(
+        buildMetric(
+          'Borrow CF',
+          getVal('Borrow CF'),
+          getRaw('Borrow CF'),
+        ),
+      );
+      metrics.appendChild(
+        buildMetric(
+          'Liquidation CF',
+          getVal('Liquidation CF'),
+          getRaw('Liquidation CF'),
+        ),
+      );
+      metrics.appendChild(
+        buildMetric(
+          'Liquidation Penalty',
+          getVal('Liquidation Penalty'),
+          getRaw('Liquidation Penalty'),
+        ),
+      );
+      metrics.appendChild(
+        buildMetric(
+          'Supply Cap',
+          getVal('Supply Cap'),
+          getRaw('Supply Cap'),
+        ),
+      );
+
+      card.appendChild(metrics);
+
+      const remainingMeta = meta.filter(
+        ([key]) => !key.endsWith(' Raw') && !usedKeys.has(key),
+      );
+      const metaList = buildMetaList(remainingMeta, blockscanOrigin);
+      if (metaList) card.appendChild(metaList);
+
+      return card;
+    };
+
+    const buildProtocolCard = (entries, blockscanOrigin) => {
+      if (!entries.length) return null;
+      const card = document.createElement('div');
+      card.classList.add('protocol-card');
+      const title = document.createElement('h5');
+      title.innerText = 'Protocol Contracts';
+      card.appendChild(title);
+
+      const list = document.createElement('div');
+      list.classList.add('protocol-list');
+
+      for (const [name, address] of entries) {
+        const item = document.createElement('div');
+        item.classList.add('protocol-item');
+
+        const info = document.createElement('div');
+        const nameEl = document.createElement('div');
+        nameEl.classList.add('name');
+        nameEl.innerText = name;
+        const addrEl = document.createElement('div');
+        addrEl.classList.add('addr');
+        addrEl.innerText = address ? truncateAddress(address) : 'N/A';
+        if (address) addrEl.title = address;
+        info.appendChild(nameEl);
+        info.appendChild(addrEl);
+
+        const actions = document.createElement('div');
+        actions.classList.add('actions');
+        if (address) actions.appendChild(createCopyButton(address));
+        if (address && blockscanOrigin) {
+          actions.appendChild(
+            createExplorerLink(`${blockscanOrigin}address/${address}`),
+          );
+        }
+
+        item.appendChild(info);
+        item.appendChild(actions);
+        list.appendChild(item);
+      }
+
+      card.appendChild(list);
+      return card;
+    };
+
+    const tabsFragment = document.createDocumentFragment();
+    const contentFragment = document.createDocumentFragment();
+
+    deploymentsEntries.forEach(([deploymentName, deploymentData], index) => {
+      const contracts = Object.entries(deploymentData.contracts || {});
+      const blockscanOrigin = deploymentData.blockscan_origin;
+      const tabText = deploymentData.tab_text || deploymentName;
+
+      const tabButton = document.createElement('div');
+      tabButton.classList.add('network-tab-button');
+      tabButton.id = `network-tab-button-${index}`;
+      tabButton.dataset.index = index;
+      tabButton.innerText = tabText;
+      tabButton.addEventListener('click', () => tabClickHandler(index));
+      tabsFragment.appendChild(tabButton);
+
+      const networkTab = document.createElement('div');
+      networkTab.classList.add('network-tab-content');
+      networkTab.id = `network-tab-${index}`;
+      networkTab.dataset.index = index;
+
+      const header = document.createElement('h4');
+      header.innerText = deploymentName;
+      networkTab.appendChild(header);
+
+      const assetEntries = [];
+      const protocolEntries = [];
+      for (const [name, value] of contracts) {
+        if (
+          value &&
+          typeof value === 'object' &&
+          Object.prototype.hasOwnProperty.call(value, 'address')
+        ) {
+          assetEntries.push([name, value]);
+        } else {
+          protocolEntries.push([name, value]);
+        }
+      }
+      assetEntries.sort((a, b) => a[0].localeCompare(b[0]));
+
+      if (protocolEntries.length) {
+        const protoCard = buildProtocolCard(protocolEntries, blockscanOrigin);
+        if (protoCard) networkTab.appendChild(protoCard);
+      }
+
+      if (assetEntries.length) {
+        const cards = document.createElement('div');
+        cards.classList.add('card-layout');
+        for (const [name, value] of assetEntries) {
+          cards.appendChild(buildAssetCard(name, value, blockscanOrigin));
+        }
+        networkTab.appendChild(cards);
+      }
+
+      contentFragment.appendChild(networkTab);
+    });
+
+    networkTabs.appendChild(tabsFragment);
+    networkTabContainer.appendChild(contentFragment);
+    networksWidget.appendChild(networkTabContainer);
+    networksWidget.prepend(networkTabs);
+    deploymentsContainer.appendChild(networksWidget);
+    tabClickHandler(0);
+
+    /* Copy buttons */
     const copyButtons = document.getElementsByClassName('copy-button');
     for (let i = 0; i < copyButtons.length; i++) {
-      copyButtons[i].addEventListener('click', () => {
-        navigator.clipboard.writeText(copyButtons[i].dataset.copyText);
+      copyButtons[i].addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        navigator.clipboard.writeText(copyButtons[i].dataset.copyText || '');
       });
     }
   });
