@@ -1,0 +1,26 @@
+name: Sync Compound 3 Doc
+
+on:
+  schedule:
+    - cron: '5 13 * * *' # daily 13:05 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          persist-credentials: true
+
+      - name: Sync compound-3.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          bash scripts/sync_compound_3.sh
