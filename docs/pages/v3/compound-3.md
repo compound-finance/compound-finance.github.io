@@ -1463,7 +1463,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cAEROv3: '0x784efeB622244d2348d4F2522f8860B96fbEcE89'
-      cAEROv3 Implementation: '0x0f99Db1dbF8559C2D1Cf99983076F04262e42BCA'
+      cAEROv3 Implementation: '0xC89567205207E481c1162c7E8A03E27e8E619A77'
       cAEROv3 Ext: '0xDd18688Bb75Af704f3Fb1183e459C4d4D41132D9'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1483,7 +1483,7 @@ deployments:
         Liquidation Penalty Raw: '750000000000000000'
         Supply Cap: '7.50K'
         Supply Cap Raw: '7500000000000000000000'
-        Price Feed: '0x2c7118c4C88B9841FCF839074c26Ae8f035f2921'
+        Price Feed: '0xe6eb5B9b85cFF2C84Df3De6e7855bC9E76f034d5'
       USDC:
         address: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
         Borrow CF: '65.0%'
@@ -1494,7 +1494,7 @@ deployments:
         Liquidation Penalty Raw: '800000000000000000'
         Supply Cap: '30.00M'
         Supply Cap Raw: '30000000000000'
-        Price Feed: '0x970FfD8E335B8fa4cd5c869c7caC3a90671d5Dc3'
+        Price Feed: '0x3e6D1ccA8Eee6d02f1f578B613374EB53E6823B4'
       wstETH:
         address: '0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452'
         Borrow CF: '60.0%'
@@ -1505,7 +1505,7 @@ deployments:
         Liquidation Penalty Raw: '750000000000000000'
         Supply Cap: '5.00K'
         Supply Cap Raw: '5000000000000000000000'
-        Price Feed: '0x731564585278f228FB8F93a0BF62729E24367662'
+        Price Feed: '0x1738FCAe8D5A6aEf39985dF31Fe60e5Dc5e1a7b3'
       cbBTC:
         address: '0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf'
         Borrow CF: '60.0%'
@@ -1666,7 +1666,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cWETHv3: '0x46e6b214b524310239732D51387075E0e70970bf'
-      cWETHv3 Implementation: '0x5f2154E37c6B7F8b19c22628958609bd2Dfa6bcC'
+      cWETHv3 Implementation: '0xB53c20aD02eC4D3c02B1fCc54fc59f7E4B211616'
       cWETHv3 Ext: '0xbd4CfC08d64a848A9116A92Cd06D2f2bDC0a2505'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1719,7 +1719,7 @@ deployments:
         Liquidation Penalty Raw: '950000000000000000'
         Supply Cap: '20.00M'
         Supply Cap Raw: '20000000000000'
-        Price Feed: '0x2F4eAF29dfeeF4654bD091F7112926E108eF4Ed0'
+        Price Feed: '0x3dc83e4c67d99b935e07771F36060DEAefFFF45D'
       weETH:
         address: '0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A'
         Borrow CF: '90.0%'
@@ -1752,7 +1752,7 @@ deployments:
         Liquidation Penalty Raw: '950000000000000000'
         Supply Cap: '45'
         Supply Cap Raw: '4500000000'
-        Price Feed: '0x4cfCE7795bF75dC3795369A953d9A9b8C2679AE4'
+        Price Feed: '0xc4A9fFF2152fe11FBB40F059100ce1271a330C51'
       wsuperOETHb:
         address: '0x7FcD174E80f264448ebeE8c88a7C4476AAF58Ea6'
         Borrow CF: '88.0%'
@@ -2416,7 +2416,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-01-30 09:00:00.080 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-04 12:48:58.943 UTC**.
 
 <div id="networks-widget-container"></div>
 
