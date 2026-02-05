@@ -29,6 +29,9 @@ deployments:
       Governor: '0x309a862bbC1A00e45506cB8A802D1ff10004c8C0'
       Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
       SVR Fee Recipient: '0xd9496F2A3fd2a97d8A4531D92742F3C8F53183cB'
+      USDC:
+        address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
+        Price Feed: '0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6'
       COMP:
         address: '0xc00e94Cb662C3520282E6f5717214004A7f26888'
         Borrow CF: '50.0%'
@@ -177,6 +180,9 @@ deployments:
       Governor: '0x309a862bbC1A00e45506cB8A802D1ff10004c8C0'
       Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
       SVR Fee Recipient: '0xd9496F2A3fd2a97d8A4531D92742F3C8F53183cB'
+      USDS:
+        address: '0xdC035D45d973E3EC169d2276DDab16f1e407384F'
+        Price Feed: '0xfF30586cD0F29eD462364C7e81375FC0C71219b1'
       WETH:
         address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
         Borrow CF: '83.0%'
@@ -303,6 +309,9 @@ deployments:
       Governor: '0x309a862bbC1A00e45506cB8A802D1ff10004c8C0'
       Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
       SVR Fee Recipient: '0xd9496F2A3fd2a97d8A4531D92742F3C8F53183cB'
+      USDT:
+        address: '0xdAC17F958D2ee523a2206206994597C13D831ec7'
+        Price Feed: '0x3E7d1eAB13ad0104d2750B8863b489D65364e32D'
       COMP:
         address: '0xc00e94Cb662C3520282E6f5717214004A7f26888'
         Borrow CF: '50.0%'
@@ -473,6 +482,9 @@ deployments:
       Governor: '0x309a862bbC1A00e45506cB8A802D1ff10004c8C0'
       Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
       SVR Fee Recipient: '0xd9496F2A3fd2a97d8A4531D92742F3C8F53183cB'
+      WBTC:
+        address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599'
+        Price Feed: '0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23'
       LBTC:
         address: '0x8236a87084f8B84306f72007F36F2618A5634494'
         Borrow CF: '73.0%'
@@ -533,6 +545,9 @@ deployments:
       Governor: '0x309a862bbC1A00e45506cB8A802D1ff10004c8C0'
       Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
       SVR Fee Recipient: '0xd9496F2A3fd2a97d8A4531D92742F3C8F53183cB'
+      WETH:
+        address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+        Price Feed: '0xD72ac1bCE9177CFe7aEb5d0516a38c88a64cE0AB'
       cbETH:
         address: '0xBe9895146f7AF43049ca1c1AE358B0541Ea49704'
         Borrow CF: '90.0%'
@@ -736,6 +751,9 @@ deployments:
       Governor: '0x309a862bbC1A00e45506cB8A802D1ff10004c8C0'
       Timelock: '0x6d903f6003cca6255D85CcA4D3B5E5146dC33925'
       SVR Fee Recipient: '0xd9496F2A3fd2a97d8A4531D92742F3C8F53183cB'
+      wstETH:
+        address: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0'
+        Price Feed: '0x72e9B6F907365d76C6192aD49C0C5ba356b7Fa48'
       rsETH:
         address: '0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7'
         Borrow CF: '90.0%'
@@ -828,6 +846,9 @@ deployments:
       Bulker: '0xcb3643CC8294B23171272845473dEc49739d4Ba3'
       Governor: '0xC3a73A70d1577CD5B02da0bA91C0Afc8fA434DAF'
       Timelock: '0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07'
+      USDC:
+        address: '0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85'
+        Price Feed: '0x16a9FA2FDa030272Ce99B29CF780dFA30361E0f3'
       OP:
         address: '0x4200000000000000000000000000000000000042'
         Borrow CF: '65.0%'
@@ -898,6 +919,9 @@ deployments:
       Bulker: '0xcb3643CC8294B23171272845473dEc49739d4Ba3'
       Governor: '0xC3a73A70d1577CD5B02da0bA91C0Afc8fA434DAF'
       Timelock: '0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07'
+      USDT:
+        address: '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58'
+        Price Feed: '0xECef79E109e997bCA29c1c0897ec9d7b03647F5E'
       OP:
         address: '0x4200000000000000000000000000000000000042'
         Borrow CF: '65.0%'
@@ -968,6 +992,9 @@ deployments:
       Bulker: '0xcb3643CC8294B23171272845473dEc49739d4Ba3'
       Governor: '0xC3a73A70d1577CD5B02da0bA91C0Afc8fA434DAF'
       Timelock: '0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07'
+      WETH:
+        address: '0x4200000000000000000000000000000000000006'
+        Price Feed: '0x0be923b1716115d742E35Fa359d415598c50510F'
       wstETH:
         address: '0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb'
         Borrow CF: '88.0%'
@@ -1071,6 +1098,9 @@ deployments:
       Bulker: '0x58EbB8Db8b4FdF2dCbbB16E04c2F5b952963B514'
       Governor: '0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118'
       Timelock: '0x2F4eAF29dfeeF4654bD091F7112926E108eF4Ed0'
+      USDC:
+        address: '0x078D782b760474a361dDA0AF3839290b0EF57AD6'
+        Price Feed: '0x1F71901daf98d70B4BAF40DE080321e5C2676856'
       UNI:
         address: '0x8f187aA05619a017077f5308904739877ce9eA21'
         Borrow CF: '68.0%'
@@ -1108,6 +1138,9 @@ deployments:
       Bulker: '0x58EbB8Db8b4FdF2dCbbB16E04c2F5b952963B514'
       Governor: '0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118'
       Timelock: '0x2F4eAF29dfeeF4654bD091F7112926E108eF4Ed0'
+      WETH:
+        address: '0x4200000000000000000000000000000000000006'
+        Price Feed: '0x3C30B5a5A04656565686f800481580Ac4E7ed178'
       wstETH:
         address: '0xc02fE7317D4eb8753a02c35fe019786854A92001'
         Borrow CF: '90.0%'
@@ -1189,6 +1222,9 @@ deployments:
       Bulker: '0x59e242D352ae13166B4987aE5c990C232f7f7CD6'
       Governor: '0x18281dfC4d00905DA1aaA6731414EABa843c468A'
       Timelock: '0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02'
+      USDC:
+        address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
+        Price Feed: '0xfE4A8cc5b5B2366C1B58Bea3858e81843581b2F7'
       WETH:
         address: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619'
         Borrow CF: '80.0%'
@@ -1259,6 +1295,9 @@ deployments:
       Bulker: '0x59e242D352ae13166B4987aE5c990C232f7f7CD6'
       Governor: '0x18281dfC4d00905DA1aaA6731414EABa843c468A'
       Timelock: '0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02'
+      USDT0:
+        address: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F'
+        Price Feed: '0x0A6513e40db6EB1b165753AD52E80663aeA50545'
       WPOL:
         address: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270'
         Borrow CF: '65.0%'
@@ -1329,6 +1368,9 @@ deployments:
       Bulker: '0x840281FaD56DD88afba052B7F18Be2A65796Ecc6'
       Governor: '0x2c7EfA766338D33B9192dB1fB5D170Bdc03ef3F9'
       Timelock: '0xBbb0Ebd903fafbb8fFF58B922fD0CD85E251ac2c'
+      WETH:
+        address: '0xc99a6A985eD2Cac1ef41640596C5A5f9F4E19Ef5'
+        Price Feed: '0x8AC2b57d15c84755A3333aD68025d2496AE3BeBD'
       WRON:
         address: '0xe514d9DEB7966c8BE0ca922de8a064264eA6bcd4'
         Borrow CF: '75.0%'
@@ -1377,6 +1419,9 @@ deployments:
       Bulker: '0x840281FaD56DD88afba052B7F18Be2A65796Ecc6'
       Governor: '0x2c7EfA766338D33B9192dB1fB5D170Bdc03ef3F9'
       Timelock: '0xBbb0Ebd903fafbb8fFF58B922fD0CD85E251ac2c'
+      WRON:
+        address: '0xe514d9DEB7966c8BE0ca922de8a064264eA6bcd4'
+        Price Feed: '0x0B6074F21488B95945989E513EFEA070096d931D'
       USDC:
         address: '0x0B7007c13325C48911F73A2daD5FA5dCBf808aDc'
         Borrow CF: '75.0%'
@@ -1425,6 +1470,9 @@ deployments:
       Bulker: '0x67DFCa85CcEEFA2C5B1dB4DEe3BEa716A28B9baa'
       Governor: '0xc91EcA15747E73d6dd7f616C49dAFF37b9F1B604'
       Timelock: '0x16C7B5C1b10489F4B111af11de2Bd607c9728107'
+      USDe:
+        address: '0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34'
+        Price Feed: '0xE5dB8474880459F6fd189F8282518443a8b39Aa5'
       mETH:
         address: '0xcDA86A272531e8640cD7F1a92c01839911B90bb0'
         Borrow CF: '80.0%'
@@ -1473,6 +1521,9 @@ deployments:
       Bulker: '0x78D0677032A35c63D142a48A2037048871212a8C'
       Governor: '0x18281dfC4d00905DA1aaA6731414EABa843c468A'
       Timelock: '0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02'
+      AERO:
+        address: '0x940181a94A35A4569E4529A3CDfB74e38FD98631'
+        Price Feed: '0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C'
       WETH:
         address: '0x4200000000000000000000000000000000000006'
         Borrow CF: '60.0%'
@@ -1532,6 +1583,9 @@ deployments:
       Bulker: '0x78D0677032A35c63D142a48A2037048871212a8C'
       Governor: '0x18281dfC4d00905DA1aaA6731414EABa843c468A'
       Timelock: '0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02'
+      USDbC:
+        address: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA'
+        Price Feed: '0x7e860098F58bBFC8648a4311b374B1D669a2bc6B'
       cbETH:
         address: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22'
         Borrow CF: '45.0%'
@@ -1569,6 +1623,9 @@ deployments:
       Bulker: '0x78D0677032A35c63D142a48A2037048871212a8C'
       Governor: '0x18281dfC4d00905DA1aaA6731414EABa843c468A'
       Timelock: '0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02'
+      USDC:
+        address: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+        Price Feed: '0x7e860098F58bBFC8648a4311b374B1D669a2bc6B'
       cbETH:
         address: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22'
         Borrow CF: '80.0%'
@@ -1639,6 +1696,9 @@ deployments:
       Bulker: '0x78D0677032A35c63D142a48A2037048871212a8C'
       Governor: '0x18281dfC4d00905DA1aaA6731414EABa843c468A'
       Timelock: '0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02'
+      USDS:
+        address: '0x820C137fa70C8691f0e44Dc420a5e53c168921Dc'
+        Price Feed: '0x2330aaE3bca5F05169d5f4597964D44522F62930'
       sUSDS:
         address: '0x5875eEE11Cf8398102FdAd704C9E96607675467a'
         Borrow CF: '93.0%'
@@ -1676,6 +1736,9 @@ deployments:
       Bulker: '0x78D0677032A35c63D142a48A2037048871212a8C'
       Governor: '0x18281dfC4d00905DA1aaA6731414EABa843c468A'
       Timelock: '0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02'
+      WETH:
+        address: '0x4200000000000000000000000000000000000006'
+        Price Feed: '0x9f485610E26B9c0140439f88Dc0C7742903Bd1CF'
       cbETH:
         address: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22'
         Borrow CF: '90.0%'
@@ -1779,6 +1842,9 @@ deployments:
       Bulker: '0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d'
       Governor: '0x42480C37B249e33aABaf4c22B20235656bd38068'
       Timelock: '0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A'
+      USDC:
+        address: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8'
+        Price Feed: '0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3'
       ARB:
         address: '0x912CE59144191C1204E64559FE8253a0e49E6548'
         Borrow CF: '55.0%'
@@ -1838,6 +1904,9 @@ deployments:
       Bulker: '0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d'
       Governor: '0x42480C37B249e33aABaf4c22B20235656bd38068'
       Timelock: '0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A'
+      USDC:
+        address: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831'
+        Price Feed: '0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3'
       ARB:
         address: '0x912CE59144191C1204E64559FE8253a0e49E6548'
         Borrow CF: '70.0%'
@@ -1952,6 +2021,9 @@ deployments:
       Bulker: '0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d'
       Governor: '0x42480C37B249e33aABaf4c22B20235656bd38068'
       Timelock: '0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A'
+      USD₮0:
+        address: '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9'
+        Price Feed: '0x3f3f5dF88dC9F13eac63DF89EC16ef6e7E25DdE7'
       ARB:
         address: '0x912CE59144191C1204E64559FE8253a0e49E6548'
         Borrow CF: '70.0%'
@@ -2044,6 +2116,9 @@ deployments:
       Bulker: '0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d'
       Governor: '0x42480C37B249e33aABaf4c22B20235656bd38068'
       Timelock: '0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A'
+      WETH:
+        address: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1'
+        Price Feed: '0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C'
       weETH:
         address: '0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe'
         Borrow CF: '90.0%'
@@ -2158,6 +2233,9 @@ deployments:
       Bulker: '0x023ee795361B28cDbB94e302983578486A0A5f1B'
       Governor: '0x1F71901daf98d70B4BAF40DE080321e5C2676856'
       Timelock: '0x4A900f81dEdA753bbBab12453b3775D5f26df6F3'
+      USDC:
+        address: '0x176211869cA2b568f2A7D4EE941E073a821EE1ff'
+        Price Feed: '0xAADAa473C1bDF7317ec07c915680Af29DeBfdCb5'
       WETH:
         address: '0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f'
         Borrow CF: '83.0%'
@@ -2206,6 +2284,9 @@ deployments:
       Bulker: '0x023ee795361B28cDbB94e302983578486A0A5f1B'
       Governor: '0x1F71901daf98d70B4BAF40DE080321e5C2676856'
       Timelock: '0x4A900f81dEdA753bbBab12453b3775D5f26df6F3'
+      WETH:
+        address: '0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f'
+        Price Feed: '0xc4A9fFF2152fe11FBB40F059100ce1271a330C51'
       ezETH:
         address: '0x2416092f143378750bb29b79eD961ab195CcEea5'
         Borrow CF: '90.0%'
@@ -2276,6 +2357,9 @@ deployments:
       Bulker: '0x53C6D04e3EC7031105bAeA05B36cBc3C987C56fA'
       Governor: '0xC6bf5A64896D679Cf89843DbeC6c0f5d3C9b610D'
       Timelock: '0xF6013e80E9e6AC211Cc031ad1CE98B3Aa20b73E4'
+      USDC:
+        address: '0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4'
+        Price Feed: '0x43d12Fb3AfCAd5347fA764EeAB105478337b7200'
       WETH:
         address: '0x5300000000000000000000000000000000000004'
         Borrow CF: '40.0%'
@@ -2416,7 +2500,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-04 12:48:58.943 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-05 12:50:48.483 UTC**.
 
 <div id="networks-widget-container"></div>
 
