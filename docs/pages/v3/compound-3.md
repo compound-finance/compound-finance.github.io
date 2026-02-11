@@ -298,7 +298,7 @@ deployments:
     blockscan_origin: 'https://etherscan.io/'
     contracts:
       cUSDTv3: '0x3Afdc9BCA9213A35503b077a6072F3D0d5AB0840'
-      cUSDTv3 Implementation: '0xDF6899894e0A3Dbf703d843618Ee6075B6C1634D'
+      cUSDTv3 Implementation: '0xDa54EdE5a49CD61932d5507714d0a0E9D1F87eb5'
       cUSDTv3 Ext: '0xe3458a0BdBd5A413d3731595C5Eb7C4CD6a14DD1'
       Configurator: '0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3'
       Configurator Implementation: '0xcFC1fA6b7ca982176529899D99af6473aD80DF4F'
@@ -466,6 +466,17 @@ deployments:
         Supply Cap: '0'
         Supply Cap Raw: '0'
         Price Feed: '0x7BaDaB7109afBbF48eCd8d6498CaAcd2630b45B9'
+      XAUt:
+        address: '0x68749665FF8D2d112Fa859AA293F07A622782F38'
+        Borrow CF: '70.0%'
+        Borrow CF Raw: '700000000000000000'
+        Liquidation CF: '75.0%'
+        Liquidation CF Raw: '750000000000000000'
+        Liquidation Penalty: '10.00%'
+        Liquidation Penalty Raw: '900000000000000000'
+        Supply Cap: '200'
+        Supply Cap Raw: '200000000'
+        Price Feed: '0x214eD9Da11D2fbe465a6fc601a91E62EbEc1a0D6'
   Ethereum Mainnet - WBTC Base:
     tab_text: Mainnet WBTC
     blockscan_origin: 'https://etherscan.io/'
@@ -2500,7 +2511,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-05 12:50:48.483 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-11 12:57:37.584 UTC**.
 
 <div id="networks-widget-container"></div>
 
