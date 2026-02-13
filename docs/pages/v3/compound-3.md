@@ -2022,7 +2022,7 @@ deployments:
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cUSDTv3: '0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07'
-      cUSDTv3 Implementation: '0xe37ac2D417354B2F94f22E183E77dC7921b76876'
+      cUSDTv3 Implementation: '0x38581987A5F88bEd651199F0014F6dBc6460A413'
       cUSDTv3 Ext: '0x271A200023c9512d37149dfbb62bf0F62a8D4680'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -2034,7 +2034,7 @@ deployments:
       Timelock: '0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A'
       USD₮0:
         address: '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9'
-        Price Feed: '0x3f3f5dF88dC9F13eac63DF89EC16ef6e7E25DdE7'
+        Price Feed: '0xedfB5fD27B0259B0A696364b183223B5ca3CBE62'
       ARB:
         address: '0x912CE59144191C1204E64559FE8253a0e49E6548'
         Borrow CF: '70.0%'
@@ -2045,7 +2045,7 @@ deployments:
         Liquidation Penalty Raw: '900000000000000000'
         Supply Cap: '7.50M'
         Supply Cap Raw: '7500000000000000000000000'
-        Price Feed: '0xb2A824043730FE05F3DA2efaFa1CBbe83fa548D6'
+        Price Feed: '0x5998a5C516bD5E479E0B6aa6F243d372730B68d2'
       WETH:
         address: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1'
         Borrow CF: '83.0%'
@@ -2056,7 +2056,7 @@ deployments:
         Liquidation Penalty Raw: '930000000000000000'
         Supply Cap: '20.00K'
         Supply Cap Raw: '20000000000000000000000'
-        Price Feed: '0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612'
+        Price Feed: '0xb2988bDAdc45c43e3fE1A728F715E94bee4DB406'
       wstETH:
         address: '0x5979D7b546E38E414F7E9822514be443A4800529'
         Borrow CF: '80.0%'
@@ -2067,7 +2067,7 @@ deployments:
         Liquidation Penalty Raw: '900000000000000000'
         Supply Cap: '16.00K'
         Supply Cap Raw: '16000000000000000000000'
-        Price Feed: '0xe165155c34fE4cBfC55Fc554437907BDb1Af7e3e'
+        Price Feed: '0xC35137f62b825AeEaF30B69B6b32e3953D8d624a'
       WBTC:
         address: '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f'
         Borrow CF: '70.0%'
@@ -2078,7 +2078,7 @@ deployments:
         Liquidation Penalty Raw: '900000000000000000'
         Supply Cap: '1.00K'
         Supply Cap Raw: '100000000000'
-        Price Feed: '0xd0C7101eACbB49F3deCcCc166d238410D6D46d57'
+        Price Feed: '0xcc392d2c3b37520e01712320bE331D41F7661013'
       GMX:
         address: '0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a'
         Borrow CF: '60.0%'
@@ -2117,7 +2117,7 @@ deployments:
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cWETHv3: '0x6f7D514bbD4aFf3BcD1140B7344b32f063dEe486'
-      cWETHv3 Implementation: '0x43054a9433455e4e9ee9d741A2fa4C7dE471B9b7'
+      cWETHv3 Implementation: '0x1396E2ABb2584Ec07D84e90405505D2549C87014'
       cWETHv3 Ext: '0x0be923b1716115d742E35Fa359d415598c50510F'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -2140,7 +2140,7 @@ deployments:
         Liquidation Penalty Raw: '960000000000000000'
         Supply Cap: '24.00K'
         Supply Cap Raw: '24000000000000000000000'
-        Price Feed: '0xd3cf278F135D9831D2bF28F6672a4575906CA724'
+        Price Feed: '0x4F12633d511dC3049DE1ea923b7047fBeD0070D2'
       rETH:
         address: '0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8'
         Borrow CF: '90.0%'
@@ -2151,7 +2151,7 @@ deployments:
         Liquidation Penalty Raw: '970000000000000000'
         Supply Cap: '7.50K'
         Supply Cap Raw: '7500000000000000000000'
-        Price Feed: '0x970FfD8E335B8fa4cd5c869c7caC3a90671d5Dc3'
+        Price Feed: '0x60F2058379716A64a7A5d29219397e79bC552194'
       wstETH:
         address: '0x5979D7b546E38E414F7E9822514be443A4800529'
         Borrow CF: '88.0%'
@@ -2162,7 +2162,7 @@ deployments:
         Liquidation Penalty Raw: '970000000000000000'
         Supply Cap: '10.00K'
         Supply Cap Raw: '10000000000000000000000'
-        Price Feed: '0x6C987dDE50dB1dcDd32Cd4175778C2a291978E2a'
+        Price Feed: '0x311930889C61E141E15a61D11BE974D749390E7A'
       WBTC:
         address: '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f'
         Borrow CF: '80.0%'
@@ -2184,7 +2184,7 @@ deployments:
         Liquidation Penalty Raw: '960000000000000000'
         Supply Cap: '3.50K'
         Supply Cap Raw: '3500000000000000000000'
-        Price Feed: '0x3870FAc3De911c12A57E5a2532D15aD8Ca275A60'
+        Price Feed: '0xA4F2e977CAb3177D61E2e7eAEcd257Bf09F2f915'
       USD₮0:
         address: '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9'
         Borrow CF: '80.0%'
@@ -2195,7 +2195,7 @@ deployments:
         Liquidation Penalty Raw: '950000000000000000'
         Supply Cap: '20.00M'
         Supply Cap Raw: '20000000000000'
-        Price Feed: '0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713'
+        Price Feed: '0x15Eb948705933433826B9a7956741764e1432156'
       USDC:
         address: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831'
         Borrow CF: '80.0%'
@@ -2206,7 +2206,7 @@ deployments:
         Liquidation Penalty Raw: '950000000000000000'
         Supply Cap: '30.00M'
         Supply Cap Raw: '30000000000000'
-        Price Feed: '0x443EA0340cb75a160F31A440722dec7b5bc3C2E9'
+        Price Feed: '0x675DAfae7d2711032615bd32E6D352AF32e5a8Bd'
       ezETH:
         address: '0x2416092f143378750bb29b79eD961ab195CcEea5'
         Borrow CF: '90.0%'
@@ -2217,7 +2217,7 @@ deployments:
         Liquidation Penalty Raw: '960000000000000000'
         Supply Cap: '12.00K'
         Supply Cap Raw: '12000000000000000000000'
-        Price Feed: '0x72e9B6F907365d76C6192aD49C0C5ba356b7Fa48'
+        Price Feed: '0xA2699232B341881B1Ed85d91592b7c259E029aCf'
       tETH:
         address: '0xd09ACb80C1E8f2291862c4978A008791c9167003'
         Borrow CF: '88.0%'
@@ -2511,7 +2511,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-11 12:57:37.584 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-13 12:45:01.408 UTC**.
 
 <div id="networks-widget-container"></div>
 
