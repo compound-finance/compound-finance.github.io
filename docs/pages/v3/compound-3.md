@@ -1737,7 +1737,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cWETHv3: '0x46e6b214b524310239732D51387075E0e70970bf'
-      cWETHv3 Implementation: '0xB53c20aD02eC4D3c02B1fCc54fc59f7E4B211616'
+      cWETHv3 Implementation: '0x6B2F857d3F3A32BA7d9Ac46D0AD8E5bd6e2011f1'
       cWETHv3 Ext: '0xbd4CfC08d64a848A9116A92Cd06D2f2bDC0a2505'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1769,8 +1769,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '4.00%'
         Liquidation Penalty Raw: '960000000000000000'
-        Supply Cap: '2.00K'
-        Supply Cap Raw: '2000000000000000000000'
+        Supply Cap: '1.00K'
+        Supply Cap Raw: '1000000000000000000000'
         Price Feed: '0x41E345A046A73Ef15316191b41f3ABEA4cEF1168'
       wstETH:
         address: '0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452'
@@ -1802,8 +1802,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '4.00%'
         Liquidation Penalty Raw: '960000000000000000'
-        Supply Cap: '15.00K'
-        Supply Cap Raw: '15000000000000000000000'
+        Supply Cap: '7.50K'
+        Supply Cap Raw: '7500000000000000000000'
         Price Feed: '0x5D173813B4505701e79E654b36A95E6c1FAD4448'
       wrsETH:
         address: '0xEDfa23602D0EC14714057867A78d01e94176BEA0'
@@ -1843,7 +1843,7 @@ deployments:
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cUSDCv3: '0xA5EDBDD9646f8dFF606d7448e414884C7d905dCA'
-      cUSDCv3 Implementation: '0x468DCf84d507963eb76135D6249cab1f530c72C9'
+      cUSDCv3 Implementation: '0x47885403524C26a4514b5F8D82747a8c90CEf0C6'
       cUSDCv3 Ext: '0x5D409e56D886231aDAf00c8775665AD0f9897b56'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -1864,8 +1864,8 @@ deployments:
         Liquidation CF Raw: '600000000000000000'
         Liquidation Penalty: '10.00%'
         Liquidation Penalty Raw: '900000000000000000'
-        Supply Cap: '4.00M'
-        Supply Cap Raw: '4000000000000000000000000'
+        Supply Cap: '2.00M'
+        Supply Cap Raw: '2000000000000000000000000'
         Price Feed: '0xb2A824043730FE05F3DA2efaFa1CBbe83fa548D6'
       GMX:
         address: '0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a'
@@ -1875,8 +1875,8 @@ deployments:
         Liquidation CF Raw: '450000000000000000'
         Liquidation Penalty: '15.00%'
         Liquidation Penalty Raw: '850000000000000000'
-        Supply Cap: '50.00K'
-        Supply Cap Raw: '50000000000000000000000'
+        Supply Cap: '25.00K'
+        Supply Cap Raw: '25000000000000000000000'
         Price Feed: '0xDB98056FecFff59D032aB628337A4887110df3dB'
       WETH:
         address: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1'
@@ -1905,7 +1905,7 @@ deployments:
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cUSDCv3: '0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf'
-      cUSDCv3 Implementation: '0x26A3768Be5aF51c9336fee6De3fA844cEFC8A9ac'
+      cUSDCv3 Implementation: '0x3410F05Fb77715AC1d1eC68A8D74F38D0850d54c'
       cUSDCv3 Ext: '0x95DeDD64b551F05E9f59a101a519B024b6b116E7'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -2014,15 +2014,15 @@ deployments:
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '10.00%'
         Liquidation Penalty Raw: '900000000000000000'
-        Supply Cap: '80'
-        Supply Cap Raw: '80000000000000000000'
+        Supply Cap: '40'
+        Supply Cap Raw: '40000000000000000000'
         Price Feed: '0xE808488e8627F6531bA79a13A9E0271B39abEb1C'
   Arbitrum - USDT Base:
     tab_text: Arbitrum USDT
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cUSDTv3: '0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07'
-      cUSDTv3 Implementation: '0x38581987A5F88bEd651199F0014F6dBc6460A413'
+      cUSDTv3 Implementation: '0x69Ad47985Da1b3aa3Fa3C1fE642c81C08De21941'
       cUSDTv3 Ext: '0x271A200023c9512d37149dfbb62bf0F62a8D4680'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -2087,8 +2087,8 @@ deployments:
         Liquidation CF Raw: '700000000000000000'
         Liquidation Penalty: '20.00%'
         Liquidation Penalty Raw: '800000000000000000'
-        Supply Cap: '100.00K'
-        Supply Cap Raw: '100000000000000000000000'
+        Supply Cap: '50.00K'
+        Supply Cap Raw: '50000000000000000000000'
         Price Feed: '0xDB98056FecFff59D032aB628337A4887110df3dB'
       tBTC:
         address: '0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40'
@@ -2109,15 +2109,15 @@ deployments:
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '10.00%'
         Liquidation Penalty Raw: '900000000000000000'
-        Supply Cap: '50'
-        Supply Cap Raw: '50000000000000000000'
+        Supply Cap: '25'
+        Supply Cap Raw: '25000000000000000000'
         Price Feed: '0x5372Bcf3486D59C23F5fC85745B41F180EFFf881'
   Arbitrum - WETH Base:
     tab_text: Arbitrum WETH
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cWETHv3: '0x6f7D514bbD4aFf3BcD1140B7344b32f063dEe486'
-      cWETHv3 Implementation: '0x1396E2ABb2584Ec07D84e90405505D2549C87014'
+      cWETHv3 Implementation: '0x70175d5F312d2ac5B8d71D76C055d1C9f000eBa5'
       cWETHv3 Ext: '0x0be923b1716115d742E35Fa359d415598c50510F'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -2149,8 +2149,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '3.00%'
         Liquidation Penalty Raw: '970000000000000000'
-        Supply Cap: '7.50K'
-        Supply Cap Raw: '7500000000000000000000'
+        Supply Cap: '3.75K'
+        Supply Cap Raw: '3750000000000000000000'
         Price Feed: '0x60F2058379716A64a7A5d29219397e79bC552194'
       wstETH:
         address: '0x5979D7b546E38E414F7E9822514be443A4800529'
@@ -2171,8 +2171,8 @@ deployments:
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '10.00%'
         Liquidation Penalty Raw: '900000000000000000'
-        Supply Cap: '1.00K'
-        Supply Cap Raw: '100000000000'
+        Supply Cap: '500'
+        Supply Cap Raw: '50000000000'
         Price Feed: '0xFa454dE61b317b6535A0C462267208E8FdB89f45'
       rsETH:
         address: '0x4186BFC76E2E237523CBC30FD220FE055156b41F'
@@ -2204,8 +2204,8 @@ deployments:
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '5.00%'
         Liquidation Penalty Raw: '950000000000000000'
-        Supply Cap: '30.00M'
-        Supply Cap Raw: '30000000000000'
+        Supply Cap: '15.00M'
+        Supply Cap Raw: '15000000000000'
         Price Feed: '0x675DAfae7d2711032615bd32E6D352AF32e5a8Bd'
       ezETH:
         address: '0x2416092f143378750bb29b79eD961ab195CcEea5'
@@ -2226,8 +2226,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '4.00%'
         Liquidation Penalty Raw: '960000000000000000'
-        Supply Cap: '50'
-        Supply Cap Raw: '50000000000000000000'
+        Supply Cap: '25'
+        Supply Cap Raw: '25000000000000000000'
         Price Feed: '0x250BD3Da70b1844dbe7491C521B9490abd57B709'
   Linea - USDC Base:
     tab_text: Linea USDC
@@ -2511,7 +2511,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-13 12:45:01.408 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-15 12:38:36.511 UTC**.
 
 <div id="networks-widget-container"></div>
 
