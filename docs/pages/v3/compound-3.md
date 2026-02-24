@@ -1484,7 +1484,7 @@ deployments:
     blockscan_origin: 'https://mantlescan.xyz/'
     contracts:
       cUSDev3: '0x606174f62cd968d8e684c645080fa694c1D7786E'
-      cUSDev3 Implementation: '0x8CdA82AAa39a63b26C0E5B606bD32B49567D41a1'
+      cUSDev3 Implementation: '0x602cc55D673f134c2D6C8085D10674EC4Df4D155'
       cUSDev3 Ext: '0xf528B4bCAc12dad0bFa114282b219ad706bA7f18'
       Configurator: '0xb77Cd4cD000957283D8BAf53cD782ECf029cF7DB'
       Configurator Implementation: '0x3c851CbE2740747f5cE4e8894842A313e5A3aee3'
@@ -1497,7 +1497,7 @@ deployments:
       COMP Token: '0x52b7d8851d6ccbc6342ba0855be65f7b82a3f17f'
       USDe:
         address: '0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34'
-        Price Feed: '0xE5dB8474880459F6fd189F8282518443a8b39Aa5'
+        Price Feed: '0x0090A563C4832E4E519F5f054483519b1A83c8C3'
       mETH:
         address: '0xcDA86A272531e8640cD7F1a92c01839911B90bb0'
         Borrow CF: '80.0%'
@@ -1508,7 +1508,7 @@ deployments:
         Liquidation Penalty Raw: '900000000000000000'
         Supply Cap: '3.00K'
         Supply Cap Raw: '3000000000000000000000'
-        Price Feed: '0xfB8fF12f19b21e2Af98Fd422118e2f4B3ef3d1ed'
+        Price Feed: '0x731564585278f228FB8F93a0BF62729E24367662'
       WETH:
         address: '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111'
         Borrow CF: '82.0%'
@@ -1519,7 +1519,7 @@ deployments:
         Liquidation Penalty Raw: '930000000000000000'
         Supply Cap: '2.80K'
         Supply Cap Raw: '2800000000000000000000'
-        Price Feed: '0x75Adb8E5D093598D6893d1e0F5f4222BD2B510fc'
+        Price Feed: '0xAdD81aAF528784531E888317AFcD429b00C9f1b3'
       FBTC:
         address: '0xC96dE26018A54D51c097160568752c4E3BD6C364'
         Borrow CF: '78.0%'
@@ -1530,7 +1530,7 @@ deployments:
         Liquidation Penalty Raw: '880000000000000000'
         Supply Cap: '120'
         Supply Cap Raw: '12000000000'
-        Price Feed: '0xdEdD2f82711dbe4afdc2d8d5b7ab849234Db267e'
+        Price Feed: '0x41E345A046A73Ef15316191b41f3ABEA4cEF1168'
   Base - AERO Base:
     tab_text: Base AERO
     blockscan_origin: 'https://basescan.org/'
@@ -2545,7 +2545,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-18 10:20:49.146 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-24 12:54:04.668 UTC**.
 
 <div id="networks-widget-container"></div>
 
