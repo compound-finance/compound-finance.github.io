@@ -18,7 +18,7 @@ deployments:
     blockscan_origin: 'https://etherscan.io/'
     contracts:
       cUSDCv3: '0xc3d688B66703497DAA19211EEdff47f25384cdc3'
-      cUSDCv3 Implementation: '0xEb330B7c1622E0F8b18a7dD1decc27Cf3d980E61'
+      cUSDCv3 Implementation: '0xA0332AaFD9E9164A95b1fA521f8a479125573451'
       cUSDCv3 Ext: '0xA70a0227028aD005F4Fc9376a82cd1462e3AAedC'
       Configurator: '0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3'
       Configurator Implementation: '0xcFC1fA6b7ca982176529899D99af6473aD80DF4F'
@@ -165,6 +165,17 @@ deployments:
         Supply Cap: '1.50K'
         Supply Cap Raw: '1500000000000000000000'
         Price Feed: '0xD6a48f6f687A5FeF8A69834C49514B747012cf1c'
+      USDe:
+        address: '0x4c9EDD5852cd905f086C759E8383e09bff1E68B3'
+        Borrow CF: '89.0%'
+        Borrow CF Raw: '890000000000000000'
+        Liquidation CF: '94.0%'
+        Liquidation CF Raw: '940000000000000000'
+        Liquidation Penalty: '4.00%'
+        Liquidation Penalty Raw: '960000000000000000'
+        Supply Cap: '30.00M'
+        Supply Cap Raw: '30000000000000000000000000'
+        Price Feed: '0xa569d910839Ae8865Da8F8e70FfFb0cBA869F961'
   Ethereum Mainnet - USDS Base:
     tab_text: Mainnet USDS
     blockscan_origin: 'https://etherscan.io/'
@@ -2545,7 +2556,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-24 12:54:04.668 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-26 12:54:06.176 UTC**.
 
 <div id="networks-widget-container"></div>
 
