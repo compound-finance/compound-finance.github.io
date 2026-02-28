@@ -2414,7 +2414,7 @@ deployments:
     blockscan_origin: 'https://scrollscan.com/'
     contracts:
       cUSDCv3: '0xB2f97c1Bd3bf02f5e74d13f02E3e26F93D77CE44'
-      cUSDCv3 Implementation: '0xA038AaB16E8C1f5FB3865604B0B4DCFcDE2E68eE'
+      cUSDCv3 Implementation: '0x4c089231f69B5065678c01984301D19f64b0D623'
       cUSDCv3 Ext: '0x5EC955A4c15B195a4Af9a61f7155F6fe3c1A0656'
       Configurator: '0xECAB0bEEa3e5DEa0c35d3E69468EAC20098032D7'
       Configurator Implementation: '0x77831F8997De34ead958DA207e43e4be70771C79'
@@ -2435,8 +2435,8 @@ deployments:
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '20.00%'
         Liquidation Penalty Raw: '800000000000000000'
-        Supply Cap: '60'
-        Supply Cap Raw: '60000000000000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0x6bF14CB0A831078629D993FDeBcB182b21A8774C'
       wstETH:
         address: '0xf610A9dfB7C89644979b4A0f27063E9e7d7Cda32'
@@ -2446,8 +2446,8 @@ deployments:
         Liquidation CF Raw: '800000000000000000'
         Liquidation Penalty: '30.00%'
         Liquidation Penalty Raw: '700000000000000000'
-        Supply Cap: '4'
-        Supply Cap Raw: '4000000000000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0x709cef91Dd5d162d7047b678334d1Be41fe92843'
   Ethereum Sepolia Testnet - USDC Base:
     tab_text: Sepolia USDC
@@ -2567,7 +2567,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-27 12:44:45.485 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-28 12:34:36.611 UTC**.
 
 <div id="networks-widget-container"></div>
 
