@@ -1506,7 +1506,7 @@ deployments:
     blockscan_origin: 'https://mantlescan.xyz/'
     contracts:
       cUSDev3: '0x606174f62cd968d8e684c645080fa694c1D7786E'
-      cUSDev3 Implementation: '0x602cc55D673f134c2D6C8085D10674EC4Df4D155'
+      cUSDev3 Implementation: '0xc59DA41a151C7D70b3Eac29D191207C51E192ed0'
       cUSDev3 Ext: '0xf528B4bCAc12dad0bFa114282b219ad706bA7f18'
       Configurator: '0xb77Cd4cD000957283D8BAf53cD782ECf029cF7DB'
       Configurator Implementation: '0x3c851CbE2740747f5cE4e8894842A313e5A3aee3'
@@ -1558,7 +1558,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cAEROv3: '0x784efeB622244d2348d4F2522f8860B96fbEcE89'
-      cAEROv3 Implementation: '0xC89567205207E481c1162c7E8A03E27e8E619A77'
+      cAEROv3 Implementation: '0xDdbc9DD0E1400E6d8441289E2b5F47B4839350Cd'
       cAEROv3 Ext: '0xDd18688Bb75Af704f3Fb1183e459C4d4D41132D9'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1664,7 +1664,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cUSDCv3: '0xb125E6687d4313864e53df431d5425969c15Eb2F'
-      cUSDCv3 Implementation: '0x89e9b098bb0e3d09f4288fb2b9632B4dcB40bBF6'
+      cUSDCv3 Implementation: '0x5Bb86246EFFa867521aE528328EAf536da85aE9b'
       cUSDCv3 Ext: '0x220Da2686dC870aC0A97498A1845e610d2f13431'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1739,7 +1739,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cUSDSv3: '0x2c776041CCFe903071AF44aa147368a9c8EEA518'
-      cUSDSv3 Implementation: '0x8c087080253cd3Bd395AEcAF16f36Ee608acd96f'
+      cUSDSv3 Implementation: '0xbF42493f669AD33081cD8e7F9D97B16A1E9C8826'
       cUSDSv3 Ext: '0xaA390749cb758Af4070E93478Fc743c72c18989c'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1781,7 +1781,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cWETHv3: '0x46e6b214b524310239732D51387075E0e70970bf'
-      cWETHv3 Implementation: '0x6B2F857d3F3A32BA7d9Ac46D0AD8E5bd6e2011f1'
+      cWETHv3 Implementation: '0xE9d8e504f4Ce350FD5517EbD7fF62D6E2D3dd74A'
       cWETHv3 Ext: '0xbd4CfC08d64a848A9116A92Cd06D2f2bDC0a2505'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1953,7 +1953,7 @@ deployments:
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cUSDCv3: '0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf'
-      cUSDCv3 Implementation: '0x3410F05Fb77715AC1d1eC68A8D74F38D0850d54c'
+      cUSDCv3 Implementation: '0x88a7d5D0107aa7757a8B1BC8c0Dbb22584dc78bd'
       cUSDCv3 Ext: '0x95DeDD64b551F05E9f59a101a519B024b6b116E7'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -2072,7 +2072,7 @@ deployments:
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cUSDTv3: '0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07'
-      cUSDTv3 Implementation: '0x69Ad47985Da1b3aa3Fa3C1fE642c81C08De21941'
+      cUSDTv3 Implementation: '0x5f86A682B2372b606A2F8eC980Da22F9bBE4c736'
       cUSDTv3 Ext: '0x271A200023c9512d37149dfbb62bf0F62a8D4680'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -2169,7 +2169,7 @@ deployments:
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cWETHv3: '0x6f7D514bbD4aFf3BcD1140B7344b32f063dEe486'
-      cWETHv3 Implementation: '0x70175d5F312d2ac5B8d71D76C055d1C9f000eBa5'
+      cWETHv3 Implementation: '0x449DCc31af12A59938398B10625933C0cD3A6eDf'
       cWETHv3 Ext: '0x0be923b1716115d742E35Fa359d415598c50510F'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -2567,7 +2567,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-02-28 12:34:36.611 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-03-08 12:37:01.377 UTC**.
 
 <div id="networks-widget-container"></div>
 
