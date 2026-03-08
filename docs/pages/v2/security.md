@@ -40,13 +40,13 @@ The Compound protocol has been reviewed & audited by [Trail of Bits](https://www
 
 The Compound protocol was developed with a specifications of security principles, and formally verified by [Certora](https://www.certora.com/){:target="_blank"} using Certora ASA (Accurate Static Analysis), which is integrated into Compound's continuous integration system.
 
-01 Certora Verification Summary
+1. [Certora Verification Summary](ttps://www.certora.com/wp-content/uploads/2022/02/CompoundMoneyMarketV2Aug2019.pdf){:target="_blank"}
 
 ## Economic Security
 
 [Gauntlet](https://gauntlet.network/){:target="_blank"} has constructed a simulation-based market stress-testing platform to evaluate the economic security of the Compound protocol, as it scales supported assets and volume.
 
-01 Gauntlet Market Risk Assessment
+1. [Gauntlet Market Risk Assessment](https://gauntlet.network/reports/compound){:target="_blank"}
 
 ## Bug Bounty Program
 
