@@ -1450,57 +1450,6 @@ deployments:
         Supply Cap: '0'
         Supply Cap Raw: '0'
         Price Feed: '0x41E345A046A73Ef15316191b41f3ABEA4cEF1168'
-  Ronin - WRON Base:
-    tab_text: Ronin WRON
-    blockscan_origin: 'https://app.roninchain.com/'
-    contracts:
-      cWRONv3: '0xc0Afdbd1cEB621Ef576BA969ce9D4ceF78Dbc0c0'
-      cWRONv3 Implementation: '0xC4aa0764fB17C35B2D4fc717d183314f5654a1C7'
-      cWRONv3 Ext: '0x690f8eE32ce906c6288DD97Ce4f9aF57103D00D7'
-      Configurator: '0x966c72F456FC248D458784EF3E0b6d042be115F2'
-      Configurator Implementation: '0xaE0CCa27C15A534BAE106fC9957338549F82e81d'
-      Proxy Admin: '0xfa64A82a3d13D4c05d5133E53b2EbB8A0FA9c3F6'
-      Comet Factory: '0x4DF9E0f8e94a7A8A9aEa6010CD9d341F8Ecfe4c6'
-      Rewards: '0x31CdEe8609Bc15fD33cc525f101B70a81b2B1E59'
-      Bulker: '0x840281FaD56DD88afba052B7F18Be2A65796Ecc6'
-      Governor: '0x2c7EfA766338D33B9192dB1fB5D170Bdc03ef3F9'
-      Timelock: '0xBbb0Ebd903fafbb8fFF58B922fD0CD85E251ac2c'
-      WRON:
-        address: '0xe514d9DEB7966c8BE0ca922de8a064264eA6bcd4'
-        Price Feed: '0xB88e4078AAc88F10C0Ca71086ddCF512Ec54498a'
-      USDC:
-        address: '0x0B7007c13325C48911F73A2daD5FA5dCBf808aDc'
-        Borrow CF: '50.0%'
-        Borrow CF Raw: '500000000000000000'
-        Liquidation CF: '80.0%'
-        Liquidation CF Raw: '800000000000000000'
-        Liquidation Penalty: '20.00%'
-        Liquidation Penalty Raw: '800000000000000000'
-        Supply Cap: '0'
-        Supply Cap Raw: '0'
-        Price Feed: '0x88f415c12d45d4C6DC018553BBE472A4558ff3f8'
-      AXS:
-        address: '0x97a9107C1793BC407d6F527b77e7fff4D812bece'
-        Borrow CF: '50.0%'
-        Borrow CF Raw: '500000000000000000'
-        Liquidation CF: '78.0%'
-        Liquidation CF Raw: '780000000000000000'
-        Liquidation Penalty: '25.00%'
-        Liquidation Penalty Raw: '750000000000000000'
-        Supply Cap: '0'
-        Supply Cap Raw: '0'
-        Price Feed: '0x8AC2b57d15c84755A3333aD68025d2496AE3BeBD'
-      WETH:
-        address: '0xc99a6A985eD2Cac1ef41640596C5A5f9F4E19Ef5'
-        Borrow CF: '50.0%'
-        Borrow CF Raw: '500000000000000000'
-        Liquidation CF: '80.0%'
-        Liquidation CF Raw: '800000000000000000'
-        Liquidation Penalty: '20.00%'
-        Liquidation Penalty Raw: '800000000000000000'
-        Supply Cap: '0'
-        Supply Cap Raw: '0'
-        Price Feed: '0x5D173813B4505701e79E654b36A95E6c1FAD4448'
   Mantle - USDe Base:
     tab_text: Mantle USDe
     blockscan_origin: 'https://mantlescan.xyz/'
@@ -2567,7 +2516,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-03-19 12:53:06.319 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-03-26 13:02:09.273 UTC**.
 
 <div id="networks-widget-container"></div>
 
