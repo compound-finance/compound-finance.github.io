@@ -875,7 +875,7 @@ deployments:
     blockscan_origin: 'https://optimistic.etherscan.io/'
     contracts:
       cUSDCv3: '0x2e44e174f7D53F0212823acC11C01A11d58c5bCB'
-      cUSDCv3 Implementation: '0xD62d433A4Ca55f97Bded88641588F65271CC5cf2'
+      cUSDCv3 Implementation: '0x201f4FD1b619B542F02FE9C1607Bb16A574Af5D6'
       cUSDCv3 Ext: '0xadF7aD4Dd000Ea75667A3CDf65F3D3b7f1e9F02E'
       Configurator: '0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713'
       Configurator Implementation: '0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02'
@@ -949,7 +949,7 @@ deployments:
     blockscan_origin: 'https://optimistic.etherscan.io/'
     contracts:
       cUSDTv3: '0x995E394b8B2437aC8Ce61Ee0bC610D617962B214'
-      cUSDTv3 Implementation: '0x699a196c609B9B3dB559CE5778b2827252BD24F5'
+      cUSDTv3 Implementation: '0x97F271d557f15aD602cB9E1f9BcfD813e96a9ABf'
       cUSDTv3 Ext: '0xdFb81f0EbFDfdd90143f5deBD1cd016b677d1585'
       Configurator: '0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713'
       Configurator Implementation: '0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02'
@@ -1023,7 +1023,7 @@ deployments:
     blockscan_origin: 'https://optimistic.etherscan.io/'
     contracts:
       cWETHv3: '0xE36A30D249f7761327fd973001A32010b521b6Fd'
-      cWETHv3 Implementation: '0x1F0E8FaE2767305C2e65800B7C42c3A9EE1dc345'
+      cWETHv3 Implementation: '0x35FCB8f67F49f2999d6522ef00cE239dE3a15011'
       cWETHv3 Ext: '0xc4aaFC9F0c52FDDa0fed972c55B136bD07552ad0'
       Configurator: '0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713'
       Configurator Implementation: '0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02'
@@ -2567,7 +2567,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-03-28 12:41:36.156 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-03-29 12:42:10.466 UTC**.
 
 <div id="networks-widget-container"></div>
 
