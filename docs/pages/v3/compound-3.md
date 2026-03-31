@@ -2288,7 +2288,7 @@ deployments:
     blockscan_origin: 'https://lineascan.build/'
     contracts:
       cUSDCv3: '0x8D38A3d6B3c3B7d96D6536DA7Eef94A9d7dbC991'
-      cUSDCv3 Implementation: '0x7e0Df525427874522FB5b711d5F347fac187Af4b'
+      cUSDCv3 Implementation: '0x9FF320C40cc1E54B92012cFAEf3E50f17f26f6Fe'
       cUSDCv3 Ext: '0x841e380e3a98E4EE8912046d69731F4E21eFb1D7'
       Configurator: '0x970FfD8E335B8fa4cd5c869c7caC3a90671d5Dc3'
       Configurator Implementation: '0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C'
@@ -2340,7 +2340,7 @@ deployments:
     blockscan_origin: 'https://lineascan.build/'
     contracts:
       cWETHv3: '0x60F2058379716A64a7A5d29219397e79bC552194'
-      cWETHv3 Implementation: '0x972B1B7032aa93bF449A899fbF31bb30735a671A'
+      cWETHv3 Implementation: '0xc154Dae5ca28AD1FABf606599B03d23BddaeDC8B'
       cWETHv3 Ext: '0xc8E4c3F58d5FC4409522503927Ecea057EbbA1fc'
       Configurator: '0x970FfD8E335B8fa4cd5c869c7caC3a90671d5Dc3'
       Configurator Implementation: '0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C'
@@ -2567,7 +2567,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-03-30 13:06:38.609 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-03-31 13:04:56.071 UTC**.
 
 <div id="networks-widget-container"></div>
 
