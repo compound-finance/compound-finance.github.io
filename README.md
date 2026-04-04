@@ -38,6 +38,16 @@ Page layout HTML, CSS, and JavaScript can be found in `_layouts/`, `_includes/`,
 
 When you are ready to merge your changes, make a pull request into this repository.
 
+## LLM-Friendly Docs
+
+The site includes LLM-friendly artifacts in `docs/`, including `/llms.txt`, expanded context packs, and clean Markdown mirrors for each docs page at the same route with `.md` appended.
+
+To regenerate these files after editing docs content, run:
+
+```bash
+python3 scripts/generate_llms_docs.py
+```
+
 ## Technologies Used
 
 - HTML, CSS, JavaScript

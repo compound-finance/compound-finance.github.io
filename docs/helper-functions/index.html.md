@@ -1,0 +1,670 @@
+# Helper Functions
+
+### Total Supply
+
+The total supply of base tokens supplied to the protocol plus interest accrued to suppliers.
+
+#### Comet
+
+```solidity
+function totalSupply() override external view returns (uint256)
+```
+
+* `RETURN`: The amount of base asset scaled up by 10 to the "decimals" integer in the base asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint256 totalSupply = comet.totalSupply();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const totalSupply = await comet.callStatic.totalSupply();
+```
+
+### Total Borrow
+
+The total amount of base tokens that are currently borrowed from the protocol plus interest accrued to all borrows.
+
+#### Comet
+
+```solidity
+function totalBorrow() virtual external view returns (uint256)
+```
+
+* `RETURN`: The amount of base asset scaled up by 10 to the "decimals" integer in the base asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint256 totalBorrow = comet.totalBorrow();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const totalBorrow = await comet.callStatic.totalBorrow();
+```
+
+### Total Collateral
+
+The protocol tracks the current amount of collateral that all accounts have supplied. Each valid collateral asset sum is tracked in a mapping with the asset address that points to a struct.
+
+#### Comet
+
+```solidity
+struct TotalsCollateral {
+    uint128 totalSupplyAsset;
+    uint128 _reserved;
+}
+
+mapping(address => TotalsCollateral) public totalsCollateral;
+```
+
+* `address`:  The address of the collateral asset's contract.
+* `RETURN`: A struct containing the stored data pertaining to the sum of the collateral in the protocol.
+* `totalSupplyAsset`: A Solidity `uint128` of the sum of the collateral asset stored in the protocol, scaled up by 10 to the "decimals" integer in the asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+TotalsCollateral totalsCollateral = comet.totalsCollateral(0xERC20Address);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const [ totalSupplyAsset ] = await comet.callStatic.totalsCollateral('0xERC20Address');
+```
+
+### Supplied Base Balance
+
+This function returns the current balance of base asset for a specified account in the protocol, including interest. If the account is presently borrowing or not supplying, it will return `0`.
+
+#### Comet
+
+```solidity
+function balanceOf(address account) external view returns (uint256)
+```
+
+* `account`: The address of the account in which to retrieve the base asset balance.
+* `RETURNS`: The balance of the base asset, including interest, in the protocol for the specified account as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint balance = comet.balanceOf(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const balance = await comet.callStatic.balanceOf('0xAccount');
+```
+
+### Borrow Balance
+
+This function returns the current balance of borrowed base asset for a specified account in the protocol, including interest. If the account has a non-negative base asset balance, it will return `0`.
+
+#### Comet
+
+```solidity
+function borrowBalanceOf(address account) external view returns (uint256)
+```
+
+* `account`: The address of the account in which to retrieve the borrowed base asset balance.
+* `RETURNS`: The balance of the base asset, including interest, borrowed by the specified account as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint owed = comet.borrowBalanceOf(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const owed = await comet.callStatic.borrowBalanceOf('0xAccount');
+```
+
+### Account Data
+
+The protocol tracks data like the principal and indexes for each account that supplies and borrows. The data is stored in a mapping with the account address that points to a struct.
+
+#### Comet
+
+```solidity
+struct UserBasic {
+    int104 principal;
+    uint64 baseTrackingIndex;
+    uint64 baseTrackingAccrued;
+    uint16 assetsIn;
+}
+
+mapping(address => UserBasic) public userBasic;
+```
+
+* `address`:  The address of the account that has used the protocol.
+* `RETURN`: A struct containing the stored data pertaining to the account.
+* `principal`: A Solidity `int104` of the amount of base asset that the account has supplied (greater than zero) or owes (less than zero) to the protocol.
+* `baseTrackingIndex`: A Solidity `uint64` of the index of the account.
+* `baseTrackingAccrued`: A Solidity `uint64` of the interest that the account has accrued.
+* `assetsIn`: A Solidity `uint16` that tracks which assets the account has supplied as collateral. This storage implementation is for internal purposes and enables gas savings.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+UserBasic userBasic = comet.userBasic(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const [ principal, baseTrackingIndex, baseTrackingAccrued, assetsIn ] = await comet.callStatic.userBasic('0xAccount');
+```
+
+### Get Asset Info
+
+This function returns collateral asset information such as the collateral factors, asset price feed address, and more. In order to create a loop to fetch information for every asset, use the `numAssets` constant, which indicates the current total number of supported collateral assets.
+
+#### Comet
+
+```solidity
+struct AssetInfo {
+    uint8 offset;
+    address asset;
+    address priceFeed;
+    uint64 scale;
+    uint64 borrowCollateralFactor;
+    uint64 liquidateCollateralFactor;
+    uint64 liquidationFactor;
+    uint128 supplyCap;
+}
+
+function getAssetInfo(uint8 i) public view returns (AssetInfo memory)
+```
+
+* `i`: The index of the collateral asset based on the order it was added to the protocol. The index begins at `0`.
+* `RETURNS`: The collateral asset information as a struct called `AssetInfo`.
+* `offset`: The index of the collateral asset based on the order it was added to the protocol.
+* `asset`: The address of the asset's smart contract.
+* `priceFeed`: The address of the price feed contract for this collateral asset.
+* `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the collateral asset's smart contract.
+* `borrowCollateralFactor`: The borrow collateral factor is the percentage of collateral value that can be borrowed (including interest) by an account. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 650000000000000000 is 65%.
+* `liquidateCollateralFactor`: The liquidate collateral factor is the percentage of collateral value that can be borrowed (including interest) before an account becomes liquidatable. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 850000000000000000 is 85%.
+* `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 930000000000000000 means liquidation carries a 7% penalty for the account.
+* `supplyCap`: The supply cap of the collateral asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+AssetInfo info = comet.getAssetInfo(0);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const infoObject = await comet.callStatic.getAssetInfo(0);
+```
+
+### Get Asset Info By Address
+
+This function returns information of a specific collateral asset.
+
+#### Comet
+
+```solidity
+struct AssetInfo {
+    uint8 offset;
+    address asset;
+    address priceFeed;
+    uint64 scale;
+    uint64 borrowCollateralFactor;
+    uint64 liquidateCollateralFactor;
+    uint64 liquidationFactor;
+    uint128 supplyCap;
+}
+
+function getAssetInfoByAddress(address asset) public view returns (AssetInfo memory)
+```
+
+* `address`: The address of the collateral asset.
+* `RETURNS`: The collateral asset information as a struct called `AssetInfo`.
+* `offset`: The index of the collateral asset based on the order it was added to the protocol.
+* `asset`: The address of the collateral asset's smart contract.
+* `priceFeed`: The address of the price feed contract for this collateral asset.
+* `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the collateral asset's smart contract.
+* `borrowCollateralFactor`: The borrow collateral factor is the percentage of collateral value that can be borrowed (including interest) by an account. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 650000000000000000 is 65%.
+* `liquidateCollateralFactor`: The liquidate collateral factor is the percentage of collateral value that can be borrowed (including interest) before an account becomes liquidatable. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 850000000000000000 is 85%.
+* `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 930000000000000000 means liquidation carries a 7% penalty for the account.
+* `supplyCap`: The supply cap of the collateral asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+AssetInfo info = comet.getAssetInfoByAddress(0xAsset);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const infoObject = await comet.callStatic.getAssetInfoByAddress('0xAsset');
+```
+
+### Get Price
+
+The protocol's prices are updated by [Chainlink Price Feeds](https://data.chain.link/). In order to fetch the present price of an asset, the price feed contract address for that asset must be passed to the `getPrice` function.
+
+This function returns the price of an asset in USD with 8 decimal places.
+
+#### Comet
+
+```solidity
+function getPrice(address priceFeed) public view returns (uint128)
+```
+
+* `priceFeed`: The ERC-20 address of the Chainlink price feed contract for the asset.
+* `RETURNS`: Returns the USD price with 8 decimal places as an unsigned integer scaled up by `10 ^ 8`. E.g. `500000000000` means that the asset's price is $5000 USD.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint price = comet.getPrice(0xAssetAddress);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const price = await comet.callStatic.getPrice(usdcAddress);
+```
+
+### Accrue Account
+
+This function triggers a manual accrual of interest and rewards to an account.
+
+#### Comet
+
+```solidity
+function accrueAccount(address account) override external
+```
+
+* `account`: The account in which to accrue interest and rewards.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+comet.accrueAccount(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+await comet.accrueAccount('0xAccount');
+```
+
+### Get Protocol Configuration
+
+This function returns the configuration struct stored for a specific instance of Comet in the configurator contract.
+
+#### Configurator
+
+```solidity
+struct Configuration {
+    address governor;
+    address pauseGuardian;
+    address baseToken;
+    address baseTokenPriceFeed;
+    address extensionDelegate;
+
+    uint64 supplyKink;
+    uint64 supplyPerYearInterestRateSlopeLow;
+    uint64 supplyPerYearInterestRateSlopeHigh;
+    uint64 supplyPerYearInterestRateBase;
+    uint64 borrowKink;
+    uint64 borrowPerYearInterestRateSlopeLow;
+    uint64 borrowPerYearInterestRateSlopeHigh;
+    uint64 borrowPerYearInterestRateBase;
+    uint64 storeFrontPriceFactor;
+    uint64 trackingIndexScale;
+    uint64 baseTrackingSupplySpeed;
+    uint64 baseTrackingBorrowSpeed;
+    uint104 baseMinForRewards;
+    uint104 baseBorrowMin;
+    uint104 targetReserves;
+
+    AssetConfig[] assetConfigs;
+}
+
+function getConfiguration(address cometProxy) external view returns (Configuration memory)
+```
+
+* `cometProxy`: The address of the Comet proxy to get the configuration for.
+* `RETURNS`: Returns the protocol configuration.
+  * `governor`: The address of the protocol Governor.
+  * `pauseGuardian`: The address of the protocol pause guardian.
+  * `baseToken`: The address of the protocol base token smart contract.
+  * `baseTokenPriceFeed`: The address of the protocol base token price feed smart contract.
+  * `extensionDelegate`: The address of the delegate of extra methods that did not fit in Comet.sol (CometExt.sol).
+  * `supplyKink`: The interest rate utilization of the supply side of curve kink.
+  * `supplyPerYearInterestRateSlopeLow`: The low bound interest rate slope of the supply side.
+  * `supplyPerYearInterestRateSlopeHigh`: The high bound interest rate slope of the supply side.
+  * `supplyPerYearInterestRateBase`: The interest rate slope base of the supply side.
+  * `borrowKink`: The interest rate utilization of the borrow side of curve kink.
+  * `borrowPerYearInterestRateSlopeLow`: The low bound interest rate slope of the borrow side.
+  * `borrowPerYearInterestRateSlopeHigh`: The high bound interest rate slope of the borrow side.
+  * `borrowPerYearInterestRateBase`: The interest rate slope base of the borrow side.
+  * `storeFrontPriceFactor`: The fraction of the liquidation penalty that goes to buyers of collateral instead of the protocol.
+  * `trackingIndexScale`: The scale for the index tracking protocol rewards.
+  * `baseTrackingSupplySpeed`: The rate for protocol awards accrued to suppliers.
+  * `baseTrackingBorrowSpeed`: The rate for protocol awards accrued to borrowers.
+  * `baseMinForRewards`: The minimum amount of base asset supplied to the protocol in order for accounts to accrue rewards.
+  * `baseBorrowMin`: The minimum allowed borrow size.
+  * `targetReserves`: The amount of reserves allowed before absorbed collateral is no longer sold by the protocol.
+  * `assetConfigs`: An array of all supported asset configurations.
+
+#### Solidity
+
+```solidity
+Configurator configurator = Configurator(0xConfiguratorAddress);
+Configuration config = configurator.getConfiguration(0xCometProxy);
+```
+
+#### Ethers.js v5.x
+
+```js
+const configurator = new ethers.Contract(contractAddress, abiJson, provider);
+const config = await configurator.callStatic.getConfiguration('0xCometProxy');
+```
+
+### Get Comet Factory
+
+This function gets the address of the Comet Factory contract.
+
+#### Configurator
+
+```solidity
+function factory(address cometProxy) public view returns (address cometFactory)
+```
+
+* `cometProxy`: The address of the Comet proxy contract.
+* `RETURNS`: The address of the Comet Factory for the specified instance of Comet.
+
+#### Solidity
+
+```solidity
+Configurator configurator = Configurator(0xConfiguratorAddress);
+CometFactory factory = configurator.factory(0xCometProxy);
+```
+
+#### Ethers.js v5.x
+
+```js
+const configurator = new ethers.Contract(contractAddress, abiJson, provider);
+const factoryAddress = await configurator.factory.getConfiguration('0xCometProxy');
+```
+
+### Get Base Asset Market Information
+
+This function gets several of the current parameter values for the protocol market.
+
+#### Comet
+
+```solidity
+struct TotalsBasic {
+    uint64 baseSupplyIndex;
+    uint64 baseBorrowIndex;
+    uint64 trackingSupplyIndex;
+    uint64 trackingBorrowIndex;
+    uint104 totalSupplyBase;
+    uint104 totalBorrowBase;
+    uint40 lastAccrualTime;
+    uint8 pauseFlags;
+}
+
+function totalsBasic() public override view returns (TotalsBasic memory)
+```
+
+* `RETURNS`: The base asset market information as a struct called `TotalsBasic` (defined in CometStorage.sol).
+* `baseSupplyIndex`: The global base asset supply index for calculating interest accrued to suppliers.
+* `baseBorrowIndex`: The global base asset borrow index for calculating interest owed by borrowers.
+* `trackingSupplyIndex`: A global index for tracking participation of accounts that supply the base asset.
+* `trackingBorrowIndex`:  A global index for tracking participation of accounts that borrow the base asset.
+* `totalSupplyBase`: The total amount of base asset presently supplied to the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `totalBorrowBase`: The total amount of base asset presently borrowed from the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `lastAccrualTime`: The most recent time that protocol interest accrual was globally calculated. A block timestamp as seconds since the Unix epoch.
+* `pauseFlags`: An integer that represents paused protocol functionality flags that are packed for data storage efficiency. See [Pause Protocol Functionality](/governance/index.html.md#pause-protocol-functionality).
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+TotalsBasic tb = comet.totalsBasic();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const [ baseSupplyIndex, baseBorrowIndex, trackingSupplyIndex, trackingBorrowIndex, totalSupplyBase, totalBorrowBase, lastAccrualTime, pauseFlags ] = await comet.callStatic.totalsBasic();
+```
+
+### Get Base Accrual Scale
+
+This function gets the scale for the base asset tracking accrual.
+
+#### Comet
+
+```solidity
+function baseAccrualScale() override external pure returns (uint64)
+```
+
+* `RETURNS`: The integer used to scale down the base accrual when calculating a decimal value.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint baseAccrualScale = comet.baseAccrualScale();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const baseAccrualScale = await comet.callStatic.baseAccrualScale();
+```
+
+### Get Base Index Scale
+
+This function gets the scale for the base asset index.
+
+#### Comet
+
+```solidity
+function baseIndexScale() override external pure returns (uint64)
+```
+
+* `RETURNS`: The integer used to scale down the index when calculating a decimal value.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint baseIndexScale = comet.baseIndexScale();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const baseIndexScale = await comet.callStatic.baseIndexScale();
+```
+
+### Get Factor Scale
+
+This function gets the scale for all protocol factors, i.e. borrow collateral factor.
+
+#### Comet
+
+```solidity
+function factorScale() override external pure returns (uint64)
+```
+
+* `RETURNS`: The integer used to scale down the factor when calculating a decimal value.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint factorScale = comet.factorScale();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const factorScale = await comet.callStatic.factorScale();
+```
+
+### Get Price Scale
+
+This function gets the scale integer for USD prices in the protocol, i.e. `8 decimals = 1e8`.
+
+#### Comet
+
+```solidity
+function priceScale() override external pure returns (uint64)
+```
+
+* `RETURNS`: The integer used to scale down a price when calculating a decimal value.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint priceScale = comet.priceScale();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const priceScale = await comet.callStatic.priceScale();
+```
+
+### Get Max Assets
+
+This function gets the maximum number of assets that can be simultaneously supported by Compound III.
+
+#### Comet
+
+```solidity
+function maxAssets() override external pure returns (uint8)
+```
+
+* `RETURNS`: The maximum number of assets that can be simultaneously supported by Compound III.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint maxAssets = comet.maxAssets();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const maxAssets = await comet.callStatic.maxAssets();
+```
+
+## Bulk Actions
+
+The Compound III codebase contains the source code of an external contract called *Bulker* that is designed to allow multiple Comet functions to be called in a single transaction.
+
+Use cases of the Bulker contract include but are not limited to:
+  * Supplying of a collateral asset and borrowing of the base asset.
+  * Supplying or withdrawing of the native EVM token (like Ether) directly.
+  * Transferring or withdrawing of the base asset without leaving dust in the account.
+
+### Invoke
+
+This function allows callers to pass an array of action codes and calldatas that are executed, one by one, in a single transaction.
+
+#### Bulker
+
+```solidity
+/// @notice The action for supplying an asset to Comet
+bytes32 public constant ACTION_SUPPLY_ASSET = "ACTION_SUPPLY_ASSET";
+
+/// @notice The action for supplying a native asset (e.g. ETH on Ethereum mainnet) to Comet
+bytes32 public constant ACTION_SUPPLY_NATIVE_TOKEN = "ACTION_SUPPLY_NATIVE_TOKEN";
+
+/// @notice The action for transferring an asset within Comet
+bytes32 public constant ACTION_TRANSFER_ASSET = "ACTION_TRANSFER_ASSET";
+
+/// @notice The action for withdrawing an asset from Comet
+bytes32 public constant ACTION_WITHDRAW_ASSET = "ACTION_WITHDRAW_ASSET";
+
+/// @notice The action for withdrawing a native asset from Comet
+bytes32 public constant ACTION_WITHDRAW_NATIVE_TOKEN = "ACTION_WITHDRAW_NATIVE_TOKEN";
+
+/// @notice The action for claiming rewards from the Comet rewards contract
+bytes32 public constant ACTION_CLAIM_REWARD = "ACTION_CLAIM_REWARD";
+
+function invoke(bytes32[] calldata actions, bytes[] calldata data) external payable
+```
+
+* `actions`: An array of bytes32 strings that correspond to the actions defined in the contract.
+* `data`: An array of calldatas for each action to be called in the invoke transaction.
+  * Supply Asset, Withdraw Asset, Transfer Asset
+    * `comet`: The address of the Comet instance to interact with.
+    * `to`: The destination address, within or external to the protocol.
+    * `asset`: The address of the ERC-20 asset contract.
+    * `amount`: The amount of the asset as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+  * Supply Native, Withdraw Native (native chain token like ETH on Ethereum Mainnet)
+    * `comet`: The address of the Comet instance to interact with.
+    * `to`: The destination address, within or external to the protocol.
+    * `amount`: The amount of the native token as an unsigned integer scaled up by 10 to the number of decimals of precision of the native EVM token.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Bulker bulker = Bulker(0xBulkerAddress);
+// ERC-20 `approve` the bulker. Then Comet `allow` the bulker to be a manager before calling `invoke`.
+bytes memory supplyAssetCalldata = (abi.encode('0xCometAddress', '0xAccount', '0xAsset', amount);
+bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
+```
+
+#### Ethers.js v5.x
+
+```js
+const bulker = new ethers.Contract(contractAddress, abiJson, provider);
+// ERC-20 `approve` the bulker. Then Comet `allow` the bulker to be a manager before calling `invoke`.
+const supplyAssetCalldata = ethers.utils.defaultAbiCoder.encode(['address', 'address', 'address', 'uint'], ['0xCometAddress', '0xAccount', '0xAsset', amount]);
+await bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
+```
