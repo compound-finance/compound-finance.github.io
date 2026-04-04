@@ -1,0 +1,5256 @@
+# Compound III Context Pack
+
+> Expanded Markdown context for the current Compound III docs listed in /llms.txt.
+
+Source manifest: https://docs.compound.finance/llms.txt
+
+## Compound III overview
+
+Source URL: https://docs.compound.finance/index.html.md
+
+# Compound III
+
+## Introduction
+
+[Compound III](https://github.com/compound-finance/comet) is an EVM compatible protocol that enables supplying of crypto assets as collateral in order to borrow the *base asset*. Accounts can also earn interest by supplying the base asset to the protocol.
+
+The initial deployment of Compound III is on Ethereum and the base asset is USDC.
+
+Please join the **#development** room in the Compound community [Discord](https://compound.finance/discord) server as well as the forums at [comp.xyz](https://www.comp.xyz); Compound Labs and members of the community look forward to helping you build an application on top of Compound III. Your questions help us improve, so please don't hesitate to ask if you can't find what you are looking for here.
+
+For documentation of the Compound v2 Protocol, see [docs.compound.finance/v2](/v2/index.html.md).
+
+### Networks
+
+The network deployment artifacts with contract addresses are available in the [Comet](https://github.com/compound-finance/comet) repository `deployments/` folder.
+
+The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json) (`CometInterface.sol`), compile the Comet project using `yarn compile`.
+
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator) repository. Data collected on: **2026-02-28 12:34:36.611 UTC**.
+
+### Ethereum Mainnet - USDC Base
+
+Block explorer: https://etherscan.io/
+
+#### Protocol contracts
+
+- cUSDCv3: `0xc3d688B66703497DAA19211EEdff47f25384cdc3`
+- cUSDCv3 Implementation: `0xA0332AaFD9E9164A95b1fA521f8a479125573451`
+- cUSDCv3 Ext: `0xA70a0227028aD005F4Fc9376a82cd1462e3AAedC`
+- Configurator: `0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3`
+- Configurator Implementation: `0xcFC1fA6b7ca982176529899D99af6473aD80DF4F`
+- Proxy Admin: `0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779`
+- Comet Factory: `0x1fA408992e74A42D1787E28b880C451452E8C958`
+- Rewards: `0x1B0e765F6224C21223AeA2af16c1C46E38885a40`
+- Bulker: `0xa397a8C2086C554B531c02E29f3291c9704B00c7`
+- Governor: `0x309a862bbC1A00e45506cB8A802D1ff10004c8C0`
+- Timelock: `0x6d903f6003cca6255D85CcA4D3B5E5146dC33925`
+- COMP Token: `0xc00e94cb662c3520282e6f5717214004a7f26888`
+- SVR Fee Recipient: `0xd9496f2a3fd2a97d8a4531d92742f3c8f53183cb`
+
+#### Asset configuration
+
+##### USDC
+
+- address: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+- Price Feed: `0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6`
+
+##### COMP
+
+- address: `0xc00e94Cb662C3520282E6f5717214004A7f26888`
+- Borrow CF: `50.0%`
+- Borrow CF Raw: `500000000000000000`
+- Liquidation CF: `70.0%`
+- Liquidation CF Raw: `700000000000000000`
+- Liquidation Penalty: `25.00%`
+- Liquidation Penalty Raw: `750000000000000000`
+- Supply Cap: `100.00K`
+- Supply Cap Raw: `100000000000000000000000`
+- Price Feed: `0x69B50fF403E995d9c4441a303438D9049dAC8cCD`
+
+##### WBTC
+
+- address: `0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `10.00K`
+- Supply Cap Raw: `1000000000000`
+- Price Feed: `0xc8E4c3F58d5FC4409522503927Ecea057EbbA1fc`
+
+##### WETH
+
+- address: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+- Borrow CF: `82.5%`
+- Borrow CF Raw: `825000000000000000`
+- Liquidation CF: `88.0%`
+- Liquidation CF Raw: `880000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `500.00K`
+- Supply Cap Raw: `500000000000000000000000`
+- Price Feed: `0xc0053f3FBcCD593758258334Dfce24C2A9A673aD`
+
+##### UNI
+
+- address: `0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984`
+- Borrow CF: `68.0%`
+- Borrow CF Raw: `680000000000000000`
+- Liquidation CF: `74.0%`
+- Liquidation CF Raw: `740000000000000000`
+- Liquidation Penalty: `17.00%`
+- Liquidation Penalty Raw: `830000000000000000`
+- Supply Cap: `2.60M`
+- Supply Cap Raw: `2600000000000000000000000`
+- Price Feed: `0x553303d460EE0afB37EdFf9bE42922D8FF63220e`
+
+##### LINK
+
+- address: `0x514910771AF9Ca656af840dff83E8264EcF986CA`
+- Borrow CF: `73.0%`
+- Borrow CF Raw: `730000000000000000`
+- Liquidation CF: `79.0%`
+- Liquidation CF Raw: `790000000000000000`
+- Liquidation Penalty: `17.00%`
+- Liquidation Penalty Raw: `830000000000000000`
+- Supply Cap: `2.00M`
+- Supply Cap Raw: `2000000000000000000000000`
+- Price Feed: `0x83B34662f65532e611A87EBed38063Dec889D5A7`
+
+##### wstETH
+
+- address: `0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0`
+- Borrow CF: `82.0%`
+- Borrow CF Raw: `820000000000000000`
+- Liquidation CF: `86.0%`
+- Liquidation CF Raw: `860000000000000000`
+- Liquidation Penalty: `9.00%`
+- Liquidation Penalty Raw: `910000000000000000`
+- Supply Cap: `75.00K`
+- Supply Cap Raw: `75000000000000000000000`
+- Price Feed: `0xA2699232B341881B1Ed85d91592b7c259E029aCf`
+
+##### cbBTC
+
+- address: `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `900`
+- Supply Cap Raw: `90000000000`
+- Price Feed: `0x0A4F4F9E84Fc4F674F0D209f94d41FaFE5aF887D`
+
+##### tBTC
+
+- address: `0x18084fbA666a33d37592fA2633fD49a74DD93a88`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `570`
+- Supply Cap Raw: `570000000000000000000`
+- Price Feed: `0xAA9527bf3183A96fe6e55831c96dE5cd988d3484`
+
+##### weETH
+
+- address: `0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee`
+- Borrow CF: `75.0%`
+- Borrow CF Raw: `750000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `12.00K`
+- Supply Cap Raw: `12000000000000000000000`
+- Price Feed: `0x4F12633d511dC3049DE1ea923b7047fBeD0070D2`
+
+##### deUSD
+
+- address: `0x15700B564Ca08D9439C58cA5053166E8317aa138`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `8.00%`
+- Liquidation Penalty Raw: `920000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x7BaDaB7109afBbF48eCd8d6498CaAcd2630b45B9`
+
+##### sdeUSD
+
+- address: `0x5C5b196aBE0d54485975D1Ec29617D42D9198326`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `8.00%`
+- Liquidation Penalty Raw: `920000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x7BaDaB7109afBbF48eCd8d6498CaAcd2630b45B9`
+
+##### rsETH
+
+- address: `0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7`
+- Borrow CF: `85.0%`
+- Borrow CF Raw: `850000000000000000`
+- Liquidation CF: `90.0%`
+- Liquidation CF Raw: `900000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `1.50K`
+- Supply Cap Raw: `1500000000000000000000`
+- Price Feed: `0xD6a48f6f687A5FeF8A69834C49514B747012cf1c`
+
+##### USDe
+
+- address: `0x4c9EDD5852cd905f086C759E8383e09bff1E68B3`
+- Borrow CF: `89.0%`
+- Borrow CF Raw: `890000000000000000`
+- Liquidation CF: `94.0%`
+- Liquidation CF Raw: `940000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `30.00M`
+- Supply Cap Raw: `30000000000000000000000000`
+- Price Feed: `0xa569d910839Ae8865Da8F8e70FfFb0cBA869F961`
+
+### Ethereum Mainnet - USDS Base
+
+Block explorer: https://etherscan.io/
+
+#### Protocol contracts
+
+- cUSDSv3: `0x5D409e56D886231aDAf00c8775665AD0f9897b56`
+- cUSDSv3 Implementation: `0x5ACaE76A83D9770370989738452aD3a8be3c54Dd`
+- cUSDSv3 Ext: `0xd4eC911B8FD79139736950235a93d3ea9c3f68ed`
+- Configurator: `0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3`
+- Configurator Implementation: `0xcFC1fA6b7ca982176529899D99af6473aD80DF4F`
+- Proxy Admin: `0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779`
+- Comet Factory: `0x1fA408992e74A42D1787E28b880C451452E8C958`
+- Rewards: `0x1B0e765F6224C21223AeA2af16c1C46E38885a40`
+- Bulker: `0xa397a8C2086C554B531c02E29f3291c9704B00c7`
+- Governor: `0x309a862bbC1A00e45506cB8A802D1ff10004c8C0`
+- Timelock: `0x6d903f6003cca6255D85CcA4D3B5E5146dC33925`
+- COMP Token: `0xc00e94cb662c3520282e6f5717214004a7f26888`
+- SVR Fee Recipient: `0xd9496f2a3fd2a97d8a4531d92742f3c8f53183cb`
+
+#### Asset configuration
+
+##### USDS
+
+- address: `0xdC035D45d973E3EC169d2276DDab16f1e407384F`
+- Price Feed: `0xfF30586cD0F29eD462364C7e81375FC0C71219b1`
+
+##### WETH
+
+- address: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+- Borrow CF: `83.0%`
+- Borrow CF Raw: `830000000000000000`
+- Liquidation CF: `88.0%`
+- Liquidation CF Raw: `880000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `50.00K`
+- Supply Cap Raw: `50000000000000000000000`
+- Price Feed: `0xc0053f3FBcCD593758258334Dfce24C2A9A673aD`
+
+##### USDe
+
+- address: `0x4c9EDD5852cd905f086C759E8383e09bff1E68B3`
+- Borrow CF: `70.0%`
+- Borrow CF Raw: `700000000000000000`
+- Liquidation CF: `75.0%`
+- Liquidation CF Raw: `750000000000000000`
+- Liquidation Penalty: `15.00%`
+- Liquidation Penalty Raw: `850000000000000000`
+- Supply Cap: `50.00M`
+- Supply Cap Raw: `50000000000000000000000000`
+- Price Feed: `0xa569d910839Ae8865Da8F8e70FfFb0cBA869F961`
+
+##### cbBTC
+
+- address: `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `150`
+- Supply Cap Raw: `15000000000`
+- Price Feed: `0x2665701293fCbEB223D11A08D826563EDcCE423A`
+
+##### tBTC
+
+- address: `0x18084fbA666a33d37592fA2633fD49a74DD93a88`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `285`
+- Supply Cap Raw: `285000000000000000000`
+- Price Feed: `0x8350b7De6a6a2C1368E7D4Bd968190e13E354297`
+
+##### wstETH
+
+- address: `0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `10.00K`
+- Supply Cap Raw: `10000000000000000000000`
+- Price Feed: `0xA2699232B341881B1Ed85d91592b7c259E029aCf`
+
+##### sUSDS
+
+- address: `0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `94.0%`
+- Liquidation CF Raw: `940000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `50.00M`
+- Supply Cap Raw: `50000000000000000000000000`
+- Price Feed: `0x31B844DBc7CDBAa27D22fD6d54986836D023bF3F`
+
+##### weETH
+
+- address: `0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee`
+- Borrow CF: `70.0%`
+- Borrow CF Raw: `700000000000000000`
+- Liquidation CF: `75.0%`
+- Liquidation CF Raw: `750000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `12.00K`
+- Supply Cap Raw: `12000000000000000000000`
+- Price Feed: `0x4F12633d511dC3049DE1ea923b7047fBeD0070D2`
+
+##### SKY
+
+- address: `0x56072C95FAA701256059aa122697B133aDEd9279`
+- Borrow CF: `73.0%`
+- Borrow CF Raw: `730000000000000000`
+- Liquidation CF: `79.0%`
+- Liquidation CF Raw: `790000000000000000`
+- Liquidation Penalty: `15.00%`
+- Liquidation Penalty Raw: `850000000000000000`
+- Supply Cap: `96.00M`
+- Supply Cap Raw: `96000000000000000000000000`
+- Price Feed: `0xEF819FE60af67698567f03095A029AE1a1935007`
+
+##### deUSD
+
+- address: `0x15700B564Ca08D9439C58cA5053166E8317aa138`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `8.00%`
+- Liquidation Penalty Raw: `920000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x7BaDaB7109afBbF48eCd8d6498CaAcd2630b45B9`
+
+##### sdeUSD
+
+- address: `0x5C5b196aBE0d54485975D1Ec29617D42D9198326`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `8.00%`
+- Liquidation Penalty Raw: `920000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x7BaDaB7109afBbF48eCd8d6498CaAcd2630b45B9`
+
+### Ethereum Mainnet - USDT Base
+
+Block explorer: https://etherscan.io/
+
+#### Protocol contracts
+
+- cUSDTv3: `0x3Afdc9BCA9213A35503b077a6072F3D0d5AB0840`
+- cUSDTv3 Implementation: `0x6f654c583454859F535f6b720981cc939D1b036E`
+- cUSDTv3 Ext: `0xe3458a0BdBd5A413d3731595C5Eb7C4CD6a14DD1`
+- Configurator: `0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3`
+- Configurator Implementation: `0xcFC1fA6b7ca982176529899D99af6473aD80DF4F`
+- Proxy Admin: `0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779`
+- Comet Factory: `0x1fA408992e74A42D1787E28b880C451452E8C958`
+- Rewards: `0x1B0e765F6224C21223AeA2af16c1C46E38885a40`
+- Bulker: `0xa397a8C2086C554B531c02E29f3291c9704B00c7`
+- Governor: `0x309a862bbC1A00e45506cB8A802D1ff10004c8C0`
+- Timelock: `0x6d903f6003cca6255D85CcA4D3B5E5146dC33925`
+- COMP Token: `0xc00e94cb662c3520282e6f5717214004a7f26888`
+- SVR Fee Recipient: `0xd9496f2a3fd2a97d8a4531d92742f3c8f53183cb`
+
+#### Asset configuration
+
+##### USDT
+
+- address: `0xdAC17F958D2ee523a2206206994597C13D831ec7`
+- Price Feed: `0x3E7d1eAB13ad0104d2750B8863b489D65364e32D`
+
+##### COMP
+
+- address: `0xc00e94Cb662C3520282E6f5717214004A7f26888`
+- Borrow CF: `50.0%`
+- Borrow CF Raw: `500000000000000000`
+- Liquidation CF: `70.0%`
+- Liquidation CF Raw: `700000000000000000`
+- Liquidation Penalty: `25.00%`
+- Liquidation Penalty Raw: `750000000000000000`
+- Supply Cap: `100.00K`
+- Supply Cap Raw: `100000000000000000000000`
+- Price Feed: `0x69B50fF403E995d9c4441a303438D9049dAC8cCD`
+
+##### WETH
+
+- address: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+- Borrow CF: `83.0%`
+- Borrow CF Raw: `830000000000000000`
+- Liquidation CF: `88.0%`
+- Liquidation CF Raw: `880000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `500.00K`
+- Supply Cap Raw: `500000000000000000000000`
+- Price Feed: `0xc0053f3FBcCD593758258334Dfce24C2A9A673aD`
+
+##### WBTC
+
+- address: `0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `2.50K`
+- Supply Cap Raw: `250000000000`
+- Price Feed: `0xc8E4c3F58d5FC4409522503927Ecea057EbbA1fc`
+
+##### UNI
+
+- address: `0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984`
+- Borrow CF: `68.0%`
+- Borrow CF Raw: `680000000000000000`
+- Liquidation CF: `74.0%`
+- Liquidation CF Raw: `740000000000000000`
+- Liquidation Penalty: `17.00%`
+- Liquidation Penalty Raw: `830000000000000000`
+- Supply Cap: `1.30M`
+- Supply Cap Raw: `1300000000000000000000000`
+- Price Feed: `0x553303d460EE0afB37EdFf9bE42922D8FF63220e`
+
+##### LINK
+
+- address: `0x514910771AF9Ca656af840dff83E8264EcF986CA`
+- Borrow CF: `73.0%`
+- Borrow CF Raw: `730000000000000000`
+- Liquidation CF: `79.0%`
+- Liquidation CF Raw: `790000000000000000`
+- Liquidation Penalty: `17.00%`
+- Liquidation Penalty Raw: `830000000000000000`
+- Supply Cap: `1.00M`
+- Supply Cap Raw: `1000000000000000000000000`
+- Price Feed: `0x83B34662f65532e611A87EBed38063Dec889D5A7`
+
+##### wstETH
+
+- address: `0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0`
+- Borrow CF: `82.0%`
+- Borrow CF Raw: `820000000000000000`
+- Liquidation CF: `86.0%`
+- Liquidation CF Raw: `860000000000000000`
+- Liquidation Penalty: `9.00%`
+- Liquidation Penalty Raw: `910000000000000000`
+- Supply Cap: `75.00K`
+- Supply Cap Raw: `75000000000000000000000`
+- Price Feed: `0xA2699232B341881B1Ed85d91592b7c259E029aCf`
+
+##### cbBTC
+
+- address: `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `500`
+- Supply Cap Raw: `50000000000`
+- Price Feed: `0x2D09142Eae60Fd8BD454a276E95AeBdFFD05722d`
+
+##### tBTC
+
+- address: `0x18084fbA666a33d37592fA2633fD49a74DD93a88`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `360`
+- Supply Cap Raw: `360000000000000000000`
+- Price Feed: `0x7b03a016dBC36dB8e05C480192faDcdB0a06bC37`
+
+##### wUSDM
+
+- address: `0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `0.00%`
+- Liquidation Penalty Raw: `1000000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x7BaDaB7109afBbF48eCd8d6498CaAcd2630b45B9`
+
+##### sFRAX
+
+- address: `0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32`
+- Borrow CF: `88.0%`
+- Borrow CF Raw: `880000000000000000`
+- Liquidation CF: `90.0%`
+- Liquidation CF Raw: `900000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `50.00M`
+- Supply Cap Raw: `50000000000000000000000000`
+- Price Feed: `0x8C74B2811D2F1aD65517ADB5C65773c1E520ed2f`
+
+##### mETH
+
+- address: `0xd5F7838F5C461fefF7FE49ea5ebaF7728bB0ADfa`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `4.00K`
+- Supply Cap Raw: `4000000000000000000000`
+- Price Feed: `0x60F2058379716A64a7A5d29219397e79bC552194`
+
+##### weETH
+
+- address: `0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee`
+- Borrow CF: `75.0%`
+- Borrow CF Raw: `750000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `25.00K`
+- Supply Cap Raw: `25000000000000000000000`
+- Price Feed: `0x4F12633d511dC3049DE1ea923b7047fBeD0070D2`
+
+##### sdeUSD
+
+- address: `0x5C5b196aBE0d54485975D1Ec29617D42D9198326`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `8.00%`
+- Liquidation Penalty Raw: `920000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x7BaDaB7109afBbF48eCd8d6498CaAcd2630b45B9`
+
+##### deUSD
+
+- address: `0x15700B564Ca08D9439C58cA5053166E8317aa138`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `8.00%`
+- Liquidation Penalty Raw: `920000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x7BaDaB7109afBbF48eCd8d6498CaAcd2630b45B9`
+
+##### XAUt
+
+- address: `0x68749665FF8D2d112Fa859AA293F07A622782F38`
+- Borrow CF: `70.0%`
+- Borrow CF Raw: `700000000000000000`
+- Liquidation CF: `75.0%`
+- Liquidation CF Raw: `750000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `200`
+- Supply Cap Raw: `200000000`
+- Price Feed: `0x214eD9Da11D2fbe465a6fc601a91E62EbEc1a0D6`
+
+##### USDe
+
+- address: `0x4c9EDD5852cd905f086C759E8383e09bff1E68B3`
+- Borrow CF: `89.0%`
+- Borrow CF Raw: `890000000000000000`
+- Liquidation CF: `94.0%`
+- Liquidation CF Raw: `940000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `30.00M`
+- Supply Cap Raw: `30000000000000000000000000`
+- Price Feed: `0xa569d910839Ae8865Da8F8e70FfFb0cBA869F961`
+
+### Ethereum Mainnet - WBTC Base
+
+Block explorer: https://etherscan.io/
+
+#### Protocol contracts
+
+- cWBTCv3: `0xe85Dc543813B8c2CFEaAc371517b925a166a9293`
+- cWBTCv3 Implementation: `0x1C0C89c1Fa07E1dBfCB99ddb80c57252498c82B2`
+- cWBTCv3 Ext: `0x4f4D5A808E2448cB12df7aC12EFb12888FD9BDd5`
+- Configurator: `0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3`
+- Configurator Implementation: `0xcFC1fA6b7ca982176529899D99af6473aD80DF4F`
+- Proxy Admin: `0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779`
+- Comet Factory: `0x1fA408992e74A42D1787E28b880C451452E8C958`
+- Rewards: `0x1B0e765F6224C21223AeA2af16c1C46E38885a40`
+- Bulker: `0xa397a8C2086C554B531c02E29f3291c9704B00c7`
+- Governor: `0x309a862bbC1A00e45506cB8A802D1ff10004c8C0`
+- Timelock: `0x6d903f6003cca6255D85CcA4D3B5E5146dC33925`
+- COMP Token: `0xc00e94cb662c3520282e6f5717214004a7f26888`
+- SVR Fee Recipient: `0xd9496f2a3fd2a97d8a4531d92742f3c8f53183cb`
+
+#### Asset configuration
+
+##### WBTC
+
+- address: `0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599`
+- Price Feed: `0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23`
+
+##### LBTC
+
+- address: `0x8236a87084f8B84306f72007F36F2618A5634494`
+- Borrow CF: `73.0%`
+- Borrow CF Raw: `730000000000000000`
+- Liquidation CF: `75.0%`
+- Liquidation CF Raw: `750000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `200`
+- Supply Cap Raw: `20000000000`
+- Price Feed: `0x5c29868C58b6e15e2b962943278969Ab6a7D3212`
+
+##### pumpBTC
+
+- address: `0xF469fBD2abcd6B9de8E169d128226C0Fc90a012e`
+- Borrow CF: `75.0%`
+- Borrow CF Raw: `750000000000000000`
+- Liquidation CF: `78.0%`
+- Liquidation CF Raw: `780000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `15`
+- Supply Cap Raw: `1500000000`
+- Price Feed: `0x351a133Fd850ea81ed8a782016e308aCBADDec91`
+
+##### USDC
+
+- address: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `10.00M`
+- Supply Cap Raw: `10000000000000`
+- Price Feed: `0x40fCEe8Cdda01522846D197df9d9C1199B1CB1D3`
+
+##### USDT
+
+- address: `0xdAC17F958D2ee523a2206206994597C13D831ec7`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `10.00M`
+- Supply Cap Raw: `10000000000000`
+- Price Feed: `0x8a5C2E36E02fB1BA95C9a3e96E6E16BbBDae9AAA`
+
+### Ethereum Mainnet - WETH Base
+
+Block explorer: https://etherscan.io/
+
+#### Protocol contracts
+
+- cWETHv3: `0xA17581A9E3356d9A858b789D68B4d866e593aE94`
+- cWETHv3 Implementation: `0x2BEa101d992b58DA3F52C4c2aaeb49d33f7DCE14`
+- cWETHv3 Ext: `0x16F3532e6AF45A2C51B6C77b1267cEF34A9cf3B3`
+- Configurator: `0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3`
+- Configurator Implementation: `0xcFC1fA6b7ca982176529899D99af6473aD80DF4F`
+- Proxy Admin: `0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779`
+- Comet Factory: `0xBa8F83ffFC7097CBcD89fe323D31753CfaC33867`
+- Rewards: `0x1B0e765F6224C21223AeA2af16c1C46E38885a40`
+- Bulker: `0xa397a8C2086C554B531c02E29f3291c9704B00c7`
+- Governor: `0x309a862bbC1A00e45506cB8A802D1ff10004c8C0`
+- Timelock: `0x6d903f6003cca6255D85CcA4D3B5E5146dC33925`
+- COMP Token: `0xc00e94cb662c3520282e6f5717214004a7f26888`
+- SVR Fee Recipient: `0xd9496f2a3fd2a97d8a4531d92742f3c8f53183cb`
+
+#### Asset configuration
+
+##### WETH
+
+- address: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+- Price Feed: `0xD72ac1bCE9177CFe7aEb5d0516a38c88a64cE0AB`
+
+##### cbETH
+
+- address: `0xBe9895146f7AF43049ca1c1AE358B0541Ea49704`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `2.50%`
+- Liquidation Penalty Raw: `975000000000000000`
+- Supply Cap: `10.00K`
+- Supply Cap Raw: `10000000000000000000000`
+- Price Feed: `0x23a982b74a3236A5F2297856d4391B2edBBB5549`
+
+##### wstETH
+
+- address: `0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `2.50%`
+- Liquidation Penalty Raw: `975000000000000000`
+- Supply Cap: `64.50K`
+- Supply Cap Raw: `64500000000000000000000`
+- Price Feed: `0x91359Ce8989CB610A4127777828E667F23b94ee9`
+
+##### rETH
+
+- address: `0xae78736Cd615f374D3085123A210448E74Fc6393`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `2.50%`
+- Liquidation Penalty Raw: `975000000000000000`
+- Supply Cap: `30.00K`
+- Supply Cap Raw: `30000000000000000000000`
+- Price Feed: `0x9feAc5a70435ef209F4013D46945AC1d4cba9397`
+
+##### rsETH
+
+- address: `0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `37.00K`
+- Supply Cap Raw: `37000000000000000000000`
+- Price Feed: `0x5AbcFC8A649Ac15Ff7d41c0Dd0d53aF3bBb7F876`
+
+##### weETH
+
+- address: `0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `67.50K`
+- Supply Cap Raw: `67500000000000000000000`
+- Price Feed: `0x5641Af9AB0794aFcc5c9B036f6E01144bA42E747`
+
+##### osETH
+
+- address: `0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `10.00K`
+- Supply Cap Raw: `10000000000000000000000`
+- Price Feed: `0xdf08cd1B9d40a106B49B74F70c1CCa60596edeDc`
+
+##### WBTC
+
+- address: `0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `1.00K`
+- Supply Cap Raw: `100000000000`
+- Price Feed: `0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07`
+
+##### ezETH
+
+- address: `0xbf5495Efe5DB9ce00f80364C8B423567e58d2110`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `80.00K`
+- Supply Cap Raw: `80000000000000000000000`
+- Price Feed: `0xF5600F17F7d3D87d0e0Fdafe01Dbe513919C6bf8`
+
+##### cbBTC
+
+- address: `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `150`
+- Supply Cap Raw: `15000000000`
+- Price Feed: `0x57A71A9C632b2e6D8b0eB9A157888A3Fc87400D1`
+
+##### rswETH
+
+- address: `0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `1.00K`
+- Supply Cap Raw: `1000000000000000000000`
+- Price Feed: `0x0cA9231A11c242206139A6DD8Bf532F885516F96`
+
+##### tBTC
+
+- address: `0x18084fbA666a33d37592fA2633fD49a74DD93a88`
+- Borrow CF: `76.0%`
+- Borrow CF Raw: `760000000000000000`
+- Liquidation CF: `81.0%`
+- Liquidation CF Raw: `810000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `315`
+- Supply Cap Raw: `315000000000000000000`
+- Price Feed: `0x1933F7e5f8B0423fbAb28cE9c8C39C2cC414027B`
+
+##### ETHx
+
+- address: `0xA35b1B31Ce002FBF2058D22F30f95D405200A15b`
+- Borrow CF: `85.0%`
+- Borrow CF Raw: `850000000000000000`
+- Liquidation CF: `90.0%`
+- Liquidation CF Raw: `900000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `2.10K`
+- Supply Cap Raw: `2100000000000000000000`
+- Price Feed: `0x9f4001c75295049Dc5D566acfB27054D1fa1af35`
+
+##### tETH
+
+- address: `0xD11c452fc99cF405034ee446803b6F6c1F6d5ED8`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `5.00K`
+- Supply Cap Raw: `5000000000000000000000`
+- Price Feed: `0x7783a5c7656d75ed1144379c25142B7e43Da5F5E`
+
+##### pufETH
+
+- address: `0xD9A442856C234a39a81a089C06451EBAa4306a72`
+- Borrow CF: `88.0%`
+- Borrow CF Raw: `880000000000000000`
+- Liquidation CF: `91.0%`
+- Liquidation CF Raw: `910000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `4.50K`
+- Supply Cap Raw: `4500000000000000000000`
+- Price Feed: `0x5546198BE8479Dcd69044e90F50783BA1A25A8F5`
+
+##### wOETH
+
+- address: `0xDcEe70654261AF21C44c093C300eD3Bb97b78192`
+- Borrow CF: `88.0%`
+- Borrow CF Raw: `880000000000000000`
+- Liquidation CF: `90.0%`
+- Liquidation CF Raw: `900000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `5.00K`
+- Supply Cap Raw: `5000000000000000000000`
+- Price Feed: `0x835B92840b721D3A66EB9Da7FC4AdF092A8F77e7`
+
+##### USDC
+
+- address: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `50.00M`
+- Supply Cap Raw: `50000000000000`
+- Price Feed: `0xfd5282968119c348C1E47fBCaDD13069d9857Bf2`
+
+##### USDT
+
+- address: `0xdAC17F958D2ee523a2206206994597C13D831ec7`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `50.00M`
+- Supply Cap Raw: `50000000000000`
+- Price Feed: `0xb6E043072c5815B75E0Ee0cB31eD33Bd089fcA84`
+
+### Ethereum Mainnet - wstETH Base
+
+Block explorer: https://etherscan.io/
+
+#### Protocol contracts
+
+- cWstETHv3: `0x3D0bb1ccaB520A66e607822fC55BC921738fAFE3`
+- cWstETHv3 Implementation: `0x400249b8244AfAc24aeDC658041E56E449B43b5d`
+- cWstETHv3 Ext: `0x055E53F50B84FD91c4Be367220EFD36c3d091E1f`
+- Configurator: `0x316f9708bB98af7dA9c68C1C3b5e79039cD336E3`
+- Configurator Implementation: `0xcFC1fA6b7ca982176529899D99af6473aD80DF4F`
+- Proxy Admin: `0x1EC63B5883C3481134FD50D5DAebc83Ecd2E8779`
+- Comet Factory: `0xBa8F83ffFC7097CBcD89fe323D31753CfaC33867`
+- Rewards: `0x1B0e765F6224C21223AeA2af16c1C46E38885a40`
+- Bulker: `0x2c776041CCFe903071AF44aa147368a9c8EEA518`
+- Governor: `0x309a862bbC1A00e45506cB8A802D1ff10004c8C0`
+- Timelock: `0x6d903f6003cca6255D85CcA4D3B5E5146dC33925`
+- COMP Token: `0xc00e94cb662c3520282e6f5717214004a7f26888`
+- SVR Fee Recipient: `0xd9496f2a3fd2a97d8a4531d92742f3c8f53183cb`
+
+#### Asset configuration
+
+##### wstETH
+
+- address: `0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0`
+- Price Feed: `0x72e9B6F907365d76C6192aD49C0C5ba356b7Fa48`
+
+##### rsETH
+
+- address: `0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `10.00K`
+- Supply Cap Raw: `10000000000000000000000`
+- Price Feed: `0x0Af91E13383FD771f21B40b79421B2d59E8214C2`
+
+##### ezETH
+
+- address: `0xbf5495Efe5DB9ce00f80364C8B423567e58d2110`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `15.00K`
+- Supply Cap Raw: `15000000000000000000000`
+- Price Feed: `0x00C03ABc59b978ECDa0A118Ca8B0061EA6121101`
+
+##### tETH
+
+- address: `0xD11c452fc99cF405034ee446803b6F6c1F6d5ED8`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `5.00K`
+- Supply Cap Raw: `5000000000000000000000`
+- Price Feed: `0x87641f6BC5aD796ea2f30af2A79aB2CF30f74188`
+
+##### USDC
+
+- address: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `83.0%`
+- Liquidation CF Raw: `830000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `10.00M`
+- Supply Cap Raw: `10000000000000`
+- Price Feed: `0x04eAB657b065238aA67C3879f4d71BfdD09C2796`
+
+##### USDT
+
+- address: `0xdAC17F958D2ee523a2206206994597C13D831ec7`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `83.0%`
+- Liquidation CF Raw: `830000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `15.00M`
+- Supply Cap Raw: `15000000000000`
+- Price Feed: `0x0746928E47f858944D189996829Ca711f64461a7`
+
+##### WETH
+
+- address: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `100.00K`
+- Supply Cap Raw: `100000000000000000000000`
+- Price Feed: `0xe51a17c21B4CD878CdAE305df9baCC3477425282`
+
+##### weETH
+
+- address: `0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `10.00K`
+- Supply Cap Raw: `10000000000000000000000`
+- Price Feed: `0xF1cEe2A82Cc42246c8C38253f118AbB6cAAd715B`
+
+### Optimism - USDC Base
+
+Block explorer: https://optimistic.etherscan.io/
+
+#### Protocol contracts
+
+- cUSDCv3: `0x2e44e174f7D53F0212823acC11C01A11d58c5bCB`
+- cUSDCv3 Implementation: `0xD62d433A4Ca55f97Bded88641588F65271CC5cf2`
+- cUSDCv3 Ext: `0xadF7aD4Dd000Ea75667A3CDf65F3D3b7f1e9F02E`
+- Configurator: `0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713`
+- Configurator Implementation: `0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02`
+- Proxy Admin: `0x24D86Da09C4Dd64e50dB7501b0f695d030f397aF`
+- Comet Factory: `0xd187F938348AA245E2104be8D849ea6d8d23f434`
+- Rewards: `0x443EA0340cb75a160F31A440722dec7b5bc3C2E9`
+- Bulker: `0xcb3643CC8294B23171272845473dEc49739d4Ba3`
+- Governor: `0xC3a73A70d1577CD5B02da0bA91C0Afc8fA434DAF`
+- Timelock: `0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07`
+- COMP Token: `0x7e7d4467112689329f7e06571ed0e8cbad4910ee`
+
+#### Asset configuration
+
+##### USDC
+
+- address: `0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85`
+- Price Feed: `0x16a9FA2FDa030272Ce99B29CF780dFA30361E0f3`
+
+##### OP
+
+- address: `0x4200000000000000000000000000000000000042`
+- Borrow CF: `65.0%`
+- Borrow CF Raw: `650000000000000000`
+- Liquidation CF: `70.0%`
+- Liquidation CF Raw: `700000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `1.40M`
+- Supply Cap Raw: `1400000000000000000000000`
+- Price Feed: `0x0D276FC14719f9292D5C1eA2198673d1f4269246`
+
+##### WETH
+
+- address: `0x4200000000000000000000000000000000000006`
+- Borrow CF: `83.0%`
+- Borrow CF Raw: `830000000000000000`
+- Liquidation CF: `88.0%`
+- Liquidation CF Raw: `880000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `2.60K`
+- Supply Cap Raw: `2600000000000000000000`
+- Price Feed: `0x13e3Ee699D1909E989722E753853AE30b17e08c5`
+
+##### WBTC
+
+- address: `0x68f180fcCe6836688e9084f035309E29Bf0A2095`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `130`
+- Supply Cap Raw: `13000000000`
+- Price Feed: `0x718A5788b89454aAE3A028AE9c111A29Be6c2a6F`
+
+##### wstETH
+
+- address: `0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `1.20K`
+- Supply Cap Raw: `1200000000000000000000`
+- Price Feed: `0x5D173813B4505701e79E654b36A95E6c1FAD4448`
+
+##### wUSDM
+
+- address: `0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `0.00%`
+- Liquidation Penalty Raw: `1000000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x8671d5e3a10639a573bACffEF448CA076b2d5cD7`
+
+### Optimism - USDT Base
+
+Block explorer: https://optimistic.etherscan.io/
+
+#### Protocol contracts
+
+- cUSDTv3: `0x995E394b8B2437aC8Ce61Ee0bC610D617962B214`
+- cUSDTv3 Implementation: `0x699a196c609B9B3dB559CE5778b2827252BD24F5`
+- cUSDTv3 Ext: `0xdFb81f0EbFDfdd90143f5deBD1cd016b677d1585`
+- Configurator: `0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713`
+- Configurator Implementation: `0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02`
+- Proxy Admin: `0x24D86Da09C4Dd64e50dB7501b0f695d030f397aF`
+- Comet Factory: `0xd187F938348AA245E2104be8D849ea6d8d23f434`
+- Rewards: `0x443EA0340cb75a160F31A440722dec7b5bc3C2E9`
+- Bulker: `0xcb3643CC8294B23171272845473dEc49739d4Ba3`
+- Governor: `0xC3a73A70d1577CD5B02da0bA91C0Afc8fA434DAF`
+- Timelock: `0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07`
+- COMP Token: `0x7e7d4467112689329f7e06571ed0e8cbad4910ee`
+
+#### Asset configuration
+
+##### USDT
+
+- address: `0x94b008aA00579c1307B0EF2c499aD98a8ce58e58`
+- Price Feed: `0xECef79E109e997bCA29c1c0897ec9d7b03647F5E`
+
+##### OP
+
+- address: `0x4200000000000000000000000000000000000042`
+- Borrow CF: `65.0%`
+- Borrow CF Raw: `650000000000000000`
+- Liquidation CF: `70.0%`
+- Liquidation CF Raw: `700000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `1.00M`
+- Supply Cap Raw: `1000000000000000000000000`
+- Price Feed: `0x0D276FC14719f9292D5C1eA2198673d1f4269246`
+
+##### WETH
+
+- address: `0x4200000000000000000000000000000000000006`
+- Borrow CF: `83.0%`
+- Borrow CF Raw: `830000000000000000`
+- Liquidation CF: `88.0%`
+- Liquidation CF Raw: `880000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `2.60K`
+- Supply Cap Raw: `2600000000000000000000`
+- Price Feed: `0x13e3Ee699D1909E989722E753853AE30b17e08c5`
+
+##### WBTC
+
+- address: `0x68f180fcCe6836688e9084f035309E29Bf0A2095`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `100`
+- Supply Cap Raw: `10000000000`
+- Price Feed: `0x718A5788b89454aAE3A028AE9c111A29Be6c2a6F`
+
+##### wstETH
+
+- address: `0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `1.30K`
+- Supply Cap Raw: `1300000000000000000000`
+- Price Feed: `0x5D173813B4505701e79E654b36A95E6c1FAD4448`
+
+##### wUSDM
+
+- address: `0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `0.00%`
+- Liquidation Penalty Raw: `1000000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x8671d5e3a10639a573bACffEF448CA076b2d5cD7`
+
+### Optimism - WETH Base
+
+Block explorer: https://optimistic.etherscan.io/
+
+#### Protocol contracts
+
+- cWETHv3: `0xE36A30D249f7761327fd973001A32010b521b6Fd`
+- cWETHv3 Implementation: `0x1F0E8FaE2767305C2e65800B7C42c3A9EE1dc345`
+- cWETHv3 Ext: `0xc4aaFC9F0c52FDDa0fed972c55B136bD07552ad0`
+- Configurator: `0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713`
+- Configurator Implementation: `0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02`
+- Proxy Admin: `0x24D86Da09C4Dd64e50dB7501b0f695d030f397aF`
+- Comet Factory: `0xd187F938348AA245E2104be8D849ea6d8d23f434`
+- Rewards: `0x443EA0340cb75a160F31A440722dec7b5bc3C2E9`
+- Bulker: `0xcb3643CC8294B23171272845473dEc49739d4Ba3`
+- Governor: `0xC3a73A70d1577CD5B02da0bA91C0Afc8fA434DAF`
+- Timelock: `0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07`
+- COMP Token: `0x7e7d4467112689329f7e06571ed0e8cbad4910ee`
+
+#### Asset configuration
+
+##### WETH
+
+- address: `0x4200000000000000000000000000000000000006`
+- Price Feed: `0x0be923b1716115d742E35Fa359d415598c50510F`
+
+##### wstETH
+
+- address: `0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb`
+- Borrow CF: `88.0%`
+- Borrow CF Raw: `880000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `3.00%`
+- Liquidation Penalty Raw: `970000000000000000`
+- Supply Cap: `3.90K`
+- Supply Cap Raw: `3900000000000000000000`
+- Price Feed: `0x92014e7f331dFaB2848A5872AA8b2E7b6f3cE8B4`
+
+##### rETH
+
+- address: `0x9Bcef72be871e61ED4fBbc7630889beE758eb81D`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `3.00%`
+- Liquidation Penalty Raw: `970000000000000000`
+- Supply Cap: `5.00K`
+- Supply Cap Raw: `5000000000000000000000`
+- Price Feed: `0x3e6D1ccA8Eee6d02f1f578B613374EB53E6823B4`
+
+##### WBTC
+
+- address: `0x68f180fcCe6836688e9084f035309E29Bf0A2095`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `60`
+- Supply Cap Raw: `6000000000`
+- Price Feed: `0x4ed39CF78ffA4428DE6bcEDB8d0f5Ff84699e13D`
+
+##### USDT
+
+- address: `0x94b008aA00579c1307B0EF2c499aD98a8ce58e58`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `10.00M`
+- Supply Cap Raw: `10000000000000`
+- Price Feed: `0xDdC326838f2B5E5625306C3cf33318666f3Cf002`
+
+##### USDC
+
+- address: `0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `15.00M`
+- Supply Cap Raw: `15000000000000`
+- Price Feed: `0x403F2083B6E220147f8a8832f0B284B4Ed5777d1`
+
+##### ezETH
+
+- address: `0x2416092f143378750bb29b79eD961ab195CcEea5`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `3.20K`
+- Supply Cap Raw: `3200000000000000000000`
+- Price Feed: `0x3fb418B74Ec30bC3e940221F58A04e16afC6378B`
+
+##### weETH
+
+- address: `0x5A7fACB970D094B6C7FF1df0eA68D99E6e73CBFF`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `1.60K`
+- Supply Cap Raw: `1600000000000000000000`
+- Price Feed: `0xe6eb5B9b85cFF2C84Df3De6e7855bC9E76f034d5`
+
+##### wrsETH
+
+- address: `0x87eEE96D50Fb761AD85B1c982d28A042169d61b1`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `1.40K`
+- Supply Cap Raw: `1400000000000000000000`
+- Price Feed: `0x5Eba6Ec97843163C92Ab48a7aC0CCc8423c652b1`
+
+### Unichain - USDC Base
+
+Block explorer: https://uniscan.xyz/
+
+#### Protocol contracts
+
+- cUSDCv3: `0x2c7118c4C88B9841FCF839074c26Ae8f035f2921`
+- cUSDCv3 Implementation: `0x6bAD2334e987106F40c50c7942d794b4E09EdFC5`
+- cUSDCv3 Ext: `0x8D38A3d6B3c3B7d96D6536DA7Eef94A9d7dbC991`
+- Configurator: `0x8df378453Ff9dEFFa513367CDF9b3B53726303e9`
+- Configurator Implementation: `0x5404872d8f2e24b230EC9B9eC64E3855F637FB93`
+- Proxy Admin: `0xaeB318360f27748Acb200CE616E389A6C9409a07`
+- Comet Factory: `0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C`
+- Rewards: `0x6f7D514bbD4aFf3BcD1140B7344b32f063dEe486`
+- Bulker: `0x58EbB8Db8b4FdF2dCbbB16E04c2F5b952963B514`
+- Governor: `0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118`
+- Timelock: `0x2F4eAF29dfeeF4654bD091F7112926E108eF4Ed0`
+- COMP Token: `0xdf78e4f0a8279942ca68046476919a90f2288656`
+
+#### Asset configuration
+
+##### USDC
+
+- address: `0x078D782b760474a361dDA0AF3839290b0EF57AD6`
+- Price Feed: `0x1F71901daf98d70B4BAF40DE080321e5C2676856`
+
+##### UNI
+
+- address: `0x8f187aA05619a017077f5308904739877ce9eA21`
+- Borrow CF: `68.0%`
+- Borrow CF Raw: `680000000000000000`
+- Liquidation CF: `74.0%`
+- Liquidation CF Raw: `740000000000000000`
+- Liquidation Penalty: `17.00%`
+- Liquidation Penalty Raw: `830000000000000000`
+- Supply Cap: `100.00K`
+- Supply Cap Raw: `100000000000000000000000`
+- Price Feed: `0x4A900f81dEdA753bbBab12453b3775D5f26df6F3`
+
+##### WETH
+
+- address: `0x4200000000000000000000000000000000000006`
+- Borrow CF: `83.0%`
+- Borrow CF Raw: `830000000000000000`
+- Liquidation CF: `90.0%`
+- Liquidation CF Raw: `900000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `5.00K`
+- Supply Cap Raw: `5000000000000000000000`
+- Price Feed: `0x72874CfE957bb47795548e5a9fd740D135ba5E45`
+
+### Unichain - WETH Base
+
+Block explorer: https://uniscan.xyz/
+
+#### Protocol contracts
+
+- cWETHv3: `0x6C987dDE50dB1dcDd32Cd4175778C2a291978E2a`
+- cWETHv3 Implementation: `0x51515144Cff7DC3623C52C5e91768a9955d2BEb1`
+- cWETHv3 Ext: `0x443EA0340cb75a160F31A440722dec7b5bc3C2E9`
+- Configurator: `0x8df378453Ff9dEFFa513367CDF9b3B53726303e9`
+- Configurator Implementation: `0x5404872d8f2e24b230EC9B9eC64E3855F637FB93`
+- Proxy Admin: `0xaeB318360f27748Acb200CE616E389A6C9409a07`
+- Comet Factory: `0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C`
+- Rewards: `0x6f7D514bbD4aFf3BcD1140B7344b32f063dEe486`
+- Bulker: `0x58EbB8Db8b4FdF2dCbbB16E04c2F5b952963B514`
+- Governor: `0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118`
+- Timelock: `0x2F4eAF29dfeeF4654bD091F7112926E108eF4Ed0`
+- COMP Token: `0xdf78e4f0a8279942ca68046476919a90f2288656`
+
+#### Asset configuration
+
+##### WETH
+
+- address: `0x4200000000000000000000000000000000000006`
+- Price Feed: `0x3C30B5a5A04656565686f800481580Ac4E7ed178`
+
+##### wstETH
+
+- address: `0xc02fE7317D4eb8753a02c35fe019786854A92001`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `3.00%`
+- Liquidation Penalty Raw: `970000000000000000`
+- Supply Cap: `5.00K`
+- Supply Cap Raw: `5000000000000000000000`
+- Price Feed: `0x3870FAc3De911c12A57E5a2532D15aD8Ca275A60`
+
+##### weETH
+
+- address: `0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `5.00K`
+- Supply Cap Raw: `5000000000000000000000`
+- Price Feed: `0x2e44e174f7D53F0212823acC11C01A11d58c5bCB`
+
+##### ezETH
+
+- address: `0x2416092f143378750bb29b79eD961ab195CcEea5`
+- Borrow CF: `88.0%`
+- Borrow CF Raw: `880000000000000000`
+- Liquidation CF: `91.0%`
+- Liquidation CF Raw: `910000000000000000`
+- Liquidation Penalty: `6.00%`
+- Liquidation Penalty Raw: `940000000000000000`
+- Supply Cap: `2.20K`
+- Supply Cap Raw: `2200000000000000000000`
+- Price Feed: `0x1Ad4CEBa9f8135A557bBe317DB62Aa125C330F26`
+
+##### UNI
+
+- address: `0x8f187aA05619a017077f5308904739877ce9eA21`
+- Borrow CF: `70.0%`
+- Borrow CF Raw: `700000000000000000`
+- Liquidation CF: `75.0%`
+- Liquidation CF Raw: `750000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `500.00K`
+- Supply Cap Raw: `500000000000000000000000`
+- Price Feed: `0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713`
+
+##### WBTC
+
+- address: `0x927B51f251480a681271180DA4de28D44EC4AfB8`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `120`
+- Supply Cap Raw: `12000000000`
+- Price Feed: `0xFa454dE61b317b6535A0C462267208E8FdB89f45`
+
+##### rsETH
+
+- address: `0xc3eACf0612346366Db554C991D7858716db09f58`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `1.00K`
+- Supply Cap Raw: `1000000000000000000000`
+- Price Feed: `0x85C4F855Bc0609D2584405819EdAEa3aDAbfE97D`
+
+### Polygon Mainnet - USDC Base
+
+Block explorer: https://polygonscan.com/
+
+#### Protocol contracts
+
+- cUSDCv3: `0xF25212E676D1F7F89Cd72fFEe66158f541246445`
+- cUSDCv3 Implementation: `0xA265E611Cf0ccB49ca9B58c2e1e8aa9B922504e6`
+- cUSDCv3 Ext: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Configurator: `0x83E0F742cAcBE66349E3701B171eE2487a26e738`
+- Configurator Implementation: `0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf`
+- Proxy Admin: `0xd712ACe4ca490D4F3E92992Ecf3DE12251b975F9`
+- Comet Factory: `0x2F9E3953b2Ef89fA265f2a32ed9F80D00229125B`
+- Rewards: `0x45939657d1CA34A8FA39A924B71D28Fe8431e581`
+- Bulker: `0x59e242D352ae13166B4987aE5c990C232f7f7CD6`
+- Governor: `0x18281dfC4d00905DA1aaA6731414EABa843c468A`
+- Timelock: `0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02`
+- COMP Token: `0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c`
+
+#### Asset configuration
+
+##### USDC
+
+- address: `0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174`
+- Price Feed: `0xfE4A8cc5b5B2366C1B58Bea3858e81843581b2F7`
+
+##### WETH
+
+- address: `0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `2.50K`
+- Supply Cap Raw: `2500000000000000000000`
+- Price Feed: `0xF9680D99D6C9589e2a93a78A04A279e509205945`
+
+##### WBTC
+
+- address: `0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6`
+- Borrow CF: `75.0%`
+- Borrow CF Raw: `750000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `400`
+- Supply Cap Raw: `40000000000`
+- Price Feed: `0xDE31F8bFBD8c84b5360CFACCa3539B938dd78ae6`
+
+##### WPOL
+
+- address: `0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270`
+- Borrow CF: `65.0%`
+- Borrow CF Raw: `650000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `8.00M`
+- Supply Cap Raw: `8000000000000000000000000`
+- Price Feed: `0xAB594600376Ec9fD91F8e885dADF0CE036862dE0`
+
+##### MaticX
+
+- address: `0xfa68FB4628DFF1028CFEc22b4162FCcd0d45efb6`
+- Borrow CF: `55.0%`
+- Borrow CF Raw: `550000000000000000`
+- Liquidation CF: `60.0%`
+- Liquidation CF Raw: `600000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `3.20M`
+- Supply Cap Raw: `3200000000000000000000000`
+- Price Feed: `0x5d37E4b374E6907de8Fc7fb33EE3b0af403C7403`
+
+##### stMATIC
+
+- address: `0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `8.00M`
+- Supply Cap Raw: `8000000000000000000000000`
+- Price Feed: `0x97371dF4492605486e23Da797fA68e55Fc38a13f`
+
+### Polygon Mainnet - USDT Base
+
+Block explorer: https://polygonscan.com/
+
+#### Protocol contracts
+
+- cUSDTv3: `0xaeB318360f27748Acb200CE616E389A6C9409a07`
+- cUSDTv3 Implementation: `0x83aBacAFaF625D84919cA769222579bC75AeA2D1`
+- cUSDTv3 Ext: `0x2F4eAF29dfeeF4654bD091F7112926E108eF4Ed0`
+- Configurator: `0x83E0F742cAcBE66349E3701B171eE2487a26e738`
+- Configurator Implementation: `0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf`
+- Proxy Admin: `0xd712ACe4ca490D4F3E92992Ecf3DE12251b975F9`
+- Comet Factory: `0x2F9E3953b2Ef89fA265f2a32ed9F80D00229125B`
+- Rewards: `0x45939657d1CA34A8FA39A924B71D28Fe8431e581`
+- Bulker: `0x59e242D352ae13166B4987aE5c990C232f7f7CD6`
+- Governor: `0x18281dfC4d00905DA1aaA6731414EABa843c468A`
+- Timelock: `0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02`
+- COMP Token: `0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c`
+
+#### Asset configuration
+
+##### USDT0
+
+- address: `0xc2132D05D31c914a87C6611C10748AEb04B58e8F`
+- Price Feed: `0x0A6513e40db6EB1b165753AD52E80663aeA50545`
+
+##### WPOL
+
+- address: `0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270`
+- Borrow CF: `65.0%`
+- Borrow CF Raw: `650000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `15.00%`
+- Liquidation Penalty Raw: `850000000000000000`
+- Supply Cap: `5.00M`
+- Supply Cap Raw: `5000000000000000000000000`
+- Price Feed: `0xAB594600376Ec9fD91F8e885dADF0CE036862dE0`
+
+##### WETH
+
+- address: `0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `2.00K`
+- Supply Cap Raw: `2000000000000000000000`
+- Price Feed: `0xF9680D99D6C9589e2a93a78A04A279e509205945`
+
+##### MaticX
+
+- address: `0xfa68FB4628DFF1028CFEc22b4162FCcd0d45efb6`
+- Borrow CF: `60.0%`
+- Borrow CF Raw: `600000000000000000`
+- Liquidation CF: `70.0%`
+- Liquidation CF Raw: `700000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `4.16M`
+- Supply Cap Raw: `4160000000000000000000000`
+- Price Feed: `0x5d37E4b374E6907de8Fc7fb33EE3b0af403C7403`
+
+##### stMATIC
+
+- address: `0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `1.50M`
+- Supply Cap Raw: `1500000000000000000000000`
+- Price Feed: `0x97371dF4492605486e23Da797fA68e55Fc38a13f`
+
+##### WBTC
+
+- address: `0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6`
+- Borrow CF: `75.0%`
+- Borrow CF Raw: `750000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `180`
+- Supply Cap Raw: `18000000000`
+- Price Feed: `0xDE31F8bFBD8c84b5360CFACCa3539B938dd78ae6`
+
+### Ronin - WETH Base
+
+Block explorer: https://app.roninchain.com/
+
+#### Protocol contracts
+
+- cWETHv3: `0x4006eD4097Ee51c09A04c3B0951D28CCf19e6DFE`
+- cWETHv3 Implementation: `0xaf35616e3a8295b82dC022250CF54EE49B55E223`
+- cWETHv3 Ext: `0x2f0D0C958E4679c6b9225387d97260F7481C6131`
+- Configurator: `0x966c72F456FC248D458784EF3E0b6d042be115F2`
+- Configurator Implementation: `0xaE0CCa27C15A534BAE106fC9957338549F82e81d`
+- Proxy Admin: `0xfa64A82a3d13D4c05d5133E53b2EbB8A0FA9c3F6`
+- Comet Factory: `0x4DF9E0f8e94a7A8A9aEa6010CD9d341F8Ecfe4c6`
+- Rewards: `0x31CdEe8609Bc15fD33cc525f101B70a81b2B1E59`
+- Bulker: `0x840281FaD56DD88afba052B7F18Be2A65796Ecc6`
+- Governor: `0x2c7EfA766338D33B9192dB1fB5D170Bdc03ef3F9`
+- Timelock: `0xBbb0Ebd903fafbb8fFF58B922fD0CD85E251ac2c`
+
+#### Asset configuration
+
+##### WETH
+
+- address: `0xc99a6A985eD2Cac1ef41640596C5A5f9F4E19Ef5`
+- Price Feed: `0x8AC2b57d15c84755A3333aD68025d2496AE3BeBD`
+
+##### WRON
+
+- address: `0xe514d9DEB7966c8BE0ca922de8a064264eA6bcd4`
+- Borrow CF: `50.0%`
+- Borrow CF Raw: `500000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0xAdD81aAF528784531E888317AFcD429b00C9f1b3`
+
+##### USDC
+
+- address: `0x0B7007c13325C48911F73A2daD5FA5dCBf808aDc`
+- Borrow CF: `60.0%`
+- Borrow CF Raw: `600000000000000000`
+- Liquidation CF: `90.0%`
+- Liquidation CF Raw: `900000000000000000`
+- Liquidation Penalty: `15.00%`
+- Liquidation Penalty Raw: `850000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x0090A563C4832E4E519F5f054483519b1A83c8C3`
+
+##### AXS
+
+- address: `0x97a9107C1793BC407d6F527b77e7fff4D812bece`
+- Borrow CF: `50.0%`
+- Borrow CF Raw: `500000000000000000`
+- Liquidation CF: `75.0%`
+- Liquidation CF Raw: `750000000000000000`
+- Liquidation Penalty: `25.00%`
+- Liquidation Penalty Raw: `750000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x41E345A046A73Ef15316191b41f3ABEA4cEF1168`
+
+### Ronin - WRON Base
+
+Block explorer: https://app.roninchain.com/
+
+#### Protocol contracts
+
+- cWRONv3: `0xc0Afdbd1cEB621Ef576BA969ce9D4ceF78Dbc0c0`
+- cWRONv3 Implementation: `0xC4aa0764fB17C35B2D4fc717d183314f5654a1C7`
+- cWRONv3 Ext: `0x690f8eE32ce906c6288DD97Ce4f9aF57103D00D7`
+- Configurator: `0x966c72F456FC248D458784EF3E0b6d042be115F2`
+- Configurator Implementation: `0xaE0CCa27C15A534BAE106fC9957338549F82e81d`
+- Proxy Admin: `0xfa64A82a3d13D4c05d5133E53b2EbB8A0FA9c3F6`
+- Comet Factory: `0x4DF9E0f8e94a7A8A9aEa6010CD9d341F8Ecfe4c6`
+- Rewards: `0x31CdEe8609Bc15fD33cc525f101B70a81b2B1E59`
+- Bulker: `0x840281FaD56DD88afba052B7F18Be2A65796Ecc6`
+- Governor: `0x2c7EfA766338D33B9192dB1fB5D170Bdc03ef3F9`
+- Timelock: `0xBbb0Ebd903fafbb8fFF58B922fD0CD85E251ac2c`
+
+#### Asset configuration
+
+##### WRON
+
+- address: `0xe514d9DEB7966c8BE0ca922de8a064264eA6bcd4`
+- Price Feed: `0xB88e4078AAc88F10C0Ca71086ddCF512Ec54498a`
+
+##### USDC
+
+- address: `0x0B7007c13325C48911F73A2daD5FA5dCBf808aDc`
+- Borrow CF: `50.0%`
+- Borrow CF Raw: `500000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x88f415c12d45d4C6DC018553BBE472A4558ff3f8`
+
+##### AXS
+
+- address: `0x97a9107C1793BC407d6F527b77e7fff4D812bece`
+- Borrow CF: `50.0%`
+- Borrow CF Raw: `500000000000000000`
+- Liquidation CF: `78.0%`
+- Liquidation CF Raw: `780000000000000000`
+- Liquidation Penalty: `25.00%`
+- Liquidation Penalty Raw: `750000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x8AC2b57d15c84755A3333aD68025d2496AE3BeBD`
+
+##### WETH
+
+- address: `0xc99a6A985eD2Cac1ef41640596C5A5f9F4E19Ef5`
+- Borrow CF: `50.0%`
+- Borrow CF Raw: `500000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x5D173813B4505701e79E654b36A95E6c1FAD4448`
+
+### Mantle - USDe Base
+
+Block explorer: https://mantlescan.xyz/
+
+#### Protocol contracts
+
+- cUSDev3: `0x606174f62cd968d8e684c645080fa694c1D7786E`
+- cUSDev3 Implementation: `0x602cc55D673f134c2D6C8085D10674EC4Df4D155`
+- cUSDev3 Ext: `0xf528B4bCAc12dad0bFa114282b219ad706bA7f18`
+- Configurator: `0xb77Cd4cD000957283D8BAf53cD782ECf029cF7DB`
+- Configurator Implementation: `0x3c851CbE2740747f5cE4e8894842A313e5A3aee3`
+- Proxy Admin: `0xe268B436E75648aa0639e2088fa803feA517a0c7`
+- Comet Factory: `0x5a1d1C89Da75Bc957BBF9ED61b4B0AdEe0553285`
+- Rewards: `0xCd83CbBFCE149d141A5171C3D6a0F0fCCeE225Ab`
+- Bulker: `0x67DFCa85CcEEFA2C5B1dB4DEe3BEa716A28B9baa`
+- Governor: `0xc91EcA15747E73d6dd7f616C49dAFF37b9F1B604`
+- Timelock: `0x16C7B5C1b10489F4B111af11de2Bd607c9728107`
+- COMP Token: `0x52b7d8851d6ccbc6342ba0855be65f7b82a3f17f`
+
+#### Asset configuration
+
+##### USDe
+
+- address: `0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34`
+- Price Feed: `0x0090A563C4832E4E519F5f054483519b1A83c8C3`
+
+##### mETH
+
+- address: `0xcDA86A272531e8640cD7F1a92c01839911B90bb0`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `3.00K`
+- Supply Cap Raw: `3000000000000000000000`
+- Price Feed: `0x731564585278f228FB8F93a0BF62729E24367662`
+
+##### WETH
+
+- address: `0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111`
+- Borrow CF: `82.0%`
+- Borrow CF Raw: `820000000000000000`
+- Liquidation CF: `87.0%`
+- Liquidation CF Raw: `870000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `2.80K`
+- Supply Cap Raw: `2800000000000000000000`
+- Price Feed: `0xAdD81aAF528784531E888317AFcD429b00C9f1b3`
+
+##### FBTC
+
+- address: `0xC96dE26018A54D51c097160568752c4E3BD6C364`
+- Borrow CF: `78.0%`
+- Borrow CF Raw: `780000000000000000`
+- Liquidation CF: `83.0%`
+- Liquidation CF Raw: `830000000000000000`
+- Liquidation Penalty: `12.00%`
+- Liquidation Penalty Raw: `880000000000000000`
+- Supply Cap: `120`
+- Supply Cap Raw: `12000000000`
+- Price Feed: `0x41E345A046A73Ef15316191b41f3ABEA4cEF1168`
+
+### Base - AERO Base
+
+Block explorer: https://basescan.org/
+
+#### Protocol contracts
+
+- cAEROv3: `0x784efeB622244d2348d4F2522f8860B96fbEcE89`
+- cAEROv3 Implementation: `0xC89567205207E481c1162c7E8A03E27e8E619A77`
+- cAEROv3 Ext: `0xDd18688Bb75Af704f3Fb1183e459C4d4D41132D9`
+- Configurator: `0x45939657d1CA34A8FA39A924B71D28Fe8431e581`
+- Configurator Implementation: `0x83E0F742cAcBE66349E3701B171eE2487a26e738`
+- Proxy Admin: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Comet Factory: `0x3D0bb1ccaB520A66e607822fC55BC921738fAFE3`
+- Rewards: `0x123964802e6ABabBE1Bc9547D72Ef1B69B00A6b1`
+- Bulker: `0x78D0677032A35c63D142a48A2037048871212a8C`
+- Governor: `0x18281dfC4d00905DA1aaA6731414EABa843c468A`
+- Timelock: `0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02`
+- COMP Token: `0x9e1028f5f1d5ede59748ffcee5532509976840e0`
+- SVR Fee Receiver: `0xb3e79c7cac540ca833015e63d96d3032ba0c4129`
+
+#### Asset configuration
+
+##### AERO
+
+- address: `0x940181a94A35A4569E4529A3CDfB74e38FD98631`
+- Price Feed: `0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C`
+
+##### WETH
+
+- address: `0x4200000000000000000000000000000000000006`
+- Borrow CF: `60.0%`
+- Borrow CF Raw: `600000000000000000`
+- Liquidation CF: `65.0%`
+- Liquidation CF Raw: `650000000000000000`
+- Liquidation Penalty: `25.00%`
+- Liquidation Penalty Raw: `750000000000000000`
+- Supply Cap: `7.50K`
+- Supply Cap Raw: `7500000000000000000000`
+- Price Feed: `0xe6eb5B9b85cFF2C84Df3De6e7855bC9E76f034d5`
+
+##### USDC
+
+- address: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+- Borrow CF: `65.0%`
+- Borrow CF Raw: `650000000000000000`
+- Liquidation CF: `70.0%`
+- Liquidation CF Raw: `700000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `30.00M`
+- Supply Cap Raw: `30000000000000`
+- Price Feed: `0x3e6D1ccA8Eee6d02f1f578B613374EB53E6823B4`
+
+##### wstETH
+
+- address: `0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452`
+- Borrow CF: `60.0%`
+- Borrow CF Raw: `600000000000000000`
+- Liquidation CF: `65.0%`
+- Liquidation CF Raw: `650000000000000000`
+- Liquidation Penalty: `25.00%`
+- Liquidation Penalty Raw: `750000000000000000`
+- Supply Cap: `5.00K`
+- Supply Cap Raw: `5000000000000000000000`
+- Price Feed: `0x1738FCAe8D5A6aEf39985dF31Fe60e5Dc5e1a7b3`
+
+##### cbBTC
+
+- address: `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
+- Borrow CF: `60.0%`
+- Borrow CF Raw: `600000000000000000`
+- Liquidation CF: `65.0%`
+- Liquidation CF Raw: `650000000000000000`
+- Liquidation Penalty: `25.00%`
+- Liquidation Penalty Raw: `750000000000000000`
+- Supply Cap: `250`
+- Supply Cap Raw: `25000000000`
+- Price Feed: `0x8df378453Ff9dEFFa513367CDF9b3B53726303e9`
+
+### Base - USDbC Base (Bridged)
+
+Block explorer: https://basescan.org/
+
+#### Protocol contracts
+
+- cUSDbCv3: `0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf`
+- cUSDbCv3 Implementation: `0x564417B682817e1C7806b2A1a4F73e084d742925`
+- cUSDbCv3 Ext: `0x0E383794EaaA6Cf7Ffb2C8AD5BEbbBC5CB0F0A7b`
+- Configurator: `0x45939657d1CA34A8FA39A924B71D28Fe8431e581`
+- Configurator Implementation: `0x83E0F742cAcBE66349E3701B171eE2487a26e738`
+- Proxy Admin: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Comet Factory: `0x3D0bb1ccaB520A66e607822fC55BC921738fAFE3`
+- Rewards: `0x123964802e6ABabBE1Bc9547D72Ef1B69B00A6b1`
+- Bulker: `0x78D0677032A35c63D142a48A2037048871212a8C`
+- Governor: `0x18281dfC4d00905DA1aaA6731414EABa843c468A`
+- Timelock: `0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02`
+- COMP Token: `0x9e1028f5f1d5ede59748ffcee5532509976840e0`
+- SVR Fee Receiver: `0xb3e79c7cac540ca833015e63d96d3032ba0c4129`
+
+#### Asset configuration
+
+##### USDbC
+
+- address: `0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA`
+- Price Feed: `0x7e860098F58bBFC8648a4311b374B1D669a2bc6B`
+
+##### cbETH
+
+- address: `0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22`
+- Borrow CF: `45.0%`
+- Borrow CF Raw: `450000000000000000`
+- Liquidation CF: `60.0%`
+- Liquidation CF Raw: `600000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x4687670f5f01716fAA382E2356C103BaD776752C`
+
+##### WETH
+
+- address: `0x4200000000000000000000000000000000000006`
+- Borrow CF: `45.0%`
+- Borrow CF Raw: `450000000000000000`
+- Liquidation CF: `64.0%`
+- Liquidation CF Raw: `640000000000000000`
+- Liquidation Penalty: `15.00%`
+- Liquidation Penalty Raw: `850000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70`
+
+### Base - USDC Base
+
+Block explorer: https://basescan.org/
+
+#### Protocol contracts
+
+- cUSDCv3: `0xb125E6687d4313864e53df431d5425969c15Eb2F`
+- cUSDCv3 Implementation: `0x89e9b098bb0e3d09f4288fb2b9632B4dcB40bBF6`
+- cUSDCv3 Ext: `0x220Da2686dC870aC0A97498A1845e610d2f13431`
+- Configurator: `0x45939657d1CA34A8FA39A924B71D28Fe8431e581`
+- Configurator Implementation: `0x83E0F742cAcBE66349E3701B171eE2487a26e738`
+- Proxy Admin: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Comet Factory: `0x3D0bb1ccaB520A66e607822fC55BC921738fAFE3`
+- Rewards: `0x123964802e6ABabBE1Bc9547D72Ef1B69B00A6b1`
+- Bulker: `0x78D0677032A35c63D142a48A2037048871212a8C`
+- Governor: `0x18281dfC4d00905DA1aaA6731414EABa843c468A`
+- Timelock: `0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02`
+- COMP Token: `0x9e1028f5f1d5ede59748ffcee5532509976840e0`
+- SVR Fee Receiver: `0xb3e79c7cac540ca833015e63d96d3032ba0c4129`
+
+#### Asset configuration
+
+##### USDC
+
+- address: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+- Price Feed: `0x7e860098F58bBFC8648a4311b374B1D669a2bc6B`
+
+##### cbETH
+
+- address: `0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `7.50K`
+- Supply Cap Raw: `7500000000000000000000`
+- Price Feed: `0x4687670f5f01716fAA382E2356C103BaD776752C`
+
+##### WETH
+
+- address: `0x4200000000000000000000000000000000000006`
+- Borrow CF: `85.0%`
+- Borrow CF Raw: `850000000000000000`
+- Liquidation CF: `90.0%`
+- Liquidation CF Raw: `900000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `11.00K`
+- Supply Cap Raw: `11000000000000000000000`
+- Price Feed: `0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70`
+
+##### wstETH
+
+- address: `0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `3.00K`
+- Supply Cap Raw: `3000000000000000000000`
+- Price Feed: `0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118`
+
+##### cbBTC
+
+- address: `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `400`
+- Supply Cap Raw: `40000000000`
+- Price Feed: `0x8D38A3d6B3c3B7d96D6536DA7Eef94A9d7dbC991`
+
+##### tBTC
+
+- address: `0x236aa50979D5f3De3Bd1Eeb40E81137F22ab794b`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `75`
+- Supply Cap Raw: `75000000000000000000`
+- Price Feed: `0x6D75BFB5A5885f841b132198C9f0bE8c872057BF`
+
+### Base - USDS Base
+
+Block explorer: https://basescan.org/
+
+#### Protocol contracts
+
+- cUSDSv3: `0x2c776041CCFe903071AF44aa147368a9c8EEA518`
+- cUSDSv3 Implementation: `0x8c087080253cd3Bd395AEcAF16f36Ee608acd96f`
+- cUSDSv3 Ext: `0xaA390749cb758Af4070E93478Fc743c72c18989c`
+- Configurator: `0x45939657d1CA34A8FA39A924B71D28Fe8431e581`
+- Configurator Implementation: `0x83E0F742cAcBE66349E3701B171eE2487a26e738`
+- Proxy Admin: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Comet Factory: `0x3D0bb1ccaB520A66e607822fC55BC921738fAFE3`
+- Rewards: `0x123964802e6ABabBE1Bc9547D72Ef1B69B00A6b1`
+- Bulker: `0x78D0677032A35c63D142a48A2037048871212a8C`
+- Governor: `0x18281dfC4d00905DA1aaA6731414EABa843c468A`
+- Timelock: `0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02`
+- COMP Token: `0x9e1028f5f1d5ede59748ffcee5532509976840e0`
+- SVR Fee Receiver: `0xb3e79c7cac540ca833015e63d96d3032ba0c4129`
+
+#### Asset configuration
+
+##### USDS
+
+- address: `0x820C137fa70C8691f0e44Dc420a5e53c168921Dc`
+- Price Feed: `0x2330aaE3bca5F05169d5f4597964D44522F62930`
+
+##### sUSDS
+
+- address: `0x5875eEE11Cf8398102FdAd704C9E96607675467a`
+- Borrow CF: `93.0%`
+- Borrow CF Raw: `930000000000000000`
+- Liquidation CF: `95.0%`
+- Liquidation CF Raw: `950000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `25.00M`
+- Supply Cap Raw: `25000000000000000000000000`
+- Price Feed: `0x72e9B6F907365d76C6192aD49C0C5ba356b7Fa48`
+
+##### cbBTC
+
+- address: `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x07DA0E54543a844a80ABE69c8A12F22B3aA59f9D`
+
+### Base - WETH Base
+
+Block explorer: https://basescan.org/
+
+#### Protocol contracts
+
+- cWETHv3: `0x46e6b214b524310239732D51387075E0e70970bf`
+- cWETHv3 Implementation: `0x6B2F857d3F3A32BA7d9Ac46D0AD8E5bd6e2011f1`
+- cWETHv3 Ext: `0xbd4CfC08d64a848A9116A92Cd06D2f2bDC0a2505`
+- Configurator: `0x45939657d1CA34A8FA39A924B71D28Fe8431e581`
+- Configurator Implementation: `0x83E0F742cAcBE66349E3701B171eE2487a26e738`
+- Proxy Admin: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Comet Factory: `0x3D0bb1ccaB520A66e607822fC55BC921738fAFE3`
+- Rewards: `0x123964802e6ABabBE1Bc9547D72Ef1B69B00A6b1`
+- Bulker: `0x78D0677032A35c63D142a48A2037048871212a8C`
+- Governor: `0x18281dfC4d00905DA1aaA6731414EABa843c468A`
+- Timelock: `0xCC3E7c85Bb0EE4f09380e041fee95a0caeDD4a02`
+- COMP Token: `0x9e1028f5f1d5ede59748ffcee5532509976840e0`
+- SVR Fee Receiver: `0xb3e79c7cac540ca833015e63d96d3032ba0c4129`
+
+#### Asset configuration
+
+##### WETH
+
+- address: `0x4200000000000000000000000000000000000006`
+- Price Feed: `0x9f485610E26B9c0140439f88Dc0C7742903Bd1CF`
+
+##### cbETH
+
+- address: `0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `2.50%`
+- Liquidation Penalty Raw: `975000000000000000`
+- Supply Cap: `7.50K`
+- Supply Cap Raw: `7500000000000000000000`
+- Price Feed: `0x59e242D352ae13166B4987aE5c990C232f7f7CD6`
+
+##### ezETH
+
+- address: `0x2416092f143378750bb29b79eD961ab195CcEea5`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `1.00K`
+- Supply Cap Raw: `1000000000000000000000`
+- Price Feed: `0x41E345A046A73Ef15316191b41f3ABEA4cEF1168`
+
+##### wstETH
+
+- address: `0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `2.50%`
+- Liquidation Penalty Raw: `975000000000000000`
+- Supply Cap: `1.20K`
+- Supply Cap Raw: `1200000000000000000000`
+- Price Feed: `0x0090A563C4832E4E519F5f054483519b1A83c8C3`
+
+##### USDC
+
+- address: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `20.00M`
+- Supply Cap Raw: `20000000000000`
+- Price Feed: `0x3dc83e4c67d99b935e07771F36060DEAefFFF45D`
+
+##### weETH
+
+- address: `0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `7.50K`
+- Supply Cap Raw: `7500000000000000000000`
+- Price Feed: `0x5D173813B4505701e79E654b36A95E6c1FAD4448`
+
+##### wrsETH
+
+- address: `0xEDfa23602D0EC14714057867A78d01e94176BEA0`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `1.20K`
+- Supply Cap Raw: `1200000000000000000000`
+- Price Feed: `0xB88e4078AAc88F10C0Ca71086ddCF512Ec54498a`
+
+##### cbBTC
+
+- address: `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `45`
+- Supply Cap Raw: `4500000000`
+- Price Feed: `0xc4A9fFF2152fe11FBB40F059100ce1271a330C51`
+
+##### wsuperOETHb
+
+- address: `0x7FcD174E80f264448ebeE8c88a7C4476AAF58Ea6`
+- Borrow CF: `88.0%`
+- Borrow CF Raw: `880000000000000000`
+- Liquidation CF: `90.0%`
+- Liquidation CF Raw: `900000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `2.00K`
+- Supply Cap Raw: `2000000000000000000000`
+- Price Feed: `0xAA9527bf3183A96fe6e55831c96dE5cd988d3484`
+
+### Arbitrum - USDC.e Base (Bridged)
+
+Block explorer: https://arbiscan.io/
+
+#### Protocol contracts
+
+- cUSDCv3: `0xA5EDBDD9646f8dFF606d7448e414884C7d905dCA`
+- cUSDCv3 Implementation: `0x47885403524C26a4514b5F8D82747a8c90CEf0C6`
+- cUSDCv3 Ext: `0x5D409e56D886231aDAf00c8775665AD0f9897b56`
+- Configurator: `0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775`
+- Configurator Implementation: `0x8495AF03fb797E2965bCB42Cb0693e1c15614798`
+- Proxy Admin: `0xD10b40fF1D92e2267D099Da3509253D9Da4D715e`
+- Comet Factory: `0x7dE363b6Bf0a892B94a1Cd0C9DF76826bFC14228`
+- Rewards: `0x88730d254A2f7e6AC8388c3198aFd694bA9f7fae`
+- Bulker: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Governor: `0x42480C37B249e33aABaf4c22B20235656bd38068`
+- Timelock: `0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A`
+- COMP Token: `0x354a6da3fcde098f8389cad84b0182725c6c91de`
+- SVR Fee Receiver: `0xb3e79c7cac540ca833015e63d96d3032ba0c4129`
+
+#### Asset configuration
+
+##### USDC
+
+- address: `0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8`
+- Price Feed: `0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3`
+
+##### ARB
+
+- address: `0x912CE59144191C1204E64559FE8253a0e49E6548`
+- Borrow CF: `55.0%`
+- Borrow CF Raw: `550000000000000000`
+- Liquidation CF: `60.0%`
+- Liquidation CF Raw: `600000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `2.00M`
+- Supply Cap Raw: `2000000000000000000000000`
+- Price Feed: `0xb2A824043730FE05F3DA2efaFa1CBbe83fa548D6`
+
+##### GMX
+
+- address: `0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a`
+- Borrow CF: `40.0%`
+- Borrow CF Raw: `400000000000000000`
+- Liquidation CF: `45.0%`
+- Liquidation CF Raw: `450000000000000000`
+- Liquidation Penalty: `15.00%`
+- Liquidation Penalty Raw: `850000000000000000`
+- Supply Cap: `25.00K`
+- Supply Cap Raw: `25000000000000000000000`
+- Price Feed: `0xDB98056FecFff59D032aB628337A4887110df3dB`
+
+##### WETH
+
+- address: `0x82aF49447D8a07e3bd95BD0d56f35241523fBab1`
+- Borrow CF: `78.0%`
+- Borrow CF Raw: `780000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `5.00K`
+- Supply Cap Raw: `5000000000000000000000`
+- Price Feed: `0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612`
+
+##### WBTC
+
+- address: `0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f`
+- Borrow CF: `70.0%`
+- Borrow CF Raw: `700000000000000000`
+- Liquidation CF: `77.0%`
+- Liquidation CF Raw: `770000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `200`
+- Supply Cap Raw: `20000000000`
+- Price Feed: `0xd0C7101eACbB49F3deCcCc166d238410D6D46d57`
+
+### Arbitrum - USDC Base (Native)
+
+Block explorer: https://arbiscan.io/
+
+#### Protocol contracts
+
+- cUSDCv3: `0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf`
+- cUSDCv3 Implementation: `0x3410F05Fb77715AC1d1eC68A8D74F38D0850d54c`
+- cUSDCv3 Ext: `0x95DeDD64b551F05E9f59a101a519B024b6b116E7`
+- Configurator: `0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775`
+- Configurator Implementation: `0x8495AF03fb797E2965bCB42Cb0693e1c15614798`
+- Proxy Admin: `0xD10b40fF1D92e2267D099Da3509253D9Da4D715e`
+- Comet Factory: `0x7dE363b6Bf0a892B94a1Cd0C9DF76826bFC14228`
+- Rewards: `0x88730d254A2f7e6AC8388c3198aFd694bA9f7fae`
+- Bulker: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Governor: `0x42480C37B249e33aABaf4c22B20235656bd38068`
+- Timelock: `0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A`
+- COMP Token: `0x354a6da3fcde098f8389cad84b0182725c6c91de`
+- SVR Fee Receiver: `0xb3e79c7cac540ca833015e63d96d3032ba0c4129`
+
+#### Asset configuration
+
+##### USDC
+
+- address: `0xaf88d065e77c8cC2239327C5EDb3A432268e5831`
+- Price Feed: `0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3`
+
+##### ARB
+
+- address: `0x912CE59144191C1204E64559FE8253a0e49E6548`
+- Borrow CF: `70.0%`
+- Borrow CF Raw: `700000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `16.00M`
+- Supply Cap Raw: `16000000000000000000000000`
+- Price Feed: `0xb2A824043730FE05F3DA2efaFa1CBbe83fa548D6`
+
+##### GMX
+
+- address: `0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a`
+- Borrow CF: `60.0%`
+- Borrow CF Raw: `600000000000000000`
+- Liquidation CF: `75.0%`
+- Liquidation CF Raw: `750000000000000000`
+- Liquidation Penalty: `15.00%`
+- Liquidation Penalty Raw: `850000000000000000`
+- Supply Cap: `120.00K`
+- Supply Cap Raw: `120000000000000000000000`
+- Price Feed: `0xDB98056FecFff59D032aB628337A4887110df3dB`
+
+##### WETH
+
+- address: `0x82aF49447D8a07e3bd95BD0d56f35241523fBab1`
+- Borrow CF: `83.0%`
+- Borrow CF Raw: `830000000000000000`
+- Liquidation CF: `88.0%`
+- Liquidation CF Raw: `880000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `40.00K`
+- Supply Cap Raw: `40000000000000000000000`
+- Price Feed: `0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612`
+
+##### WBTC
+
+- address: `0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f`
+- Borrow CF: `75.0%`
+- Borrow CF Raw: `750000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `1.00K`
+- Supply Cap Raw: `100000000000`
+- Price Feed: `0xd0C7101eACbB49F3deCcCc166d238410D6D46d57`
+
+##### wstETH
+
+- address: `0x5979D7b546E38E414F7E9822514be443A4800529`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `8.00K`
+- Supply Cap Raw: `8000000000000000000000`
+- Price Feed: `0x92014e7f331dFaB2848A5872AA8b2E7b6f3cE8B4`
+
+##### ezETH
+
+- address: `0x2416092f143378750bb29b79eD961ab195CcEea5`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `1.40K`
+- Supply Cap Raw: `1400000000000000000000`
+- Price Feed: `0x5Eba6Ec97843163C92Ab48a7aC0CCc8423c652b1`
+
+##### wUSDM
+
+- address: `0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812`
+- Borrow CF: `0.0%`
+- Borrow CF Raw: `0`
+- Liquidation CF: `0.01%`
+- Liquidation CF Raw: `100000000000000`
+- Liquidation Penalty: `0.00%`
+- Liquidation Penalty Raw: `1000000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x5D173813B4505701e79E654b36A95E6c1FAD4448`
+
+##### tETH
+
+- address: `0xd09ACb80C1E8f2291862c4978A008791c9167003`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `50`
+- Supply Cap Raw: `50000000000000000000`
+- Price Feed: `0x5372Bcf3486D59C23F5fC85745B41F180EFFf881`
+
+##### tBTC
+
+- address: `0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `40`
+- Supply Cap Raw: `40000000000000000000`
+- Price Feed: `0xE808488e8627F6531bA79a13A9E0271B39abEb1C`
+
+### Arbitrum - USDT Base
+
+Block explorer: https://arbiscan.io/
+
+#### Protocol contracts
+
+- cUSDTv3: `0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07`
+- cUSDTv3 Implementation: `0x69Ad47985Da1b3aa3Fa3C1fE642c81C08De21941`
+- cUSDTv3 Ext: `0x271A200023c9512d37149dfbb62bf0F62a8D4680`
+- Configurator: `0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775`
+- Configurator Implementation: `0x8495AF03fb797E2965bCB42Cb0693e1c15614798`
+- Proxy Admin: `0xD10b40fF1D92e2267D099Da3509253D9Da4D715e`
+- Comet Factory: `0x7dE363b6Bf0a892B94a1Cd0C9DF76826bFC14228`
+- Rewards: `0x88730d254A2f7e6AC8388c3198aFd694bA9f7fae`
+- Bulker: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Governor: `0x42480C37B249e33aABaf4c22B20235656bd38068`
+- Timelock: `0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A`
+- COMP Token: `0x354a6da3fcde098f8389cad84b0182725c6c91de`
+- SVR Fee Receiver: `0xb3e79c7cac540ca833015e63d96d3032ba0c4129`
+
+#### Asset configuration
+
+##### USD₮0
+
+- address: `0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9`
+- Price Feed: `0xedfB5fD27B0259B0A696364b183223B5ca3CBE62`
+
+##### ARB
+
+- address: `0x912CE59144191C1204E64559FE8253a0e49E6548`
+- Borrow CF: `70.0%`
+- Borrow CF Raw: `700000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `7.50M`
+- Supply Cap Raw: `7500000000000000000000000`
+- Price Feed: `0x5998a5C516bD5E479E0B6aa6F243d372730B68d2`
+
+##### WETH
+
+- address: `0x82aF49447D8a07e3bd95BD0d56f35241523fBab1`
+- Borrow CF: `83.0%`
+- Borrow CF Raw: `830000000000000000`
+- Liquidation CF: `88.0%`
+- Liquidation CF Raw: `880000000000000000`
+- Liquidation Penalty: `7.00%`
+- Liquidation Penalty Raw: `930000000000000000`
+- Supply Cap: `20.00K`
+- Supply Cap Raw: `20000000000000000000000`
+- Price Feed: `0xb2988bDAdc45c43e3fE1A728F715E94bee4DB406`
+
+##### wstETH
+
+- address: `0x5979D7b546E38E414F7E9822514be443A4800529`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `16.00K`
+- Supply Cap Raw: `16000000000000000000000`
+- Price Feed: `0xC35137f62b825AeEaF30B69B6b32e3953D8d624a`
+
+##### WBTC
+
+- address: `0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f`
+- Borrow CF: `70.0%`
+- Borrow CF Raw: `700000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `1.00K`
+- Supply Cap Raw: `100000000000`
+- Price Feed: `0xcc392d2c3b37520e01712320bE331D41F7661013`
+
+##### GMX
+
+- address: `0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a`
+- Borrow CF: `60.0%`
+- Borrow CF Raw: `600000000000000000`
+- Liquidation CF: `70.0%`
+- Liquidation CF Raw: `700000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `50.00K`
+- Supply Cap Raw: `50000000000000000000000`
+- Price Feed: `0xDB98056FecFff59D032aB628337A4887110df3dB`
+
+##### tBTC
+
+- address: `0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `80`
+- Supply Cap Raw: `80000000000000000000`
+- Price Feed: `0xE808488e8627F6531bA79a13A9E0271B39abEb1C`
+
+##### tETH
+
+- address: `0xd09ACb80C1E8f2291862c4978A008791c9167003`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `25`
+- Supply Cap Raw: `25000000000000000000`
+- Price Feed: `0x5372Bcf3486D59C23F5fC85745B41F180EFFf881`
+
+### Arbitrum - WETH Base
+
+Block explorer: https://arbiscan.io/
+
+#### Protocol contracts
+
+- cWETHv3: `0x6f7D514bbD4aFf3BcD1140B7344b32f063dEe486`
+- cWETHv3 Implementation: `0x70175d5F312d2ac5B8d71D76C055d1C9f000eBa5`
+- cWETHv3 Ext: `0x0be923b1716115d742E35Fa359d415598c50510F`
+- Configurator: `0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775`
+- Configurator Implementation: `0x8495AF03fb797E2965bCB42Cb0693e1c15614798`
+- Proxy Admin: `0xD10b40fF1D92e2267D099Da3509253D9Da4D715e`
+- Comet Factory: `0x7dE363b6Bf0a892B94a1Cd0C9DF76826bFC14228`
+- Rewards: `0x88730d254A2f7e6AC8388c3198aFd694bA9f7fae`
+- Bulker: `0xbdE8F31D2DdDA895264e27DD990faB3DC87b372d`
+- Governor: `0x42480C37B249e33aABaf4c22B20235656bd38068`
+- Timelock: `0x3fB4d38ea7EC20D91917c09591490Eeda38Cf88A`
+- COMP Token: `0x354a6da3fcde098f8389cad84b0182725c6c91de`
+- SVR Fee Receiver: `0xb3e79c7cac540ca833015e63d96d3032ba0c4129`
+
+#### Asset configuration
+
+##### WETH
+
+- address: `0x82aF49447D8a07e3bd95BD0d56f35241523fBab1`
+- Price Feed: `0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C`
+
+##### weETH
+
+- address: `0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `24.00K`
+- Supply Cap Raw: `24000000000000000000000`
+- Price Feed: `0x4F12633d511dC3049DE1ea923b7047fBeD0070D2`
+
+##### rETH
+
+- address: `0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `3.00%`
+- Liquidation Penalty Raw: `970000000000000000`
+- Supply Cap: `3.75K`
+- Supply Cap Raw: `3750000000000000000000`
+- Price Feed: `0x60F2058379716A64a7A5d29219397e79bC552194`
+
+##### wstETH
+
+- address: `0x5979D7b546E38E414F7E9822514be443A4800529`
+- Borrow CF: `88.0%`
+- Borrow CF Raw: `880000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `3.00%`
+- Liquidation Penalty Raw: `970000000000000000`
+- Supply Cap: `10.00K`
+- Supply Cap Raw: `10000000000000000000000`
+- Price Feed: `0x311930889C61E141E15a61D11BE974D749390E7A`
+
+##### WBTC
+
+- address: `0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `500`
+- Supply Cap Raw: `50000000000`
+- Price Feed: `0xFa454dE61b317b6535A0C462267208E8FdB89f45`
+
+##### rsETH
+
+- address: `0x4186BFC76E2E237523CBC30FD220FE055156b41F`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `3.50K`
+- Supply Cap Raw: `3500000000000000000000`
+- Price Feed: `0xA4F2e977CAb3177D61E2e7eAEcd257Bf09F2f915`
+
+##### USD₮0
+
+- address: `0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `20.00M`
+- Supply Cap Raw: `20000000000000`
+- Price Feed: `0x15Eb948705933433826B9a7956741764e1432156`
+
+##### USDC
+
+- address: `0xaf88d065e77c8cC2239327C5EDb3A432268e5831`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `15.00M`
+- Supply Cap Raw: `15000000000000`
+- Price Feed: `0x675DAfae7d2711032615bd32E6D352AF32e5a8Bd`
+
+##### ezETH
+
+- address: `0x2416092f143378750bb29b79eD961ab195CcEea5`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `12.00K`
+- Supply Cap Raw: `12000000000000000000000`
+- Price Feed: `0xA2699232B341881B1Ed85d91592b7c259E029aCf`
+
+##### tETH
+
+- address: `0xd09ACb80C1E8f2291862c4978A008791c9167003`
+- Borrow CF: `88.0%`
+- Borrow CF Raw: `880000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `25`
+- Supply Cap Raw: `25000000000000000000`
+- Price Feed: `0x250BD3Da70b1844dbe7491C521B9490abd57B709`
+
+### Linea - USDC Base
+
+Block explorer: https://lineascan.build/
+
+#### Protocol contracts
+
+- cUSDCv3: `0x8D38A3d6B3c3B7d96D6536DA7Eef94A9d7dbC991`
+- cUSDCv3 Implementation: `0x7e0Df525427874522FB5b711d5F347fac187Af4b`
+- cUSDCv3 Ext: `0x841e380e3a98E4EE8912046d69731F4E21eFb1D7`
+- Configurator: `0x970FfD8E335B8fa4cd5c869c7caC3a90671d5Dc3`
+- Configurator Implementation: `0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C`
+- Proxy Admin: `0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118`
+- Comet Factory: `0xaeB318360f27748Acb200CE616E389A6C9409a07`
+- Rewards: `0x2c7118c4C88B9841FCF839074c26Ae8f035f2921`
+- Bulker: `0x023ee795361B28cDbB94e302983578486A0A5f1B`
+- Governor: `0x1F71901daf98d70B4BAF40DE080321e5C2676856`
+- Timelock: `0x4A900f81dEdA753bbBab12453b3775D5f26df6F3`
+- COMP Token: `0x0ece76334fb560f2b1a49a60e38cf726b02203f0`
+
+#### Asset configuration
+
+##### USDC
+
+- address: `0x176211869cA2b568f2A7D4EE941E073a821EE1ff`
+- Price Feed: `0xAADAa473C1bDF7317ec07c915680Af29DeBfdCb5`
+
+##### WETH
+
+- address: `0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f`
+- Borrow CF: `83.0%`
+- Borrow CF Raw: `830000000000000000`
+- Liquidation CF: `90.0%`
+- Liquidation CF Raw: `900000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `530`
+- Supply Cap Raw: `530000000000000000000`
+- Price Feed: `0x3c6Cd9Cc7c7a4c2Cf5a82734CD249D7D593354dA`
+
+##### wstETH
+
+- address: `0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F`
+- Borrow CF: `82.0%`
+- Borrow CF Raw: `820000000000000000`
+- Liquidation CF: `87.0%`
+- Liquidation CF Raw: `870000000000000000`
+- Liquidation Penalty: `5.00%`
+- Liquidation Penalty Raw: `950000000000000000`
+- Supply Cap: `340`
+- Supply Cap Raw: `340000000000000000000`
+- Price Feed: `0x0746928E47f858944D189996829Ca711f64461a7`
+
+##### WBTC
+
+- address: `0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `18`
+- Supply Cap Raw: `1800000000`
+- Price Feed: `0x7A99092816C8BD5ec8ba229e3a6E6Da1E628E1F9`
+
+### Linea - WETH Base
+
+Block explorer: https://lineascan.build/
+
+#### Protocol contracts
+
+- cWETHv3: `0x60F2058379716A64a7A5d29219397e79bC552194`
+- cWETHv3 Implementation: `0x972B1B7032aa93bF449A899fbF31bb30735a671A`
+- cWETHv3 Ext: `0xc8E4c3F58d5FC4409522503927Ecea057EbbA1fc`
+- Configurator: `0x970FfD8E335B8fa4cd5c869c7caC3a90671d5Dc3`
+- Configurator Implementation: `0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C`
+- Proxy Admin: `0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118`
+- Comet Factory: `0xaeB318360f27748Acb200CE616E389A6C9409a07`
+- Rewards: `0x2c7118c4C88B9841FCF839074c26Ae8f035f2921`
+- Bulker: `0x023ee795361B28cDbB94e302983578486A0A5f1B`
+- Governor: `0x1F71901daf98d70B4BAF40DE080321e5C2676856`
+- Timelock: `0x4A900f81dEdA753bbBab12453b3775D5f26df6F3`
+- COMP Token: `0x0ece76334fb560f2b1a49a60e38cf726b02203f0`
+
+#### Asset configuration
+
+##### WETH
+
+- address: `0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f`
+- Price Feed: `0xc4A9fFF2152fe11FBB40F059100ce1271a330C51`
+
+##### ezETH
+
+- address: `0x2416092f143378750bb29b79eD961ab195CcEea5`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `6.00%`
+- Liquidation Penalty Raw: `940000000000000000`
+- Supply Cap: `4.83K`
+- Supply Cap Raw: `4830000000000000000000`
+- Price Feed: `0x13933885C9A392Ce73f396707EC61f30a8b05e37`
+
+##### wstETH
+
+- address: `0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `3.00%`
+- Liquidation Penalty Raw: `970000000000000000`
+- Supply Cap: `260`
+- Supply Cap Raw: `260000000000000000000`
+- Price Feed: `0xF1cEe2A82Cc42246c8C38253f118AbB6cAAd715B`
+
+##### WBTC
+
+- address: `0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4`
+- Borrow CF: `80.0%`
+- Borrow CF Raw: `800000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `10.00%`
+- Liquidation Penalty Raw: `900000000000000000`
+- Supply Cap: `5`
+- Supply Cap Raw: `500000000`
+- Price Feed: `0xA2699232B341881B1Ed85d91592b7c259E029aCf`
+
+##### weETH
+
+- address: `0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `3.55K`
+- Supply Cap Raw: `3550000000000000000000`
+- Price Feed: `0xfd5282968119c348C1E47fBCaDD13069d9857Bf2`
+
+##### wrsETH
+
+- address: `0xD2671165570f41BBB3B0097893300b6EB6101E6C`
+- Borrow CF: `90.0%`
+- Borrow CF Raw: `900000000000000000`
+- Liquidation CF: `93.0%`
+- Liquidation CF Raw: `930000000000000000`
+- Liquidation Penalty: `4.00%`
+- Liquidation Penalty Raw: `960000000000000000`
+- Supply Cap: `500`
+- Supply Cap Raw: `500000000000000000000`
+- Price Feed: `0x8D50B433C0Dcf3636c29695122464Df5deb37eDc`
+
+### Scroll - USDC Base
+
+Block explorer: https://scrollscan.com/
+
+#### Protocol contracts
+
+- cUSDCv3: `0xB2f97c1Bd3bf02f5e74d13f02E3e26F93D77CE44`
+- cUSDCv3 Implementation: `0x4c089231f69B5065678c01984301D19f64b0D623`
+- cUSDCv3 Ext: `0x5EC955A4c15B195a4Af9a61f7155F6fe3c1A0656`
+- Configurator: `0xECAB0bEEa3e5DEa0c35d3E69468EAC20098032D7`
+- Configurator Implementation: `0x77831F8997De34ead958DA207e43e4be70771C79`
+- Proxy Admin: `0x87A27b91f4130a25E9634d23A5B8E05e342bac50`
+- Comet Factory: `0x6f7D514bbD4aFf3BcD1140B7344b32f063dEe486`
+- Rewards: `0x70167D30964cbFDc315ECAe02441Af747bE0c5Ee`
+- Bulker: `0x53C6D04e3EC7031105bAeA05B36cBc3C987C56fA`
+- Governor: `0xC6bf5A64896D679Cf89843DbeC6c0f5d3C9b610D`
+- Timelock: `0xF6013e80E9e6AC211Cc031ad1CE98B3Aa20b73E4`
+
+#### Asset configuration
+
+##### USDC
+
+- address: `0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4`
+- Price Feed: `0x43d12Fb3AfCAd5347fA764EeAB105478337b7200`
+
+##### WETH
+
+- address: `0x5300000000000000000000000000000000000004`
+- Borrow CF: `40.0%`
+- Borrow CF Raw: `400000000000000000`
+- Liquidation CF: `85.0%`
+- Liquidation CF Raw: `850000000000000000`
+- Liquidation Penalty: `20.00%`
+- Liquidation Penalty Raw: `800000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x6bF14CB0A831078629D993FDeBcB182b21A8774C`
+
+##### wstETH
+
+- address: `0xf610A9dfB7C89644979b4A0f27063E9e7d7Cda32`
+- Borrow CF: `32.0%`
+- Borrow CF Raw: `320000000000000000`
+- Liquidation CF: `80.0%`
+- Liquidation CF Raw: `800000000000000000`
+- Liquidation Penalty: `30.00%`
+- Liquidation Penalty Raw: `700000000000000000`
+- Supply Cap: `0`
+- Supply Cap Raw: `0`
+- Price Feed: `0x709cef91Dd5d162d7047b678334d1Be41fe92843`
+
+### Ethereum Sepolia Testnet - USDC Base
+
+Block explorer: https://sepolia.etherscan.io/
+
+#### Protocol contracts
+
+- cUSDCv3: `0xAec1F48e02Cfb822Be958B68C7957156EB3F0b6e`
+- cUSDCv3 Implementation: `0xE3E0106227181958aBfbA960C13d0Fe52c733265`
+- cUSDCv3 Ext: `0xdCbDb7306c6Ff46f77B349188dC18cEd9DF30299`
+- Configurator: `0xc28aD44975C614EaBe0Ed090207314549e1c6624`
+- Configurator Implementation: `0x2b03014AeEe8DD46de4464da41e7dF9BD154cd66`
+- Proxy Admin: `0x9e9fA093aa60db36c4E8a01EBf4718095b6e37f0`
+- Comet Factory: `0x91663d91795049C3D4afC85A7d0AdB15238750aa`
+- Rewards: `0x8bF5b658bdF0388E8b482ED51B14aef58f90abfD`
+- Bulker: `0x157c001bb1F8b33743B14483Be111C961d8e11dE`
+- Faucet: `0x68793eA49297eB75DFB4610B68e076D2A5c7646C`
+- USDC: `0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238`
+- COMP: `0xA6c8D1c55951e8AC44a0EaA959Be5Fd21cc07531`
+- WBTC: `0xa035b9e130F2B1AedC733eEFb1C67Ba4c503491F`
+- WETH: `0x2D5ee574e710219a521449679A4A7f2B43f046ad`
+
+### Ethereum Sepolia Testnet - WETH Base
+
+Block explorer: https://sepolia.etherscan.io/
+
+#### Protocol contracts
+
+- cWETHv3: `0x2943ac1216979aD8dB76D9147F64E61adc126e96`
+- cWETHv3 Implementation: `0x149F2D15f3822C0C935a9c99ddfb804611586cAc`
+- cWETHv3 Ext: `0xD0b7551E480c101fa9cf3fe0887cCBe59f16216B`
+- Configurator: `0xc28aD44975C614EaBe0Ed090207314549e1c6624`
+- Configurator Implementation: `0x2b03014AeEe8DD46de4464da41e7dF9BD154cd66`
+- Proxy Admin: `0x9e9fA093aa60db36c4E8a01EBf4718095b6e37f0`
+- Comet Factory: `0x91663d91795049C3D4afC85A7d0AdB15238750aa`
+- Rewards: `0x8bF5b658bdF0388E8b482ED51B14aef58f90abfD`
+- Bulker: `0xaD0C044425D81a2E223f4CE699156900fead2Aaa`
+- Faucet: `0x68793eA49297eB75DFB4610B68e076D2A5c7646C`
+- cbETH: `0xb9fa8F5eC3Da13B508F462243Ad0555B46E028df`
+- COMP: `0xA6c8D1c55951e8AC44a0EaA959Be5Fd21cc07531`
+- stETH: `0x3e3FE7dBc6B4C189E7128855dD526361c49b40Af`
+- wstETH: `0xB82381A3fBD3FaFA77B3a7bE693342618240067b`
+- WETH: `0x2D5ee574e710219a521449679A4A7f2B43f046ad`
+
+### Polygon Mumbai Testnet - USDC Base
+
+Block explorer: https://mumbai.polygonscan.com/
+
+#### Protocol contracts
+
+- cUSDCv3: `0xF09F0369aB0a875254fB565E52226c88f10Bc839`
+- cUSDCv3 Implementation: `0x6Cd33556D458aC78Cc17b55Eb75B17d23E4deE57`
+- cUSDCv3 Ext: `0x1c3080d7fd5c97A58E0F2EA19e9Eec4745dC4BDe`
+- Configurator: `0x64550801B8bf3BF4D8792d46D8903F82e2EC95A9`
+- Configurator Implementation: `0xA5615c22c3Ab520A77b29F3d32C2831156dFbE7B`
+- Proxy Admin: `0xfE14E3BdCADDe7ccD3c8EeE3CcC11e3FC8184E47`
+- Comet Factory: `0x9F7Ac7A36902414Dd4D280E79C5B10162882F0Ba`
+- Timelock: `0x90b1f90Ed6477d5Ee1Ff14Bef670266DaE9eEb92`
+- Bridge Receiver: `0xe195d2cBf7f20E40Cf701a9fA3F01fE89bA5a1da`
+- Rewards: `0x0785f2AC0dCBEDEE4b8D62c25A34098E9A0dF4bB`
+- Bulker: `0x990D086E52B132f5b4f769829612F756a4a20bb8`
+- Faucet: `0x1Cea3a83BA17692cEa8DB37D72446f014480F3bE`
+- DAI: `0x4DAFE12E1293D889221B1980672FE260Ac9dDd28`
+- USDC: `0xDB3cB4f2688daAB3BFf59C24cC42D4B6285828e9`
+- WETH: `0xE1e67212B1A4BF629Bdf828e08A3745307537ccE`
+- WBTC: `0x4B5A0F4E00bC0d6F16A593Cae27338972614E713`
+- WMATIC: `0xfec23a9E1DBA805ADCF55E0338Bf5E03488FC7Fb`
+
+### Base Sepolia - USDC Base
+
+Block explorer: https://sepolia.basescan.org/
+
+#### Protocol contracts
+
+- cUSDCv3: `0x571621Ce60Cebb0c1D442B5afb38B1663C6Bf017`
+- cUSDCv3 Implementation: `0xe85D00f657F78c799ec4E9CAFd951ce5891bAde8`
+- cUSDCv3 Ext: `0x7F8dB47259a6b4461C53eBD230C9161B01B7160E`
+- Configurator: `0x090a2b1fc84d0b5141d5D5608b12Db19201aE5a6`
+- Configurator Implementation: `0x62a8ddF40c1fd8B76Cb643fB967912783deBfd79`
+- Proxy Admin: `0x45f6ceDa8ba0e6c9E998ee932e39da40B4e3D438`
+- Comet Factory: `0xBA7Ef8536998e22503530E59416717c7D3fEbCA9`
+- Timelock: `0xb2A7676bA3A258E710c7092B5E763d6f037c1d02`
+- Bridge Receiver: `0x80c116493DB619560e3380D0fF195e749D8857D7`
+- Rewards: `0x3394fa1baCC0b47dd0fF28C8573a476a161aF7BC`
+- Bulker: `0x7D25b2AecF07B5CB87B05e17Aa5cecbA8BCfDBD1`
+- Faucet: `0xD76cB57d8B097B80a6eE4D1b4d5ef872bfBa6051`
+- USDC: `0x036CbD53842c5426634e7929541eC2318f3dCF7e`
+- cbETH: `0x774eD9EDB0C5202dF9A86183804b5D9E99dC6CA3`
+- COMP: `0x2f535da74048c0874400f0371Fba20DF983A56e2`
+- WETH: `0x4200000000000000000000000000000000000006`
+
+### Base Sepolia - WETH Base
+
+Block explorer: https://sepolia.basescan.org/
+
+#### Protocol contracts
+
+- cWETHv3: `0x61490650AbaA31393464C3f34E8B29cd1C44118E`
+- cWETHv3 Implementation: `0xa78f909c0F0dA420e15A1cFa3Be578dB5AE5799E`
+- cWETHv3 Ext: `0xe28860fBB866751b0c0CB07ce1BA54F467b19B03`
+- Configurator: `0x090a2b1fc84d0b5141d5D5608b12Db19201aE5a6`
+- Configurator Implementation: `0x62a8ddF40c1fd8B76Cb643fB967912783deBfd79`
+- Proxy Admin: `0x45f6ceDa8ba0e6c9E998ee932e39da40B4e3D438`
+- Comet Factory: `0xBA7Ef8536998e22503530E59416717c7D3fEbCA9`
+- Timelock: `0xb2A7676bA3A258E710c7092B5E763d6f037c1d02`
+- Bridge Receiver: `0x80c116493DB619560e3380D0fF195e749D8857D7`
+- Rewards: `0x3394fa1baCC0b47dd0fF28C8573a476a161aF7BC`
+- Bulker: `0x7D25b2AecF07B5CB87B05e17Aa5cecbA8BCfDBD1`
+- Faucet: `0xD76cB57d8B097B80a6eE4D1b4d5ef872bfBa6051`
+- cbETH: `0x774eD9EDB0C5202dF9A86183804b5D9E99dC6CA3`
+- COMP: `0x2f535da74048c0874400f0371Fba20DF983A56e2`
+- WETH: `0x4200000000000000000000000000000000000006`
+
+### Protocol Contracts
+
+#### cUSDCv3
+
+This is the main proxy contract for interacting with the first Compound III market. The address is fixed and independent from future upgrades to the market. It is an [OpenZeppelin TransparentUpgradeableProxy contract](https://docs.openzeppelin.com/contracts/4.x/api/proxy).
+
+#### cUSDCv3 Implementation
+
+This is the implementation of the market logic contract, as deployed by the Comet Factory via the Configurator.
+
+Do not interact with this contract directly; instead use the cUSDCv3 proxy address with the Comet Interface ABI.
+
+#### cUSDCv3 Ext
+
+This is an extension of the market logic contract which supports some auxiliary/independent interfaces for the protocol. This is used to add additional functionality without requiring contract space in the main protocol contract.
+
+Do not interact with this contract directly; instead use the cUSDCv3 proxy address with the Comet Interface ABI.
+
+#### Configurator
+
+This is a [proxy](https://docs.openzeppelin.com/contracts/4.x/api/proxy#TransparentUpgradeableProxy) contract for the `configurator`, which is used to set and update parameters of a Comet proxy contract. The configurator deploys implementations of the Comet logic contract according to its configuration. This pattern allows significant gas savings for users of the protocol by 'constantizing' the parameters of the protocol.
+
+#### Configurator Implementation
+
+This is the implementation of the Configurator contract, which can also be upgraded to support unforeseen changes to the protocol.
+
+#### Proxy Admin
+
+This is the admin of the Comet and Configurator proxy contracts. It is a [ProxyAdmin](https://docs.openzeppelin.com/contracts/4.x/api/proxy#ProxyAdmin) as recommended/implemented by OpenZeppelin according to their upgradeability pattern.
+
+#### Comet Factory
+
+This is the factory contract capable of producing instances of the Comet implementation/logic contract, and invoked by the Configurator.
+
+#### Rewards
+
+This is a rewards contract which can hold rewards tokens (e.g. COMP, WETH) and allows claiming rewards by users, according to the core protocol tracking indices.
+
+#### Bulker
+
+This is an external contract that is not integral to Comet's function. It allows accounts to bulk multiple operations into a single transaction. This is a useful contract for Compound III user interfaces. The following is an example of steps in a bulked transaction.
+
+- Wrap Ether to WETH
+- Supply WETH collateral
+- Supply WBTC collateral
+- Borrow USDC
+
+In addition to supplying, borrowing, and wrapping, the bulker contract can also transfer collateral within the protocol and claim rewards.
+
+## Developer Resources
+
+The following developer guides and code repositories serve as resources for community members building on Compound. They detail the protocol deployment process, construction of new features, and code examples for implementing external apps that depend on Compound III as infrastructure.
+
+1. [Compound III Developer FAQ](https://github.com/compound-developers/compound-3-developer-faq)
+2. [Scenarios, Migrations, and Workflows](https://www.comp.xyz/t/compound-iii-scenarios-migrations-and-workflows/3771)
+3. [Creating a Compound III Liquidator](https://www.comp.xyz/t/the-compound-iii-liquidation-guide/3452)
+4. [Building a Comet Extension](https://www.comp.xyz/t/building-a-comet-extension/3854)
+
+## Security
+
+The security of the Compound protocol is our highest priority; our development team, alongside third-party auditors and consultants, has invested considerable effort to create a protocol that we believe is safe and dependable. All contract code and balances are publicly verifiable, and security researchers are eligible for a bug bounty for reporting undiscovered vulnerabilities.
+
+We believe that size, visibility, and time are the true test for the security of a smart contract; please exercise caution, and make your own determination of security and suitability.
+
+### Audits
+
+The Compound protocol has been reviewed & audited by [OpenZeppelin](https://openzeppelin.com/) and [ChainSecurity](https://chainsecurity.com/).
+
+1. [Compound III Audit by OpenZeppelin](https://blog.openzeppelin.com/compound-iii-audit/)
+2. [Compound III Security Audit by ChainSecurity](https://chainsecurity.com/security-audit/compound-iii/)
+
+## Interest rates
+
+Source URL: https://docs.compound.finance/interest-rates/index.html.md
+
+# Interest Rates
+
+Users with a positive balance of the base asset earn interest, denominated in the base asset, based on a supply rate model; users with a negative balance pay interest based on a borrow rate model. These are separate interest rate models, and set by governance.
+
+The supply and borrow interest rates are a function of the utilization rate of the base asset. Each model includes a utilization rate "kink" - above this point the interest rate increases more rapidly. Interest accrues every second using the block timestamp.
+
+Collateral assets do not earn or pay interest.
+
+### Get Supply Rate
+
+This function returns the per second supply rate as the decimal representation of a percentage scaled up by `10 ^ 18`. The formula for producing the supply rate is:
+
+```
+## If the Utilization is less than or equal to the Kink parameter
+
+SupplyRate = supplyPerSecondInterestRateBase + supplyPerSecondInterestRateSlopeLow * utilization
+
+## Else
+
+SupplyRate = supplyPerSecondInterestRateBase + supplyPerSecondInterestRateSlopeLow * supplyKink + supplyPerSecondInterestRateSlopeHigh * (utilization - supplyKink)
+```
+
+To calculate the Compound III supply APR as a percentage, pass the current utilization to this function, and divide the result by `10 ^ 18` and multiply by the approximate number of seconds in one year and scale up by 100.
+
+```
+Seconds Per Year = 60 * 60 * 24 * 365
+Utilization = getUtilization()
+Supply Rate = getSupplyRate(Utilization)
+Supply APR = Supply Rate / (10 ^ 18) * Seconds Per Year * 100
+```
+
+#### Comet
+
+```solidity
+function getSupplyRate(uint utilization) public view returns (uint64)
+```
+
+* `utilization`: The utilization at which to calculate the rate.
+* `RETURNS`: The per second supply rate as the decimal representation of a percentage scaled up by `10 ^ 18`. E.g. `317100000` indicates, roughly, a 1% APR.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint supplyRate = comet.getSupplyRate(0.8e18);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const supplyRate = await comet.callStatic.getSupplyRate(0.8e18);
+```
+
+### Get Borrow Rate
+
+This function returns the per second borrow rate as the decimal representation of a percentage scaled up by `10 ^ 18`. The formula for producing the borrow rate is:
+
+```
+## If the Utilization is less than or equal to the Kink parameter
+
+BorrowRate = borrowPerSecondInterestRateBase + borrowPerSecondInterestRateSlopeLow * utilization
+
+## Else
+
+BorrowRate = borrowPerSecondInterestRateBase + borrowPerSecondInterestRateSlopeLow * borrowKink + borrowPerSecondInterestRateSlopeHigh * (utilization - borrowKink)
+```
+
+To calculate the Compound III borrow APR as a percentage, pass the current utilization to this function, and divide the result by `10 ^ 18` and multiply by the approximate number of seconds in one year and scale up by 100.
+
+```
+Seconds Per Year = 60 * 60 * 24 * 365
+Utilization = getUtilization()
+Borrow Rate = getBorrowRate(Utilization)
+Borrow APR = Borrow Rate / (10 ^ 18) * Seconds Per Year * 100
+```
+
+#### Comet
+
+```solidity
+function getBorrowRate(uint utilization) public view returns (uint64)
+```
+
+* `utilization`: The utilization at which to calculate the rate.
+* `RETURNS`: The per second borrow rate as the decimal representation of a percentage scaled up by `10 ^ 18`. E.g. `317100000` indicates, roughly, a 1% APR.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint borrowRate = comet.getBorrowRate(0.8e18);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const borrowRate = await comet.callStatic.getBorrowRate(0.8e18);
+```
+
+### Get Utilization
+
+This function returns the current protocol utilization of the base asset. The formula for producing the utilization is:
+
+`Utilization = TotalBorrows / TotalSupply`
+
+#### Comet
+
+```solidity
+function getUtilization() public view returns (uint)
+```
+
+* `RETURNS`: The current protocol utilization percentage as a decimal, represented by an unsigned integer, scaled up by `10 ^ 18`. E.g. `1e17 or 100000000000000000` is 10% utilization.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint utilization = comet.getUtilization(); // example: 10000000000000000 (1%)
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const utilization = await comet.callStatic.getUtilization();
+```
+
+## Collateral and borrowing
+
+Source URL: https://docs.compound.finance/collateral-and-borrowing/index.html.md
+
+# Collateral & Borrowing
+
+Users can add collateral assets to their account using the *[supply](/collateral-and-borrowing/index.html.md#supply)* function. Collateral can only be added if the market is below its *[supplyCap](/helper-functions/index.html.md#get-asset-info-by-address)*, which limits the protocol's risk exposure to collateral assets.
+
+Each collateral asset increases the user's borrowing capacity, based on the asset's *[borrowCollateralFactor](/helper-functions/index.html.md#get-asset-info-by-address)*. The borrowing collateral factors are percentages that represent the portion of collateral value that can be borrowed.
+
+For instance, if the borrow collateral factor for WBTC is 85%, an account can borrow up to 85% of the USD value of its supplied WBTC in the base asset. Collateral factors can be fetched using the *[Get Asset Info By Address](/helper-functions/index.html.md#get-asset-info-by-address)* function.
+
+The base asset can be borrowed using the *[withdraw](/collateral-and-borrowing/index.html.md#withdraw-or-borrow)* function; the resulting borrow balance must meet the borrowing collateral factor requirements. If a borrowing account subsequently fails to meet the borrow collateral factor requirements, it cannot borrow additional assets until it supplies more collateral, or reduces its borrow balance using the supply function.
+
+Account *balances* for the base token are signed integers. An account balance greater than zero indicates the base asset is supplied and a balance less than zero indicates the base asset is borrowed. *Note: Base token balances for assets with 18 decimals will start to overflow at a value of 2<sup>103</sup>/1e18=~10 trillion.*
+
+Account balances are stored internally in Comet as *principal* values (also signed integers). The principal value, also referred to as the day-zero balance, is what an account balance at *T<sub>0</sub>* would have to be for it to be equal to the account balance today after accruing interest.
+
+Global *indices* for supply and borrow are unsigned integers that increase over time to account for the interest accrued on each side. When an account interacts with the protocol, the indices are updated and saved. An account's present balance can be calculated using the current index with the following formulas.
+
+```
+Balance = Principal * BaseSupplyIndex [Principal > 0]
+Balance = Principal * BaseBorrowIndex [Principal < 0]
+```
+
+### Supply
+
+The supply function transfers an asset to the protocol and adds it to the account's balance. This function can be used to **supply collateral, supply the base asset, or repay an open borrow** of the base asset.
+
+If the base asset is supplied resulting in the account having a balance greater than zero, the base asset earns interest based on the current supply rate. Collateral assets that are supplied do not earn interest.
+
+There are three separate methods to supply an asset to Compound III. The first is on behalf of the caller, the second is to a separate account, and the third is for a manager on behalf of an account.
+
+Before supplying an asset to Compound III, the caller must first execute the asset's ERC-20 approve of the Comet contract.
+
+#### Comet
+
+```solidity
+function supply(address asset, uint amount)
+
+function supplyTo(address dst, address asset, uint amount)
+
+function supplyFrom(address from, address dst, address asset, uint amount)
+```
+
+* `asset`: The address of the asset's smart contract.
+* `amount`: The amount of the asset to supply to Compound III expressed as an integer. A value of `MaxUint256` will repay all of the `dst`'s base borrow balance.
+* `dst`: The address that is credited with the supplied asset within the protocol.
+* `from`: The address to supply from. This account must first use the Allow method in order to allow the sender to transfer its tokens prior to calling Supply.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+comet.supply(0xERC20Address, 1000000);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+await comet.supply(usdcAddress, 1000000);
+```
+
+### Withdraw or Borrow
+
+The withdraw method is used to **withdraw collateral** that is not currently supporting an open borrow. Withdraw is **also used to borrow the base asset** from the protocol if the account has supplied sufficient collateral. It can also be called from an allowed manager address.
+
+Compound III implements a minimum borrow position size which can be found as `baseBorrowMin` in the [protocol configuration](/helper-functions/index.html.md#get-protocol-configuration). A withdraw transaction to borrow that results in the account's borrow size being less than the `baseBorrowMin` will revert.
+
+#### Comet
+
+```solidity
+function withdraw(address asset, uint amount)
+
+function withdrawTo(address to, address asset, uint amount)
+
+function withdrawFrom(address src, address to, address asset, uint amount)
+```
+
+* `asset`: The address of the asset that is being withdrawn or borrowed in the transaction.
+* `amount`: The amount of the asset to withdraw or borrow. A value of `MaxUint256` will withdraw all of the `src`'s base balance.
+* `to`: The address to send the withdrawn or borrowed asset.
+* `src`: The address of the account to withdraw or borrow on behalf of. The `withdrawFrom` method can only be called by an allowed manager.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+comet.withdraw(0xwbtcAddress, 100000000);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+await comet.withdraw(usdcAddress, 100000000);
+```
+
+### Collateral Balance
+
+This function returns the current balance of a collateral asset for a specified account in the protocol.
+
+#### Comet
+
+```solidity
+function collateralBalanceOf(address account, address asset) external view returns (uint128)
+```
+
+* `account`: The address of the account in which to retrieve a collateral balance.
+* `asset`: The address of the collateral asset smart contract.
+* `RETURNS`: The balance of the collateral asset in the protocol for the specified account as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint balance = comet.collateralBalanceOf(0xAccount, 0xUsdcAddress);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const balance = await comet.callStatic.collateralBalanceOf('0xAccount', '0xUsdcAddress');
+```
+
+### Borrow Collateralization
+
+This function returns true if the account passed to it has non-negative liquidity based on the borrow collateral factors. This function returns false if an account does not have sufficient liquidity to increase its borrow position. A return value of false does not necessarily imply that the account is presently liquidatable (see *[isLiquidatable](/liquidation/index.html.md#liquidatable-accounts)* function).
+
+#### Comet
+
+```solidity
+function isBorrowCollateralized(address account) public view returns (bool)
+```
+
+* `account`: The account to examine collateralization.
+* `RETURNS`: Returns true if the account has enough liquidity for borrowing.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+bool isCollateralized = comet.isBorrowCollateralized(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const isCollateralized = await comet.callStatic.isBorrowCollateralized('0xAccount');
+```
+
+### Minimum Borrow Balance
+
+This function returns the minimum borrow balance allowed in the base asset. An account's initial borrow size must be equal to or greater than this value. Subsequent borrows may be of any size.
+
+#### Comet
+
+```solidity
+function baseBorrowMin() public view returns (uint256)
+```
+
+* `RETURNS`: The minimum borrow balance allowed by the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the base asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint baseBorrowMin = comet.baseBorrowMin();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const baseBorrowMin = await comet.callStatic.baseBorrowMin();
+```
+
+## Liquidation
+
+Source URL: https://docs.compound.finance/liquidation/index.html.md
+
+# Liquidation
+
+Liquidation is determined by *[liquidation collateral factors](/helper-functions/index.html.md#get-asset-info-by-address)*, which are separate and higher than borrow collateral factors (used to determine initial borrowing capacity), which protects borrowers & the protocol by ensuring a price buffer for all new positions. These also enable governance to reduce borrow collateral factors without triggering the liquidation of existing positions.
+
+When an account's borrow balance exceeds the limits set by liquidation collateral factors, it is eligible for liquidation. A liquidator (a bot, contract, or user) can call the *[absorb](/liquidation/index.html.md#absorb)* function, which relinquishes ownership of the accounts collateral, and returns the value of the collateral, minus a penalty (*[liquidationFactor](/helper-functions/index.html.md#get-asset-info-by-address)*), to the user in the base asset. The liquidated user has no remaining debt, and typically, will have an excess (interest earning) balance of the base asset.
+
+Each absorption is paid for by the protocol's reserves of the base asset. In return, the protocol receives the collateral assets. If the remaining reserves are less than a governance-set *[target](/liquidation/index.html.md#target-reserves)*, liquidators are able to *[buy](/liquidation/index.html.md#buy-collateral)* the collateral at a *[discount](/liquidation/index.html.md#ask-price)* using the base asset, which increases the protocol's base asset reserves.
+
+### Liquidatable Accounts
+
+This function returns true if the account passed to it has negative liquidity based on the liquidation collateral factor. A return value of true indicates that the account is presently liquidatable.
+
+#### Comet
+
+```solidity
+function isLiquidatable(address account) public view returns (bool)
+```
+
+* `account`: The account to examine liquidatability.
+* `RETURNS`: Returns true if the account is presently able to be liquidated.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+bool isLiquidatable = comet.isLiquidatable(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const isLiquidatable = await comet.callStatic.isLiquidatable('0xAccount');
+```
+
+### Absorb
+
+This function can be called by any address to liquidate an underwater account. It transfers the account's debt to the protocol account, decreases cash reserves to repay the account's borrows, and adds the collateral to the protocol's own balance. The caller has the amount of gas spent noted. In the future, they could be compensated via governance.
+
+#### Comet
+
+```solidity
+function absorb(address absorber, address[] calldata accounts)
+```
+
+* `absorber`:  The account that is issued liquidator points during successful execution.
+* `accounts`:  An array of underwater accounts that are to be liquidated.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+comet.absorb(0xMyAddress, [ 0xUnderwaterAddress ]);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+await comet.absorb('0xMyAddress', [ '0xUnderwaterAddress' ]);
+```
+
+### Buy Collateral
+
+This function allows any account to buy collateral from the protocol, at a discount from the Price Feed's price, using base tokens. A minimum collateral amount should be specified to indicate the maximum slippage acceptable for the buyer.
+
+This function can be used after an account has been liquidated and there is collateral available to be purchased. Doing so increases protocol reserves. The amount of collateral available can be found by calling the *[Collateral Balance](/collateral-and-borrowing/index.html.md#collateral-balance)* function. The price of the collateral can be determined by using the *[quoteCollateral](/liquidation/index.html.md#ask-price)* function.
+
+#### Comet
+
+```solidity
+function buyCollateral(address asset, uint minAmount, uint baseAmount, address recipient) external
+```
+
+* `asset`: The address of the collateral asset.
+* `minAmount`: The minimum amount of collateral tokens that are to be received by the buyer, scaled up by 10 to the "decimals" integer in the collateral asset's contract.
+* `baseAmount`: The amount of base tokens used to buy collateral scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `recipient`: The address that receives the purchased collateral.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+comet.buyCollateral(0xAssetAddress, 5e18, 5e18, 0xRecipient);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+await comet.buyCollateral('0xAssetAddress', 5e18, 5e18, '0xRecipient');
+```
+
+### Ask Price
+
+In order to repay the borrows of absorbed accounts, the protocol needs to sell the seized collateral. The *Ask Price* is the price of the asset to be sold at a discount (configured by governance). This function uses the price returned by the protocol's price feed. The discount of the asset is derived from the `StoreFrontPriceFactor` and the asset's `LiquidationFactor` using the following formula.
+
+```
+DiscountFactor = StoreFrontPriceFactor * (1e18 - Asset.LiquidationFactor)
+```
+
+#### Comet
+
+```solidity
+function quoteCollateral(address asset, uint baseAmount) public view returns (uint)
+```
+
+* `address`:  The address of the asset which is being quoted.
+* `amount`:  The amount of the base asset used to purchase discounted collateral, as an integer, scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `RETURN`: The amount of collateral asset that can be purchased using the base asset, as an integer, scaled up by 10 to the "decimals" integer in the collateral asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint askPrice = comet.quoteCollateral(0xERC20Address, 10000000000);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const askPrice = await comet.callStatic.quoteCollateral('0xERC20Address', 1000000);
+```
+
+### Liquidator Points
+
+The protocol keeps track of the successful executions of absorb by tallying liquidator "points" and gas the liquidator has spent.
+
+#### Comet
+
+```solidity
+mapping(address => LiquidatorPoints) public liquidatorPoints;
+```
+
+* `address`:  The address of the liquidator account.
+* `RETURN`: A struct containing the stored data pertaining to the liquidator account.
+* `numAbsorbs`: A Solidity `uint32` of the number of times absorb was successfully called.
+* `numAbsorbed`: A Solidity `uint64` of the number of accounts successfully absorbed by the protocol as a result of the liquidators call to the absorb function.
+* `approxSpend`: A Solidity `uint128` of the sum of all gas spent by the liquidator that has called the absorb function.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+LiquidatorPoints pointsData = comet.liquidatorPoints(0xLiquidatorAddress);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const [ numAbsorbs, numAbsorbed, approxSpend ] = await comet.callStatic.liquidatorPoints('0xLiquidatorAddress');
+```
+
+## Reserves
+
+Reserves are a balance of the base or collateral asset, stored internally in the protocol, which automatically protect users from bad debt. Reserves can also be withdrawn or used through the governance process.
+
+Reserves are generated in two ways: the difference in interest paid by borrowers, and earned by suppliers of the base asset, accrue as reserves into the protocol. Second, the [liquidation](/liquidation/index.html.md#liquidation) process uses, and can add to, protocol reserves based on the [target reserve](/liquidation/index.html.md#target-reserves) level set by governance.
+
+### Get Base Asset Reserves
+
+This function returns the amount of protocol reserves for the base asset as an integer.
+
+#### Comet
+
+```solidity
+function getReserves() public view returns (int)
+```
+
+* `RETURNS`: The amount of base asset stored as reserves in the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint reserves = comet.getReserves();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const reserves = await comet.callStatic.getReserves();
+```
+
+### Get Collateral Asset Reserves
+
+This function returns the amount of protocol reserves for the specified collateral asset as an integer.
+
+#### Comet
+
+```solidity
+function getCollateralReserves(address asset) public view returns (uint)
+```
+
+* `RETURNS`: The amount of collateral asset stored as reserves in the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the collateral asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint reserves = comet.getCollateralReserves(0xCollateralAsset);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const reserves = await comet.callStatic.getCollateralReserves(collateralAssetAddress);
+```
+
+### Target Reserves
+
+This immutable value represents the target amount of reserves of the base token. If the protocol holds greater than or equal to this amount of reserves, the *[buyCollateral](/liquidation/index.html.md#buy-collateral)* function can no longer be successfully called.
+
+#### Comet
+
+```solidity
+function targetReserves() public view returns (uint)
+```
+
+* `RETURN`: The target reserve value of the base asset as an integer, scaled up by 10 to the "decimals" integer in the base asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint targetReserves = comet.targetReserves();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const targetReserves = await comet.callStatic.targetReserves();
+```
+
+## Account management
+
+Source URL: https://docs.compound.finance/account-management/index.html.md
+
+# Account Management
+
+In addition to self-management, Compound III accounts can enable other addresses to have write permissions for their account. Account managers can withdraw or transfer collateral within the protocol on behalf of another account. This is possible only after an account has enabled permissions by using the *[allow](/account-management/index.html.md#allow)* function.
+
+### Allow
+
+Allow or disallow another address to withdraw or transfer on behalf of the sender's address.
+
+#### Comet
+
+```solidity
+function allow(address manager, bool isAllowed)
+```
+
+* `msg.sender`: The address of an account to allow or disallow a manager for.
+* `manager`: The address of an account that becomes or will no longer be the manager of the owner.
+* `isAllowed`: True to add the manager and false to remove the manager.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+comet.allow(0xmanager, true);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+await comet.allow(managerAddress, true);
+```
+
+### Allow By Signature
+
+This is a separate version of the allow function that enables submission using an EIP-712 offline signature. For more details on how to create an offline signature, review [EIP-712](https://eips.ethereum.org/EIPS/eip-712).
+
+#### Comet
+
+```solidity
+function allowBySig(
+  address owner,
+  address manager,
+  bool isAllowed_,
+  uint256 nonce,
+  uint256 expiry,
+  uint8 v,
+  bytes32 r,
+  bytes32 s
+) external
+```
+
+* `owner`: The address of an account to allow or disallow a manager for. The signatory must be the owner address.
+* `manager`: The address of an account that becomes or will no longer be the manager of the owner.
+* `isAllowed`: True to add the manager and false to remove the manager.
+* `nonce`: The contract state required to match the signature. This can be retrieved from the contract's public `userNonce` mapping.
+* `expiry`: The time at which the signature expires. A block timestamp as seconds since the Unix epoch (uint).
+* `v`: The recovery byte of the signature.
+* `r`: Half of the ECDSA signature pair.
+* `s`: Half of the ECDSA signature pair.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+comet.allowBySig(0xowner, 0xmanager, true, nonce, expiry, v, r, s);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+await comet.allowBySig('0xowner', '0xmanager', true, nonce, expiry, v, r, s);
+```
+
+### User Nonce
+
+This gets the user nonce, like an EVM account nonce, which is used by `allowBySig`.
+
+#### Comet
+
+```solidity
+function userNonce(address) returns (uint)
+```
+* `address`: The address of the account in which to get a nonce.
+* `RETURN`: An integer of the specified account's nonce.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint nonce = comet.userNonce(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const nonce = await comet.callStatic.userNonce('0xAccount');
+```
+
+### Version
+
+This gets the protocol version which is used by `allowBySig`.
+
+#### Comet
+
+```solidity
+function version() view returns (string memory)
+```
+* `RETURN`: A string of the protocol version number.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint version = comet.version();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const version = await comet.callStatic.version();
+```
+
+### Account Permissions
+
+This function returns a boolean that indicates the status of an account's management address.
+
+#### Comet
+
+```solidity
+function hasPermission(address owner, address manager) public view returns (bool)
+```
+
+* `owner`: The address of an account that can be managed by another.
+* `manager`: The address of the account that can have manager permissions over another.
+* `RETURNS`: Returns true if the `manager` address is presently a manager of the `owner` address.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+bool isManager = comet.hasPermission(0xOwner, 0xManager);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const isManager = await comet.callStatic.hasPermission('0xOwner', '0xManager');
+```
+
+### Transfer
+
+This function is used to transfer an asset within the protocol to another address. A manager of an account is also able to perform a transfer on behalf of the account. Account balances change but the asset does not leave the protocol contract. The transfer will fail if it would make the account liquidatable.
+
+There are two variants of the transfer function: `transfer` and `transferAsset`. The former conforms to the ERC-20 standard and transfers the base asset, while the latter requires specifying a specific asset to transfer.
+
+#### Comet
+
+```solidity
+function transfer(address dst, uint amount)
+```
+
+```solidity
+function transferFrom(address src, address dst, uint amount)
+```
+
+```solidity
+function transferAsset(address dst, address asset, uint amount)
+```
+
+```solidity
+function transferAssetFrom(address src, address dst, address asset, uint amount)
+```
+
+* `dst`: The address of an account that is the receiver in the transaction.
+* `src`: The address of an account that is the sender of the asset in the transaction. This transfer method can only be called by an allowed manager.
+* `asset`: The ERC-20 address of the asset that is being sent in the transaction.
+* `amount`: The amount of the asset to transfer. A value of `MaxUint256` will transfer all of the `src`'s base balance.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+comet.transfer(0xreceiver, 0xwbtcAddress, 100000000);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+await comet.transfer(receiverAddress, usdcAddress, 100000000);
+```
+
+### Interfaces & ERC-20 Compatibility
+
+The Comet contract is a fully compatible ERC-20 wrapper for the base token. All of the interface methods of ERC-20 are externally exposed for accounts that supply or borrow. The **CometInterface.sol** contract file contains an example of a Solidity interface for the Comet contract.
+
+## Protocol rewards
+
+Source URL: https://docs.compound.finance/protocol-rewards/index.html.md
+
+# Protocol Rewards
+
+Compound III has a built-in system for tracking rewards for accounts that use the protocol. The full history of accrual of rewards are tracked for suppliers and borrowers of the base asset. The rewards can be any ERC-20 token. In order for rewards to accrue to Compound III accounts, the configuration's `baseMinForRewards` threshold for total supply of the base asset must be met.
+
+### Reward Accrual Tracking
+
+The reward accrual is tracked in the Comet contract and rewards can be claimed by users from an external Comet Rewards contract. Rewards are accounted for with up to 6 decimals of precision.
+
+#### Comet
+
+```solidity
+function baseTrackingAccrued(address account) external view returns (uint64);
+```
+
+* `RETURNS`: Returns the amount of reward token accrued based on usage of the base asset within the protocol for the specified account, scaled up by `10 ^ 6`.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint64 accrued = comet.baseTrackingAccrued(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const accrued = await comet.callStatic.baseTrackingAccrued('0xAccount');
+```
+
+### Get Reward Accrued
+
+The amount of reward token accrued but not yet claimed for an account can be fetched from the external Comet Rewards contract.
+
+#### Comet Rewards
+
+```solidity
+struct RewardOwed {
+    address token;
+    uint owed;
+}
+
+function getRewardOwed(address comet, address account) external returns (RewardOwed memory)
+```
+
+* `RETURNS`: Returns the amount of reward token accrued but not yet claimed, scaled up by 10 to the "decimals" integer in the reward token's contract.
+
+#### Solidity
+
+```solidity
+CometRewards rewards = CometRewards(0xRewardsAddress);
+RewardOwed reward = rewards.getRewardOwed(0xCometAddress, 0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const rewards = new ethers.Contract(contractAddress, abiJson, provider);
+const [ tokenAddress, amtOwed ] = await rewards.callStatic.getRewardOwed(cometAddress, accountAddress);
+```
+
+### Claim Rewards
+
+Any account can claim rewards for a specific account. Account owners and managers can also claim rewards to a specific address. The claim functions are available on the external Comet Rewards contract.
+
+#### Comet Rewards
+
+```solidity
+function claim(address comet, address src, bool shouldAccrue) external
+```
+
+```solidity
+function claimTo(address comet, address src, address to, bool shouldAccrue) external
+```
+
+* `comet`: The address of the Comet contract.
+* `src`: The account in which to claim rewards.
+* `to`: The account in which to transfer the claimed rewards.
+* `shouldAccrue`: If true, the protocol will account for the rewards owed to the account as of the current block before transferring.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+CometRewards rewards = CometRewards(0xRewardsAddress);
+rewards.claim(0xCometAddress, 0xAccount, true);
+```
+
+#### Ethers.js v5.x
+
+```js
+const rewards = new ethers.Contract(contractAddress, abiJson, provider);
+await rewards.claim(cometAddress, accountAddress, true);
+```
+
+## Governance
+
+Source URL: https://docs.compound.finance/governance/index.html.md
+
+# Governance
+
+Compound III is a decentralized protocol that is governed by holders and delegates of COMP. Governance allows the community to propose, vote, and implement changes through the administrative smart contract functions of the Compound III protocol. For more information on the Governor and Timelock see the original [governance](/v2/governance/index.html.md) section.
+
+All instances of Compound III are controlled by the Timelock contract which is the same administrator of the Compound v2 protocol. The governance system has control over each *proxy*, the *Configurator implementation*, the *Comet factory*, and the *Comet implementation*.
+
+Each time an immutable parameter is set via governance proposal, a new Comet implementation must be deployed by the Comet factory. If the proposal is approved by the community, the proxy will point to the new implementation upon execution.
+
+To set specific protocol parameters in a proposal, the Timelock must call all of the relevant set methods on the *Configurator* contract, followed by `deployAndUpgradeTo` on the *CometProxyAdmin* contract.
+
+## Multi-chain Governance
+
+The Compound III protocol can be deployed on any EVM chain. The deployment must have access to on-chain asset prices and governance messages passed from Ethereum Mainnet. The [Timelock](/v2/governance/index.html.md#timelock) on Mainnet is the administrator of all community sanctioned instances of Compound III.
+
+Each deployment outside of Mainnet needs to have a [Bridge Receiver](https://github.com/compound-finance/comet/blob/main/contracts/bridges/BaseBridgeReceiver.sol) and Local Timelock contract on its chain. Governance proposals executed on Mainnet must be read by the chain's bridge and published to the Bridge Receiver. Local Timelocks have an additional delay before Comet admin functions can be called via proposal execution.
+
+Compound III instance initializations are logged on-chain using the [ENS text record system](https://docs.ens.domains/ens-improvement-proposals/ensip-5-text-records). The text record can only be modified by a Governance proposal. It can be viewed at [v3-additional-grants.compound-community-licenses.eth](https://app.ens.domains/name/v3-additional-grants.compound-community-licenses.eth/details) when the browser network is set to Ethereum Mainnet.
+
+### Set Comet Factory
+
+This function sets the official contract address of the Comet factory. The only acceptable caller is the Governor.
+
+#### Configurator
+
+```solidity
+function setFactory(address cometProxy, address newFactory) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newFactory`: The address of the new Comet contract factory.
+* `RETURN`: No return, reverts on error.
+
+### Set Governor
+
+This function sets the official contract address of the Compound III protocol Governor for subsequent proposals.
+
+#### Configurator
+
+```solidity
+function setGovernor(address cometProxy, address newGovernor) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newGovernor`: The address of the new Compound III Governor.
+* `RETURN`: No return, reverts on error.
+
+### Set Pause Guardian
+
+This function sets the official contract address of the Compound III protocol pause guardian. This address has the power to pause supply, transfer, withdraw, absorb, and buy collateral operations within Compound III.
+
+COMP token-holders designate the Pause Guardian address, which is held by the [Community Multi-Sig](https://etherscan.io/address/0xbbf3f1421d886e9b2c5d716b5192ac998af2012c).
+
+#### Configurator
+
+```solidity
+function setPauseGuardian(address cometProxy, address newPauseGuardian) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newPauseGuardian`: The address of the new pause guardian.
+* `RETURN`: No return, reverts on error.
+
+### Pause Protocol Functionality
+
+This function pauses the specified protocol functionality in the event of an unforeseen vulnerability. The only addresses that are allowed to call this function are the Governor and the Pause Guardian.
+
+#### Comet
+
+```solidity
+function pause(
+    bool supplyPaused,
+    bool transferPaused,
+    bool withdrawPaused,
+    bool absorbPaused,
+    bool buyPaused
+) override external
+```
+
+* `supplyPaused`: Enables or disables all accounts' ability to supply assets to the protocol.
+* `transferPaused`: Enables or disables all account's ability to transfer assets within the protocol.
+* `withdrawPaused`: Enables or disables all account's ability to withdraw assets from the protocol.
+* `absorbPaused`: Enables or disables protocol absorptions.
+* `buyPaused`: Enables or disables the protocol's ability to sell absorbed collateral.
+* `RETURN`: No return, reverts on error.
+
+### Is Supply Paused
+
+This function returns a boolean indicating whether or not the protocol supply functionality is presently paused.
+
+#### Comet
+
+```solidity
+function isSupplyPaused() override public view returns (bool)
+```
+
+* `RETURN`: A boolean value of whether or not the protocol functionality is presently paused.
+
+### Is Transfer Paused
+
+This function returns a boolean indicating whether or not the protocol transfer functionality is presently paused.
+
+#### Comet
+
+```solidity
+function isTransferPaused() override public view returns (bool)
+```
+
+* `RETURN`: A boolean value of whether or not the protocol functionality is presently paused.
+
+### Is Withdraw Paused
+
+This function returns a boolean indicating whether or not the protocol withdraw functionality is presently paused.
+
+#### Comet
+
+```solidity
+function isWithdrawPaused() override public view returns (bool)
+```
+
+* `RETURN`: A boolean value of whether or not the protocol functionality is presently paused.
+
+### Is Absorb Paused
+
+This function returns a boolean indicating whether or not the protocol absorb functionality is presently paused.
+
+#### Comet
+
+```solidity
+function isAbsorbPaused() override public view returns (bool)
+```
+
+* `RETURN`: A boolean value of whether or not the protocol functionality is presently paused.
+
+### Is Buy Paused
+
+This function returns a boolean indicating whether or not the protocol's selling of absorbed collateral functionality is presently paused.
+
+#### Comet
+
+```solidity
+function isBuyPaused() override public view returns (bool)
+```
+
+* `RETURN`: A boolean value of whether or not the protocol functionality is presently paused.
+
+### Set Base Token Price Feed
+
+This function sets the official contract address of the price feed of the protocol base asset.
+
+#### Configurator
+
+```solidity
+function setBaseTokenPriceFeed(address cometProxy, address newBaseTokenPriceFeed) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newBaseTokenPriceFeed`: The address of the new price feed contract.
+* `RETURN`: No return, reverts on error.
+
+### Set Extension Delegate
+
+This function sets the official contract address of the protocol's Comet extension delegate. The methods in **CometExt.sol** are able to be called via the same proxy as **Comet.sol**.
+
+#### Configurator
+
+```solidity
+function setExtensionDelegate(address cometProxy, address newExtensionDelegate) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newExtensionDelegate`: The address of the new extension delegate contract.
+* `RETURN`: No return, reverts on error.
+
+### Set Borrow Kink
+
+This function sets the borrow interest rate utilization curve kink for the Compound III base asset.
+
+#### Configurator
+
+```solidity
+function setBorrowKink(address cometProxy, uint64 newKink) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newKink`: The new kink parameter.
+* `RETURN`: No return, reverts on error.
+
+### Set Borrow Interest Rate Slope (Low)
+
+This function sets the borrow interest rate slope low bound in the approximate amount of seconds in one year.
+
+#### Configurator
+
+```solidity
+function setBorrowPerYearInterestRateSlopeLow(address cometProxy, uint64 newSlope) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newSlope`: The slope low bound as an unsigned integer.
+* `RETURN`: No return, reverts on error.
+
+### Set Borrow Interest Rate Slope (High)
+
+This function sets the borrow interest rate slope high bound in the approximate amount of seconds in one year.
+
+#### Configurator
+
+```solidity
+function setBorrowPerYearInterestRateSlopeHigh(address cometProxy, uint64 newSlope) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newSlope`: The slope high bound as an unsigned integer.
+* `RETURN`: No return, reverts on error.
+
+### Set Borrow Interest Rate Slope (Base)
+
+This function sets the borrow interest rate slope base in the approximate amount of seconds in one year.
+
+#### Configurator
+
+```solidity
+function setBorrowPerYearInterestRateBase(address cometProxy, uint64 newBase) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newSlope`: The slope base as an unsigned integer.
+* `RETURN`: No return, reverts on error.
+
+### Set Supply Kink
+
+This function sets the supply interest rate utilization curve kink for the Compound III base asset.
+
+#### Configurator
+
+```solidity
+function setSupplyKink(address cometProxy, uint64 newKink) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newKink`: The new kink parameter.
+* `RETURN`: No return, reverts on error.
+
+### Set Supply Interest Rate Slope (Low)
+
+This function sets the supply interest rate slope low bound in the approximate amount of seconds in one year.
+
+#### Configurator
+
+```solidity
+function setSupplyPerYearInterestRateSlopeLow(address cometProxy, uint64 newSlope) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newSlope`: The slope low bound as an unsigned integer.
+* `RETURN`: No return, reverts on error.
+
+### Set Supply Interest Rate Slope (High)
+
+This function sets the supply interest rate slope high bound in the approximate amount of seconds in one year.
+
+#### Configurator
+
+```solidity
+function setSupplyPerYearInterestRateSlopeHigh(address cometProxy, uint64 newSlope) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newSlope`: The slope high bound as an unsigned integer.
+* `RETURN`: No return, reverts on error.
+
+### Set Supply Interest Rate Slope (Base)
+
+This function sets the supply interest rate slope base in the approximate amount of seconds in one year.
+
+#### Configurator
+
+```solidity
+function setSupplyPerYearInterestRateBase(address cometProxy, uint64 newBase) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newSlope`: The slope base as an unsigned integer.
+* `RETURN`: No return, reverts on error.
+
+### Set Store Front Price Factor
+
+This function sets the fraction of the liquidation penalty that goes to buyers of collateral instead of the protocol. This factor is used to calculate the discount rate of collateral for sale as part of the account absorption process. The rate is a decimal scaled up by `10 ^ 18`.
+
+#### Configurator
+
+```solidity
+function setStoreFrontPriceFactor(address cometProxy, uint64 newStoreFrontPriceFactor) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newStoreFrontPriceFactor`: The new price factor as an unsigned integer expressed as a decimal scaled up by `10 ^ 18`.
+* `RETURN`: No return, reverts on error.
+
+### Set Base Tracking Supply Speed
+
+This function sets the rate at which base asset supplier accounts accrue rewards.
+
+#### Configurator
+
+```solidity
+function setBaseTrackingSupplySpeed(address cometProxy, uint64 newBaseTrackingSupplySpeed) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newBaseTrackingSupplySpeed`: The rate as an APR expressed as a decimal scaled up by `10 ^ 18`.
+* `RETURN`: No return, reverts on error.
+
+### Set Base Tracking Borrow Speed
+
+This function sets the rate at which base asset borrower accounts accrue rewards.
+
+#### Configurator
+
+```solidity
+function setBaseTrackingBorrowSpeed(address cometProxy, uint64 newBaseTrackingBorrowSpeed) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newBaseTrackingBorrowSpeed`: The rate as an APR expressed as a decimal scaled up by `10 ^ 18`.
+* `RETURN`: No return, reverts on error.
+
+### Set Base Minimum For Rewards
+
+This function sets the minimum amount of base asset supplied to the protocol in order for accounts to accrue rewards.
+
+#### Configurator
+
+```solidity
+function setBaseMinForRewards(address cometProxy, uint104 newBaseMinForRewards) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newBaseMinForRewards`: The amount of base asset scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `RETURN`: No return, reverts on error.
+
+### Set Borrow Minimum
+
+This function sets the minimum amount of base token that is allowed to be borrowed.
+
+#### Configurator
+
+```solidity
+function setBaseBorrowMin(address cometProxy, uint104 newBaseBorrowMin) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `setBaseBorrowMin`: The minimum borrow as an unsigned integer scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `RETURN`: No return, reverts on error.
+
+### Set Target Reserves
+
+This function sets the target reserves amount. Once the protocol reaches this amount of reserves of base asset, liquidators cannot buy collateral from the protocol.
+
+#### Configurator
+
+```solidity
+function setTargetReserves(address cometProxy, uint104 newTargetReserves) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newTargetReserves`: The amount of reserves of base asset as an unsigned integer scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `RETURN`: No return, reverts on error.
+
+### Add a New Asset
+
+This function adds an asset to the protocol through governance.
+
+#### Configurator
+
+```solidity
+function addAsset(address cometProxy, AssetConfig calldata assetConfig) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `assetConfig`: The configuration that is added to the array of protocol asset configurations.
+* `RETURN`: No return, reverts on error.
+
+### Update an Existing Asset
+
+This function modifies an existing asset's configuration parameters.
+
+#### Configurator
+
+```solidity
+function updateAsset(address cometProxy, AssetConfig calldata newAssetConfig) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `newAssetConfig`: The configuration that is modified in the array of protocol asset configurations. All parameters are overwritten.
+* `RETURN`: No return, reverts on error.
+
+### Update Asset Price Feed
+
+This function updates the price feed contract address for a specific asset.
+
+#### Configurator
+
+```solidity
+function updateAssetPriceFeed(address cometProxy, address asset, address newPriceFeed) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `asset`: The address of the underlying asset smart contract.
+* `newPriceFeed`: The address of the new price feed smart contract.
+* `RETURN`: No return, reverts on error.
+
+### Update Borrow Collateral Factor
+
+This function updates the borrow collateral factor for an asset in the protocol.
+
+#### Configurator
+
+```solidity
+function updateAssetBorrowCollateralFactor(address cometProxy, address asset, uint64 newBorrowCF) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `asset`: The address of the underlying asset smart contract.
+* `newBorrowCF`: The collateral factor as an integer that represents the decimal value scaled up by `10 ^ 18`.
+* `RETURN`: No return, reverts on error.
+
+### Update Liquidation Collateral Factor
+
+This function updates the liquidation collateral factor for an asset in the protocol.
+
+#### Configurator
+
+```solidity
+function updateAssetLiquidateCollateralFactor(address cometProxy, address asset, uint64 newLiquidateCF) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `asset`: The address of the underlying asset smart contract.
+* `newLiquidateCF`: The collateral factor as an integer that represents the decimal value scaled up by `10 ^ 18`.
+* `RETURN`: No return, reverts on error.
+
+### Update Liquidation Factor
+
+This function updates the liquidation factor for an asset in the protocol.
+
+The liquidation factor is a decimal value that is between 0 and 1 (inclusive) which determines the amount that is paid out to an underwater account upon liquidation.
+
+The following is an example of the liquidation factor's role in a Compound III liquidation:
+
+An underwater account has supplied $100 of WBTC as collateral. If the WBTC liquidation factor is `0.9`, the user will receive $90 of the base asset when a liquidator triggers an absorption of their account.
+
+#### Configurator
+
+```solidity
+function updateAssetLiquidationFactor(address cometProxy, address asset, uint64 newLiquidationFactor) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `asset`: The address of the underlying asset smart contract.
+* `newLiquidationFactor`: The factor as an integer that represents the decimal value scaled up by `10 ^ 18`.
+* `RETURN`: No return, reverts on error.
+
+### Set Asset Supply Cap
+
+This function sets the maximum amount of an asset that can be supplied to the protocol. Supply transactions will revert if the total supply would be greater than this number as a result.
+
+#### Configurator
+
+```solidity
+function updateAssetSupplyCap(address cometProxy, address asset, uint128 newSupplyCap) external
+```
+
+* `cometProxy`: The address of the Comet proxy to set the configuration for.
+* `asset`: The address of the underlying asset smart contract.
+* `newSupplyCap`: The amount of the asset as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+* `RETURN`: No return, reverts on error.
+
+### ERC-20 Approve Manager Address
+
+This function sets the Comet contract's ERC-20 allowance of an asset for a manager address. It can only be called by the Governor.
+
+In the event of a governance attack, an attacker could create a proposal that leverages this function to give themselves permissions to freely transfer all ERC-20 tokens out of the Comet contract.
+
+Hypothetically, the attacker would need to either acquire supreme voting weight or add a malicious step in an otherwise innocuous and popular proposal and the community would fail to detect before approving.
+
+#### Comet
+
+```solidity
+function approveThis(address manager, address asset, uint amount) override external
+```
+
+* `manager`: The address of a manager account that has its allowance modified.
+* `asset`: The address of the asset's smart contract.
+* `amount`: The amount of the asset approved for the manager expressed as an integer.
+* `RETURN`: No return, reverts on error.
+
+### Transfer Governor
+
+This function changes the address of the Configurator's Governor.
+
+#### Configurator
+
+```solidity
+function transferGovernor(address newGovernor) external
+```
+
+* `newGovernor`: The address of the new Governor for Configurator.
+* `RETURN`: No return, reverts on error.
+
+### Withdraw Reserves
+
+This function allows governance to withdraw base token reserves from the protocol and send them to a specified address. Only the Governor address may call this function.
+
+#### Comet
+
+```solidity
+function withdrawReserves(address to, uint amount) external
+```
+
+* `to`: The address of the recipient of the base asset tokens.
+* `amount`: The amount of the base asset to send scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `RETURN`: No return, reverts on error.
+
+## Helper functions
+
+Source URL: https://docs.compound.finance/helper-functions/index.html.md
+
+# Helper Functions
+
+### Total Supply
+
+The total supply of base tokens supplied to the protocol plus interest accrued to suppliers.
+
+#### Comet
+
+```solidity
+function totalSupply() override external view returns (uint256)
+```
+
+* `RETURN`: The amount of base asset scaled up by 10 to the "decimals" integer in the base asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint256 totalSupply = comet.totalSupply();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const totalSupply = await comet.callStatic.totalSupply();
+```
+
+### Total Borrow
+
+The total amount of base tokens that are currently borrowed from the protocol plus interest accrued to all borrows.
+
+#### Comet
+
+```solidity
+function totalBorrow() virtual external view returns (uint256)
+```
+
+* `RETURN`: The amount of base asset scaled up by 10 to the "decimals" integer in the base asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint256 totalBorrow = comet.totalBorrow();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const totalBorrow = await comet.callStatic.totalBorrow();
+```
+
+### Total Collateral
+
+The protocol tracks the current amount of collateral that all accounts have supplied. Each valid collateral asset sum is tracked in a mapping with the asset address that points to a struct.
+
+#### Comet
+
+```solidity
+struct TotalsCollateral {
+    uint128 totalSupplyAsset;
+    uint128 _reserved;
+}
+
+mapping(address => TotalsCollateral) public totalsCollateral;
+```
+
+* `address`:  The address of the collateral asset's contract.
+* `RETURN`: A struct containing the stored data pertaining to the sum of the collateral in the protocol.
+* `totalSupplyAsset`: A Solidity `uint128` of the sum of the collateral asset stored in the protocol, scaled up by 10 to the "decimals" integer in the asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+TotalsCollateral totalsCollateral = comet.totalsCollateral(0xERC20Address);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const [ totalSupplyAsset ] = await comet.callStatic.totalsCollateral('0xERC20Address');
+```
+
+### Supplied Base Balance
+
+This function returns the current balance of base asset for a specified account in the protocol, including interest. If the account is presently borrowing or not supplying, it will return `0`.
+
+#### Comet
+
+```solidity
+function balanceOf(address account) external view returns (uint256)
+```
+
+* `account`: The address of the account in which to retrieve the base asset balance.
+* `RETURNS`: The balance of the base asset, including interest, in the protocol for the specified account as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint balance = comet.balanceOf(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const balance = await comet.callStatic.balanceOf('0xAccount');
+```
+
+### Borrow Balance
+
+This function returns the current balance of borrowed base asset for a specified account in the protocol, including interest. If the account has a non-negative base asset balance, it will return `0`.
+
+#### Comet
+
+```solidity
+function borrowBalanceOf(address account) external view returns (uint256)
+```
+
+* `account`: The address of the account in which to retrieve the borrowed base asset balance.
+* `RETURNS`: The balance of the base asset, including interest, borrowed by the specified account as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint owed = comet.borrowBalanceOf(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const owed = await comet.callStatic.borrowBalanceOf('0xAccount');
+```
+
+### Account Data
+
+The protocol tracks data like the principal and indexes for each account that supplies and borrows. The data is stored in a mapping with the account address that points to a struct.
+
+#### Comet
+
+```solidity
+struct UserBasic {
+    int104 principal;
+    uint64 baseTrackingIndex;
+    uint64 baseTrackingAccrued;
+    uint16 assetsIn;
+}
+
+mapping(address => UserBasic) public userBasic;
+```
+
+* `address`:  The address of the account that has used the protocol.
+* `RETURN`: A struct containing the stored data pertaining to the account.
+* `principal`: A Solidity `int104` of the amount of base asset that the account has supplied (greater than zero) or owes (less than zero) to the protocol.
+* `baseTrackingIndex`: A Solidity `uint64` of the index of the account.
+* `baseTrackingAccrued`: A Solidity `uint64` of the interest that the account has accrued.
+* `assetsIn`: A Solidity `uint16` that tracks which assets the account has supplied as collateral. This storage implementation is for internal purposes and enables gas savings.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+UserBasic userBasic = comet.userBasic(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const [ principal, baseTrackingIndex, baseTrackingAccrued, assetsIn ] = await comet.callStatic.userBasic('0xAccount');
+```
+
+### Get Asset Info
+
+This function returns collateral asset information such as the collateral factors, asset price feed address, and more. In order to create a loop to fetch information for every asset, use the `numAssets` constant, which indicates the current total number of supported collateral assets.
+
+#### Comet
+
+```solidity
+struct AssetInfo {
+    uint8 offset;
+    address asset;
+    address priceFeed;
+    uint64 scale;
+    uint64 borrowCollateralFactor;
+    uint64 liquidateCollateralFactor;
+    uint64 liquidationFactor;
+    uint128 supplyCap;
+}
+
+function getAssetInfo(uint8 i) public view returns (AssetInfo memory)
+```
+
+* `i`: The index of the collateral asset based on the order it was added to the protocol. The index begins at `0`.
+* `RETURNS`: The collateral asset information as a struct called `AssetInfo`.
+* `offset`: The index of the collateral asset based on the order it was added to the protocol.
+* `asset`: The address of the asset's smart contract.
+* `priceFeed`: The address of the price feed contract for this collateral asset.
+* `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the collateral asset's smart contract.
+* `borrowCollateralFactor`: The borrow collateral factor is the percentage of collateral value that can be borrowed (including interest) by an account. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 650000000000000000 is 65%.
+* `liquidateCollateralFactor`: The liquidate collateral factor is the percentage of collateral value that can be borrowed (including interest) before an account becomes liquidatable. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 850000000000000000 is 85%.
+* `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 930000000000000000 means liquidation carries a 7% penalty for the account.
+* `supplyCap`: The supply cap of the collateral asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+AssetInfo info = comet.getAssetInfo(0);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const infoObject = await comet.callStatic.getAssetInfo(0);
+```
+
+### Get Asset Info By Address
+
+This function returns information of a specific collateral asset.
+
+#### Comet
+
+```solidity
+struct AssetInfo {
+    uint8 offset;
+    address asset;
+    address priceFeed;
+    uint64 scale;
+    uint64 borrowCollateralFactor;
+    uint64 liquidateCollateralFactor;
+    uint64 liquidationFactor;
+    uint128 supplyCap;
+}
+
+function getAssetInfoByAddress(address asset) public view returns (AssetInfo memory)
+```
+
+* `address`: The address of the collateral asset.
+* `RETURNS`: The collateral asset information as a struct called `AssetInfo`.
+* `offset`: The index of the collateral asset based on the order it was added to the protocol.
+* `asset`: The address of the collateral asset's smart contract.
+* `priceFeed`: The address of the price feed contract for this collateral asset.
+* `scale`: An integer that equals `10 ^ x` where `x` is the amount of decimal places in the collateral asset's smart contract.
+* `borrowCollateralFactor`: The borrow collateral factor is the percentage of collateral value that can be borrowed (including interest) by an account. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 650000000000000000 is 65%.
+* `liquidateCollateralFactor`: The liquidate collateral factor is the percentage of collateral value that can be borrowed (including interest) before an account becomes liquidatable. The return value is an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 850000000000000000 is 85%.
+* `liquidationFactor`: The liquidation factor as an integer that represents the decimal value scaled up by `10 ^ 18`. E.g. 930000000000000000 means liquidation carries a 7% penalty for the account.
+* `supplyCap`: The supply cap of the collateral asset as an integer scaled up by `10 ^ x` where `x` is the amount of decimal places in the asset's smart contract.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+AssetInfo info = comet.getAssetInfoByAddress(0xAsset);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const infoObject = await comet.callStatic.getAssetInfoByAddress('0xAsset');
+```
+
+### Get Price
+
+The protocol's prices are updated by [Chainlink Price Feeds](https://data.chain.link/). In order to fetch the present price of an asset, the price feed contract address for that asset must be passed to the `getPrice` function.
+
+This function returns the price of an asset in USD with 8 decimal places.
+
+#### Comet
+
+```solidity
+function getPrice(address priceFeed) public view returns (uint128)
+```
+
+* `priceFeed`: The ERC-20 address of the Chainlink price feed contract for the asset.
+* `RETURNS`: Returns the USD price with 8 decimal places as an unsigned integer scaled up by `10 ^ 8`. E.g. `500000000000` means that the asset's price is $5000 USD.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint price = comet.getPrice(0xAssetAddress);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const price = await comet.callStatic.getPrice(usdcAddress);
+```
+
+### Accrue Account
+
+This function triggers a manual accrual of interest and rewards to an account.
+
+#### Comet
+
+```solidity
+function accrueAccount(address account) override external
+```
+
+* `account`: The account in which to accrue interest and rewards.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+comet.accrueAccount(0xAccount);
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+await comet.accrueAccount('0xAccount');
+```
+
+### Get Protocol Configuration
+
+This function returns the configuration struct stored for a specific instance of Comet in the configurator contract.
+
+#### Configurator
+
+```solidity
+struct Configuration {
+    address governor;
+    address pauseGuardian;
+    address baseToken;
+    address baseTokenPriceFeed;
+    address extensionDelegate;
+
+    uint64 supplyKink;
+    uint64 supplyPerYearInterestRateSlopeLow;
+    uint64 supplyPerYearInterestRateSlopeHigh;
+    uint64 supplyPerYearInterestRateBase;
+    uint64 borrowKink;
+    uint64 borrowPerYearInterestRateSlopeLow;
+    uint64 borrowPerYearInterestRateSlopeHigh;
+    uint64 borrowPerYearInterestRateBase;
+    uint64 storeFrontPriceFactor;
+    uint64 trackingIndexScale;
+    uint64 baseTrackingSupplySpeed;
+    uint64 baseTrackingBorrowSpeed;
+    uint104 baseMinForRewards;
+    uint104 baseBorrowMin;
+    uint104 targetReserves;
+
+    AssetConfig[] assetConfigs;
+}
+
+function getConfiguration(address cometProxy) external view returns (Configuration memory)
+```
+
+* `cometProxy`: The address of the Comet proxy to get the configuration for.
+* `RETURNS`: Returns the protocol configuration.
+  * `governor`: The address of the protocol Governor.
+  * `pauseGuardian`: The address of the protocol pause guardian.
+  * `baseToken`: The address of the protocol base token smart contract.
+  * `baseTokenPriceFeed`: The address of the protocol base token price feed smart contract.
+  * `extensionDelegate`: The address of the delegate of extra methods that did not fit in Comet.sol (CometExt.sol).
+  * `supplyKink`: The interest rate utilization of the supply side of curve kink.
+  * `supplyPerYearInterestRateSlopeLow`: The low bound interest rate slope of the supply side.
+  * `supplyPerYearInterestRateSlopeHigh`: The high bound interest rate slope of the supply side.
+  * `supplyPerYearInterestRateBase`: The interest rate slope base of the supply side.
+  * `borrowKink`: The interest rate utilization of the borrow side of curve kink.
+  * `borrowPerYearInterestRateSlopeLow`: The low bound interest rate slope of the borrow side.
+  * `borrowPerYearInterestRateSlopeHigh`: The high bound interest rate slope of the borrow side.
+  * `borrowPerYearInterestRateBase`: The interest rate slope base of the borrow side.
+  * `storeFrontPriceFactor`: The fraction of the liquidation penalty that goes to buyers of collateral instead of the protocol.
+  * `trackingIndexScale`: The scale for the index tracking protocol rewards.
+  * `baseTrackingSupplySpeed`: The rate for protocol awards accrued to suppliers.
+  * `baseTrackingBorrowSpeed`: The rate for protocol awards accrued to borrowers.
+  * `baseMinForRewards`: The minimum amount of base asset supplied to the protocol in order for accounts to accrue rewards.
+  * `baseBorrowMin`: The minimum allowed borrow size.
+  * `targetReserves`: The amount of reserves allowed before absorbed collateral is no longer sold by the protocol.
+  * `assetConfigs`: An array of all supported asset configurations.
+
+#### Solidity
+
+```solidity
+Configurator configurator = Configurator(0xConfiguratorAddress);
+Configuration config = configurator.getConfiguration(0xCometProxy);
+```
+
+#### Ethers.js v5.x
+
+```js
+const configurator = new ethers.Contract(contractAddress, abiJson, provider);
+const config = await configurator.callStatic.getConfiguration('0xCometProxy');
+```
+
+### Get Comet Factory
+
+This function gets the address of the Comet Factory contract.
+
+#### Configurator
+
+```solidity
+function factory(address cometProxy) public view returns (address cometFactory)
+```
+
+* `cometProxy`: The address of the Comet proxy contract.
+* `RETURNS`: The address of the Comet Factory for the specified instance of Comet.
+
+#### Solidity
+
+```solidity
+Configurator configurator = Configurator(0xConfiguratorAddress);
+CometFactory factory = configurator.factory(0xCometProxy);
+```
+
+#### Ethers.js v5.x
+
+```js
+const configurator = new ethers.Contract(contractAddress, abiJson, provider);
+const factoryAddress = await configurator.factory.getConfiguration('0xCometProxy');
+```
+
+### Get Base Asset Market Information
+
+This function gets several of the current parameter values for the protocol market.
+
+#### Comet
+
+```solidity
+struct TotalsBasic {
+    uint64 baseSupplyIndex;
+    uint64 baseBorrowIndex;
+    uint64 trackingSupplyIndex;
+    uint64 trackingBorrowIndex;
+    uint104 totalSupplyBase;
+    uint104 totalBorrowBase;
+    uint40 lastAccrualTime;
+    uint8 pauseFlags;
+}
+
+function totalsBasic() public override view returns (TotalsBasic memory)
+```
+
+* `RETURNS`: The base asset market information as a struct called `TotalsBasic` (defined in CometStorage.sol).
+* `baseSupplyIndex`: The global base asset supply index for calculating interest accrued to suppliers.
+* `baseBorrowIndex`: The global base asset borrow index for calculating interest owed by borrowers.
+* `trackingSupplyIndex`: A global index for tracking participation of accounts that supply the base asset.
+* `trackingBorrowIndex`:  A global index for tracking participation of accounts that borrow the base asset.
+* `totalSupplyBase`: The total amount of base asset presently supplied to the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `totalBorrowBase`: The total amount of base asset presently borrowed from the protocol as an unsigned integer scaled up by 10 to the "decimals" integer in the base asset's contract.
+* `lastAccrualTime`: The most recent time that protocol interest accrual was globally calculated. A block timestamp as seconds since the Unix epoch.
+* `pauseFlags`: An integer that represents paused protocol functionality flags that are packed for data storage efficiency. See [Pause Protocol Functionality](/governance/index.html.md#pause-protocol-functionality).
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+TotalsBasic tb = comet.totalsBasic();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const [ baseSupplyIndex, baseBorrowIndex, trackingSupplyIndex, trackingBorrowIndex, totalSupplyBase, totalBorrowBase, lastAccrualTime, pauseFlags ] = await comet.callStatic.totalsBasic();
+```
+
+### Get Base Accrual Scale
+
+This function gets the scale for the base asset tracking accrual.
+
+#### Comet
+
+```solidity
+function baseAccrualScale() override external pure returns (uint64)
+```
+
+* `RETURNS`: The integer used to scale down the base accrual when calculating a decimal value.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint baseAccrualScale = comet.baseAccrualScale();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const baseAccrualScale = await comet.callStatic.baseAccrualScale();
+```
+
+### Get Base Index Scale
+
+This function gets the scale for the base asset index.
+
+#### Comet
+
+```solidity
+function baseIndexScale() override external pure returns (uint64)
+```
+
+* `RETURNS`: The integer used to scale down the index when calculating a decimal value.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint baseIndexScale = comet.baseIndexScale();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const baseIndexScale = await comet.callStatic.baseIndexScale();
+```
+
+### Get Factor Scale
+
+This function gets the scale for all protocol factors, i.e. borrow collateral factor.
+
+#### Comet
+
+```solidity
+function factorScale() override external pure returns (uint64)
+```
+
+* `RETURNS`: The integer used to scale down the factor when calculating a decimal value.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint factorScale = comet.factorScale();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const factorScale = await comet.callStatic.factorScale();
+```
+
+### Get Price Scale
+
+This function gets the scale integer for USD prices in the protocol, i.e. `8 decimals = 1e8`.
+
+#### Comet
+
+```solidity
+function priceScale() override external pure returns (uint64)
+```
+
+* `RETURNS`: The integer used to scale down a price when calculating a decimal value.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint priceScale = comet.priceScale();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const priceScale = await comet.callStatic.priceScale();
+```
+
+### Get Max Assets
+
+This function gets the maximum number of assets that can be simultaneously supported by Compound III.
+
+#### Comet
+
+```solidity
+function maxAssets() override external pure returns (uint8)
+```
+
+* `RETURNS`: The maximum number of assets that can be simultaneously supported by Compound III.
+
+#### Solidity
+
+```solidity
+Comet comet = Comet(0xCometAddress);
+uint maxAssets = comet.maxAssets();
+```
+
+#### Ethers.js v5.x
+
+```js
+const comet = new ethers.Contract(contractAddress, abiJson, provider);
+const maxAssets = await comet.callStatic.maxAssets();
+```
+
+## Bulk Actions
+
+The Compound III codebase contains the source code of an external contract called *Bulker* that is designed to allow multiple Comet functions to be called in a single transaction.
+
+Use cases of the Bulker contract include but are not limited to:
+  * Supplying of a collateral asset and borrowing of the base asset.
+  * Supplying or withdrawing of the native EVM token (like Ether) directly.
+  * Transferring or withdrawing of the base asset without leaving dust in the account.
+
+### Invoke
+
+This function allows callers to pass an array of action codes and calldatas that are executed, one by one, in a single transaction.
+
+#### Bulker
+
+```solidity
+/// @notice The action for supplying an asset to Comet
+bytes32 public constant ACTION_SUPPLY_ASSET = "ACTION_SUPPLY_ASSET";
+
+/// @notice The action for supplying a native asset (e.g. ETH on Ethereum mainnet) to Comet
+bytes32 public constant ACTION_SUPPLY_NATIVE_TOKEN = "ACTION_SUPPLY_NATIVE_TOKEN";
+
+/// @notice The action for transferring an asset within Comet
+bytes32 public constant ACTION_TRANSFER_ASSET = "ACTION_TRANSFER_ASSET";
+
+/// @notice The action for withdrawing an asset from Comet
+bytes32 public constant ACTION_WITHDRAW_ASSET = "ACTION_WITHDRAW_ASSET";
+
+/// @notice The action for withdrawing a native asset from Comet
+bytes32 public constant ACTION_WITHDRAW_NATIVE_TOKEN = "ACTION_WITHDRAW_NATIVE_TOKEN";
+
+/// @notice The action for claiming rewards from the Comet rewards contract
+bytes32 public constant ACTION_CLAIM_REWARD = "ACTION_CLAIM_REWARD";
+
+function invoke(bytes32[] calldata actions, bytes[] calldata data) external payable
+```
+
+* `actions`: An array of bytes32 strings that correspond to the actions defined in the contract.
+* `data`: An array of calldatas for each action to be called in the invoke transaction.
+  * Supply Asset, Withdraw Asset, Transfer Asset
+    * `comet`: The address of the Comet instance to interact with.
+    * `to`: The destination address, within or external to the protocol.
+    * `asset`: The address of the ERC-20 asset contract.
+    * `amount`: The amount of the asset as an unsigned integer scaled up by 10 to the "decimals" integer in the asset's contract.
+  * Supply Native, Withdraw Native (native chain token like ETH on Ethereum Mainnet)
+    * `comet`: The address of the Comet instance to interact with.
+    * `to`: The destination address, within or external to the protocol.
+    * `amount`: The amount of the native token as an unsigned integer scaled up by 10 to the number of decimals of precision of the native EVM token.
+* `RETURN`: No return, reverts on error.
+
+#### Solidity
+
+```solidity
+Bulker bulker = Bulker(0xBulkerAddress);
+// ERC-20 `approve` the bulker. Then Comet `allow` the bulker to be a manager before calling `invoke`.
+bytes memory supplyAssetCalldata = (abi.encode('0xCometAddress', '0xAccount', '0xAsset', amount);
+bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
+```
+
+#### Ethers.js v5.x
+
+```js
+const bulker = new ethers.Contract(contractAddress, abiJson, provider);
+// ERC-20 `approve` the bulker. Then Comet `allow` the bulker to be a manager before calling `invoke`.
+const supplyAssetCalldata = ethers.utils.defaultAbiCoder.encode(['address', 'address', 'address', 'uint'], ['0xCometAddress', '0xAccount', '0xAsset', amount]);
+await bulker.invoke([ 'ACTION_SUPPLY_ASSET' ], [ supplyAssetCalldata ]);
+```

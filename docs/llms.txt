@@ -1,0 +1,46 @@
+# Compound Protocol Documentation
+
+> LLM-friendly guide to the Compound docs site covering Compound III, Compound v2, and Compound.js.
+
+These docs are published at https://docs.compound.finance/. Every documentation page listed below also has a clean Markdown mirror at the same route with `.md` appended, such as `/interest-rates/index.html.md`.
+
+Prefer the Compound III section for current integrations. Use the Compound v2 and Compound.js sections for legacy protocol behavior and SDK helpers.
+
+## Quick Start
+
+- [Compound III context pack](https://docs.compound.finance/llms-ctx.txt): Expanded Markdown context for the current Compound III docs.
+- [Complete docs context pack](https://docs.compound.finance/llms-ctx-full.txt): Expanded Markdown context for all public docs pages.
+
+## Compound III
+
+- [Compound III overview](https://docs.compound.finance/index.html.md): Overview of the current protocol, deployment addresses, core contracts, developer resources, and security references.
+- [Interest rates](https://docs.compound.finance/interest-rates/index.html.md): Supply and borrow rate models, utilization, kink behavior, and APR conversion.
+- [Collateral and borrowing](https://docs.compound.finance/collateral-and-borrowing/index.html.md): Supplying collateral, borrowing the base asset, withdraw rules, and collateral limits.
+- [Liquidation](https://docs.compound.finance/liquidation/index.html.md): Liquidation factors, discounts, absorbing underwater accounts, and reserve usage.
+- [Account management](https://docs.compound.finance/account-management/index.html.md): Delegated account managers, permissions, and EIP-712 allowance flows.
+- [Protocol rewards](https://docs.compound.finance/protocol-rewards/index.html.md): Reward accrual, claiming flows, and reward configuration behavior.
+- [Governance](https://docs.compound.finance/governance/index.html.md): Governance model, proposal flow, voting, and admin roles for Compound III.
+- [Helper functions](https://docs.compound.finance/helper-functions/index.html.md): Read-only contract helpers for assets, prices, reserves, utilization, and market state.
+
+## Compound v2
+
+- [Getting started](https://docs.compound.finance/v2/index.html.md): Compound v2 overview, guides, network deployments, and protocol math.
+- [cTokens](https://docs.compound.finance/v2/ctokens/index.html.md): cToken contract methods, events, errors, exchange rates, and FAQs.
+- [Comptroller](https://docs.compound.finance/v2/comptroller/index.html.md): Risk management, market entry, liquidity, liquidation math, and admin views.
+- [Governance](https://docs.compound.finance/v2/governance/index.html.md): COMP delegation, proposals, voting, timelock, and pause guardian mechanics.
+- [Price feed](https://docs.compound.finance/v2/prices/index.html.md): Oracle architecture, deployed price feed addresses, and price normalization behavior.
+- [Security](https://docs.compound.finance/v2/security/index.html.md): Audits, bug bounty details, formal verification, and economic security references.
+
+## Compound.js
+
+- [Compound.js overview](https://docs.compound.finance/compound-js/index.html.md): SDK overview, installation, provider setup, and common usage patterns.
+- [Comet SDK](https://docs.compound.finance/compound-js/comet/index.html.md): Compound III SDK methods for Comet markets, supported deployments, and helpers.
+- [Governance SDK](https://docs.compound.finance/compound-js/governance/index.html.md): SDK methods for governance reads, delegation, voting, and proposal actions.
+- [cTokens SDK](https://docs.compound.finance/compound-js/ctokens/index.html.md): SDK methods for Compound v2 cToken interactions.
+- [Comptroller SDK](https://docs.compound.finance/compound-js/comptroller/index.html.md): SDK methods for Compound v2 Comptroller interactions.
+- [Price feed SDK](https://docs.compound.finance/compound-js/price-feed/index.html.md): SDK methods for Compound v2 price feed reads.
+- [Helpers SDK](https://docs.compound.finance/compound-js/helpers/index.html.md): Utility helpers for the SDK and general EVM development tasks.
+
+## Optional
+
+- [Comet interface ABI](https://docs.compound.finance/public/files/comet-interface-abi-98f438b.json): Machine-readable ABI for Compound III integrations.
