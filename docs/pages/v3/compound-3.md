@@ -1023,7 +1023,7 @@ deployments:
     blockscan_origin: 'https://optimistic.etherscan.io/'
     contracts:
       cWETHv3: '0xE36A30D249f7761327fd973001A32010b521b6Fd'
-      cWETHv3 Implementation: '0x35FCB8f67F49f2999d6522ef00cE239dE3a15011'
+      cWETHv3 Implementation: '0x513C0608A9C43523B8cAE67414EfD7100b1ea966'
       cWETHv3 Ext: '0xc4aaFC9F0c52FDDa0fed972c55B136bD07552ad0'
       Configurator: '0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713'
       Configurator Implementation: '0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02'
@@ -1067,8 +1067,8 @@ deployments:
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '10.00%'
         Liquidation Penalty Raw: '900000000000000000'
-        Supply Cap: '60'
-        Supply Cap Raw: '6000000000'
+        Supply Cap: '30'
+        Supply Cap Raw: '3000000000'
         Price Feed: '0x4ed39CF78ffA4428DE6bcEDB8d0f5Ff84699e13D'
       USDT:
         address: '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58'
@@ -1078,8 +1078,8 @@ deployments:
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '5.00%'
         Liquidation Penalty Raw: '950000000000000000'
-        Supply Cap: '10.00M'
-        Supply Cap Raw: '10000000000000'
+        Supply Cap: '5.00M'
+        Supply Cap Raw: '5000000000000'
         Price Feed: '0xDdC326838f2B5E5625306C3cf33318666f3Cf002'
       USDC:
         address: '0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85'
@@ -1089,8 +1089,8 @@ deployments:
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '5.00%'
         Liquidation Penalty Raw: '950000000000000000'
-        Supply Cap: '15.00M'
-        Supply Cap Raw: '15000000000000'
+        Supply Cap: '7.50M'
+        Supply Cap Raw: '7500000000000'
         Price Feed: '0x403F2083B6E220147f8a8832f0B284B4Ed5777d1'
       ezETH:
         address: '0x2416092f143378750bb29b79eD961ab195CcEea5'
@@ -1330,7 +1330,7 @@ deployments:
     blockscan_origin: 'https://polygonscan.com/'
     contracts:
       cUSDTv3: '0xaeB318360f27748Acb200CE616E389A6C9409a07'
-      cUSDTv3 Implementation: '0x83aBacAFaF625D84919cA769222579bC75AeA2D1'
+      cUSDTv3 Implementation: '0x956c4b84D661ddF746510dbd3733e09655958892'
       cUSDTv3 Ext: '0x2F4eAF29dfeeF4654bD091F7112926E108eF4Ed0'
       Configurator: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
       Configurator Implementation: '0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf'
@@ -1385,9 +1385,9 @@ deployments:
         Liquidation CF Raw: '100000000000000'
         Liquidation Penalty: '20.00%'
         Liquidation Penalty Raw: '800000000000000000'
-        Supply Cap: '1.50M'
-        Supply Cap Raw: '1500000000000000000000000'
-        Price Feed: '0x97371dF4492605486e23Da797fA68e55Fc38a13f'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
+        Price Feed: '0x5D173813B4505701e79E654b36A95E6c1FAD4448'
       WBTC:
         address: '0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6'
         Borrow CF: '75.0%'
@@ -1664,7 +1664,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cUSDCv3: '0xb125E6687d4313864e53df431d5425969c15Eb2F'
-      cUSDCv3 Implementation: '0x5Bb86246EFFa867521aE528328EAf536da85aE9b'
+      cUSDCv3 Implementation: '0x4A89F4ff11FB24333e2D235ab1a0D31D3506E6c0'
       cUSDCv3 Ext: '0x220Da2686dC870aC0A97498A1845e610d2f13431'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1678,7 +1678,7 @@ deployments:
       SVR Fee Receiver: '0xb3e79c7cac540ca833015e63d96d3032ba0c4129'
       USDC:
         address: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
-        Price Feed: '0x7e860098F58bBFC8648a4311b374B1D669a2bc6B'
+        Price Feed: '0x3e6D1ccA8Eee6d02f1f578B613374EB53E6823B4'
       cbETH:
         address: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22'
         Borrow CF: '80.0%'
@@ -1689,7 +1689,7 @@ deployments:
         Liquidation Penalty Raw: '900000000000000000'
         Supply Cap: '7.50K'
         Supply Cap Raw: '7500000000000000000000'
-        Price Feed: '0x4687670f5f01716fAA382E2356C103BaD776752C'
+        Price Feed: '0x0866Fc8a76BfC485B8E8C7D543A54bd72F015b1C'
       WETH:
         address: '0x4200000000000000000000000000000000000006'
         Borrow CF: '85.0%'
@@ -1700,7 +1700,7 @@ deployments:
         Liquidation Penalty Raw: '950000000000000000'
         Supply Cap: '11.00K'
         Supply Cap Raw: '11000000000000000000000'
-        Price Feed: '0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70'
+        Price Feed: '0xe6eb5B9b85cFF2C84Df3De6e7855bC9E76f034d5'
       wstETH:
         address: '0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452'
         Borrow CF: '80.0%'
@@ -1711,7 +1711,7 @@ deployments:
         Liquidation Penalty Raw: '900000000000000000'
         Supply Cap: '3.00K'
         Supply Cap Raw: '3000000000000000000000'
-        Price Feed: '0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118'
+        Price Feed: '0x1738FCAe8D5A6aEf39985dF31Fe60e5Dc5e1a7b3'
       cbBTC:
         address: '0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf'
         Borrow CF: '80.0%'
@@ -1953,7 +1953,7 @@ deployments:
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cUSDCv3: '0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf'
-      cUSDCv3 Implementation: '0x88a7d5D0107aa7757a8B1BC8c0Dbb22584dc78bd'
+      cUSDCv3 Implementation: '0xc994502eDe8c1e211BF2219555ac3130D5E97746'
       cUSDCv3 Ext: '0x95DeDD64b551F05E9f59a101a519B024b6b116E7'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -1967,7 +1967,7 @@ deployments:
       SVR Fee Receiver: '0xb3e79c7cac540ca833015e63d96d3032ba0c4129'
       USDC:
         address: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831'
-        Price Feed: '0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3'
+        Price Feed: '0x880D36763Bb470cd395B7d6c76b50446FA70ACe5'
       ARB:
         address: '0x912CE59144191C1204E64559FE8253a0e49E6548'
         Borrow CF: '70.0%'
@@ -1978,7 +1978,7 @@ deployments:
         Liquidation Penalty Raw: '900000000000000000'
         Supply Cap: '16.00M'
         Supply Cap Raw: '16000000000000000000000000'
-        Price Feed: '0xb2A824043730FE05F3DA2efaFa1CBbe83fa548D6'
+        Price Feed: '0x5998a5C516bD5E479E0B6aa6F243d372730B68d2'
       GMX:
         address: '0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a'
         Borrow CF: '60.0%'
@@ -2000,7 +2000,7 @@ deployments:
         Liquidation Penalty Raw: '930000000000000000'
         Supply Cap: '40.00K'
         Supply Cap Raw: '40000000000000000000000'
-        Price Feed: '0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612'
+        Price Feed: '0xb2988bDAdc45c43e3fE1A728F715E94bee4DB406'
       WBTC:
         address: '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f'
         Borrow CF: '75.0%'
@@ -2011,7 +2011,7 @@ deployments:
         Liquidation Penalty Raw: '900000000000000000'
         Supply Cap: '1.00K'
         Supply Cap Raw: '100000000000'
-        Price Feed: '0xd0C7101eACbB49F3deCcCc166d238410D6D46d57'
+        Price Feed: '0xcc392d2c3b37520e01712320bE331D41F7661013'
       wstETH:
         address: '0x5979D7b546E38E414F7E9822514be443A4800529'
         Borrow CF: '80.0%'
@@ -2567,7 +2567,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-04-10 12:58:47.505 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-04-11 12:43:46.291 UTC**.
 
 <div id="networks-widget-container"></div>
 
