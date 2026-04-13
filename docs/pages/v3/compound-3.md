@@ -1171,7 +1171,7 @@ deployments:
     blockscan_origin: 'https://uniscan.xyz/'
     contracts:
       cWETHv3: '0x6C987dDE50dB1dcDd32Cd4175778C2a291978E2a'
-      cWETHv3 Implementation: '0x5845972510Fab5FFf85Ae22B2BCb49D96127499b'
+      cWETHv3 Implementation: '0x5E58f8Af3042452F24F3b18B4191e8C111f3714b'
       cWETHv3 Ext: '0x443EA0340cb75a160F31A440722dec7b5bc3C2E9'
       Configurator: '0x8df378453Ff9dEFFa513367CDF9b3B53726303e9'
       Configurator Implementation: '0x5404872d8f2e24b230EC9B9eC64E3855F637FB93'
@@ -1237,8 +1237,8 @@ deployments:
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '10.00%'
         Liquidation Penalty Raw: '900000000000000000'
-        Supply Cap: '120'
-        Supply Cap Raw: '12000000000'
+        Supply Cap: '60'
+        Supply Cap Raw: '6000000000'
         Price Feed: '0xFa454dE61b317b6535A0C462267208E8FdB89f45'
       rsETH:
         address: '0xc3eACf0612346366Db554C991D7858716db09f58'
@@ -2567,7 +2567,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-04-11 12:43:46.291 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-04-13 13:14:36.532 UTC**.
 
 <div id="networks-widget-container"></div>
 
