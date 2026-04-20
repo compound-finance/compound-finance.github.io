@@ -54,16 +54,29 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# Setup curl arguments with authentication
+# Setup curl arguments with authentication (used for this repo's GitHub API calls).
+# GitHub accepts "Authorization: Bearer <TOKEN>" for all token types (GITHUB_TOKEN,
+# classic PATs, fine-grained PATs, GitHub App tokens).
 curl_args=(-sS -L)
 if [[ -n "${GH_TOKEN:-}" ]]; then
-  curl_args+=(-H "Authorization: token ${GH_TOKEN}")
+  curl_args+=(-H "Authorization: Bearer ${GH_TOKEN}")
+fi
+
+# Token for downloading from the source repo (optional). When the source is private,
+# set SOURCE_GITHUB_TOKEN to a PAT/fine-grained token with contents:read on that repo.
+# If unset, GH_TOKEN is used so public sources keep working with only GITHUB_TOKEN.
+# --fail makes curl exit non-zero on HTTP errors (e.g. 401/403/404), so a missing or
+# insufficient token fails fast instead of writing an error JSON into the target file.
+download_token="${SOURCE_GITHUB_TOKEN:-${GH_TOKEN:-}}"
+download_curl_args=(-sS -L --fail)
+if [[ -n "${download_token}" ]]; then
+  download_curl_args+=(-H "Authorization: Bearer ${download_token}")
 fi
 
 # Download source file
 api_url="${GITHUB_API_BASE}/repos/${SOURCE_OWNER}/${SOURCE_REPO}/contents/${SOURCE_PATH}?ref=${SOURCE_BRANCH}"
 echo "Downloading source file from ${api_url}"
-curl "${curl_args[@]}" -H "Accept: application/vnd.github.v3.raw" "${api_url}" -o "${tmp_file}"
+curl "${download_curl_args[@]}" -H "Accept: application/vnd.github.v3.raw" "${api_url}" -o "${tmp_file}"
 
 mkdir -p "$(dirname "${TARGET_ABS_PATH}")"
 
