@@ -22,5 +22,8 @@ jobs:
       - name: Sync compound-3.md
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: classic or fine-grained PAT with read access to the private source repo
+          # (contents: read). Leave unset if the source repo is public — behavior unchanged.
+          SOURCE_GITHUB_TOKEN: ${{ secrets.COMPOUND_3_SOURCE_REPO_TOKEN }}
         run: |
           bash scripts/sync_compound_3.sh
