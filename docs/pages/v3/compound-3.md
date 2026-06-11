@@ -2288,12 +2288,12 @@ deployments:
     blockscan_origin: 'https://lineascan.build/'
     contracts:
       cUSDCv3: '0x8D38A3d6B3c3B7d96D6536DA7Eef94A9d7dbC991'
-      cUSDCv3 Implementation: '0x9FF320C40cc1E54B92012cFAEf3E50f17f26f6Fe'
-      cUSDCv3 Ext: '0x841e380e3a98E4EE8912046d69731F4E21eFb1D7'
+      cUSDCv3 Implementation: '0x3B51bc728d8C0b56E6fCB9aEecE671Afbb9D1b01'
+      cUSDCv3 Ext: '0xBC7B80c97b560e83A229a6417Ed4fC2d75Fc1209'
       Configurator: '0x970FfD8E335B8fa4cd5c869c7caC3a90671d5Dc3'
       Configurator Implementation: '0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C'
       Proxy Admin: '0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118'
-      Comet Factory: '0xaeB318360f27748Acb200CE616E389A6C9409a07'
+      Comet Factory: '0x74a241aA5E2C0D62Ac267fC481790f3474ED5aAF'
       Rewards: '0x2c7118c4C88B9841FCF839074c26Ae8f035f2921'
       Bulker: '0x023ee795361B28cDbB94e302983578486A0A5f1B'
       Governor: '0x1F71901daf98d70B4BAF40DE080321e5C2676856'
@@ -2340,12 +2340,12 @@ deployments:
     blockscan_origin: 'https://lineascan.build/'
     contracts:
       cWETHv3: '0x60F2058379716A64a7A5d29219397e79bC552194'
-      cWETHv3 Implementation: '0xDB4762Fd3d09097aa2aDb79486eDAAbF982733d0'
-      cWETHv3 Ext: '0xc8E4c3F58d5FC4409522503927Ecea057EbbA1fc'
+      cWETHv3 Implementation: '0xE8064Be46b6F5C5AeE0a21Bec454840896108590'
+      cWETHv3 Ext: '0x78eE842Bf092CaAa68dE542A8b1d1BF337EAD33F'
       Configurator: '0x970FfD8E335B8fa4cd5c869c7caC3a90671d5Dc3'
       Configurator Implementation: '0xdB7EdFa090061D9367CbEAF6bE16ECbDE596676C'
       Proxy Admin: '0x4b5DeE60531a72C1264319Ec6A22678a4D0C8118'
-      Comet Factory: '0xaeB318360f27748Acb200CE616E389A6C9409a07'
+      Comet Factory: '0x74a241aA5E2C0D62Ac267fC481790f3474ED5aAF'
       Rewards: '0x2c7118c4C88B9841FCF839074c26Ae8f035f2921'
       Bulker: '0x023ee795361B28cDbB94e302983578486A0A5f1B'
       Governor: '0x1F71901daf98d70B4BAF40DE080321e5C2676856'
@@ -2362,8 +2362,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '6.00%'
         Liquidation Penalty Raw: '940000000000000000'
-        Supply Cap: '4.83K'
-        Supply Cap Raw: '4830000000000000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0x13933885C9A392Ce73f396707EC61f30a8b05e37'
       wstETH:
         address: '0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F'
@@ -2395,8 +2395,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '4.00%'
         Liquidation Penalty Raw: '960000000000000000'
-        Supply Cap: '3.55K'
-        Supply Cap Raw: '3550000000000000000000'
+        Supply Cap: '121'
+        Supply Cap Raw: '121000000000000000000'
         Price Feed: '0xfd5282968119c348C1E47fBCaDD13069d9857Bf2'
       wrsETH:
         address: '0xD2671165570f41BBB3B0097893300b6EB6101E6C'
@@ -2527,7 +2527,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-06-09 14:37:02.033 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-06-10 15:20:51.527 UTC**.
 
 <div id="networks-widget-container"></div>
 
