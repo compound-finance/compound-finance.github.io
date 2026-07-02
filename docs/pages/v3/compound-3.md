@@ -875,7 +875,7 @@ deployments:
     blockscan_origin: 'https://optimistic.etherscan.io/'
     contracts:
       cUSDCv3: '0x2e44e174f7D53F0212823acC11C01A11d58c5bCB'
-      cUSDCv3 Implementation: '0xDf8A58FC81a7Fd4B26fF13885Eb7b51ED0c82ee0'
+      cUSDCv3 Implementation: '0x51fA6A62F9A0cB3711e2CB9AabBdF09FFce7B61e'
       cUSDCv3 Ext: '0xadF7aD4Dd000Ea75667A3CDf65F3D3b7f1e9F02E'
       Configurator: '0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713'
       Configurator Implementation: '0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02'
@@ -949,7 +949,7 @@ deployments:
     blockscan_origin: 'https://optimistic.etherscan.io/'
     contracts:
       cUSDTv3: '0x995E394b8B2437aC8Ce61Ee0bC610D617962B214'
-      cUSDTv3 Implementation: '0x7cFB421C236631936dFc8E5D5B2c8A5272519CdE'
+      cUSDTv3 Implementation: '0x2Be3d9B329CDC6D4E0D06EC2dE8aC5B1db7E4DAD'
       cUSDTv3 Ext: '0xdFb81f0EbFDfdd90143f5deBD1cd016b677d1585'
       Configurator: '0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713'
       Configurator Implementation: '0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02'
@@ -1506,7 +1506,7 @@ deployments:
     blockscan_origin: 'https://mantlescan.xyz/'
     contracts:
       cUSDev3: '0x606174f62cd968d8e684c645080fa694c1D7786E'
-      cUSDev3 Implementation: '0xAC218BB48660436C4F14aE9cf1Ae5d03Da6a5f7c'
+      cUSDev3 Implementation: '0x2Dd3c60F2B7b26E0D35230CD3df97a414eB66018'
       cUSDev3 Ext: '0x62623C1374D12F946a9CA8597a137BbfBE015665'
       Configurator: '0xb77Cd4cD000957283D8BAf53cD782ECf029cF7DB'
       Configurator Implementation: '0x3c851CbE2740747f5cE4e8894842A313e5A3aee3'
@@ -1522,36 +1522,36 @@ deployments:
         Price Feed: '0x0090A563C4832E4E519F5f054483519b1A83c8C3'
       mETH:
         address: '0xcDA86A272531e8640cD7F1a92c01839911B90bb0'
-        Borrow CF: '80.0%'
-        Borrow CF Raw: '800000000000000000'
+        Borrow CF: '40.0%'
+        Borrow CF Raw: '400000000000000000'
         Liquidation CF: '85.0%'
         Liquidation CF Raw: '850000000000000000'
         Liquidation Penalty: '10.00%'
         Liquidation Penalty Raw: '900000000000000000'
-        Supply Cap: '3.00K'
-        Supply Cap Raw: '3000000000000000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0x731564585278f228FB8F93a0BF62729E24367662'
       WETH:
         address: '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111'
-        Borrow CF: '82.0%'
-        Borrow CF Raw: '820000000000000000'
+        Borrow CF: '41.0%'
+        Borrow CF Raw: '410000000000000000'
         Liquidation CF: '87.0%'
         Liquidation CF Raw: '870000000000000000'
         Liquidation Penalty: '7.00%'
         Liquidation Penalty Raw: '930000000000000000'
-        Supply Cap: '2.80K'
-        Supply Cap Raw: '2800000000000000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0xAdD81aAF528784531E888317AFcD429b00C9f1b3'
       FBTC:
         address: '0xC96dE26018A54D51c097160568752c4E3BD6C364'
-        Borrow CF: '78.0%'
-        Borrow CF Raw: '780000000000000000'
+        Borrow CF: '39.0%'
+        Borrow CF Raw: '390000000000000000'
         Liquidation CF: '83.0%'
         Liquidation CF Raw: '830000000000000000'
         Liquidation Penalty: '12.00%'
         Liquidation Penalty Raw: '880000000000000000'
-        Supply Cap: '120'
-        Supply Cap Raw: '12000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0x41E345A046A73Ef15316191b41f3ABEA4cEF1168'
   Base - AERO Base:
     tab_text: Base AERO
@@ -2527,7 +2527,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-06-10 15:20:51.527 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-07-02 12:42:47.959 UTC**.
 
 <div id="networks-widget-container"></div>
 
