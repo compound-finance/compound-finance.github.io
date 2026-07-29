@@ -1664,7 +1664,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cUSDCv3: '0xb125E6687d4313864e53df431d5425969c15Eb2F'
-      cUSDCv3 Implementation: '0x731fD1BA790e97d61Ef16B031cF76ffE4e70e765'
+      cUSDCv3 Implementation: '0x079990620d904fB1FdE68b6d54a5f8647134CDE9'
       cUSDCv3 Ext: '0x220Da2686dC870aC0A97498A1845e610d2f13431'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1722,7 +1722,7 @@ deployments:
         Liquidation Penalty Raw: '950000000000000000'
         Supply Cap: '400'
         Supply Cap Raw: '40000000000'
-        Price Feed: '0x8D38A3d6B3c3B7d96D6536DA7Eef94A9d7dbC991'
+        Price Feed: '0x8C74B2811D2F1aD65517ADB5C65773c1E520ed2f'
       tBTC:
         address: '0x236aa50979D5f3De3Bd1Eeb40E81137F22ab794b'
         Borrow CF: '80.0%'
@@ -1739,7 +1739,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cUSDSv3: '0x2c776041CCFe903071AF44aa147368a9c8EEA518'
-      cUSDSv3 Implementation: '0xbF42493f669AD33081cD8e7F9D97B16A1E9C8826'
+      cUSDSv3 Implementation: '0xD319554aDF19575463b7f06A147883bE0C00E721'
       cUSDSv3 Ext: '0xaA390749cb758Af4070E93478Fc743c72c18989c'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -1775,7 +1775,7 @@ deployments:
         Liquidation Penalty Raw: '950000000000000000'
         Supply Cap: '0'
         Supply Cap Raw: '0'
-        Price Feed: '0x07DA0E54543a844a80ABE69c8A12F22B3aA59f9D'
+        Price Feed: '0x8C74B2811D2F1aD65517ADB5C65773c1E520ed2f'
   Base - WETH Base:
     tab_text: Base WETH
     blockscan_origin: 'https://basescan.org/'
@@ -2527,7 +2527,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-07-22 13:29:36.686 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-07-28 13:55:57.693 UTC**.
 
 <div id="networks-widget-container"></div>
 
