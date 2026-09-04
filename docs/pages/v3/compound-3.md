@@ -166,7 +166,7 @@ deployments:
     blockscan_origin: 'https://optimistic.etherscan.io/'
     contracts:
       cWETHv3: '0xE36A30D249f7761327fd973001A32010b521b6Fd'
-      cWETHv3 Implementation: '0x3b8548aB4B337d84665613A2267B62996011F4A3'
+      cWETHv3 Implementation: '0x79976eAEBFcF43435e9f35dF9F28149dE75Dbf9a'
       cWETHv3 Ext: '0xF3BBe5807feA997d540939Cbf138c134b11e3CF1'
       Configurator: '0x84E93EC6170ED630f5ebD89A1AAE72d4F63f2713'
       Configurator Implementation: '0x371DB45c7ee248dAFf4Dc1FFB67A20faa0ecFE02'
@@ -199,8 +199,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '3.00%'
         Liquidation Penalty Raw: '970000000000000000'
-        Supply Cap: '99'
-        Supply Cap Raw: '99000000000000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0x3e6D1ccA8Eee6d02f1f578B613374EB53E6823B4'
       WBTC:
         address: '0x68f180fcCe6836688e9084f035309E29Bf0A2095'
@@ -243,8 +243,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '4.00%'
         Liquidation Penalty Raw: '960000000000000000'
-        Supply Cap: '276'
-        Supply Cap Raw: '276000000000000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0x3fb418B74Ec30bC3e940221F58A04e16afC6378B'
       weETH:
         address: '0x5A7fACB970D094B6C7FF1df0eA68D99E6e73CBFF'
@@ -822,7 +822,7 @@ deployments:
     blockscan_origin: 'https://basescan.org/'
     contracts:
       cWETHv3: '0x46e6b214b524310239732D51387075E0e70970bf'
-      cWETHv3 Implementation: '0x3E631eF28AA80a3234de3c8FD704E6Bb17D80721'
+      cWETHv3 Implementation: '0xa15C1556255940E4014C07330b0873088557077E'
       cWETHv3 Ext: '0xF3BBe5807feA997d540939Cbf138c134b11e3CF1'
       Configurator: '0x45939657d1CA34A8FA39A924B71D28Fe8431e581'
       Configurator Implementation: '0x83E0F742cAcBE66349E3701B171eE2487a26e738'
@@ -856,8 +856,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '4.00%'
         Liquidation Penalty Raw: '960000000000000000'
-        Supply Cap: '237'
-        Supply Cap Raw: '237000000000000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0x41E345A046A73Ef15316191b41f3ABEA4cEF1168'
       wstETH:
         address: '0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452'
@@ -1210,7 +1210,7 @@ deployments:
     blockscan_origin: 'https://arbiscan.io/'
     contracts:
       cWETHv3: '0x6f7D514bbD4aFf3BcD1140B7344b32f063dEe486'
-      cWETHv3 Implementation: '0x1084493Ffb34c9dC0573a0E8f74d8dFec5346931'
+      cWETHv3 Implementation: '0xb417f2cD7a75801aFc20163e2B299657b7BC84B7'
       cWETHv3 Ext: '0xF3BBe5807feA997d540939Cbf138c134b11e3CF1'
       Configurator: '0xb21b06D71c75973babdE35b49fFDAc3F82Ad3775'
       Configurator Implementation: '0x8495AF03fb797E2965bCB42Cb0693e1c15614798'
@@ -1310,8 +1310,8 @@ deployments:
         Liquidation CF Raw: '930000000000000000'
         Liquidation Penalty: '4.00%'
         Liquidation Penalty Raw: '960000000000000000'
-        Supply Cap: '582'
-        Supply Cap Raw: '582000000000000000000'
+        Supply Cap: '0'
+        Supply Cap Raw: '0'
         Price Feed: '0xA2699232B341881B1Ed85d91592b7c259E029aCf'
       tETH:
         address: '0xd09ACb80C1E8f2291862c4978A008791c9167003'
@@ -1568,7 +1568,7 @@ The network deployment artifacts with contract addresses are available in the [C
 The v3 proxy is the only address to be used to interact with a Compound III instance. It is the first address listed in each of the tabs below. To generate the proper [Comet Interface ABI](/public/files/comet-interface-abi-98f438b.json){:target="_blank"} (`CometInterface.sol`), compile the Comet project using `yarn compile`.
 
 <br />
-> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-08-20 12:35:06.122 UTC**.
+> **Note:** The deployment data shown below is sourced from the [compound-docs-aggregator](https://github.com/woof-software/compound-docs-aggregator){:target="_blank"} repository. Data collected on: **2026-09-03 15:38:06.050 UTC**.
 
 <div id="networks-widget-container"></div>
 
